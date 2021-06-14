@@ -12,7 +12,11 @@ config_version=4
 
 config/name="MadProductivity"
 run/main_scene="res://Main.tscn"
+run/low_processor_mode=true
+boot_splash/image="res://Splash.png"
+boot_splash/bg_color=Color( 0.0745098, 0.133333, 0.141176, 1 )
 config/icon="res://icon.png"
+config/windows_native_icon="res://icon.ico"
 
 [autoload]
 
@@ -24,6 +28,8 @@ window/size/width=1100
 window/size/height=650
 window/size/borderless=true
 window/dpi/allow_hidpi=true
+window/per_pixel_transparency/allowed=true
+window/per_pixel_transparency/enabled=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
 
@@ -34,6 +40,11 @@ common/enable_pause_aware_picking=true
 [rendering]
 
 quality/driver/driver_name="GLES2"
+quality/intended_usage/framebuffer_allocation=1
+quality/intended_usage/framebuffer_allocation.mobile=1
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
+quality/shadows/filter_mode=0
+quality/reflections/texture_array_reflections=false
+quality/reflections/high_quality_ggx=false
 environment/default_environment="res://default_env.tres"
