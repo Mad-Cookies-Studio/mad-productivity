@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ToDo.png-7b4d8569ee5152aebf45f4dff76a8066.stex"
+path="res://.import/PlusAdd.png-c9492e1ee78729a57c1577c893771152.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Icons/ToDo.png"
-dest_files=[ "res://.import/ToDo.png-7b4d8569ee5152aebf45f4dff76a8066.stex" ]
+source_file="res://Assets/Buttons/PlusAdd.png"
+dest_files=[ "res://.import/PlusAdd.png-c9492e1ee78729a57c1577c893771152.stex" ]
 
 [params]
 
