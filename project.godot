@@ -20,6 +20,11 @@ _global_script_classes=[ {
 "path": "res://Assets/Resources/ReminderResource.gd"
 }, {
 "base": "Resource",
+"class": "Settings",
+"language": "GDScript",
+"path": "res://Assets/Resources/Settings.gd"
+}, {
+"base": "Resource",
 "class": "TimeTrackResource",
 "language": "GDScript",
 "path": "res://Assets/Resources/TimeTrackResource.gd"
@@ -32,6 +37,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "NoteResource": "",
 "ReminderResource": "",
+"Settings": "",
 "TimeTrackResource": "",
 "ToDoResource": ""
 }
