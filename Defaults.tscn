@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/Defaults.gd" type="Script" id=1]
+
+[node name="Defaults" type="Node"]
+script = ExtResource( 1 )
+btn_active_colour = Color( 0.854902, 0.423529, 0.384314, 1 )
+btn_inactive_colour = Color( 0.137255, 0.301961, 0.305882, 1 )
