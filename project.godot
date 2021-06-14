@@ -8,6 +8,34 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Resource",
+"class": "NoteResource",
+"language": "GDScript",
+"path": "res://Assets/Resources/NoteResource.gd"
+}, {
+"base": "Resource",
+"class": "ReminderResource",
+"language": "GDScript",
+"path": "res://Assets/Resources/ReminderResource.gd"
+}, {
+"base": "Resource",
+"class": "TimeTrackResource",
+"language": "GDScript",
+"path": "res://Assets/Resources/TimeTrackResource.gd"
+}, {
+"base": "Resource",
+"class": "ToDoResource",
+"language": "GDScript",
+"path": "res://Assets/Resources/ToDoResource.gd"
+} ]
+_global_script_class_icons={
+"NoteResource": "",
+"ReminderResource": "",
+"TimeTrackResource": "",
+"ToDoResource": ""
+}
+
 [application]
 
 config/name="MadProductivity"
