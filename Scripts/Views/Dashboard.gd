@@ -1,8 +1,5 @@
 extends Control
 
-const DAYS : Array = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-const MONTHS : Array = ["January", "Febrruary", "March", "April", "May", "June", "July"]
-
 func _ready() -> void:
 	update_time()
 	update_date()
@@ -29,4 +26,4 @@ func update_time() -> void:
 	
 func update_date() -> void:
 	var date = OS.get_datetime()
-	$VBoxContainer/Date.text = DAYS[date.day % 7] + ", " + MONTHS[date.month] + " " + str(date.year)
+	$VBoxContainer/Date.text = Defaults.DAYS[date.day % 7] + ", " + Defaults.MONTHS[date.month] + " " + str(date.year)
