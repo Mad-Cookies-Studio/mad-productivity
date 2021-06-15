@@ -16,36 +16,39 @@
 [ext_resource path="res://Assets/Fonts/Roboto20.tres" type="DynamicFont" id=14]
 [ext_resource path="res://Assets/Buttons/PauseBtn_hover.png" type="Texture" id=15]
 
-[sub_resource type="DynamicFont" id=15]
+[sub_resource type="DynamicFont" id=1]
 size = 20
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="StyleBoxFlat" id=12]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.0588235, 0.105882, 0.109804, 0.498039 )
 border_color = Color( 0.576471, 0.627451, 0.631373, 1 )
 
-[sub_resource type="StyleBoxEmpty" id=9]
+[sub_resource type="StyleBoxEmpty" id=3]
 
-[sub_resource type="StyleBoxEmpty" id=10]
+[sub_resource type="StyleBoxEmpty" id=4]
 
-[sub_resource type="StyleBoxEmpty" id=11]
+[sub_resource type="StyleBoxEmpty" id=5]
 
-[sub_resource type="Shader" id=13]
+[sub_resource type="Shader" id=6]
 code = "shader_type canvas_item;
 
 void fragment(){
 	COLOR.a = UV.y;
 }"
 
-[sub_resource type="ShaderMaterial" id=14]
-shader = SubResource( 13 )
+[sub_resource type="ShaderMaterial" id=7]
+shader = SubResource( 6 )
 
 [node name="TimeTracking" type="Control"]
 margin_right = 990.0
 margin_bottom = 571.0
 script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
@@ -66,7 +69,7 @@ text = "TIME TRACKING"
 margin_left = 649.0
 margin_right = 990.0
 margin_bottom = 63.0
-custom_fonts/font = SubResource( 15 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.415686 )
 text = "total:"
 align = 2
@@ -147,16 +150,16 @@ margin_top = 521.0
 margin_right = 990.0
 margin_bottom = 571.0
 rect_min_size = Vector2( 0, 50 )
-custom_styles/panel = SubResource( 12 )
+custom_styles/panel = SubResource( 2 )
 
 [node name="Label" type="LineEdit" parent="VBoxContainer/Panel"]
 margin_left = 13.0
 margin_top = 13.0
 margin_right = 544.0
 margin_bottom = 37.0
-custom_styles/read_only = SubResource( 9 )
-custom_styles/focus = SubResource( 10 )
-custom_styles/normal = SubResource( 11 )
+custom_styles/read_only = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
 custom_fonts/font = ExtResource( 14 )
 custom_colors/selection_color = Color( 0.854902, 0.423529, 0.384314, 1 )
 custom_colors/font_color_selected = Color( 0.0588235, 0.105882, 0.109804, 1 )
@@ -228,7 +231,7 @@ wait_time = 86400.0
 [node name="Tween" type="Tween" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="."]
-material = SubResource( 14 )
+material = SubResource( 7 )
 margin_top = 373.0
 margin_right = 989.0
 margin_bottom = 521.0

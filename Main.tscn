@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Assets/Icons/MD_concept.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Icons/NoteTaking.png" type="Texture" id=2]
@@ -19,6 +19,10 @@
 [ext_resource path="res://Assets/Icons/Reminders.png" type="Texture" id=17]
 [ext_resource path="res://Assets/Icons/Profile.png" type="Texture" id=18]
 [ext_resource path="res://Assets/Views/Notes.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Assets/Fonts/Righteous50.tres" type="DynamicFont" id=20]
+[ext_resource path="res://Assets/Themes/Roboto12Clean.tres" type="Theme" id=21]
+[ext_resource path="res://Assets/Buttons/PlusAdd.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Buttons/Cross.png" type="Texture" id=23]
 [ext_resource path="res://Scripts/Views/Reminders.gd" type="Script" id=25]
 [ext_resource path="res://Scripts/Views/ToDo.gd" type="Script" id=26]
 [ext_resource path="res://Scripts/Views/Profile.gd" type="Script" id=27]
@@ -39,6 +43,12 @@ colors = PoolColorArray( 0.854902, 0.423529, 0.384314, 0, 0.854902, 0.423529, 0.
 
 [sub_resource type="DynamicFont" id=5]
 size = 80
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 13 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 20
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 13 )
@@ -286,6 +296,7 @@ __meta__ = {
 }
 
 [node name="Dashboard" parent="MainWorkspace/Views" instance=ExtResource( 12 )]
+visible = false
 
 [node name="Notes" parent="MainWorkspace/Views" instance=ExtResource( 19 )]
 visible = false
@@ -317,7 +328,6 @@ text = "REMINDERS"
 align = 1
 
 [node name="ToDo" type="Control" parent="MainWorkspace/Views"]
-visible = false
 margin_right = 990.0
 margin_bottom = 571.0
 script = ExtResource( 26 )
@@ -325,19 +335,156 @@ script = ExtResource( 26 )
 [node name="VBoxContainer" type="VBoxContainer" parent="MainWorkspace/Views/ToDo"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-alignment = 1
+theme = ExtResource( 21 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Title" type="Label" parent="MainWorkspace/Views/ToDo/VBoxContainer"]
-margin_top = 242.0
-margin_right = 1016.0
-margin_bottom = 342.0
-custom_fonts/font = SubResource( 5 )
+margin_right = 990.0
+margin_bottom = 63.0
+custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
 text = "TODO"
-align = 1
+
+[node name="TODOBox" type="HBoxContainer" parent="MainWorkspace/Views/ToDo/VBoxContainer"]
+margin_top = 67.0
+margin_right = 990.0
+margin_bottom = 93.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="MainWorkspace/Views/ToDo/VBoxContainer/TODOBox"]
+modulate = Color( 0.576471, 0.627451, 0.631373, 1 )
+margin_right = 14.444
+margin_bottom = 26.0
+rect_min_size = Vector2( 14.444, 0 )
+texture_normal = ExtResource( 22 )
+expand = true
+stretch_mode = 5
+
+[node name="TODO" type="Label" parent="MainWorkspace/Views/ToDo/VBoxContainer/TODOBox"]
+margin_left = 18.0
+margin_right = 76.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.415686 )
+text = "TODO"
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TODOitems" type="VBoxContainer" parent="MainWorkspace/Views/ToDo/VBoxContainer"]
+margin_top = 97.0
+margin_right = 990.0
+margin_bottom = 134.0
+
+[node name="TODOitem" type="ColorRect" parent="MainWorkspace/Views/ToDo/VBoxContainer/TODOitems"]
+margin_right = 990.0
+margin_bottom = 37.5
+rect_min_size = Vector2( 0, 37.5 )
+color = Color( 0.0862745, 0.152941, 0.160784, 1 )
+
+[node name="CheckBox" type="CheckBox" parent="MainWorkspace/Views/ToDo/VBoxContainer/TODOitems/TODOitem"]
+margin_left = 3.17839
+margin_top = 6.36037
+margin_right = 27.1784
+margin_bottom = 33.3604
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Project" type="Label" parent="MainWorkspace/Views/ToDo/VBoxContainer/TODOitems/TODOitem"]
+margin_left = 34.4611
+margin_top = 9.1752
+margin_right = 127.461
+margin_bottom = 28.1752
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+text = "Project name"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Task" type="Label" parent="MainWorkspace/Views/ToDo/VBoxContainer/TODOitems/TODOitem"]
+margin_left = 208.265
+margin_top = 9.1752
+margin_right = 325.265
+margin_bottom = 28.1752
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+text = "Task"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Date" type="Label" parent="MainWorkspace/Views/ToDo/VBoxContainer/TODOitems/TODOitem"]
+margin_left = 815.462
+margin_top = 9.1752
+margin_right = 949.462
+margin_bottom = 28.1752
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.439216 )
+text = "21/5/2021 8:45:32"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="MainWorkspace/Views/ToDo/VBoxContainer/TODOitems/TODOitem"]
+modulate = Color( 0.576471, 0.627451, 0.631373, 0.529412 )
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -29.0
+margin_top = 3.40088
+margin_right = -4.0
+margin_bottom = -2.67712
+texture_normal = ExtResource( 23 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="MainWorkspace/Views/ToDo/VBoxContainer"]
+margin_top = 138.0
+margin_right = 990.0
+margin_bottom = 166.493
+rect_min_size = Vector2( 0, 28.493 )
+
+[node name="DONEbox" type="HBoxContainer" parent="MainWorkspace/Views/ToDo/VBoxContainer"]
+margin_top = 170.0
+margin_right = 990.0
+margin_bottom = 196.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="MainWorkspace/Views/ToDo/VBoxContainer/DONEbox"]
+modulate = Color( 0.576471, 0.627451, 0.631373, 1 )
+margin_right = 14.444
+margin_bottom = 26.0
+rect_min_size = Vector2( 14.444, 0 )
+texture_normal = ExtResource( 22 )
+expand = true
+stretch_mode = 5
+
+[node name="TODO" type="Label" parent="MainWorkspace/Views/ToDo/VBoxContainer/DONEbox"]
+margin_left = 18.0
+margin_right = 71.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.415686 )
+text = "DONE"
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DONEitems" type="VBoxContainer" parent="MainWorkspace/Views/ToDo/VBoxContainer"]
+margin_top = 200.0
+margin_right = 990.0
+margin_bottom = 200.0
 
 [node name="Profile" type="Control" parent="MainWorkspace/Views"]
 visible = false
