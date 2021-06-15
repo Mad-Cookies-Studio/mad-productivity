@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Assets/Icons/MD_concept.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Icons/NoteTaking.png" type="Texture" id=2]
@@ -20,6 +20,8 @@
 [ext_resource path="res://Assets/Icons/Profile.png" type="Texture" id=18]
 [ext_resource path="res://Assets/Buttons/PlusAdd.png" type="Texture" id=19]
 [ext_resource path="res://Assets/Fonts/Roboto40.tres" type="DynamicFont" id=20]
+[ext_resource path="res://Assets/Buttons/BulletPoint.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Themes/Roboto12Clean.tres" type="Theme" id=22]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.0745098, 0.133333, 0.141176, 1 )
@@ -662,13 +664,6 @@ margin_right = 243.0
 margin_bottom = 469.0
 custom_styles/panel = SubResource( 9 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainWorkspace/Views/Notes/VBoxContainer/HSplitContainer/Panel"]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="ScrollContainer" type="ScrollContainer" parent="MainWorkspace/Views/Notes/VBoxContainer/HSplitContainer/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -679,6 +674,26 @@ margin_bottom = -14.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainWorkspace/Views/Notes/VBoxContainer/HSplitContainer/Panel/ScrollContainer"]
+margin_right = 217.0
+margin_bottom = 441.0
+rect_min_size = Vector2( 200, 440 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="MainWorkspace/Views/Notes/VBoxContainer/HSplitContainer/Panel/ScrollContainer/VBoxContainer"]
+margin_right = 217.0
+margin_bottom = 25.0
+toggle_mode = true
+text = "NoteButton"
+icon = ExtResource( 21 )
+flat = true
+align = 0
 
 [node name="Panel2" type="Panel" parent="MainWorkspace/Views/Notes/VBoxContainer/HSplitContainer"]
 margin_left = 278.0
