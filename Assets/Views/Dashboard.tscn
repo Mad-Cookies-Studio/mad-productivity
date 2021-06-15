@@ -1,0 +1,321 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/Fonts/Roboto12.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/Fonts/Righteous-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Scripts/Views/Dashboard.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=5]
+size = 20
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 80
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.0862745, 0.152941, 0.160784, 1 )
+
+[node name="Dashboard" type="Control"]
+margin_right = 990.0
+margin_bottom = 571.0
+script = ExtResource( 3 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Date" type="Label" parent="VBoxContainer"]
+margin_top = 48.0
+margin_right = 992.0
+margin_bottom = 74.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+text = "Date"
+align = 1
+
+[node name="Time" type="Label" parent="VBoxContainer"]
+margin_top = 78.0
+margin_right = 992.0
+margin_bottom = 178.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
+text = "Time"
+align = 1
+
+[node name="Control2" type="Control" parent="VBoxContainer"]
+margin_top = 182.0
+margin_right = 992.0
+margin_bottom = 229.0
+rect_min_size = Vector2( 0, 47 )
+
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+margin_left = 171.0
+margin_top = 233.0
+margin_right = 821.0
+margin_bottom = 263.0
+rect_min_size = Vector2( 650, 30 )
+size_flags_horizontal = 4
+custom_styles/panel = SubResource( 7 )
+
+[node name="Label" type="Label" parent="VBoxContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+text = "\"A big part of staying productive is knowing when to rest and when to work, take some time off!\""
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+margin_top = 267.0
+margin_right = 992.0
+margin_bottom = 347.0
+rect_min_size = Vector2( 0, 80 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 351.0
+margin_right = 992.0
+margin_bottom = 571.0
+custom_constants/separation = 24
+alignment = 1
+
+[node name="Todo" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+margin_right = 230.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 230, 220 )
+custom_constants/separation = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HBoxContainer/Todo"]
+margin_right = 230.0
+margin_bottom = 37.0
+rect_min_size = Vector2( 0, 37 )
+color = Color( 0.0588235, 0.105882, 0.109804, 1 )
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Todo/ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -79.0
+margin_top = -10.5
+margin_right = 78.0
+margin_bottom = 11.5
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+text = "TODO"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/HBoxContainer/Todo"]
+margin_top = 39.0
+margin_right = 230.0
+margin_bottom = 76.0
+rect_min_size = Vector2( 0, 37 )
+color = Color( 0.0862745, 0.152941, 0.160784, 1 )
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Todo/ColorRect2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -79.0
+margin_top = -10.5
+margin_right = 78.0
+margin_bottom = 11.5
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+text = "TODO"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Todo2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+margin_left = 254.0
+margin_right = 484.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 230, 220 )
+custom_constants/separation = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HBoxContainer/Todo2"]
+margin_right = 230.0
+margin_bottom = 37.0
+rect_min_size = Vector2( 0, 37 )
+color = Color( 0.0588235, 0.105882, 0.109804, 1 )
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Todo2/ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -79.0
+margin_top = -10.5
+margin_right = 78.0
+margin_bottom = 11.5
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+text = "TODO"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/HBoxContainer/Todo2"]
+margin_top = 39.0
+margin_right = 230.0
+margin_bottom = 76.0
+rect_min_size = Vector2( 0, 37 )
+color = Color( 0.0862745, 0.152941, 0.160784, 1 )
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Todo2/ColorRect2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -79.0
+margin_top = -10.5
+margin_right = 78.0
+margin_bottom = 11.5
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+text = "TODO"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Todo3" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+margin_left = 508.0
+margin_right = 738.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 230, 220 )
+custom_constants/separation = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HBoxContainer/Todo3"]
+margin_right = 230.0
+margin_bottom = 37.0
+rect_min_size = Vector2( 0, 37 )
+color = Color( 0.0588235, 0.105882, 0.109804, 1 )
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Todo3/ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -79.0
+margin_top = -10.5
+margin_right = 78.0
+margin_bottom = 11.5
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+text = "TODO"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/HBoxContainer/Todo3"]
+margin_top = 39.0
+margin_right = 230.0
+margin_bottom = 76.0
+rect_min_size = Vector2( 0, 37 )
+color = Color( 0.0862745, 0.152941, 0.160784, 1 )
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Todo3/ColorRect2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -79.0
+margin_top = -10.5
+margin_right = 78.0
+margin_bottom = 11.5
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+text = "TODO"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Todo4" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+margin_left = 762.0
+margin_right = 992.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 230, 220 )
+custom_constants/separation = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HBoxContainer/Todo4"]
+margin_right = 230.0
+margin_bottom = 37.0
+rect_min_size = Vector2( 0, 37 )
+color = Color( 0.0588235, 0.105882, 0.109804, 1 )
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Todo4/ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -79.0
+margin_top = -10.5
+margin_right = 78.0
+margin_bottom = 11.5
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+text = "TODO"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/HBoxContainer/Todo4"]
+margin_top = 39.0
+margin_right = 230.0
+margin_bottom = 76.0
+rect_min_size = Vector2( 0, 37 )
+color = Color( 0.0862745, 0.152941, 0.160784, 1 )
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Todo4/ColorRect2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -79.0
+margin_top = -10.5
+margin_right = 78.0
+margin_bottom = 11.5
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+text = "TODO"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

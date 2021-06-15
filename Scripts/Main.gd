@@ -4,7 +4,8 @@ var active_view : int = -1
 
 func _ready() -> void:
 	# show the first view when ready
-	toggle_view(0)
+#	toggle_view(0)
+	pass
 
 func toggle_view(new : int) -> void:
 	if new == active_view: return
@@ -15,9 +16,11 @@ func toggle_view(new : int) -> void:
 	# which is probably never
 	if active_view != -1:
 		$MainWorkspace/Views.get_child(active_view).hide()
+		$MainWorkspace/Views.get_child(active_view).leaving_view()
 		
 	# show the new one.
 	$MainWorkspace/Views.get_child(new).show()
+	$MainWorkspace/Views.get_child(new).entering_view()
 	active_view = new
 
 

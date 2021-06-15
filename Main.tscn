@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Assets/Icons/MD_concept.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Icons/NoteTaking.png" type="Texture" id=2]
@@ -11,17 +11,17 @@
 [ext_resource path="res://Scripts/CustomTextureButton.gd" type="Script" id=9]
 [ext_resource path="res://Scripts/TopArea.gd" type="Script" id=10]
 [ext_resource path="res://Scripts/CustomTransparentButton.gd" type="Script" id=11]
-[ext_resource path="res://Scripts/Views/Dashboard.gd" type="Script" id=12]
+[ext_resource path="res://Assets/Views/Dashboard.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Assets/Fonts/Righteous-Regular.ttf" type="DynamicFontData" id=13]
-[ext_resource path="res://Assets/Fonts/Roboto12.tres" type="DynamicFont" id=14]
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=15]
 [ext_resource path="res://Scripts/Views.gd" type="Script" id=16]
 [ext_resource path="res://Assets/Icons/Reminders.png" type="Texture" id=17]
 [ext_resource path="res://Assets/Icons/Profile.png" type="Texture" id=18]
-[ext_resource path="res://Assets/Buttons/PlusAdd.png" type="Texture" id=19]
-[ext_resource path="res://Assets/Fonts/Roboto40.tres" type="DynamicFont" id=20]
-[ext_resource path="res://Assets/Buttons/BulletPoint.png" type="Texture" id=21]
-[ext_resource path="res://Assets/Themes/Roboto12Clean.tres" type="Theme" id=22]
+[ext_resource path="res://Assets/Views/Notes.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Scripts/Views/TimeTracking.gd" type="Script" id=24]
+[ext_resource path="res://Scripts/Views/Reminders.gd" type="Script" id=25]
+[ext_resource path="res://Scripts/Views/ToDo.gd" type="Script" id=26]
+[ext_resource path="res://Scripts/Views/Profile.gd" type="Script" id=27]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.0745098, 0.133333, 0.141176, 1 )
@@ -33,39 +33,15 @@ border_color = Color( 0, 0, 0, 0.737255 )
 
 [sub_resource type="ButtonGroup" id=3]
 
-[sub_resource type="Gradient" id=7]
+[sub_resource type="Gradient" id=4]
 offsets = PoolRealArray( 0, 0.109677, 0.251613, 1 )
 colors = PoolColorArray( 0.854902, 0.423529, 0.384314, 0, 0.854902, 0.423529, 0.384314, 1, 0.854902, 0.423529, 0.384314, 0.463768, 0.854902, 0.423529, 0.384314, 0 )
 
-[sub_resource type="DynamicFont" id=4]
-size = 20
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 13 )
-
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=6]
 size = 80
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 13 )
-
-[sub_resource type="StyleBoxFlat" id=6]
-bg_color = Color( 0.0862745, 0.152941, 0.160784, 1 )
-
-[sub_resource type="DynamicFont" id=8]
-size = 50
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 13 )
-
-[sub_resource type="StyleBoxFlat" id=9]
-bg_color = Color( 0.0588235, 0.105882, 0.109804, 1 )
-border_width_top = 1
-border_color = Color( 0.576471, 0.627451, 0.631373, 1 )
-
-[sub_resource type="StyleBoxFlat" id=10]
-bg_color = Color( 0.576471, 0.627451, 0.631373, 1 )
-draw_center = false
 
 [node name="MainWindow" type="Control"]
 anchor_right = 1.0
@@ -227,7 +203,7 @@ angle = 720.0
 angle_random = 1.0
 scale_amount = 5.0
 scale_amount_random = 1.0
-color_ramp = SubResource( 7 )
+color_ramp = SubResource( 4 )
 
 [node name="Tween" type="Tween" parent="MainWorkspace/Sidebar"]
 
@@ -309,427 +285,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Dashboard" type="Control" parent="MainWorkspace/Views"]
+[node name="Dashboard" parent="MainWorkspace/Views" instance=ExtResource( 12 )]
+
+[node name="Notes" parent="MainWorkspace/Views" instance=ExtResource( 19 )]
 visible = false
-margin_right = 990.0
-margin_bottom = 571.0
-script = ExtResource( 12 )
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MainWorkspace/Views/Dashboard"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-alignment = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Date" type="Label" parent="MainWorkspace/Views/Dashboard/VBoxContainer"]
-margin_top = 48.0
-margin_right = 992.0
-margin_bottom = 74.0
-custom_fonts/font = SubResource( 4 )
-custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
-text = "Date"
-align = 1
-
-[node name="Time" type="Label" parent="MainWorkspace/Views/Dashboard/VBoxContainer"]
-margin_top = 78.0
-margin_right = 992.0
-margin_bottom = 178.0
-custom_fonts/font = SubResource( 5 )
-custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
-text = "Time"
-align = 1
-
-[node name="Control2" type="Control" parent="MainWorkspace/Views/Dashboard/VBoxContainer"]
-margin_top = 182.0
-margin_right = 992.0
-margin_bottom = 229.0
-rect_min_size = Vector2( 0, 47 )
-
-[node name="Panel" type="Panel" parent="MainWorkspace/Views/Dashboard/VBoxContainer"]
-margin_left = 171.0
-margin_top = 233.0
-margin_right = 821.0
-margin_bottom = 263.0
-rect_min_size = Vector2( 650, 30 )
-size_flags_horizontal = 4
-custom_styles/panel = SubResource( 6 )
-
-[node name="Label" type="Label" parent="MainWorkspace/Views/Dashboard/VBoxContainer/Panel"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-size_flags_horizontal = 4
-custom_fonts/font = ExtResource( 14 )
-custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
-text = "\"A big part of staying productive is knowing when to rest and when to work, take some time off!\""
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Control" type="Control" parent="MainWorkspace/Views/Dashboard/VBoxContainer"]
-margin_top = 267.0
-margin_right = 992.0
-margin_bottom = 347.0
-rect_min_size = Vector2( 0, 80 )
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MainWorkspace/Views/Dashboard/VBoxContainer"]
-margin_top = 351.0
-margin_right = 992.0
-margin_bottom = 571.0
-custom_constants/separation = 24
-alignment = 1
-
-[node name="Todo" type="VBoxContainer" parent="MainWorkspace/Views/Dashboard/VBoxContainer/HBoxContainer"]
-margin_right = 230.0
-margin_bottom = 220.0
-rect_min_size = Vector2( 230, 220 )
-custom_constants/separation = 2
-
-[node name="ColorRect" type="ColorRect" parent="MainWorkspace/Views/Dashboard/VBoxContainer/HBoxContainer/Todo"]
-margin_right = 230.0
-margin_bottom = 37.0
-rect_min_size = Vector2( 0, 37 )
-color = Color( 0.0588235, 0.105882, 0.109804, 1 )
-
-[node name="Label" type="Label" parent="MainWorkspace/Views/Dashboard/VBoxContainer/HBoxContainer/Todo/ColorRect"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -79.0
-margin_top = -10.5
-margin_right = 78.0
-margin_bottom = 11.5
-custom_fonts/font = ExtResource( 14 )
-custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
-text = "TODO"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect2" type="ColorRect" parent="MainWorkspace/Views/Dashboard/VBoxContainer/HBoxContainer/Todo"]
-margin_top = 39.0
-margin_right = 230.0
-margin_bottom = 76.0
-rect_min_size = Vector2( 0, 37 )
-color = Color( 0.0862745, 0.152941, 0.160784, 1 )
-
-[node name="Label" type="Label" parent="MainWorkspace/Views/Dashboard/VBoxContainer/HBoxContainer/Todo/ColorRect2"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -79.0
-margin_top = -10.5
-margin_right = 78.0
-margin_bottom = 11.5
-custom_fonts/font = ExtResource( 14 )
-custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
-text = "TODO"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Todo2" type="VBoxContainer" parent="MainWorkspace/Views/Dashboard/VBoxContainer/HBoxContainer"]
-margin_left = 254.0
-margin_right = 484.0
-margin_bottom = 220.0
-rect_min_size = Vector2( 230, 220 )
-custom_constants/separation = 2
-
-[node name="ColorRect" type="ColorRect" parent="MainWorkspace/Views/Dashboard/VBoxContainer/HBoxContainer/Todo2"]
-margin_right = 230.0
-margin_bottom = 37.0
-rect_min_size = Vector2( 0, 37 )
-color = Color( 0.0588235, 0.105882, 0.109804, 1 )
-
-[node name="Label" type="Label" parent="MainWorkspace/Views/Dashboard/VBoxContainer/HBoxContainer/Todo2/ColorRect"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -79.0
-margin_top = -10.5
-margin_right = 78.0
-margin_bottom = 11.5
-custom_fonts/font = ExtResource( 14 )
-custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
-text = "TODO"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect2" type="ColorRect" parent="MainWorkspace/Views/Dashboard/VBoxContainer/HBoxContainer/Todo2"]
-margin_top = 39.0
-margin_right = 230.0
-margin_bottom = 76.0
-rect_min_size = Vector2( 0, 37 )
-color = Color( 0.0862745, 0.152941, 0.160784, 1 )
-
-[node name="Label" type="Label" parent="MainWorkspace/Views/Dashboard/VBoxContainer/HBoxContainer/Todo2/ColorRect2"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -79.0
-margin_top = -10.5
-margin_right = 78.0
-margin_bottom = 11.5
-custom_fonts/font = ExtResource( 14 )
-custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
-text = "TODO"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Todo3" type="VBoxContainer" parent="MainWorkspace/Views/Dashboard/VBoxContainer/HBoxContainer"]
-margin_left = 508.0
-margin_right = 738.0
-margin_bottom = 220.0
-rect_min_size = Vector2( 230, 220 )
-custom_constants/separation = 2
-
-[node name="ColorRect" type="ColorRect" parent="MainWorkspace/Views/Dashboard/VBoxContainer/HBoxContainer/Todo3"]
-margin_right = 230.0
-margin_bottom = 37.0
-rect_min_size = Vector2( 0, 37 )
-color = Color( 0.0588235, 0.105882, 0.109804, 1 )
-
-[node name="Label" type="Label" parent="MainWorkspace/Views/Dashboard/VBoxContainer/HBoxContainer/Todo3/ColorRect"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -79.0
-margin_top = -10.5
-margin_right = 78.0
-margin_bottom = 11.5
-custom_fonts/font = ExtResource( 14 )
-custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
-text = "TODO"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect2" type="ColorRect" parent="MainWorkspace/Views/Dashboard/VBoxContainer/HBoxContainer/Todo3"]
-margin_top = 39.0
-margin_right = 230.0
-margin_bottom = 76.0
-rect_min_size = Vector2( 0, 37 )
-color = Color( 0.0862745, 0.152941, 0.160784, 1 )
-
-[node name="Label" type="Label" parent="MainWorkspace/Views/Dashboard/VBoxContainer/HBoxContainer/Todo3/ColorRect2"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -79.0
-margin_top = -10.5
-margin_right = 78.0
-margin_bottom = 11.5
-custom_fonts/font = ExtResource( 14 )
-custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
-text = "TODO"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Todo4" type="VBoxContainer" parent="MainWorkspace/Views/Dashboard/VBoxContainer/HBoxContainer"]
-margin_left = 762.0
-margin_right = 992.0
-margin_bottom = 220.0
-rect_min_size = Vector2( 230, 220 )
-custom_constants/separation = 2
-
-[node name="ColorRect" type="ColorRect" parent="MainWorkspace/Views/Dashboard/VBoxContainer/HBoxContainer/Todo4"]
-margin_right = 230.0
-margin_bottom = 37.0
-rect_min_size = Vector2( 0, 37 )
-color = Color( 0.0588235, 0.105882, 0.109804, 1 )
-
-[node name="Label" type="Label" parent="MainWorkspace/Views/Dashboard/VBoxContainer/HBoxContainer/Todo4/ColorRect"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -79.0
-margin_top = -10.5
-margin_right = 78.0
-margin_bottom = 11.5
-custom_fonts/font = ExtResource( 14 )
-custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
-text = "TODO"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect2" type="ColorRect" parent="MainWorkspace/Views/Dashboard/VBoxContainer/HBoxContainer/Todo4"]
-margin_top = 39.0
-margin_right = 230.0
-margin_bottom = 76.0
-rect_min_size = Vector2( 0, 37 )
-color = Color( 0.0862745, 0.152941, 0.160784, 1 )
-
-[node name="Label" type="Label" parent="MainWorkspace/Views/Dashboard/VBoxContainer/HBoxContainer/Todo4/ColorRect2"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -79.0
-margin_top = -10.5
-margin_right = 78.0
-margin_bottom = 11.5
-custom_fonts/font = ExtResource( 14 )
-custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
-text = "TODO"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Timer" type="Timer" parent="MainWorkspace/Views/Dashboard"]
-autostart = true
-
-[node name="Notes" type="Control" parent="MainWorkspace/Views"]
-margin_right = 990.0
-margin_bottom = 571.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MainWorkspace/Views/Notes"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_constants/separation = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Title" type="Label" parent="MainWorkspace/Views/Notes/VBoxContainer"]
-margin_right = 990.0
-margin_bottom = 63.0
-custom_fonts/font = SubResource( 8 )
-custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
-text = "NOTES"
-
-[node name="Control2" type="Control" parent="MainWorkspace/Views/Notes/VBoxContainer"]
-margin_top = 63.0
-margin_right = 990.0
-margin_bottom = 71.589
-rect_min_size = Vector2( 0, 8.589 )
-
-[node name="Control" type="HBoxContainer" parent="MainWorkspace/Views/Notes/VBoxContainer"]
-margin_top = 71.0
-margin_right = 990.0
-margin_bottom = 102.188
-rect_min_size = Vector2( 0, 31.188 )
-
-[node name="AddBtn" type="TextureButton" parent="MainWorkspace/Views/Notes/VBoxContainer/Control"]
-modulate = Color( 1, 1, 1, 0.427451 )
-margin_right = 31.0
-margin_bottom = 31.0
-rect_min_size = Vector2( 31, 0 )
-texture_normal = ExtResource( 19 )
-expand = true
-stretch_mode = 6
-script = ExtResource( 11 )
-
-[node name="HSplitContainer" type="HSplitContainer" parent="MainWorkspace/Views/Notes/VBoxContainer"]
-margin_top = 102.0
-margin_right = 990.0
-margin_bottom = 571.0
-size_flags_vertical = 3
-custom_constants/autohide = 0
-custom_constants/separation = 35
-split_offset = 243
-
-[node name="Panel" type="Panel" parent="MainWorkspace/Views/Notes/VBoxContainer/HSplitContainer"]
-margin_right = 243.0
-margin_bottom = 469.0
-custom_styles/panel = SubResource( 9 )
-
-[node name="ScrollContainer" type="ScrollContainer" parent="MainWorkspace/Views/Notes/VBoxContainer/HSplitContainer/Panel"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 13.0
-margin_top = 14.0
-margin_right = -13.0
-margin_bottom = -14.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MainWorkspace/Views/Notes/VBoxContainer/HSplitContainer/Panel/ScrollContainer"]
-margin_right = 217.0
-margin_bottom = 441.0
-rect_min_size = Vector2( 200, 440 )
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme = ExtResource( 22 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button" type="Button" parent="MainWorkspace/Views/Notes/VBoxContainer/HSplitContainer/Panel/ScrollContainer/VBoxContainer"]
-margin_right = 217.0
-margin_bottom = 25.0
-toggle_mode = true
-text = "NoteButton"
-icon = ExtResource( 21 )
-flat = true
-align = 0
-
-[node name="Panel2" type="Panel" parent="MainWorkspace/Views/Notes/VBoxContainer/HSplitContainer"]
-margin_left = 278.0
-margin_right = 990.0
-margin_bottom = 469.0
-custom_styles/panel = SubResource( 10 )
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MainWorkspace/Views/Notes/VBoxContainer/HSplitContainer/Panel2"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_constants/separation = 15
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Title" type="Label" parent="MainWorkspace/Views/Notes/VBoxContainer/HSplitContainer/Panel2/VBoxContainer"]
-modulate = Color( 0.576471, 0.627451, 0.631373, 1 )
-margin_right = 712.0
-margin_bottom = 48.0
-custom_fonts/font = ExtResource( 20 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "TITLE"
-
-[node name="Note" type="Label" parent="MainWorkspace/Views/Notes/VBoxContainer/HSplitContainer/Panel2/VBoxContainer"]
-modulate = Color( 0.576471, 0.627451, 0.631373, 1 )
-margin_top = 63.0
-margin_right = 712.0
-margin_bottom = 78.0
-custom_fonts/font = ExtResource( 14 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "NOTE"
 
 [node name="TimeTracking" type="Control" parent="MainWorkspace/Views"]
 visible = false
 margin_right = 990.0
 margin_bottom = 571.0
+script = ExtResource( 24 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainWorkspace/Views/TimeTracking"]
 anchor_right = 1.0
@@ -743,7 +308,7 @@ __meta__ = {
 margin_top = 242.0
 margin_right = 1016.0
 margin_bottom = 342.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
 text = "TIME TRACKING"
 align = 1
@@ -752,6 +317,7 @@ align = 1
 visible = false
 margin_right = 990.0
 margin_bottom = 571.0
+script = ExtResource( 25 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainWorkspace/Views/Reminders"]
 anchor_right = 1.0
@@ -765,7 +331,7 @@ __meta__ = {
 margin_top = 242.0
 margin_right = 1016.0
 margin_bottom = 342.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
 text = "REMINDERS"
 align = 1
@@ -774,6 +340,7 @@ align = 1
 visible = false
 margin_right = 990.0
 margin_bottom = 571.0
+script = ExtResource( 26 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainWorkspace/Views/ToDo"]
 anchor_right = 1.0
@@ -787,7 +354,7 @@ __meta__ = {
 margin_top = 242.0
 margin_right = 1016.0
 margin_bottom = 342.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
 text = "TODO"
 align = 1
@@ -796,6 +363,7 @@ align = 1
 visible = false
 margin_right = 990.0
 margin_bottom = 571.0
+script = ExtResource( 27 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainWorkspace/Views/Profile"]
 anchor_right = 1.0
@@ -809,7 +377,7 @@ __meta__ = {
 margin_top = 242.0
 margin_right = 1016.0
 margin_bottom = 342.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
 text = "PROFILE"
 align = 1
@@ -818,4 +386,3 @@ align = 1
 [connection signal="gui_input" from="MainWorkspace/TopArea" to="MainWorkspace/TopArea" method="_on_TopArea_gui_input"]
 [connection signal="pressed" from="MainWorkspace/TopArea/Right/Minimuze" to="MainWorkspace/TopArea" method="_on_Minimuze_pressed"]
 [connection signal="pressed" from="MainWorkspace/TopArea/Right/Exit" to="MainWorkspace/TopArea" method="_on_Exit_pressed"]
-[connection signal="timeout" from="MainWorkspace/Views/Dashboard/Timer" to="MainWorkspace/Views/Dashboard" method="_on_Timer_timeout"]

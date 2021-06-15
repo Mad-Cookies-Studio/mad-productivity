@@ -35,6 +35,6 @@ func on_toggled_menu_btn(which : TextureButton, idx : int) -> void:
 
 
 func move_selection_box(where : float) -> void:
-	$Tween.interpolate_property($SelectionBox, "rect_position:y", $SelectionBox.rect_position.y, where, 0.5, Tween.TRANS_ELASTIC, Tween.EASE_OUT, 0.0)
+	$Tween.interpolate_property($SelectionBox, "rect_position:y", $SelectionBox.rect_position.y, where, 0.5, Tween.TRANS_EXPO, Tween.EASE_OUT, 0.0)
 	$Tween.interpolate_property($SelectionBox/Particles, "speed_scale", 1.75, 0.2, 0.5, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT, 0.0)
 	$Tween.start()

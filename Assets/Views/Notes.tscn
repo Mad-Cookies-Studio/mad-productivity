@@ -1,0 +1,295 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://Assets/Fonts/Roboto12.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/Fonts/Roboto40.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Assets/Fonts/Righteous-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Assets/Themes/Roboto12Clean.tres" type="Theme" id=4]
+[ext_resource path="res://Assets/Buttons/Cross.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Buttons/PlusAdd.png" type="Texture" id=6]
+[ext_resource path="res://Scripts/Views/NoteButton.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/CustomTransparentButton.gd" type="Script" id=8]
+[ext_resource path="res://Scripts/Views/Notes/Title.gd" type="Script" id=9]
+[ext_resource path="res://Scripts/Views/Notes.gd" type="Script" id=10]
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.0588235, 0.105882, 0.109804, 0.498039 )
+border_width_top = 1
+border_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="ButtonGroup" id=5]
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+draw_center = false
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="Theme" id=11]
+TextEdit/colors/background_color = Color( 0, 0, 0, 0 )
+TextEdit/colors/bookmark_color = Color( 0.08, 0.49, 0.98, 1 )
+TextEdit/colors/brace_mismatch_color = Color( 1, 0.2, 0.2, 1 )
+TextEdit/colors/breakpoint_color = Color( 0.8, 0.8, 0.4, 0.2 )
+TextEdit/colors/caret_background_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/caret_color = Color( 0.854902, 0.423529, 0.384314, 1 )
+TextEdit/colors/code_folding_color = Color( 0.8, 0.8, 0.8, 0.8 )
+TextEdit/colors/completion_background_color = Color( 0.17, 0.16, 0.2, 1 )
+TextEdit/colors/completion_existing_color = Color( 0.87, 0.87, 0.87, 0.13 )
+TextEdit/colors/completion_font_color = Color( 0.67, 0.67, 0.67, 1 )
+TextEdit/colors/completion_scroll_color = Color( 1, 1, 1, 1 )
+TextEdit/colors/completion_selected_color = Color( 0.26, 0.26, 0.27, 1 )
+TextEdit/colors/current_line_color = Color( 0.25, 0.25, 0.26, 0.8 )
+TextEdit/colors/executing_line_color = Color( 0.2, 0.8, 0.2, 0.4 )
+TextEdit/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+TextEdit/colors/font_color_readonly = Color( 0.88, 0.88, 0.88, 0.5 )
+TextEdit/colors/font_color_selected = Color( 0, 0, 0, 1 )
+TextEdit/colors/function_color = Color( 0.4, 0.64, 0.81, 1 )
+TextEdit/colors/line_number_color = Color( 0.67, 0.67, 0.67, 0.4 )
+TextEdit/colors/mark_color = Color( 1, 0.4, 0.4, 0.4 )
+TextEdit/colors/member_variable_color = Color( 0.9, 0.31, 0.35, 1 )
+TextEdit/colors/number_color = Color( 0.92, 0.58, 0.2, 1 )
+TextEdit/colors/safe_line_number_color = Color( 0.67, 0.78, 0.67, 0.6 )
+TextEdit/colors/selection_color = Color( 0.49, 0.49, 0.49, 1 )
+TextEdit/colors/symbol_color = Color( 0.94, 0.94, 0.94, 1 )
+TextEdit/colors/word_highlighted_color = Color( 0.8, 0.9, 0.9, 0.15 )
+TextEdit/constants/completion_lines = 7
+TextEdit/constants/completion_max_width = 50
+TextEdit/constants/completion_scroll_width = 3
+TextEdit/constants/line_spacing = 4
+TextEdit/fonts/font = null
+TextEdit/icons/fold = null
+TextEdit/icons/folded = null
+TextEdit/icons/space = null
+TextEdit/icons/tab = null
+TextEdit/styles/completion = SubResource( 7 )
+TextEdit/styles/focus = SubResource( 8 )
+TextEdit/styles/normal = SubResource( 9 )
+TextEdit/styles/read_only = SubResource( 10 )
+
+[sub_resource type="Theme" id=12]
+default_font = ExtResource( 1 )
+
+[node name="Notes" type="Control"]
+margin_right = 990.0
+margin_bottom = 571.0
+script = ExtResource( 10 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+margin_right = 990.0
+margin_bottom = 63.0
+rect_pivot_offset = Vector2( 0, 31 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
+text = "NOTES"
+script = ExtResource( 9 )
+
+[node name="Tween" type="Tween" parent="VBoxContainer/Title"]
+
+[node name="Control2" type="Control" parent="VBoxContainer"]
+margin_top = 63.0
+margin_right = 990.0
+margin_bottom = 71.589
+rect_min_size = Vector2( 0, 8.589 )
+
+[node name="Control" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 71.0
+margin_right = 990.0
+margin_bottom = 102.188
+rect_min_size = Vector2( 0, 31.188 )
+
+[node name="AddBtn" type="TextureButton" parent="VBoxContainer/Control"]
+modulate = Color( 1, 1, 1, 0.427451 )
+margin_right = 31.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 31, 0 )
+texture_normal = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+script = ExtResource( 8 )
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer"]
+margin_top = 102.0
+margin_right = 990.0
+margin_bottom = 571.0
+size_flags_vertical = 3
+custom_constants/autohide = 0
+custom_constants/separation = 35
+split_offset = 243
+
+[node name="Panel" type="Panel" parent="VBoxContainer/HSplitContainer"]
+margin_right = 243.0
+margin_bottom = 469.0
+custom_styles/panel = SubResource( 3 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HSplitContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 13.0
+margin_top = 14.0
+margin_right = -13.0
+margin_bottom = -14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NoteButtons" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/Panel/ScrollContainer"]
+margin_right = 217.0
+margin_bottom = 441.0
+rect_min_size = Vector2( 200, 440 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DefaultButton" type="Button" parent="VBoxContainer/HSplitContainer/Panel/ScrollContainer/NoteButtons"]
+visible = false
+margin_right = 217.0
+margin_bottom = 25.0
+custom_styles/focus = SubResource( 4 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.643137 )
+custom_colors/font_color_pressed = Color( 0.576471, 0.627451, 0.631373, 1 )
+toggle_mode = true
+group = SubResource( 5 )
+text = "NoteButton"
+flat = true
+align = 0
+script = ExtResource( 7 )
+delete_btn_colour = Color( 0.854902, 0.423529, 0.384314, 0.615686 )
+
+[node name="DeleteBtn" type="TextureButton" parent="VBoxContainer/HSplitContainer/Panel/ScrollContainer/NoteButtons/DefaultButton"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -19.0
+margin_top = -19.5
+margin_bottom = 20.5
+rect_min_size = Vector2( 20, 0 )
+rect_pivot_offset = Vector2( 10, 20 )
+mouse_filter = 2
+texture_normal = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="VBoxContainer/HSplitContainer/Panel/ScrollContainer/NoteButtons/DefaultButton"]
+
+[node name="Panel2" type="Panel" parent="VBoxContainer/HSplitContainer"]
+margin_left = 278.0
+margin_right = 990.0
+margin_bottom = 469.0
+custom_styles/panel = SubResource( 6 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/Panel2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 11 )
+custom_constants/separation = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="TextEdit" parent="VBoxContainer/HSplitContainer/Panel2/VBoxContainer"]
+modulate = Color( 0.576471, 0.627451, 0.631373, 1 )
+margin_right = 712.0
+margin_bottom = 54.389
+rect_min_size = Vector2( 0, 54.389 )
+rect_pivot_offset = Vector2( 0, 27 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Note title"
+highlight_all_occurrences = true
+context_menu_enabled = false
+smooth_scrolling = true
+wrap_enabled = true
+caret_blink = true
+
+[node name="Note" type="TextEdit" parent="VBoxContainer/HSplitContainer/Panel2/VBoxContainer"]
+modulate = Color( 0.576471, 0.627451, 0.631373, 1 )
+margin_top = 69.0
+margin_right = 712.0
+margin_bottom = 425.0
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "NOTE"
+highlight_all_occurrences = true
+context_menu_enabled = false
+smooth_scrolling = true
+wrap_enabled = true
+minimap_draw = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HSplitContainer/Panel2/VBoxContainer"]
+margin_top = 440.0
+margin_right = 712.0
+margin_bottom = 469.071
+rect_min_size = Vector2( 0, 29.071 )
+theme = SubResource( 12 )
+alignment = 2
+
+[node name="CreatedLabel" type="Label" parent="VBoxContainer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer"]
+margin_left = 483.0
+margin_top = 7.0
+margin_right = 525.0
+margin_bottom = 22.0
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.470588 )
+text = "Created"
+
+[node name="Created" type="Label" parent="VBoxContainer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer"]
+margin_left = 529.0
+margin_top = 7.0
+margin_right = 581.0
+margin_bottom = 22.0
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+text = "00/00/00"
+
+[node name="Control" type="Control" parent="VBoxContainer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer"]
+margin_left = 585.0
+margin_right = 605.0
+margin_bottom = 29.0
+rect_min_size = Vector2( 20, 0 )
+
+[node name="ModifiedLabel" type="Label" parent="VBoxContainer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer"]
+margin_left = 609.0
+margin_top = 7.0
+margin_right = 656.0
+margin_bottom = 22.0
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.470588 )
+text = "Modified"
+
+[node name="Modified" type="Label" parent="VBoxContainer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer"]
+margin_left = 660.0
+margin_top = 7.0
+margin_right = 712.0
+margin_bottom = 22.0
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+text = "00/00/00"
+
+[connection signal="gui_input" from="VBoxContainer/HSplitContainer/Panel/ScrollContainer/NoteButtons/DefaultButton" to="VBoxContainer/HSplitContainer/Panel/ScrollContainer/NoteButtons/DefaultButton" method="_on_DefaultButton_gui_input"]
+[connection signal="text_changed" from="VBoxContainer/HSplitContainer/Panel2/VBoxContainer/Title" to="." method="_on_Title_text_changed"]
+[connection signal="text_changed" from="VBoxContainer/HSplitContainer/Panel2/VBoxContainer/Note" to="." method="_on_Note_text_changed"]

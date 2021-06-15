@@ -8,6 +8,13 @@ func _ready() -> void:
 func _on_Timer_timeout() -> void:
 	update_time()
 
+func entering_view() -> void:
+	pass
+	
+	
+func leaving_view() -> void:
+	pass
+
 
 func update_time() -> void:
 	$VBoxContainer/Time.text = Defaults.get_time_with_semicoloumns()
