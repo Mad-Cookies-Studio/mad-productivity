@@ -67,6 +67,10 @@ window/per_pixel_transparency/enabled=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
 
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/Todo_Manager/plugin.cfg" )
+
 [physics]
 
 common/enable_pause_aware_picking=true

@@ -37,7 +37,7 @@ border_color = Color( 0, 0, 0, 0.737255 )
 offsets = PoolRealArray( 0, 0.109677, 0.251613, 1 )
 colors = PoolColorArray( 0.854902, 0.423529, 0.384314, 0, 0.854902, 0.423529, 0.384314, 1, 0.854902, 0.423529, 0.384314, 0.463768, 0.854902, 0.423529, 0.384314, 0 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=5]
 size = 80
 use_mipmaps = true
 use_filter = true
@@ -286,12 +286,12 @@ __meta__ = {
 }
 
 [node name="Dashboard" parent="MainWorkspace/Views" instance=ExtResource( 12 )]
-visible = false
 
 [node name="Notes" parent="MainWorkspace/Views" instance=ExtResource( 19 )]
 visible = false
 
 [node name="TimeTracking" parent="MainWorkspace/Views" instance=ExtResource( 14 )]
+visible = false
 
 [node name="Reminders" type="Control" parent="MainWorkspace/Views"]
 visible = false
@@ -311,7 +311,7 @@ __meta__ = {
 margin_top = 242.0
 margin_right = 1016.0
 margin_bottom = 342.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
 text = "REMINDERS"
 align = 1
@@ -334,7 +334,7 @@ __meta__ = {
 margin_top = 242.0
 margin_right = 1016.0
 margin_bottom = 342.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
 text = "TODO"
 align = 1
@@ -357,7 +357,7 @@ __meta__ = {
 margin_top = 242.0
 margin_right = 1016.0
 margin_bottom = 342.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
 text = "PROFILE"
 align = 1
