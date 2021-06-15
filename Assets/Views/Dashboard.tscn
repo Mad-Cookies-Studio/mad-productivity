@@ -4,19 +4,19 @@
 [ext_resource path="res://Assets/Fonts/Righteous-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Scripts/Views/Dashboard.gd" type="Script" id=3]
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=1]
 size = 20
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=2]
 size = 80
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="StyleBoxFlat" id=7]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.0862745, 0.152941, 0.160784, 1 )
 
 [node name="Dashboard" type="Control"]
@@ -36,7 +36,7 @@ __meta__ = {
 margin_top = 48.0
 margin_right = 992.0
 margin_bottom = 74.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
 text = "Date"
 align = 1
@@ -45,7 +45,7 @@ align = 1
 margin_top = 78.0
 margin_right = 992.0
 margin_bottom = 178.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
 text = "Time"
 align = 1
@@ -63,7 +63,7 @@ margin_right = 821.0
 margin_bottom = 263.0
 rect_min_size = Vector2( 650, 30 )
 size_flags_horizontal = 4
-custom_styles/panel = SubResource( 7 )
+custom_styles/panel = SubResource( 3 )
 
 [node name="Label" type="Label" parent="VBoxContainer/Panel"]
 anchor_right = 1.0

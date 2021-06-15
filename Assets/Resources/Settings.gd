@@ -1,4 +1,4 @@
-class_name Settings
+class_name SettingsResource
 extends Resource
 
 export(String) var name

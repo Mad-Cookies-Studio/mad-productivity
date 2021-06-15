@@ -57,9 +57,9 @@ func add_button() -> void:
 	var res : NoteResource = NoteResource.new()
 	res.title = "New note"
 	res.text = "Put text here"
-	res.date_created = Defaults.get_date_as_numbers()
-	res.date_modified = Defaults.get_date_as_numbers()
-	res.save_name = Defaults.get_date_and_time_with_underscores() + "_Note" + str(randi() % 256)
+	res.date_created = OS.get_datetime()
+	res.date_modified = OS.get_datetime()
+	res.save_name = Defaults.get_date_and_time_with_underscores({}) + "_Note" + str(randi() % 256)
 	new_btn.res = res
 	new_btn.text = res.title
 	active_note = res
@@ -80,7 +80,7 @@ func reset_state() -> void:
 func add_button_from_resource(res : NoteResource) -> void:
 	var new_btn : Button = $VBoxContainer/HSplitContainer/Panel/ScrollContainer/NoteButtons/DefaultButton.duplicate()
 	new_btn.visible = true
-	res.date_modified = Defaults.get_date_as_numbers()
+	res.date_modified = OS.get_datetime()
 	new_btn.res = res
 	new_btn.text = res.title
 	active_note = res
@@ -111,6 +111,7 @@ func _on_click_add_button() -> void:
 func _on_note_btn_clicked(_note : NoteResource, _btn : Button) -> void:
 	# saves the previously active note
 	if !_btn.deleting:
+		active_note.date_modified = OS.get_datetime()
 		save()
 	
 	if _btn.deleting:
@@ -121,6 +122,6 @@ func _on_note_btn_clicked(_note : NoteResource, _btn : Button) -> void:
 	active_btn = _btn
 	$VBoxContainer/HSplitContainer/Panel2/VBoxContainer/Title.text = active_note.title
 	$VBoxContainer/HSplitContainer/Panel2/VBoxContainer/Note.text = active_note.text
-	$VBoxContainer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer/Created.text = _note.date_created
-	$VBoxContainer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer/Modified.text = _note.date_modified
+	$VBoxContainer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer/Created.text = Defaults.get_date_with_time_string(_note.date_created)
+	$VBoxContainer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer/Modified.text = Defaults.get_date_with_time_string(_note.date_modified)
 	

@@ -32,28 +32,35 @@ func quit() -> void:
 	get_tree().quit()
 
 
-func get_date_as_numbers() -> String:
+func get_date_as_numbers(_custom : Dictionary) -> String:
 	var date : Dictionary = OS.get_datetime()
-	
+	if _custom.size() > 0:
+		date = _custom
 	var date_digits : String = str(date.day) + "/" + str(date.month) + "/" + str(date.year)
 	
 	return date_digits
 
-func get_full_date_as_string() -> String:
+func get_full_date_as_string(_custom : Dictionary) -> String:
 	var date : Dictionary = OS.get_datetime()
+	if _custom.size() > 0:
+		date = _custom
 	var text : String = DAYS[date.day % 7] + ", " + MONTHS[date.month] + " " + str(date.year)
 	return text
 
 
-func get_date_and_time_with_underscores() -> String:
+func get_date_and_time_with_underscores(_custom : Dictionary) -> String:
 	var date : Dictionary = OS.get_datetime()
+	if _custom.size() > 0:
+		date = _custom
 	var text : String = str(date.day) + "_" + str(date.month) + "_" + str(date.year) + "_" + str(date.hour) + "_" + str(date.minute) + "_" + str(date.second)
 	
 	return text
 
 
-func get_time_with_semicoloumns() -> String:
-	var date = OS.get_datetime()
+func get_time_with_semicoloumns(_custom : Dictionary) -> String:
+	var date : Dictionary = OS.get_datetime()
+	if _custom.size() > 0:
+		date = _custom
 	var hour : String = str(date.hour)
 	var minute : String = str(date.minute)
 	var second : String = str(date.second)
@@ -65,6 +72,10 @@ func get_time_with_semicoloumns() -> String:
 		second = "0" + second
 		
 	return hour + ":" + minute + ":" + second
+
+
+func get_date_with_time_string(_dic : Dictionary) -> String:
+	return get_date_as_numbers(_dic) + " " + get_time_with_semicoloumns(_dic)
 
 
 func save_note_resource(note : NoteResource) -> int:
