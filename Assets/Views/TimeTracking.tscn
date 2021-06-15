@@ -1,0 +1,247 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://Assets/Buttons/play_pressed.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Buttons/PauseBtn_idle.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Fonts/Righteous-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Assets/Themes/Roboto12Clean.tres" type="Theme" id=4]
+[ext_resource path="res://Assets/Buttons/Cross.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Buttons/PauseBtn.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Buttons/cancelBtn.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Buttons/play_hovered.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Buttons/play_idle.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Buttons/cancelBtn_idle.png" type="Texture" id=10]
+[ext_resource path="res://Scripts/Views/TimeTracking.gd" type="Script" id=11]
+[ext_resource path="res://Scripts/Views/TimeTracking/TrackedItem.gd" type="Script" id=12]
+[ext_resource path="res://Assets/Fonts/Righteous50.tres" type="DynamicFont" id=13]
+[ext_resource path="res://Assets/Fonts/Roboto20.tres" type="DynamicFont" id=14]
+[ext_resource path="res://Assets/Buttons/PauseBtn_hover.png" type="Texture" id=15]
+
+[sub_resource type="DynamicFont" id=15]
+size = 20
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.0588235, 0.105882, 0.109804, 0.498039 )
+border_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="StyleBoxEmpty" id=11]
+
+[sub_resource type="Shader" id=13]
+code = "shader_type canvas_item;
+
+void fragment(){
+	COLOR.a = UV.y;
+}"
+
+[sub_resource type="ShaderMaterial" id=14]
+shader = SubResource( 13 )
+
+[node name="TimeTracking" type="Control"]
+margin_right = 990.0
+margin_bottom = 571.0
+script = ExtResource( 11 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+margin_right = 990.0
+margin_bottom = 63.0
+custom_fonts/font = ExtResource( 13 )
+custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
+text = "TIME TRACKING"
+
+[node name="Total" type="Label" parent="VBoxContainer/Title"]
+margin_left = 649.0
+margin_right = 990.0
+margin_bottom = 63.0
+custom_fonts/font = SubResource( 15 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.415686 )
+text = "total:"
+align = 2
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+margin_top = 63.0
+margin_right = 990.0
+margin_bottom = 74.073
+rect_min_size = Vector2( 0, 11.073 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+margin_top = 74.0
+margin_right = 990.0
+margin_bottom = 521.0
+size_flags_vertical = 3
+theme = ExtResource( 4 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+margin_right = 980.0
+margin_bottom = 447.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TrackedItem" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 973.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 0, 15 )
+custom_constants/separation = 50
+script = ExtResource( 12 )
+
+[node name="Date" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/TrackedItem"]
+margin_right = 100.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 100, 0 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+text = "21/04/2021"
+
+[node name="TrackedTime" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/TrackedItem"]
+margin_left = 150.0
+margin_right = 250.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 100, 0 )
+custom_colors/font_color = Color( 0.764706, 0.847059, 0.85098, 1 )
+text = "00:03:68"
+
+[node name="ProjectName" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/TrackedItem"]
+margin_left = 300.0
+margin_right = 550.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 250, 0 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+text = "Project name"
+
+[node name="Tween" type="Tween" parent="VBoxContainer/ScrollContainer/VBoxContainer/TrackedItem"]
+
+[node name="Delete" type="TextureButton" parent="VBoxContainer/ScrollContainer/VBoxContainer/TrackedItem"]
+modulate = Color( 1, 1, 1, 0.694118 )
+margin_left = 954.0
+margin_right = 973.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 19, 0 )
+mouse_filter = 1
+size_flags_horizontal = 10
+texture_normal = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+margin_top = 521.0
+margin_right = 990.0
+margin_bottom = 571.0
+rect_min_size = Vector2( 0, 50 )
+custom_styles/panel = SubResource( 12 )
+
+[node name="Label" type="LineEdit" parent="VBoxContainer/Panel"]
+margin_left = 13.0
+margin_top = 13.0
+margin_right = 544.0
+margin_bottom = 37.0
+custom_styles/read_only = SubResource( 9 )
+custom_styles/focus = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+custom_fonts/font = ExtResource( 14 )
+custom_colors/selection_color = Color( 0.854902, 0.423529, 0.384314, 1 )
+custom_colors/font_color_selected = Color( 0.0588235, 0.105882, 0.109804, 1 )
+placeholder_text = "Project name"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Panel"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -399.0
+custom_constants/separation = -5
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CancelButton" type="TextureButton" parent="VBoxContainer/Panel/HBoxContainer"]
+margin_left = 259.0
+margin_right = 309.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 0 )
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 7 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseButton" type="TextureButton" parent="VBoxContainer/Panel/HBoxContainer"]
+margin_left = 304.0
+margin_right = 354.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 0 )
+toggle_mode = true
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 15 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TrackButton" type="TextureButton" parent="VBoxContainer/Panel/HBoxContainer"]
+margin_left = 349.0
+margin_right = 399.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 0 )
+toggle_mode = true
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 1 )
+texture_hover = ExtResource( 8 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 86400.0
+
+[node name="Timer2" type="Timer" parent="."]
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource( 14 )
+margin_top = 373.0
+margin_right = 989.0
+margin_bottom = 521.0
+mouse_filter = 2
+color = Color( 0.0745098, 0.133333, 0.141176, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="mouse_entered" from="VBoxContainer/ScrollContainer/VBoxContainer/TrackedItem" to="VBoxContainer/ScrollContainer/VBoxContainer/TrackedItem" method="_on_TrackedItem_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/ScrollContainer/VBoxContainer/TrackedItem" to="VBoxContainer/ScrollContainer/VBoxContainer/TrackedItem" method="_on_TrackedItem_mouse_exited"]
+[connection signal="button_up" from="VBoxContainer/ScrollContainer/VBoxContainer/TrackedItem/Delete" to="VBoxContainer/ScrollContainer/VBoxContainer/TrackedItem" method="_on_Delete_button_up"]
+[connection signal="pressed" from="VBoxContainer/Panel/HBoxContainer/CancelButton" to="." method="_on_CancelButton_pressed"]
+[connection signal="toggled" from="VBoxContainer/Panel/HBoxContainer/PauseButton" to="." method="_on_PauseButton_toggled"]
+[connection signal="toggled" from="VBoxContainer/Panel/HBoxContainer/TrackButton" to="." method="_on_TrackButton_toggled"]
+[connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]
