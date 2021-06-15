@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PlusAdd.png-c9492e1ee78729a57c1577c893771152.stex"
+path="res://.import/PauseBtn_idle.png-5d0e5c720ab846296b8ba5eb837ff566.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Buttons/PlusAdd.png"
-dest_files=[ "res://.import/PlusAdd.png-c9492e1ee78729a57c1577c893771152.stex" ]
+source_file="res://Assets/Buttons/PauseBtn_idle.png"
+dest_files=[ "res://.import/PauseBtn_idle.png-5d0e5c720ab846296b8ba5eb837ff566.stex" ]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
-flags/mipmaps=true
+flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true

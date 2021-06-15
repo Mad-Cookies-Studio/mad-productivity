@@ -56,5 +56,3 @@ func delete_note(btn : Button, _res : NoteResource) -> void:
 	var dir : Directory = Directory.new()
 	queue_free()
 	var err = dir.remove(Defaults.NOTES_SAVE_PATH + _res.save_name + ".tres")
-	print("Error deleting res: ", err)
-#	select_note(1)

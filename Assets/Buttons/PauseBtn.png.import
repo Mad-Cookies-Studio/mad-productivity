@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PlusAdd.png-c9492e1ee78729a57c1577c893771152.stex"
+path="res://.import/PauseBtn.png-abd37e093fee64fdca47ab7e65722bd3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Buttons/PlusAdd.png"
-dest_files=[ "res://.import/PlusAdd.png-c9492e1ee78729a57c1577c893771152.stex" ]
+source_file="res://Assets/Buttons/PauseBtn.png"
+dest_files=[ "res://.import/PauseBtn.png-abd37e093fee64fdca47ab7e65722bd3.stex" ]
 
 [params]
 

@@ -67,10 +67,6 @@ window/per_pixel_transparency/enabled=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
 
-[editor]
-
-main_run_args="--verbose"
-
 [physics]
 
 common/enable_pause_aware_picking=true

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PlusAdd.png-c9492e1ee78729a57c1577c893771152.stex"
+path="res://.import/cancelBtn.png-ebba78635aed58b1feafb5a2e3ec9789.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Buttons/PlusAdd.png"
-dest_files=[ "res://.import/PlusAdd.png-c9492e1ee78729a57c1577c893771152.stex" ]
+source_file="res://Assets/Buttons/cancelBtn.png"
+dest_files=[ "res://.import/cancelBtn.png-ebba78635aed58b1feafb5a2e3ec9789.stex" ]
 
 [params]
 

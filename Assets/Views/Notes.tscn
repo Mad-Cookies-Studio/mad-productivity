@@ -11,13 +11,13 @@
 [ext_resource path="res://Scripts/Views/Notes/Title.gd" type="Script" id=9]
 [ext_resource path="res://Scripts/Views/Notes.gd" type="Script" id=10]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=7]
 size = 50
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 0.0588235, 0.105882, 0.109804, 0.498039 )
 border_width_top = 1
 border_color = Color( 0.576471, 0.627451, 0.631373, 1 )
@@ -30,9 +30,9 @@ border_color = Color( 0.576471, 0.627451, 0.631373, 1 )
 bg_color = Color( 0.576471, 0.627451, 0.631373, 1 )
 draw_center = false
 
-[sub_resource type="StyleBoxEmpty" id=7]
+[sub_resource type="StyleBoxEmpty" id=13]
 
-[sub_resource type="StyleBoxEmpty" id=8]
+[sub_resource type="StyleBoxEmpty" id=14]
 
 [sub_resource type="StyleBoxEmpty" id=9]
 
@@ -74,8 +74,8 @@ TextEdit/icons/fold = null
 TextEdit/icons/folded = null
 TextEdit/icons/space = null
 TextEdit/icons/tab = null
-TextEdit/styles/completion = SubResource( 7 )
-TextEdit/styles/focus = SubResource( 8 )
+TextEdit/styles/completion = SubResource( 13 )
+TextEdit/styles/focus = SubResource( 14 )
 TextEdit/styles/normal = SubResource( 9 )
 TextEdit/styles/read_only = SubResource( 10 )
 
@@ -99,7 +99,7 @@ __meta__ = {
 margin_right = 990.0
 margin_bottom = 63.0
 rect_pivot_offset = Vector2( 0, 31 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
 text = "NOTES"
 script = ExtResource( 9 )
@@ -133,6 +133,7 @@ margin_top = 102.0
 margin_right = 990.0
 margin_bottom = 571.0
 size_flags_vertical = 3
+theme = ExtResource( 4 )
 custom_constants/autohide = 0
 custom_constants/separation = 35
 split_offset = 243
@@ -140,7 +141,7 @@ split_offset = 243
 [node name="Panel" type="Panel" parent="VBoxContainer/HSplitContainer"]
 margin_right = 243.0
 margin_bottom = 469.0
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = SubResource( 8 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HSplitContainer/Panel"]
 anchor_right = 1.0
@@ -154,7 +155,7 @@ __meta__ = {
 }
 
 [node name="NoteButtons" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/Panel/ScrollContainer"]
-margin_right = 217.0
+margin_right = 207.0
 margin_bottom = 441.0
 rect_min_size = Vector2( 200, 440 )
 size_flags_horizontal = 3

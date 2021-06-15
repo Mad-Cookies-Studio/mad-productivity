@@ -19,7 +19,7 @@ func load_notes() -> void:
 		var file_name = dir.get_next()
 		while file_name != "":
 			if dir.current_is_dir():
-				print("Found directory: " + file_name)
+				pass
 			else:
 				resource_file_paths.append(file_name)
 			file_name = dir.get_next()
@@ -111,7 +111,8 @@ func _on_click_add_button() -> void:
 func _on_note_btn_clicked(_note : NoteResource, _btn : Button) -> void:
 	# saves the previously active note
 	if !_btn.deleting:
-		active_note.date_modified = OS.get_datetime()
+		if active_note:
+			active_note.date_modified = OS.get_datetime()
 		save()
 	
 	if _btn.deleting:
@@ -124,4 +125,3 @@ func _on_note_btn_clicked(_note : NoteResource, _btn : Button) -> void:
 	$VBoxContainer/HSplitContainer/Panel2/VBoxContainer/Note.text = active_note.text
 	$VBoxContainer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer/Created.text = Defaults.get_date_with_time_string(_note.date_created)
 	$VBoxContainer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer/Modified.text = Defaults.get_date_with_time_string(_note.date_modified)
-	

@@ -4,6 +4,8 @@ const DAYS : Array = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "S
 const MONTHS : Array = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
 const NOTES_SAVE_PATH : String = "user://Notes/"
+const TIMETRACKS_SAVE_PATH : String = "user://TimeTracks/"
+const TIMETRACKS_SAVE_NAME : String = "TimeTrackResource.tres"
 
 export(Color) var btn_active_colour : Color
 export(Color) var btn_inactive_colour : Color
@@ -20,9 +22,21 @@ func check_folders() -> void:
 	if dir.dir_exists(NOTES_SAVE_PATH):
 		print("notes directory exists!")
 	else:
-		print("notes directory is missing creating")
+		print("notes directory is missing, creating it now")
 		dir.make_dir(NOTES_SAVE_PATH)
 		
+	if dir.dir_exists(TIMETRACKS_SAVE_PATH):
+		print("time tracking directory exists!")
+	else:
+		print("time tracking directory is missing, creating it now")
+		dir.make_dir(TIMETRACKS_SAVE_PATH)
+
+	if dir.file_exists(TIMETRACKS_SAVE_PATH + TIMETRACKS_SAVE_NAME):
+		print("TimeTracking resource exists!")
+	else:
+		print("TimeTracking resource missing, creating it now!")
+		var resource : TimeTrackResource = TimeTrackResource.new()
+		var err : int = ResourceSaver.save(TIMETRACKS_SAVE_PATH + TIMETRACKS_SAVE_NAME, resource)
 
 
 func quit() -> void:
@@ -82,5 +96,8 @@ func save_note_resource(note : NoteResource) -> int:
 #	var saver : ResourceSaver = ResourceSaver.new()
 	if !note: return 0
 	var err : int = ResourceSaver.save(NOTES_SAVE_PATH + note.save_name + ".tres", note)
-	print(err)
+	return err
+
+func save_timetrack_resource(tt : TimeTrackResource) -> int:
+	var err : int = ResourceSaver.save(TIMETRACKS_SAVE_PATH + TIMETRACKS_SAVE_NAME, tt)
 	return err

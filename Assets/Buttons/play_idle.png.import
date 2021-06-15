@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PlusAdd.png-c9492e1ee78729a57c1577c893771152.stex"
+path="res://.import/play_idle.png-a1153b19fb9e061fe8a061851462b491.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Buttons/PlusAdd.png"
-dest_files=[ "res://.import/PlusAdd.png-c9492e1ee78729a57c1577c893771152.stex" ]
+source_file="res://Assets/Buttons/play_idle.png"
+dest_files=[ "res://.import/play_idle.png-a1153b19fb9e061fe8a061851462b491.stex" ]
 
 [params]
 

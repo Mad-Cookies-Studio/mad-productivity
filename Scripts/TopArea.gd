@@ -12,7 +12,6 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		drag_amount += event.relative
-		print(event.relative)
 	OS.window_position = drag_amount - orig_position
 
 
