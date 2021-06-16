@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Assets/Buttons/play_pressed.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Buttons/PauseBtn_idle.png" type="Texture" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Assets/Fonts/Righteous50.tres" type="DynamicFont" id=13]
 [ext_resource path="res://Assets/Fonts/Roboto20.tres" type="DynamicFont" id=14]
 [ext_resource path="res://Assets/Buttons/PauseBtn_hover.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Buttons/TimeTrackBtnWhite.png" type="Texture" id=16]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -66,8 +67,8 @@ custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
 text = "TIME TRACKING"
 
 [node name="Total" type="Label" parent="VBoxContainer/Title"]
-margin_left = 649.0
-margin_right = 990.0
+margin_left = 638.898
+margin_right = 979.898
 margin_bottom = 63.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.415686 )
@@ -100,50 +101,82 @@ margin_bottom = 447.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="TrackedItem" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="TrackedItem" type="ColorRect" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
 visible = false
-margin_right = 973.0
-margin_bottom = 19.0
-rect_min_size = Vector2( 0, 15 )
-custom_constants/separation = 50
+margin_right = 980.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 0, 25 )
+color = Color( 0.0745098, 0.133333, 0.141176, 1 )
 script = ExtResource( 12 )
 
-[node name="Date" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/TrackedItem"]
-margin_right = 100.0
-margin_bottom = 19.0
-rect_min_size = Vector2( 100, 0 )
-custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
-text = "21/04/2021"
+[node name="H" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/TrackedItem"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+rect_min_size = Vector2( 0, 25 )
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="TrackedTime" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/TrackedItem"]
-margin_left = 150.0
-margin_right = 250.0
-margin_bottom = 19.0
+[node name="TrackedTime" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/TrackedItem/H"]
+margin_top = 3.0
+margin_right = 100.0
+margin_bottom = 22.0
 rect_min_size = Vector2( 100, 0 )
 custom_colors/font_color = Color( 0.764706, 0.847059, 0.85098, 1 )
 text = "00:03:68"
 
-[node name="ProjectName" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/TrackedItem"]
-margin_left = 300.0
-margin_right = 550.0
-margin_bottom = 19.0
+[node name="Delete" type="TextureButton" parent="VBoxContainer/ScrollContainer/VBoxContainer/TrackedItem/H"]
+modulate = Color( 0.854902, 0.423529, 0.384314, 1 )
+margin_left = 104.0
+margin_right = 123.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 19, 0 )
+rect_pivot_offset = Vector2( 9.5, 9.5 )
+mouse_filter = 1
+texture_normal = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimeTrack" type="TextureButton" parent="VBoxContainer/ScrollContainer/VBoxContainer/TrackedItem/H"]
+modulate = Color( 0.976563, 0.654856, 0.137329, 1 )
+margin_left = 127.0
+margin_right = 146.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 19, 0 )
+rect_pivot_offset = Vector2( 9.5, 9.5 )
+hint_tooltip = "Time track again"
+mouse_filter = 1
+size_flags_horizontal = 9
+texture_normal = ExtResource( 16 )
+expand = true
+stretch_mode = 5
+
+[node name="ProjectName" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/TrackedItem/H"]
+margin_left = 150.0
+margin_top = 3.0
+margin_right = 400.0
+margin_bottom = 22.0
 rect_min_size = Vector2( 250, 0 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
 text = "Project name"
 
-[node name="Tween" type="Tween" parent="VBoxContainer/ScrollContainer/VBoxContainer/TrackedItem"]
+[node name="Date" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/TrackedItem/H"]
+margin_left = 404.0
+margin_top = 3.0
+margin_right = 975.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+text = "21/04/2021"
+align = 2
 
-[node name="Delete" type="TextureButton" parent="VBoxContainer/ScrollContainer/VBoxContainer/TrackedItem"]
-modulate = Color( 1, 1, 1, 0.694118 )
-margin_left = 954.0
-margin_right = 973.0
-margin_bottom = 19.0
-rect_min_size = Vector2( 19, 0 )
-mouse_filter = 1
-size_flags_horizontal = 10
-texture_normal = ExtResource( 5 )
-expand = true
-stretch_mode = 5
+[node name="Tween" type="Tween" parent="VBoxContainer/ScrollContainer/VBoxContainer/TrackedItem"]
 
 [node name="Panel" type="Panel" parent="VBoxContainer"]
 margin_top = 521.0
@@ -243,7 +276,8 @@ __meta__ = {
 
 [connection signal="mouse_entered" from="VBoxContainer/ScrollContainer/VBoxContainer/TrackedItem" to="VBoxContainer/ScrollContainer/VBoxContainer/TrackedItem" method="_on_TrackedItem_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/ScrollContainer/VBoxContainer/TrackedItem" to="VBoxContainer/ScrollContainer/VBoxContainer/TrackedItem" method="_on_TrackedItem_mouse_exited"]
-[connection signal="button_up" from="VBoxContainer/ScrollContainer/VBoxContainer/TrackedItem/Delete" to="VBoxContainer/ScrollContainer/VBoxContainer/TrackedItem" method="_on_Delete_button_up"]
+[connection signal="button_up" from="VBoxContainer/ScrollContainer/VBoxContainer/TrackedItem/H/Delete" to="VBoxContainer/ScrollContainer/VBoxContainer/TrackedItem" method="_on_Delete_button_up"]
+[connection signal="button_up" from="VBoxContainer/ScrollContainer/VBoxContainer/TrackedItem/H/TimeTrack" to="VBoxContainer/ScrollContainer/VBoxContainer/TrackedItem" method="_on_TimeTrack_button_up"]
 [connection signal="pressed" from="VBoxContainer/Panel/HBoxContainer/CancelButton" to="." method="_on_CancelButton_pressed"]
 [connection signal="toggled" from="VBoxContainer/Panel/HBoxContainer/PauseButton" to="." method="_on_PauseButton_toggled"]
 [connection signal="toggled" from="VBoxContainer/Panel/HBoxContainer/TrackButton" to="." method="_on_TrackButton_toggled"]

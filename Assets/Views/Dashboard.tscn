@@ -30,40 +30,40 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-alignment = 2
+alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Date" type="Label" parent="VBoxContainer"]
-margin_top = 48.0
+margin_top = 136.0
 margin_right = 992.0
-margin_bottom = 74.0
+margin_bottom = 162.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
 text = "Date"
 align = 1
 
 [node name="Time" type="Label" parent="VBoxContainer"]
-margin_top = 78.0
+margin_top = 166.0
 margin_right = 992.0
-margin_bottom = 178.0
+margin_bottom = 266.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
 text = "Time"
 align = 1
 
 [node name="Control2" type="Control" parent="VBoxContainer"]
-margin_top = 182.0
+margin_top = 270.0
 margin_right = 992.0
-margin_bottom = 229.0
+margin_bottom = 317.0
 rect_min_size = Vector2( 0, 47 )
 
 [node name="Panel" type="Panel" parent="VBoxContainer"]
 margin_left = 171.0
-margin_top = 233.0
+margin_top = 321.0
 margin_right = 821.0
-margin_bottom = 263.0
+margin_bottom = 351.0
 rect_min_size = Vector2( 650, 30 )
 size_flags_horizontal = 4
 custom_styles/panel = SubResource( 3 )
@@ -83,12 +83,13 @@ __meta__ = {
 }
 
 [node name="Control" type="Control" parent="VBoxContainer"]
-margin_top = 267.0
+margin_top = 355.0
 margin_right = 992.0
-margin_bottom = 347.0
+margin_bottom = 435.0
 rect_min_size = Vector2( 0, 80 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+visible = false
 margin_top = 351.0
 margin_right = 992.0
 margin_bottom = 571.0

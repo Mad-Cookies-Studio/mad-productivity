@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Assets/Icons/MD_concept.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Icons/NoteTaking.png" type="Texture" id=2]
@@ -21,11 +21,15 @@
 [ext_resource path="res://Assets/Views/Notes.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Assets/Fonts/Righteous50.tres" type="DynamicFont" id=20]
 [ext_resource path="res://Assets/Themes/Roboto12Clean.tres" type="Theme" id=21]
-[ext_resource path="res://Assets/Buttons/PlusAdd.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Buttons/TimeTrackBtnWhite.png" type="Texture" id=22]
 [ext_resource path="res://Assets/Buttons/Cross.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Buttons/cancelBtn_hover.png" type="Texture" id=24]
 [ext_resource path="res://Scripts/Views/Reminders.gd" type="Script" id=25]
 [ext_resource path="res://Scripts/Views/ToDo.gd" type="Script" id=26]
 [ext_resource path="res://Scripts/Views/Profile.gd" type="Script" id=27]
+[ext_resource path="res://Assets/Buttons/PauseBtn.png" type="Texture" id=28]
+[ext_resource path="res://Assets/Buttons/cancelBtn.png" type="Texture" id=29]
+[ext_resource path="res://Assets/Buttons/PauseBtn_hover.png" type="Texture" id=30]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.0745098, 0.133333, 0.141176, 1 )
@@ -38,8 +42,8 @@ border_color = Color( 0, 0, 0, 0.737255 )
 [sub_resource type="ButtonGroup" id=3]
 
 [sub_resource type="Gradient" id=4]
-offsets = PoolRealArray( 0, 0.109677, 0.251613, 1 )
-colors = PoolColorArray( 0.854902, 0.423529, 0.384314, 0, 0.854902, 0.423529, 0.384314, 1, 0.854902, 0.423529, 0.384314, 0.463768, 0.854902, 0.423529, 0.384314, 0 )
+offsets = PoolRealArray( 0, 0.219355, 0.36129, 1 )
+colors = PoolColorArray( 0.854902, 0.423529, 0.384314, 0, 0.854902, 0.423529, 0.384314, 1, 0.854902, 0.423529, 0.384314, 0.529412, 0.854902, 0.423529, 0.384314, 0 )
 
 [sub_resource type="DynamicFont" id=5]
 size = 80
@@ -48,10 +52,34 @@ use_filter = true
 font_data = ExtResource( 13 )
 
 [sub_resource type="DynamicFont" id=6]
-size = 20
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 13 )
+
+[sub_resource type="Theme" id=7]
+default_font = SubResource( 6 )
+Button/colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_hover = Color( 1, 1, 1, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = null
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = null
+Button/styles/normal = null
+Button/styles/pressed = null
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.137255, 0.301961, 0.305882, 1 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.0588235, 0.105882, 0.109804, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=11]
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.0862745, 0.152941, 0.160784, 1 )
 
 [node name="MainWindow" type="Control"]
 anchor_right = 1.0
@@ -220,6 +248,7 @@ color_ramp = SubResource( 4 )
 [node name="TopArea" type="Control" parent="MainWorkspace"]
 anchor_right = 1.0
 rect_min_size = Vector2( 0, 45 )
+theme = ExtResource( 21 )
 script = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -250,6 +279,45 @@ margin_right = 602.0
 margin_bottom = 45.0
 texture = ExtResource( 7 )
 stretch_mode = 4
+
+[node name="TimeTrackingTop" type="HBoxContainer" parent="MainWorkspace/TopArea/Center"]
+visible = false
+margin_left = 407.0
+margin_right = 807.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 400, 0 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MainWorkspace/TopArea/Center/TimeTrackingTop"]
+margin_left = 81.0
+margin_top = 13.0
+margin_right = 271.0
+margin_bottom = 32.0
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+text = "TRACKING NAME 00:00:00"
+
+[node name="TextureButton2" type="TextureButton" parent="MainWorkspace/TopArea/Center/TimeTrackingTop"]
+margin_left = 275.0
+margin_right = 295.117
+margin_bottom = 45.0
+rect_min_size = Vector2( 20.117, 0 )
+texture_normal = ExtResource( 30 )
+texture_hover = ExtResource( 28 )
+expand = true
+stretch_mode = 5
+
+[node name="TextureButton" type="TextureButton" parent="MainWorkspace/TopArea/Center/TimeTrackingTop"]
+margin_left = 299.0
+margin_right = 319.117
+margin_bottom = 45.0
+rect_min_size = Vector2( 20.117, 0 )
+texture_normal = ExtResource( 24 )
+texture_hover = ExtResource( 29 )
+expand = true
+stretch_mode = 5
 
 [node name="Right" type="HBoxContainer" parent="MainWorkspace/TopArea"]
 anchor_right = 1.0
@@ -347,98 +415,70 @@ custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
 text = "TODO"
 
-[node name="TODOBox" type="HBoxContainer" parent="MainWorkspace/Views/ToDo/VBoxContainer"]
+[node name="Control" type="Control" parent="MainWorkspace/Views/ToDo/VBoxContainer"]
 margin_top = 67.0
 margin_right = 990.0
-margin_bottom = 93.0
+margin_bottom = 95.493
+rect_min_size = Vector2( 0, 28.493 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainWorkspace/Views/ToDo/VBoxContainer"]
+margin_top = 99.0
+margin_right = 990.0
+margin_bottom = 571.0
+size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureButton" type="TextureButton" parent="MainWorkspace/Views/ToDo/VBoxContainer/TODOBox"]
-modulate = Color( 0.576471, 0.627451, 0.631373, 1 )
-margin_right = 14.444
-margin_bottom = 26.0
-rect_min_size = Vector2( 14.444, 0 )
-texture_normal = ExtResource( 22 )
-expand = true
-stretch_mode = 5
-
-[node name="TODO" type="Label" parent="MainWorkspace/Views/ToDo/VBoxContainer/TODOBox"]
-margin_left = 18.0
-margin_right = 76.0
-margin_bottom = 26.0
-custom_fonts/font = SubResource( 6 )
-custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.415686 )
-text = "TODO"
-valign = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TODOitems" type="VBoxContainer" parent="MainWorkspace/Views/ToDo/VBoxContainer"]
-margin_top = 97.0
+[node name="TODO" type="VBoxContainer" parent="MainWorkspace/Views/ToDo/VBoxContainer/HBoxContainer"]
 margin_right = 990.0
-margin_bottom = 134.0
+margin_bottom = 472.0
+size_flags_horizontal = 3
+custom_constants/separation = 3
 
-[node name="TODOitem" type="ColorRect" parent="MainWorkspace/Views/ToDo/VBoxContainer/TODOitems"]
+[node name="NewTask" type="Button" parent="MainWorkspace/Views/ToDo/VBoxContainer/HBoxContainer/TODO"]
 margin_right = 990.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 0, 35 )
+theme = SubResource( 7 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/focus = SubResource( 11 )
+custom_styles/normal = SubResource( 9 )
+text = "NEW"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MainWorkspace/Views/ToDo/VBoxContainer/HBoxContainer/TODO"]
+margin_top = 38.0
+margin_right = 990.0
+margin_bottom = 472.0
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainWorkspace/Views/ToDo/VBoxContainer/HBoxContainer/TODO/ScrollContainer"]
+margin_right = 980.0
+margin_bottom = 434.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TODOitem" type="ColorRect" parent="MainWorkspace/Views/ToDo/VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer"]
+margin_right = 980.0
 margin_bottom = 37.5
 rect_min_size = Vector2( 0, 37.5 )
+rect_pivot_offset = Vector2( -261.834, -35 )
 color = Color( 0.0862745, 0.152941, 0.160784, 1 )
 
-[node name="CheckBox" type="CheckBox" parent="MainWorkspace/Views/ToDo/VBoxContainer/TODOitems/TODOitem"]
-margin_left = 3.17839
-margin_top = 6.36037
-margin_right = 27.1784
-margin_bottom = 33.3604
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Project" type="Label" parent="MainWorkspace/Views/ToDo/VBoxContainer/TODOitems/TODOitem"]
-margin_left = 34.4611
-margin_top = 9.1752
-margin_right = 127.461
-margin_bottom = 28.1752
-custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
-text = "Project name"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Task" type="Label" parent="MainWorkspace/Views/ToDo/VBoxContainer/TODOitems/TODOitem"]
-margin_left = 208.265
-margin_top = 9.1752
-margin_right = 325.265
-margin_bottom = 28.1752
-custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
-text = "Task"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Date" type="Label" parent="MainWorkspace/Views/ToDo/VBoxContainer/TODOitems/TODOitem"]
-margin_left = 815.462
-margin_top = 9.1752
-margin_right = 949.462
-margin_bottom = 28.1752
-custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.439216 )
-text = "21/5/2021 8:45:32"
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureButton" type="TextureButton" parent="MainWorkspace/Views/ToDo/VBoxContainer/TODOitems/TODOitem"]
-modulate = Color( 0.576471, 0.627451, 0.631373, 0.529412 )
+[node name="DeleteBtn" type="TextureButton" parent="MainWorkspace/Views/ToDo/VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem"]
+modulate = Color( 0.854902, 0.423529, 0.384314, 1 )
 anchor_left = 1.0
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -29.0
-margin_top = 3.40088
-margin_right = -4.0
-margin_bottom = -2.67712
+anchor_bottom = 0.5
+margin_left = -27.5322
+margin_top = -19.5
+margin_right = -7.53223
+margin_bottom = 20.5
+rect_min_size = Vector2( 20, 0 )
+rect_pivot_offset = Vector2( 10, 20 )
+mouse_filter = 2
 texture_normal = ExtResource( 23 )
 expand = true
 stretch_mode = 5
@@ -446,45 +486,69 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Control" type="Control" parent="MainWorkspace/Views/ToDo/VBoxContainer"]
-margin_top = 138.0
-margin_right = 990.0
-margin_bottom = 166.493
-rect_min_size = Vector2( 0, 28.493 )
-
-[node name="DONEbox" type="HBoxContainer" parent="MainWorkspace/Views/ToDo/VBoxContainer"]
-margin_top = 170.0
-margin_right = 990.0
-margin_bottom = 196.0
+[node name="HBoxContainer" type="HBoxContainer" parent="MainWorkspace/Views/ToDo/VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_right = -57.0
+margin_bottom = 0.5
+custom_constants/separation = 10
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureButton" type="TextureButton" parent="MainWorkspace/Views/ToDo/VBoxContainer/DONEbox"]
-modulate = Color( 0.576471, 0.627451, 0.631373, 1 )
-margin_right = 14.444
-margin_bottom = 26.0
-rect_min_size = Vector2( 14.444, 0 )
+[node name="CheckBox" type="CheckBox" parent="MainWorkspace/Views/ToDo/VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem/HBoxContainer"]
+margin_right = 24.0
+margin_bottom = 38.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Task" type="Label" parent="MainWorkspace/Views/ToDo/VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem/HBoxContainer"]
+margin_left = 34.0
+margin_top = 9.0
+margin_right = 69.0
+margin_bottom = 28.0
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+text = "Task"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimeTrack" type="TextureButton" parent="MainWorkspace/Views/ToDo/VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem/HBoxContainer"]
+modulate = Color( 0.976563, 0.654856, 0.137329, 1 )
+margin_left = 79.0
+margin_right = 98.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 19, 0 )
+rect_pivot_offset = Vector2( 9.5, 9.5 )
+hint_tooltip = "Time track again"
+mouse_filter = 1
+size_flags_horizontal = 9
 texture_normal = ExtResource( 22 )
 expand = true
 stretch_mode = 5
-
-[node name="TODO" type="Label" parent="MainWorkspace/Views/ToDo/VBoxContainer/DONEbox"]
-margin_left = 18.0
-margin_right = 71.0
-margin_bottom = 26.0
-custom_fonts/font = SubResource( 6 )
-custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.415686 )
-text = "DONE"
-valign = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DONEitems" type="VBoxContainer" parent="MainWorkspace/Views/ToDo/VBoxContainer"]
-margin_top = 200.0
+[node name="Date" type="Label" parent="MainWorkspace/Views/ToDo/VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem/HBoxContainer"]
+margin_left = 108.0
+margin_top = 9.0
+margin_right = 242.0
+margin_bottom = 28.0
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.439216 )
+text = "21/5/2021 8:45:32"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="MainWorkspace/Views/ToDo/VBoxContainer/HBoxContainer"]
+visible = false
+margin_left = 990.0
 margin_right = 990.0
-margin_bottom = 200.0
+margin_bottom = 472.0
 
 [node name="Profile" type="Control" parent="MainWorkspace/Views"]
 visible = false
@@ -515,3 +579,4 @@ align = 1
 [connection signal="gui_input" from="MainWorkspace/TopArea" to="MainWorkspace/TopArea" method="_on_TopArea_gui_input"]
 [connection signal="pressed" from="MainWorkspace/TopArea/Right/Minimuze" to="MainWorkspace/TopArea" method="_on_Minimuze_pressed"]
 [connection signal="pressed" from="MainWorkspace/TopArea/Right/Exit" to="MainWorkspace/TopArea" method="_on_Exit_pressed"]
+[connection signal="manual_view_toggle" from="MainWorkspace/Views" to="." method="_on_Views_manual_view_toggle"]

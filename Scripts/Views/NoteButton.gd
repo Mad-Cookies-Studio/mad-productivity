@@ -1,6 +1,7 @@
 extends Button
 
 signal note_delete_pressed(btn, res)
+signal start_time_track(_name)
 
 var res : NoteResource
 var deleting = false
@@ -10,22 +11,24 @@ var target_opacity : float
 
 func _ready() -> void:
 	$DeleteBtn.modulate = delete_btn_colour
+	$DeleteBtn.modulate.a = 1.0
 	target_opacity = $DeleteBtn.modulate.a
-	$DeleteBtn.modulate.a = 0.0
+	$DeleteBtn.hide()
+	$TimeTrack.hide()
 	$DeleteBtn.connect("button_up", self, "_on_delete_btn_pressed")
+	$TimeTrack.connect("button_up", self, "_on_time_track_btn_pressed")
 	connect("mouse_entered", self, "mouse_entered")
 	connect("mouse_exited", self, "mouse_exited")
 	
 	
-func hide_delete(duration : float = 0.25) -> void:
-	# TODO FIX FAST MOUSE OVER BUG
+func hide_delete(duration : float = 0.5) -> void:
+	# IMPORTANT : tween.remove_all() is the way to reset and stop all animation so that they cant overlap
 	$Tween.remove_all()
 	$Tween.interpolate_property($DeleteBtn, 'rect_scale', Vector2.ONE ,Vector2.ONE * 0.01, duration, Tween.TRANS_EXPO, Tween.EASE_OUT, 0.0)
 	$Tween.interpolate_property($DeleteBtn, 'modulate:a', modulate.a ,0.0, duration, Tween.TRANS_EXPO, Tween.EASE_OUT, 0.0)
 	$Tween.start()
 	
 func show_delete(duration : float = 0.5) -> void:
-	# TODO FIX FAST MOUSE OVER BUG
 	$Tween.remove_all()
 	$Tween.interpolate_property($DeleteBtn, 'rect_scale', Vector2.ONE * 0.01 ,Vector2.ONE, duration, Tween.TRANS_EXPO, Tween.EASE_OUT, 0.0)
 	$Tween.interpolate_property($DeleteBtn, 'modulate:a', modulate.a ,target_opacity, duration, Tween.TRANS_EXPO, Tween.EASE_OUT, 0.0)
@@ -33,11 +36,18 @@ func show_delete(duration : float = 0.5) -> void:
 	
 	
 func mouse_entered() -> void:
-	show_delete()
-	
+#	show_delete()
+	$DeleteBtn.show()
+	if Defaults.time_tracking:
+		$TimeTrack.modulate.a = 0.5
+	else:
+		$TimeTrack.modulate.a = 1.0
+	$TimeTrack.show()
 	
 func mouse_exited() -> void:
-	hide_delete()
+#	hide_delete()
+	$DeleteBtn.hide()
+	$TimeTrack.hide()
 	
 	
 func _on_delete_btn_pressed() -> void:
@@ -49,6 +59,11 @@ func _on_DefaultButton_gui_input(event: InputEvent) -> void:
 		if get_local_mouse_position().x > 196:
 			emit_signal("note_delete_pressed", self, res)
 			delete_note(self, res)
+		
+		
+func _on_time_track_btn_pressed() -> void:
+	if Defaults.time_tracking: return
+	emit_signal("start_time_track", res.title)
 		
 		
 func delete_note(btn : Button, _res : NoteResource) -> void:

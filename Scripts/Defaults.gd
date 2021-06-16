@@ -12,6 +12,9 @@ export(Color) var btn_inactive_colour : Color
 
 var views : Array
 
+var time_tracking : bool = false
+var time_tracked : String = ""
+var item_tracked : String = ""
 
 func _ready() -> void:
 	check_folders()

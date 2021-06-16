@@ -33,20 +33,30 @@ func load_time_tracks() -> void:
 	
 	
 func create_track_visual(_name : String, _date : Dictionary, _time : int, _id : int) -> void:
-	var new : HBoxContainer = $VBoxContainer/ScrollContainer/VBoxContainer/TrackedItem.duplicate()
+	var new : ColorRect = $VBoxContainer/ScrollContainer/VBoxContainer/TrackedItem.duplicate()
 	new.id = _id
 	
 	var time = get_hours_minutes_seconds(_time)
 	new.connect("delete_pressed", self, "_on_delete_pressed")
+	new.connect("time_track_item", self, "_time_track_item_pressed")
 	
-	new.get_child(0).text = Defaults.get_date_with_time_string(_date)
-	new.get_child(1).text = time[2] + ":" + time[1] + ":" + time[0]
-	new.get_child(2).text = _name
-	
+	new.fill_details(Defaults.get_date_with_time_string(_date), (time[2] + ":" + time[1] + ":" + time[0]), _name)
+
 	new.show()
 	$VBoxContainer/ScrollContainer/VBoxContainer.add_child(new)
 	$VBoxContainer/ScrollContainer/VBoxContainer.move_child(new, 1)
 	new.show_up()
+	
+	
+func add_time_track(_length : int, _name : String, _date : Dictionary) -> void:
+	total_secs += _length
+	update_total_time()
+	res.tracks[res.tracks.size() + 1] = {
+		"date" : _date,
+		"length" : _length,
+		"name" : _name
+	}
+	create_track_visual(_name, _date, _length, res.tracks.size())
 	
 	
 func get_hours_minutes_seconds(_time : int) -> Array:
@@ -63,20 +73,15 @@ func get_hours_minutes_seconds(_time : int) -> Array:
 	return [seconds, temp_minutes, hours]
 	
 	
-func add_time_track(_length : int, _name : String, _date : Dictionary) -> void:
-	total_secs += _length
-	update_total_time()
-	res.tracks[res.tracks.size() + 1] = {
-		"date" : _date,
-		"length" : _length,
-		"name" : _name
-	}
-	create_track_visual(_name, _date, _length, res.tracks.size())
-	
-	
 func save() -> void:
 	print("saving time tracking resource")
 	Defaults.save_timetrack_resource(res)
+
+
+func start_time_tracking_custom(_name) -> void:
+	if Defaults.time_tracking : return
+	$VBoxContainer/Panel/Label.text = _name
+	$VBoxContainer/Panel/HBoxContainer/TrackButton.pressed = true
 
 
 func change_title(_final : String = "00:00:00") -> void:
@@ -103,6 +108,8 @@ func _on_TrackButton_toggled(button_pressed: bool) -> void:
 		cancel = false
 		return
 	if button_pressed:
+		Defaults.time_tracking = true
+		Defaults.item_tracked = $VBoxContainer/Panel/Label.text
 		$Timer.start()
 		$Timer2.start()
 		change_title()
@@ -110,6 +117,7 @@ func _on_TrackButton_toggled(button_pressed: bool) -> void:
 		$VBoxContainer/Panel/HBoxContainer/PauseButton.show()
 		$VBoxContainer/Panel/Label.editable = false
 	else:
+		Defaults.time_tracking = false
 		add_time_track(86400 - $Timer.time_left, $VBoxContainer/Panel/Label.text, OS.get_datetime())
 		change_title("TIME TRACKING")
 		$VBoxContainer/Panel/Label.editable = true
@@ -123,9 +131,12 @@ func _on_TrackButton_toggled(button_pressed: bool) -> void:
 func _on_Timer2_timeout() -> void:
 	var _time : Array = get_hours_minutes_seconds(86400 - $Timer.time_left)
 	$VBoxContainer/Title.text = _time[2] + ":" + _time[1] + ":" + _time[0]
+	Defaults.time_tracked = _time[2] + ":" + _time[1] + ":" + _time[0]
+	
 
 
 func _on_CancelButton_pressed() -> void:
+	Defaults.time_tracking = false
 	cancel = true
 	change_title("TIME TRACKING")
 	$VBoxContainer/Panel/HBoxContainer/TrackButton.pressed = false
@@ -147,3 +158,7 @@ func _on_PauseButton_toggled(button_pressed: bool) -> void:
 		
 func _on_delete_pressed(idx : int) -> void:
 	remove_time_track(idx)
+	
+	
+func _time_track_item_pressed(_name : String) -> void:
+	start_time_tracking_custom(_name)

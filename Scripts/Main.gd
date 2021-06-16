@@ -2,10 +2,10 @@ extends Control
 
 var active_view : int = -1
 
+enum VIEWS {DASH, NOTES, TIMETRACK, REMINDERS, TODO, PROFILE}
+
 func _ready() -> void:
-	# show the first view when ready
-#	toggle_view(0)
-	pass
+	manual_view_toggle(0)
 
 func toggle_view(new : int) -> void:
 	if new == active_view: return
@@ -24,5 +24,13 @@ func toggle_view(new : int) -> void:
 	active_view = new
 
 
+func manual_view_toggle(which : int) -> void:
+	$MainWorkspace/Sidebar.manual_view_toggle(which)
+
+
 func _on_Sidebar_view_changed(which) -> void:
 	toggle_view(which)
+
+
+func _on_Views_manual_view_toggle(which) -> void:
+	manual_view_toggle(which)

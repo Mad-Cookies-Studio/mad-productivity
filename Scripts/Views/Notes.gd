@@ -65,6 +65,7 @@ func add_button() -> void:
 	active_note = res
 	
 	new_btn.connect("button_down", self, "_on_note_btn_clicked", [res, new_btn])
+	new_btn.connect("start_time_track", self, "_on_start_time_track")
 #	new_btn.connect("note_delete_pressed", self, "_on_note_btn_delete_clicked")
 	$VBoxContainer/HSplitContainer/Panel/ScrollContainer/NoteButtons.add_child(new_btn)
 	new_btn.grab_click_focus()
@@ -86,6 +87,7 @@ func add_button_from_resource(res : NoteResource) -> void:
 	active_note = res
 	
 	new_btn.connect("button_down", self, "_on_note_btn_clicked", [res, new_btn])
+	new_btn.connect("start_time_track", self, "_on_start_time_track")
 #	new_btn.connect("note_delete_pressed", self, "_on_note_btn_delete_clicked")
 	$VBoxContainer/HSplitContainer/Panel/ScrollContainer/NoteButtons.add_child(new_btn)
 	new_btn.grab_click_focus()
@@ -125,3 +127,7 @@ func _on_note_btn_clicked(_note : NoteResource, _btn : Button) -> void:
 	$VBoxContainer/HSplitContainer/Panel2/VBoxContainer/Note.text = active_note.text
 	$VBoxContainer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer/Created.text = Defaults.get_date_with_time_string(_note.date_created)
 	$VBoxContainer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer/Modified.text = Defaults.get_date_with_time_string(_note.date_modified)
+
+func _on_start_time_track(_name) -> void:
+	print("carrying on")
+	get_parent().start_custom_time_track(_name)

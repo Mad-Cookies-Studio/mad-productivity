@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Assets/Fonts/Roboto12.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/Fonts/Roboto40.tres" type="DynamicFont" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Scripts/CustomTransparentButton.gd" type="Script" id=8]
 [ext_resource path="res://Scripts/Views/Notes/Title.gd" type="Script" id=9]
 [ext_resource path="res://Scripts/Views/Notes.gd" type="Script" id=10]
+[ext_resource path="res://Assets/Buttons/TimeTrackBtnWhite.png" type="Texture" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -170,7 +171,7 @@ __meta__ = {
 
 [node name="DefaultButton" type="Button" parent="VBoxContainer/HSplitContainer/Panel/ScrollContainer/NoteButtons"]
 visible = false
-margin_right = 217.0
+margin_right = 207.0
 margin_bottom = 25.0
 custom_styles/focus = SubResource( 3 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.643137 )
@@ -183,6 +184,24 @@ align = 0
 script = ExtResource( 7 )
 delete_btn_colour = Color( 0.854902, 0.423529, 0.384314, 0.615686 )
 
+[node name="TimeTrack" type="TextureButton" parent="VBoxContainer/HSplitContainer/Panel/ScrollContainer/NoteButtons/DefaultButton"]
+modulate = Color( 0.976563, 0.654856, 0.137329, 1 )
+margin_left = 168.0
+margin_top = -4.0
+margin_right = 188.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 19, 0 )
+rect_pivot_offset = Vector2( 9.5, 9.5 )
+hint_tooltip = "Time track again"
+mouse_filter = 1
+size_flags_horizontal = 9
+texture_normal = ExtResource( 11 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="DeleteBtn" type="TextureButton" parent="VBoxContainer/HSplitContainer/Panel/ScrollContainer/NoteButtons/DefaultButton"]
 anchor_left = 1.0
 anchor_top = 0.5
@@ -190,6 +209,7 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 margin_left = -19.0
 margin_top = -19.5
+margin_right = 1.0
 margin_bottom = 20.5
 rect_min_size = Vector2( 20, 0 )
 rect_pivot_offset = Vector2( 10, 20 )

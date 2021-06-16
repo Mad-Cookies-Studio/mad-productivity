@@ -16,11 +16,14 @@ func _ready() -> void:
 		idx += 1
 	
 	OS.window_position = (OS.get_screen_size() / 2) - (OS.window_size / 2)
-	buttons[0].btn_toggled(true)
 
 
 func mouse_entered_menu_btn() -> void:
 	pass
+
+
+func manual_view_toggle(which : int) -> void:
+	$Buttons.get_child(which).pressed = true
 
 
 # which passes the specific node
