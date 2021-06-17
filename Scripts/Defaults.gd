@@ -1,5 +1,7 @@
 extends Node
 
+enum RESOURCES {NOTES, TIME_TRACK, TODOS, REMINDER}
+
 const DAYS : Array = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 const MONTHS : Array = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
@@ -8,6 +10,8 @@ const TIMETRACKS_SAVE_PATH : String = "user://TimeTracks/"
 const TIMETRACKS_SAVE_NAME : String = "TimeTrackResource.tres"
 const TODOS_SAVE_PATH : String = "user://Todos/"
 const TODOS_SAVE_NAME : String = "Todos.tres"
+const REMINDERS_SAVE_PATH : String = "user://Reminders/"
+const REMINDERS_SAVE_NAME : String = "Reminders.tres"
 
 export(Color) var btn_active_colour : Color
 export(Color) var btn_inactive_colour : Color
@@ -28,40 +32,43 @@ func _ready() -> void:
 	
 func check_folders() -> void:
 	var dir : Directory = Directory.new()
-	if dir.dir_exists(NOTES_SAVE_PATH):
-		print("notes directory exists!")
+	check_directory(dir, NOTES_SAVE_PATH)
+	check_directory(dir, TIMETRACKS_SAVE_PATH)
+	check_directory(dir, TODOS_SAVE_PATH)
+	check_directory(dir, REMINDERS_SAVE_PATH)
+	check_resource(dir, TIMETRACKS_SAVE_PATH + TIMETRACKS_SAVE_NAME, RESOURCES.TIME_TRACK)
+	check_resource(dir, TODOS_SAVE_PATH + TODOS_SAVE_NAME, RESOURCES.TODOS)
+	check_resource(dir, REMINDERS_SAVE_PATH + REMINDERS_SAVE_NAME, RESOURCES.REMINDER)
+
+
+func check_directory(dir : Directory, path : String) -> void:
+	if dir.dir_exists(path):
+		print("directory exists!")
 	else:
-		print("notes directory is missing, creating it now")
-		dir.make_dir(NOTES_SAVE_PATH)
+		print("directory is missing, creating it now")
+		dir.make_dir(path)
 		
-	if dir.dir_exists(TIMETRACKS_SAVE_PATH):
-		print("time tracking directory exists!")
+		
+func check_resource(dir: Directory, path : String, resource_id : int) -> void:
+	if dir.file_exists(path):
+		print("Resource exists!")
 	else:
-		print("time tracking directory is missing, creating it now")
-		dir.make_dir(TIMETRACKS_SAVE_PATH)
-
-	if dir.file_exists(TIMETRACKS_SAVE_PATH + TIMETRACKS_SAVE_NAME):
-		print("TimeTracking resource exists!")
-	else:
-		print("TimeTracking resource missing, creating it now!")
-		var resource : TimeTrackResource = TimeTrackResource.new()
-		var err : int = ResourceSaver.save(TIMETRACKS_SAVE_PATH + TIMETRACKS_SAVE_NAME, resource)
-
-
-	if dir.dir_exists(TODOS_SAVE_PATH):
-		print("todo directory exists!")
-	else:
-		print("todo directory is missing, creating it now")
-		dir.make_dir(TODOS_SAVE_PATH)
-
-
-	if dir.file_exists(TODOS_SAVE_PATH + TODOS_SAVE_NAME):
-		print("Todo resource exists!")
-	else:
-		print("Todo resource missing, creating it now!")
-		var resource : ToDoResource = ToDoResource.new()
-		var err : int = ResourceSaver.save(TODOS_SAVE_PATH + TODOS_SAVE_NAME, resource)
-
+		var resource
+		match resource_id:
+			RESOURCES.NOTES:
+				pass
+			RESOURCES.TIME_TRACK:
+				resource = TimeTrackResource.new()
+				print("Time tracking resource missing, creating it now!")
+			RESOURCES.TODOS:
+				resource = ToDoResource.new()
+				print("Todo resource missing, creating it now!")
+			RESOURCES.REMINDER:
+				resource = ReminderResource.new()
+				print("Reminder resource missing, creating it now!")
+				
+		var err : int = ResourceSaver.save(path, resource)
+		
 
 func quit() -> void:
 	for i in views:
