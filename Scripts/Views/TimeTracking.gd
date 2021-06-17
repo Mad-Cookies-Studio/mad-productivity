@@ -13,7 +13,7 @@ func _ready() -> void:
 
 
 func entering_view() -> void:
-	print(res.tracks)
+	pass
 	
 	
 func leaving_view() -> void:
