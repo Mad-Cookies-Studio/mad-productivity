@@ -9,6 +9,16 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Reference",
+"class": "CalendarButtons",
+"language": "GDScript",
+"path": "res://addons/calendar_button/scripts/calendar_buttons.gd"
+}, {
+"base": "Reference",
+"class": "Date",
+"language": "GDScript",
+"path": "res://addons/calendar_button/class/Date.gd"
+}, {
 "base": "Resource",
 "class": "NoteResource",
 "language": "GDScript",
@@ -33,13 +43,21 @@ _global_script_classes=[ {
 "class": "ToDoResource",
 "language": "GDScript",
 "path": "res://Assets/Resources/ToDoResource.gd"
+}, {
+"base": "Reference",
+"class": "WindowRestrictor",
+"language": "GDScript",
+"path": "res://addons/calendar_button/scripts/window_restrictor.gd"
 } ]
 _global_script_class_icons={
+"CalendarButtons": "",
+"Date": "",
 "NoteResource": "",
 "ReminderResource": "",
 "SettingsResource": "",
 "TimeTrackResource": "",
-"ToDoResource": ""
+"ToDoResource": "",
+"WindowRestrictor": ""
 }
 
 [application]
@@ -69,7 +87,7 @@ window/stretch/aspect="keep_height"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/Todo_Manager/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/Todo_Manager/plugin.cfg", "res://addons/calendar_button/plugin.cfg" )
 
 [input]
 
