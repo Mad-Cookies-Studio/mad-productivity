@@ -9,13 +9,13 @@
 [ext_resource path="res://Assets/Buttons/Cross.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Buttons/TimeTrackBtnWhite.png" type="Texture" id=8]
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=18]
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 3 )
 
 [sub_resource type="Theme" id=7]
-default_font = SubResource( 6 )
+default_font = SubResource( 18 )
 Button/colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
 Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 Button/colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -64,6 +64,9 @@ border_color = Color( 0.854902, 0.423529, 0.384314, 1 )
 margin_right = 990.0
 margin_bottom = 571.0
 script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
