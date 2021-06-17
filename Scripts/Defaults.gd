@@ -6,9 +6,15 @@ const MONTHS : Array = ["January", "February", "March", "April", "May", "June", 
 const NOTES_SAVE_PATH : String = "user://Notes/"
 const TIMETRACKS_SAVE_PATH : String = "user://TimeTracks/"
 const TIMETRACKS_SAVE_NAME : String = "TimeTrackResource.tres"
+const TODOS_SAVE_PATH : String = "user://Todos/"
+const TODOS_SAVE_NAME : String = "Todos.tres"
 
 export(Color) var btn_active_colour : Color
 export(Color) var btn_inactive_colour : Color
+
+export(Color) var custom_check_box_active : Color
+export(Color) var custom_check_box_inactive : Color
+
 
 var views : Array
 
@@ -40,6 +46,21 @@ func check_folders() -> void:
 		print("TimeTracking resource missing, creating it now!")
 		var resource : TimeTrackResource = TimeTrackResource.new()
 		var err : int = ResourceSaver.save(TIMETRACKS_SAVE_PATH + TIMETRACKS_SAVE_NAME, resource)
+
+
+	if dir.dir_exists(TODOS_SAVE_PATH):
+		print("todo directory exists!")
+	else:
+		print("todo directory is missing, creating it now")
+		dir.make_dir(TODOS_SAVE_PATH)
+
+
+	if dir.file_exists(TODOS_SAVE_PATH + TODOS_SAVE_NAME):
+		print("Todo resource exists!")
+	else:
+		print("Todo resource missing, creating it now!")
+		var resource : ToDoResource = ToDoResource.new()
+		var err : int = ResourceSaver.save(TODOS_SAVE_PATH + TODOS_SAVE_NAME, resource)
 
 
 func quit() -> void:
@@ -101,6 +122,12 @@ func save_note_resource(note : NoteResource) -> int:
 	var err : int = ResourceSaver.save(NOTES_SAVE_PATH + note.save_name + ".tres", note)
 	return err
 
+
 func save_timetrack_resource(tt : TimeTrackResource) -> int:
 	var err : int = ResourceSaver.save(TIMETRACKS_SAVE_PATH + TIMETRACKS_SAVE_NAME, tt)
+	return err
+	
+	
+func save_todo_resource(td : ToDoResource) -> int:
+	var err : int = ResourceSaver.save(TODOS_SAVE_PATH + TODOS_SAVE_NAME, td)
 	return err

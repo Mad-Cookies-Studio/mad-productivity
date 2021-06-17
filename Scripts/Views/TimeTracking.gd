@@ -39,6 +39,7 @@ func create_track_visual(_name : String, _date : Dictionary, _time : int, _id : 
 	var time = get_hours_minutes_seconds(_time)
 	new.connect("delete_pressed", self, "_on_delete_pressed")
 	new.connect("time_track_item", self, "_time_track_item_pressed")
+	new.connect("new_tracked_item_text", self, "_on_new_time_track_item_text")
 	
 	new.fill_details(Defaults.get_date_with_time_string(_date), (time[2] + ":" + time[1] + ":" + time[0]), _name)
 
@@ -69,7 +70,7 @@ func get_hours_minutes_seconds(_time : int) -> Array:
 	seconds = ("%02d" % int(seconds))
 	var temp_minutes : String = ("%02d" % minutes)
 	hours = "%02d" % int(hours)
-	
+
 	return [seconds, temp_minutes, hours]
 	
 	
@@ -102,6 +103,9 @@ func remove_time_track(idx : int) -> void:
 	res.tracks.erase(idx)
 	update_total_time()
 
+
+func update_time_track_item_text(_text : String, _id : int) -> void:
+	res.tracks[_id].name = _text
 
 func _on_TrackButton_toggled(button_pressed: bool) -> void:
 	if cancel:
@@ -162,3 +166,7 @@ func _on_delete_pressed(idx : int) -> void:
 	
 func _time_track_item_pressed(_name : String) -> void:
 	start_time_tracking_custom(_name)
+
+
+func _on_new_time_track_item_text(_text : String, _idx : int) -> void:
+	update_time_track_item_text(_text, _idx)

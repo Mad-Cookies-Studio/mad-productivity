@@ -1,16 +1,17 @@
 extends ColorRect
 
+signal new_tracked_item_text(new_text, id)
 signal delete_pressed(idx)
 signal time_track_item(_name)
 
 var id : int
+
 
 func fill_details(date : String, time : String, _name : String) -> void:
 	$H/Date.text = date
 	$H/TrackedTime.text = time
 	$H/ProjectName.text = _name
 	
-
 
 func show_up() -> void:
 	$H/Delete.hide()
@@ -43,3 +44,7 @@ func _on_Delete_button_up() -> void:
 
 func _on_TimeTrack_button_up() -> void:
 	emit_signal("time_track_item", $H/ProjectName.text)
+
+
+func _on_ProjectName_text_changed(new_text: String) -> void:
+	emit_signal("new_tracked_item_text", new_text, id)

@@ -1,0 +1,269 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Assets/Fonts/Righteous50.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/Themes/Roboto12Clean.tres" type="Theme" id=2]
+[ext_resource path="res://Assets/Fonts/Righteous-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Scripts/Views/ToDo.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/Views/Todos/TODOitem.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Views/Todos/CustomCheckBox.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Buttons/Cross.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Buttons/TimeTrackBtnWhite.png" type="Texture" id=8]
+
+[sub_resource type="DynamicFont" id=6]
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="Theme" id=7]
+default_font = SubResource( 6 )
+Button/colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_hover = Color( 1, 1, 1, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = null
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = null
+Button/styles/normal = null
+Button/styles/pressed = null
+
+[sub_resource type="StyleBoxFlat" id=17]
+bg_color = Color( 0.94902, 0.67451, 0.65098, 1 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.0588235, 0.105882, 0.109804, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.854902, 0.423529, 0.384314, 1 )
+
+[sub_resource type="StyleBoxFlat" id=16]
+bg_color = Color( 0.0588235, 0.105882, 0.109804, 1 )
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.854902, 0.423529, 0.384314, 1 )
+
+[sub_resource type="StyleBoxFlat" id=15]
+content_margin_left = 11.0
+draw_center = false
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.854902, 0.423529, 0.384314, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=12]
+
+[sub_resource type="StyleBoxEmpty" id=13]
+
+[sub_resource type="StyleBoxEmpty" id=14]
+
+[node name="ToDo" type="Control"]
+margin_right = 990.0
+margin_bottom = 571.0
+script = ExtResource( 4 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+margin_right = 990.0
+margin_bottom = 63.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
+text = "TODO"
+valign = 1
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+visible = false
+margin_top = 63.0
+margin_right = 990.0
+margin_bottom = 76.867
+rect_min_size = Vector2( 0, 13.867 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 63.0
+margin_right = 990.0
+margin_bottom = 571.0
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TODO" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+margin_right = 990.0
+margin_bottom = 508.0
+size_flags_horizontal = 3
+custom_constants/separation = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/TODO"]
+margin_right = 990.0
+margin_bottom = 35.0
+custom_constants/separation = 0
+
+[node name="NewTask" type="Button" parent="VBoxContainer/HBoxContainer/TODO/HBoxContainer"]
+margin_right = 55.18
+margin_bottom = 35.0
+rect_min_size = Vector2( 55.18, 35 )
+theme = SubResource( 7 )
+custom_styles/hover = SubResource( 17 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 10 )
+custom_styles/normal = SubResource( 8 )
+custom_colors/font_color = Color( 0.0588235, 0.105882, 0.109804, 1 )
+custom_colors/font_color_hover = Color( 0.0588235, 0.105882, 0.109804, 1 )
+text = "ADD"
+
+[node name="NewTaskName" type="LineEdit" parent="VBoxContainer/HBoxContainer/TODO/HBoxContainer"]
+margin_left = 55.0
+margin_right = 990.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 3
+custom_styles/focus = SubResource( 16 )
+custom_styles/normal = SubResource( 15 )
+expand_to_text_length = true
+clear_button_enabled = true
+placeholder_text = "Task name"
+
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer/TODO"]
+margin_top = 38.0
+margin_right = 990.0
+margin_bottom = 73.0
+rect_min_size = Vector2( 0, 35 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer/TODO"]
+margin_top = 76.0
+margin_right = 990.0
+margin_bottom = 508.0
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/TODO/ScrollContainer"]
+margin_right = 980.0
+margin_bottom = 432.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TODOitem" type="ColorRect" parent="VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer"]
+margin_right = 980.0
+margin_bottom = 37.5
+rect_min_size = Vector2( 0, 37.5 )
+rect_pivot_offset = Vector2( -261.834, -35 )
+color = Color( 0.0862745, 0.152941, 0.160784, 1 )
+script = ExtResource( 5 )
+
+[node name="DeleteBtn" type="TextureButton" parent="VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem"]
+modulate = Color( 0.854902, 0.423529, 0.384314, 1 )
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -30.0
+margin_top = -19.75
+margin_right = -8.0
+margin_bottom = 20.25
+rect_min_size = Vector2( 20, 0 )
+rect_pivot_offset = Vector2( 10, 20 )
+mouse_filter = 1
+texture_normal = ExtResource( 7 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -57.0
+margin_bottom = 0.5
+mouse_filter = 2
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckBox" type="ColorRect" parent="VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem/HBoxContainer"]
+margin_right = 38.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 38, 0 )
+mouse_filter = 1
+color = Color( 0.0588235, 0.105882, 0.109804, 1 )
+script = ExtResource( 6 )
+
+[node name="CheckBox2" type="ColorRect" parent="VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem/HBoxContainer/CheckBox"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_top = 7.0
+margin_right = -6.0
+margin_bottom = -6.0
+mouse_filter = 1
+color = Color( 0.109804, 0.784314, 0.419608, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimeTrack" type="TextureButton" parent="VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem/HBoxContainer"]
+modulate = Color( 0.976563, 0.654856, 0.137329, 1 )
+margin_left = 48.0
+margin_right = 67.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 19, 0 )
+rect_pivot_offset = Vector2( 9.5, 9.5 )
+hint_tooltip = "Time track again"
+mouse_filter = 1
+size_flags_horizontal = 9
+texture_normal = ExtResource( 8 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Task" type="LineEdit" parent="VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem/HBoxContainer"]
+margin_left = 77.0
+margin_right = 125.0
+margin_bottom = 38.0
+mouse_filter = 1
+custom_styles/read_only = SubResource( 12 )
+custom_styles/focus = SubResource( 13 )
+custom_styles/normal = SubResource( 14 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+text = "Task"
+expand_to_text_length = true
+
+[node name="Date" type="Label" parent="VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem/HBoxContainer"]
+margin_left = 135.0
+margin_top = 9.0
+margin_right = 269.0
+margin_bottom = 28.0
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.439216 )
+text = "21/5/2021 8:45:32"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer"]
+visible = false
+margin_left = 990.0
+margin_right = 990.0
+margin_bottom = 472.0
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/TODO/HBoxContainer/NewTask" to="." method="_on_NewTask_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem" to="VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem" method="_on_TODOitem_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem" to="VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem" method="_on_TODOitem_mouse_exited"]
+[connection signal="button_up" from="VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem/DeleteBtn" to="VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem" method="_on_DeleteBtn_button_up"]
+[connection signal="gui_input" from="VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem/HBoxContainer/CheckBox" to="VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem/HBoxContainer/CheckBox" method="_on_CheckBox_gui_input"]
+[connection signal="set_done" from="VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem/HBoxContainer/CheckBox" to="VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem" method="_on_CheckBox_set_done"]
+[connection signal="button_up" from="VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem/HBoxContainer/TimeTrack" to="VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem" method="_on_TimeTrack_button_up"]
+[connection signal="text_changed" from="VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem/HBoxContainer/Task" to="VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem" method="_on_Task_text_changed"]
