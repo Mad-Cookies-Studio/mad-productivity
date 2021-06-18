@@ -44,6 +44,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Assets/Resources/ToDoResource.gd"
 }, {
+"base": "Resource",
+"class": "WelcomeNoteResource",
+"language": "GDScript",
+"path": "res://Assets/Resources/WelcomeMessages.gd"
+}, {
 "base": "Reference",
 "class": "WindowRestrictor",
 "language": "GDScript",
@@ -57,6 +62,7 @@ _global_script_class_icons={
 "SettingsResource": "",
 "TimeTrackResource": "",
 "ToDoResource": "",
+"WelcomeNoteResource": "",
 "WindowRestrictor": ""
 }
 

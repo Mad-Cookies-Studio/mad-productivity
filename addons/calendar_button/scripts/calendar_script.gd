@@ -3,7 +3,7 @@ extends TextureButton
 
 signal date_selected(date_obj)
 
-var calendar : Node = load("res://addons/calendar_button/class/Calendar.gd").new()
+var calendar : Node = load("res://addons/calendar_button/class/calendar.gd").new()
 var selected_date := Date.new()
 var window_restrictor := WindowRestrictor.new()
 

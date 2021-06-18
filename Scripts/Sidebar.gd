@@ -29,6 +29,13 @@ func manual_view_toggle(which : int) -> void:
 # which passes the specific node
 # idx send the id of the child. Can be used for toggling Views
 func on_toggled_menu_btn(which : TextureButton, idx : int) -> void:
+	if idx == 6:
+		print("going to a random view")
+		var rand : = randi() % $Buttons.get_child_count()
+		if rand == get_parent().get_parent().active_view:
+			rand += 1
+		$Buttons.get_child(rand).pressed = true
+		return
 	if which != active_btn and active_btn != null:
 		active_btn.deactivate()
 	

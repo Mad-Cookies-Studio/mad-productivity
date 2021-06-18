@@ -97,7 +97,6 @@ Button/styles/normal = SubResource( 13 )
 Button/styles/pressed = SubResource( 14 )
 
 [node name="popup" type="Popup"]
-visible = true
 theme = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false

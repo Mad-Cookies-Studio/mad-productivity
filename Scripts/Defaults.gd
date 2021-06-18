@@ -27,6 +27,7 @@ var time_tracked : String = ""
 var item_tracked : String = ""
 
 func _ready() -> void:
+	randomize()
 	check_folders()
 	
 	
