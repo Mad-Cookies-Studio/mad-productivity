@@ -23,11 +23,13 @@ func _on_TopArea_gui_input(event: InputEvent) -> void:
 			orig_position = get_viewport().get_mouse_position() - OS.window_position
 			drag_amount = get_viewport().get_mouse_position()
 			print(get_global_mouse_position())
+			Input.set_mouse_mode(2)
 
 			set_process_input(true)
 		else:
 			dragging = false
 			set_process_input(false)
+			Input.set_mouse_mode(0)
 
 
 func _on_Minimuze_pressed() -> void:
