@@ -4,15 +4,19 @@ var res: ToDoResource
 
 var tasks_array : Array = []
 
+var active : bool = false
+
 func _ready() -> void:
 	res = load(Defaults.TODOS_SAVE_PATH + Defaults.TODOS_SAVE_NAME)
 	load_tasks()
 
 func entering_view() -> void:
+	active = true
 	set_process_input(true)
 	
 	
 func leaving_view() -> void:
+	active = false
 	set_process_input(false)
 	
 	
@@ -21,7 +25,7 @@ func save() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept"):
+	if event.is_action_pressed("ui_accept") and active:
 		add_new_task_to_resource($VBoxContainer/HBoxContainer/TODO/HBoxContainer/NewTaskName.text, false, OS.get_datetime(), {})
 		$VBoxContainer/HBoxContainer/TODO/HBoxContainer/NewTaskName.text = ""
 
