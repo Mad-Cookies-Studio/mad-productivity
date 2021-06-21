@@ -104,7 +104,7 @@ func get_date_and_time_with_underscores(_custom : Dictionary) -> String:
 
 
 func get_time_with_semicoloumns(_custom : Dictionary) -> String:
-	var date : Dictionary = OS.get_datetime()
+	var date : Dictionary = OS.get_time()
 	if _custom.size() > 0:
 		date = _custom
 	var hour : String = str(date.hour)
@@ -138,4 +138,9 @@ func save_timetrack_resource(tt : TimeTrackResource) -> int:
 	
 func save_todo_resource(td : ToDoResource) -> int:
 	var err : int = ResourceSaver.save(TODOS_SAVE_PATH + TODOS_SAVE_NAME, td)
+	return err
+
+
+func save_reminders_resource(rr : ReminderResource) -> int:
+	var err : int = ResourceSaver.save(REMINDERS_SAVE_PATH + REMINDERS_SAVE_NAME, rr)
 	return err
