@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://Assets/Icons/MD_concept.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Icons/NoteTaking.png" type="Texture" id=2]
@@ -12,7 +12,7 @@
 [ext_resource path="res://Scripts/TopArea.gd" type="Script" id=10]
 [ext_resource path="res://Scripts/CustomTransparentButton.gd" type="Script" id=11]
 [ext_resource path="res://Assets/Views/Dashboard.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Assets/Fonts/Righteous-Regular.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://Assets/Views/Reminders.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Assets/Views/TimeTracking.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=15]
 [ext_resource path="res://Scripts/Views.gd" type="Script" id=16]
@@ -24,20 +24,11 @@
 [ext_resource path="res://Assets/Views/ToDo.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Assets/Fonts/Righteous20.tres" type="DynamicFont" id=23]
 [ext_resource path="res://Assets/Buttons/cancelBtn_hover.png" type="Texture" id=24]
-[ext_resource path="res://Scripts/Views/Reminders.gd" type="Script" id=25]
-[ext_resource path="res://addons/calendar_button/scripts/calendar_script.gd" type="Script" id=26]
 [ext_resource path="res://Scripts/Views/Profile.gd" type="Script" id=27]
 [ext_resource path="res://Assets/Buttons/PauseBtn.png" type="Texture" id=28]
 [ext_resource path="res://Assets/Buttons/cancelBtn.png" type="Texture" id=29]
 [ext_resource path="res://Assets/Buttons/PauseBtn_hover.png" type="Texture" id=30]
-[ext_resource path="res://Assets/Themes/LineEditCool.tres" type="Theme" id=31]
-[ext_resource path="res://Assets/Buttons/CalendarHover.png" type="Texture" id=32]
-[ext_resource path="res://Assets/Buttons/Calendar.png" type="Texture" id=33]
-[ext_resource path="res://Scripts/Views/Reminder/NewReminderContainer.gd" type="Script" id=34]
 [ext_resource path="res://Assets/Icons/Random.png" type="Texture" id=35]
-[ext_resource path="res://Assets/Buttons/link_hover.png" type="Texture" id=36]
-[ext_resource path="res://Scripts/Views/Reminders/ReminderItem.gd" type="Script" id=37]
-[ext_resource path="res://Assets/Buttons/link_idle.png" type="Texture" id=39]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.0745098, 0.133333, 0.141176, 1 )
@@ -55,80 +46,15 @@ colors = PoolColorArray( 0.854902, 0.423529, 0.384314, 0, 0.854902, 0.423529, 0.
 
 [sub_resource type="StyleBoxEmpty" id=17]
 
-[sub_resource type="StyleBoxFlat" id=19]
-bg_color = Color( 0.0745098, 0.133333, 0.141176, 1 )
-draw_center = false
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color( 0.576471, 0.627451, 0.631373, 0.101961 )
-
-[sub_resource type="StyleBoxFlat" id=20]
-bg_color = Color( 0.0745098, 0.133333, 0.141176, 1 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 0.137255, 0.301961, 0.305882, 1 )
-expand_margin_left = 1.0
-expand_margin_right = 1.0
-expand_margin_bottom = 1.0
-
-[sub_resource type="StyleBoxEmpty" id=13]
-content_margin_left = 10.0
-
-[sub_resource type="StyleBoxFlat" id=14]
-content_margin_left = 10.0
-bg_color = Color( 0.0588235, 0.105882, 0.109804, 1 )
-
-[sub_resource type="Theme" id=15]
-default_font = ExtResource( 23 )
-LineEdit/colors/clear_button_color = Color( 0.88, 0.88, 0.88, 1 )
-LineEdit/colors/clear_button_color_pressed = Color( 1, 1, 1, 1 )
-LineEdit/colors/cursor_color = Color( 0.94, 0.94, 0.94, 1 )
-LineEdit/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
-LineEdit/colors/font_color_selected = Color( 0, 0, 0, 1 )
-LineEdit/colors/font_color_uneditable = Color( 0.88, 0.88, 0.88, 0.5 )
-LineEdit/colors/selection_color = Color( 0.49, 0.49, 0.49, 1 )
-LineEdit/constants/minimum_spaces = 12
-LineEdit/fonts/font = null
-LineEdit/icons/clear = null
-LineEdit/styles/focus = SubResource( 13 )
-LineEdit/styles/normal = SubResource( 14 )
-LineEdit/styles/read_only = SubResource( 14 )
-
-[sub_resource type="DynamicFont" id=7]
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 13 )
-
-[sub_resource type="Theme" id=8]
-default_font = SubResource( 7 )
-Button/colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
-Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
-Button/colors/font_color_hover = Color( 1, 1, 1, 1 )
-Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
-Button/constants/hseparation = 2
-Button/fonts/font = null
-Button/styles/disabled = null
-Button/styles/focus = null
-Button/styles/hover = null
-Button/styles/normal = null
-Button/styles/pressed = null
-
-[sub_resource type="StyleBoxFlat" id=9]
-bg_color = Color( 0.94902, 0.67451, 0.65098, 1 )
-
-[sub_resource type="StyleBoxFlat" id=10]
-bg_color = Color( 0.0588235, 0.105882, 0.109804, 1 )
-
-[sub_resource type="StyleBoxEmpty" id=11]
-
-[sub_resource type="StyleBoxFlat" id=12]
-bg_color = Color( 0.854902, 0.423529, 0.384314, 1 )
-
 [sub_resource type="StyleBoxEmpty" id=18]
+
+[sub_resource type="StyleBoxEmpty" id=19]
+
+[sub_resource type="StyleBoxEmpty" id=20]
+
+[sub_resource type="StyleBoxEmpty" id=21]
+
+[sub_resource type="StyleBoxEmpty" id=22]
 
 [sub_resource type="StyleBoxFlat" id=16]
 bg_color = Color( 0.0862745, 0.152941, 0.160784, 1 )
@@ -440,390 +366,8 @@ visible = false
 [node name="TimeTracking" parent="MainWorkspace/Views" instance=ExtResource( 14 )]
 visible = false
 
-[node name="Reminders" type="Control" parent="MainWorkspace/Views"]
-margin_right = 990.0
-margin_bottom = 571.0
-script = ExtResource( 25 )
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MainWorkspace/Views/Reminders"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Title" type="Label" parent="MainWorkspace/Views/Reminders/VBoxContainer"]
-margin_right = 990.0
-margin_bottom = 63.0
-custom_fonts/font = ExtResource( 20 )
-custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
-text = "REMINDERS"
-
-[node name="Titles" type="HBoxContainer" parent="MainWorkspace/Views/Reminders/VBoxContainer"]
-margin_top = 67.0
-margin_right = 990.0
-margin_bottom = 93.0
-custom_constants/separation = 20
-alignment = 2
-
-[node name="Label" type="Label" parent="MainWorkspace/Views/Reminders/VBoxContainer/Titles"]
-margin_right = 485.0
-margin_bottom = 26.0
-rect_min_size = Vector2( 300, 0 )
-size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 23 )
-custom_colors/font_color = Color( 0.137255, 0.301961, 0.305882, 1 )
-text = "Active"
-
-[node name="Label2" type="Label" parent="MainWorkspace/Views/Reminders/VBoxContainer/Titles"]
-margin_left = 505.0
-margin_right = 990.0
-margin_bottom = 26.0
-rect_min_size = Vector2( 300, 0 )
-size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 23 )
-custom_colors/font_color = Color( 0.137255, 0.301961, 0.305882, 1 )
-text = "Archive"
-align = 2
-
-[node name="Panel" type="HBoxContainer" parent="MainWorkspace/Views/Reminders/VBoxContainer"]
-margin_top = 97.0
-margin_right = 990.0
-margin_bottom = 571.0
-size_flags_vertical = 3
-theme = ExtResource( 21 )
-custom_constants/separation = 20
-
-[node name="Active" type="Panel" parent="MainWorkspace/Views/Reminders/VBoxContainer/Panel"]
-margin_right = 300.0
-margin_bottom = 474.0
-size_flags_horizontal = 3
-theme = ExtResource( 21 )
-custom_styles/panel = SubResource( 17 )
-
-[node name="Scroll" type="ScrollContainer" parent="MainWorkspace/Views/Reminders/VBoxContainer/Panel/Active"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MainWorkspace/Views/Reminders/VBoxContainer/Panel/Active/Scroll"]
-margin_right = 290.0
-margin_bottom = 474.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/separation = -1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ReminderItem" type="ColorRect" parent="MainWorkspace/Views/Reminders/VBoxContainer/Panel/Active/Scroll/VBoxContainer"]
+[node name="Reminders" parent="MainWorkspace/Views" instance=ExtResource( 13 )]
 visible = false
-margin_right = 290.0
-margin_bottom = 105.0
-rect_min_size = Vector2( 0, 105 )
-color = Color( 0.0862745, 0.152941, 0.160784, 0 )
-script = ExtResource( 37 )
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MainWorkspace/Views/Reminders/VBoxContainer/Panel/Active/Scroll/VBoxContainer/ReminderItem"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 8.0
-margin_right = -8.0
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Message" type="LineEdit" parent="MainWorkspace/Views/Reminders/VBoxContainer/Panel/Active/Scroll/VBoxContainer/ReminderItem/VBoxContainer"]
-margin_top = 3.0
-margin_right = 274.0
-margin_bottom = 38.0
-rect_min_size = Vector2( 0, 35 )
-mouse_filter = 1
-placeholder_text = "Message"
-
-[node name="Link" type="LineEdit" parent="MainWorkspace/Views/Reminders/VBoxContainer/Panel/Active/Scroll/VBoxContainer/ReminderItem/VBoxContainer"]
-margin_top = 42.0
-margin_right = 274.0
-margin_bottom = 77.0
-rect_min_size = Vector2( 0, 35 )
-mouse_filter = 1
-custom_colors/font_color = Color( 0.854902, 0.760784, 0.384314, 1 )
-placeholder_text = "Link"
-
-[node name="Date" type="Label" parent="MainWorkspace/Views/Reminders/VBoxContainer/Panel/Active/Scroll/VBoxContainer/ReminderItem/VBoxContainer"]
-margin_top = 81.0
-margin_right = 274.0
-margin_bottom = 101.0
-rect_min_size = Vector2( 0, 20 )
-custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.333333 )
-text = "DATE"
-align = 2
-
-[node name="ColorRect" type="ColorRect" parent="MainWorkspace/Views/Reminders/VBoxContainer/Panel/Active/Scroll/VBoxContainer/ReminderItem"]
-anchor_bottom = 1.0
-color = Color( 0.854902, 0.423529, 0.384314, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Tween" type="Tween" parent="MainWorkspace/Views/Reminders/VBoxContainer/Panel/Active/Scroll/VBoxContainer/ReminderItem"]
-
-[node name="Panel" type="Panel" parent="MainWorkspace/Views/Reminders/VBoxContainer/Panel/Active/Scroll/VBoxContainer/ReminderItem"]
-show_behind_parent = true
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-custom_styles/panel = SubResource( 19 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="NewReminderContainer" type="Control" parent="MainWorkspace/Views/Reminders/VBoxContainer/Panel"]
-margin_left = 320.0
-margin_right = 670.0
-margin_bottom = 474.0
-rect_min_size = Vector2( 350, 0 )
-size_flags_horizontal = 3
-script = ExtResource( 34 )
-
-[node name="Panel" type="Panel" parent="MainWorkspace/Views/Reminders/VBoxContainer/Panel/NewReminderContainer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 9.0
-margin_right = -9.0
-custom_styles/panel = SubResource( 20 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="MainWorkspace/Views/Reminders/VBoxContainer/Panel/NewReminderContainer"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -174.0
-margin_top = -155.681
-margin_right = 175.0
-margin_bottom = 49.3188
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CalendarButton" type="TextureButton" parent="MainWorkspace/Views/Reminders/VBoxContainer/Panel/NewReminderContainer/VBoxContainer2"]
-margin_right = 349.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 40, 30 )
-toggle_mode = true
-texture_normal = ExtResource( 33 )
-texture_pressed = ExtResource( 32 )
-texture_hover = ExtResource( 32 )
-expand = true
-stretch_mode = 5
-script = ExtResource( 26 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="DateLabel" type="Label" parent="MainWorkspace/Views/Reminders/VBoxContainer/Panel/NewReminderContainer/VBoxContainer2"]
-margin_top = 34.0
-margin_right = 349.0
-margin_bottom = 97.0
-custom_fonts/font = ExtResource( 20 )
-custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
-text = "07/05/2021"
-align = 1
-
-[node name="Control" type="Control" parent="MainWorkspace/Views/Reminders/VBoxContainer/Panel/NewReminderContainer/VBoxContainer2"]
-margin_top = 101.0
-margin_right = 349.0
-margin_bottom = 141.0
-rect_min_size = Vector2( 0, 40 )
-
-[node name="Label3" type="Label" parent="MainWorkspace/Views/Reminders/VBoxContainer/Panel/NewReminderContainer/VBoxContainer2"]
-margin_top = 145.0
-margin_right = 349.0
-margin_bottom = 171.0
-rect_min_size = Vector2( 64.176, 0 )
-size_flags_vertical = 1
-custom_fonts/font = ExtResource( 23 )
-custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
-text = "TIME"
-align = 1
-valign = 1
-
-[node name="Control2" type="Control" parent="MainWorkspace/Views/Reminders/VBoxContainer/Panel/NewReminderContainer/VBoxContainer2"]
-margin_top = 175.0
-margin_right = 349.0
-margin_bottom = 185.0
-rect_min_size = Vector2( 0, 10 )
-
-[node name="CalendarContainer" type="HBoxContainer" parent="MainWorkspace/Views/Reminders/VBoxContainer/Panel/NewReminderContainer/VBoxContainer2"]
-margin_top = 189.0
-margin_right = 349.0
-margin_bottom = 249.0
-rect_min_size = Vector2( 0, 60 )
-theme = SubResource( 15 )
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Hour" type="LineEdit" parent="MainWorkspace/Views/Reminders/VBoxContainer/Panel/NewReminderContainer/VBoxContainer2/CalendarContainer"]
-margin_left = 86.0
-margin_right = 168.0
-margin_bottom = 60.0
-text = "23"
-align = 1
-max_length = 2
-context_menu_enabled = false
-placeholder_text = "23"
-
-[node name="Label2" type="Label" parent="MainWorkspace/Views/Reminders/VBoxContainer/Panel/NewReminderContainer/VBoxContainer2/CalendarContainer"]
-margin_left = 172.0
-margin_right = 177.0
-margin_bottom = 60.0
-size_flags_vertical = 1
-custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
-text = ":"
-valign = 1
-
-[node name="Minute" type="LineEdit" parent="MainWorkspace/Views/Reminders/VBoxContainer/Panel/NewReminderContainer/VBoxContainer2/CalendarContainer"]
-margin_left = 181.0
-margin_right = 263.0
-margin_bottom = 60.0
-text = "59"
-align = 1
-max_length = 2
-context_menu_enabled = false
-placeholder_text = "59"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MainWorkspace/Views/Reminders/VBoxContainer/Panel/NewReminderContainer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 9.0
-margin_top = 286.0
-margin_right = -9.0
-theme = ExtResource( 31 )
-alignment = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Message" type="LineEdit" parent="MainWorkspace/Views/Reminders/VBoxContainer/Panel/NewReminderContainer/VBoxContainer"]
-margin_top = 85.0
-margin_right = 332.0
-margin_bottom = 115.0
-rect_min_size = Vector2( 0, 30 )
-theme = ExtResource( 31 )
-placeholder_text = "Message"
-
-[node name="Link" type="LineEdit" parent="MainWorkspace/Views/Reminders/VBoxContainer/Panel/NewReminderContainer/VBoxContainer"]
-margin_top = 119.0
-margin_right = 332.0
-margin_bottom = 149.0
-rect_min_size = Vector2( 0, 30 )
-theme = ExtResource( 31 )
-placeholder_text = "Link"
-
-[node name="LinkBtn" type="TextureButton" parent="MainWorkspace/Views/Reminders/VBoxContainer/Panel/NewReminderContainer/VBoxContainer/Link"]
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -27.0
-margin_right = -4.0
-rect_min_size = Vector2( 0, 26 )
-texture_normal = ExtResource( 39 )
-texture_hover = ExtResource( 36 )
-expand = true
-stretch_mode = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="NewReminder" type="Button" parent="MainWorkspace/Views/Reminders/VBoxContainer/Panel/NewReminderContainer/VBoxContainer"]
-margin_top = 153.0
-margin_right = 332.0
-margin_bottom = 188.0
-rect_min_size = Vector2( 55.18, 35 )
-theme = SubResource( 8 )
-custom_styles/hover = SubResource( 9 )
-custom_styles/pressed = SubResource( 10 )
-custom_styles/focus = SubResource( 11 )
-custom_styles/normal = SubResource( 12 )
-custom_colors/font_color = Color( 0.0588235, 0.105882, 0.109804, 1 )
-custom_colors/font_color_hover = Color( 0.0588235, 0.105882, 0.109804, 1 )
-text = "ADD"
-
-[node name="Tween" type="Tween" parent="MainWorkspace/Views/Reminders/VBoxContainer/Panel/NewReminderContainer"]
-
-[node name="Archive" type="Panel" parent="MainWorkspace/Views/Reminders/VBoxContainer/Panel"]
-margin_left = 690.0
-margin_right = 990.0
-margin_bottom = 474.0
-size_flags_horizontal = 3
-custom_styles/panel = SubResource( 18 )
-
-[node name="Scroll" type="ScrollContainer" parent="MainWorkspace/Views/Reminders/VBoxContainer/Panel/Archive"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MainWorkspace/Views/Reminders/VBoxContainer/Panel/Archive/Scroll"]
-margin_right = 290.0
-margin_bottom = 474.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/separation = -1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ContextOptions" type="VBoxContainer" parent="MainWorkspace/Views/Reminders"]
-modulate = Color( 1, 1, 1, 0 )
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -13.7198
-margin_top = -398.359
-margin_right = 12.2802
-margin_bottom = -346.359
-rect_pivot_offset = Vector2( 13, 26 )
-custom_constants/separation = 0
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="DeleteBtn" type="TextureButton" parent="MainWorkspace/Views/Reminders/ContextOptions"]
-margin_right = 26.0
-margin_bottom = 26.0
-rect_min_size = Vector2( 26, 26 )
-texture_normal = ExtResource( 24 )
-texture_hover = ExtResource( 29 )
-expand = true
-stretch_mode = 5
-
-[node name="LinkBtn" type="TextureButton" parent="MainWorkspace/Views/Reminders/ContextOptions"]
-margin_top = 26.0
-margin_right = 26.0
-margin_bottom = 52.0
-rect_min_size = Vector2( 26, 26 )
-texture_normal = ExtResource( 39 )
-texture_hover = ExtResource( 36 )
-expand = true
-stretch_mode = 5
-
-[node name="Tween" type="Tween" parent="MainWorkspace/Views/Reminders"]
-
-[node name="Timer" type="Timer" parent="MainWorkspace/Views/Reminders"]
-wait_time = 3.0
-autostart = true
 
 [node name="ToDo" parent="MainWorkspace/Views" instance=ExtResource( 22 )]
 visible = false
@@ -837,30 +381,39 @@ script = ExtResource( 27 )
 [node name="VBoxContainer" type="VBoxContainer" parent="MainWorkspace/Views/Profile"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Title" type="Label" parent="MainWorkspace/Views/Profile/VBoxContainer"]
+[node name="UserName" type="LineEdit" parent="MainWorkspace/Views/Profile/VBoxContainer"]
+margin_top = 239.0
 margin_right = 990.0
-margin_bottom = 63.0
+margin_bottom = 302.0
+custom_styles/read_only = SubResource( 17 )
+custom_styles/focus = SubResource( 18 )
+custom_styles/normal = SubResource( 19 )
 custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
 text = "USER NAME"
+align = 1
+caret_blink = true
 
-[node name="Title2" type="Label" parent="MainWorkspace/Views/Profile/VBoxContainer"]
-margin_top = 67.0
+[node name="UserTitle" type="LineEdit" parent="MainWorkspace/Views/Profile/VBoxContainer"]
+margin_top = 306.0
 margin_right = 990.0
-margin_bottom = 93.0
+margin_bottom = 332.0
+custom_styles/read_only = SubResource( 20 )
+custom_styles/focus = SubResource( 21 )
+custom_styles/normal = SubResource( 22 )
 custom_fonts/font = ExtResource( 23 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
 text = "USER TITLE"
-valign = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
+align = 1
+caret_blink = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainWorkspace/Views/Profile/VBoxContainer"]
+visible = false
 margin_top = 97.0
 margin_right = 990.0
 margin_bottom = 571.0
@@ -925,6 +478,32 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ColorRect2" type="ColorRect" parent="MainWorkspace/Views/Profile/VBoxContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.737255 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title3" type="Label" parent="MainWorkspace/Views/Profile/VBoxContainer/Panel/ColorRect2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -251.5
+margin_top = -31.5
+margin_right = 251.5
+margin_bottom = 31.5
+custom_fonts/font = ExtResource( 20 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+text = "TBD"
+align = 1
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Tween2" type="Tween" parent="."]
 
 [connection signal="view_changed" from="MainWorkspace/Sidebar" to="." method="_on_Sidebar_view_changed"]
@@ -932,16 +511,5 @@ __meta__ = {
 [connection signal="pressed" from="MainWorkspace/TopArea/Right/Minimuze" to="MainWorkspace/TopArea" method="_on_Minimuze_pressed"]
 [connection signal="pressed" from="MainWorkspace/TopArea/Right/Exit" to="MainWorkspace/TopArea" method="_on_Exit_pressed"]
 [connection signal="manual_view_toggle" from="MainWorkspace/Views" to="." method="_on_Views_manual_view_toggle"]
-[connection signal="mouse_entered" from="MainWorkspace/Views/Reminders/VBoxContainer/Panel/Active/Scroll/VBoxContainer/ReminderItem" to="MainWorkspace/Views/Reminders/VBoxContainer/Panel/Active/Scroll/VBoxContainer/ReminderItem" method="_on_ReminderItem_mouse_entered"]
-[connection signal="mouse_exited" from="MainWorkspace/Views/Reminders/VBoxContainer/Panel/Active/Scroll/VBoxContainer/ReminderItem" to="MainWorkspace/Views/Reminders/VBoxContainer/Panel/Active/Scroll/VBoxContainer/ReminderItem" method="_on_ReminderItem_mouse_exited"]
-[connection signal="text_changed" from="MainWorkspace/Views/Reminders/VBoxContainer/Panel/Active/Scroll/VBoxContainer/ReminderItem/VBoxContainer/Message" to="MainWorkspace/Views/Reminders/VBoxContainer/Panel/Active/Scroll/VBoxContainer/ReminderItem" method="_on_Message_text_changed"]
-[connection signal="text_changed" from="MainWorkspace/Views/Reminders/VBoxContainer/Panel/Active/Scroll/VBoxContainer/ReminderItem/VBoxContainer/Link" to="MainWorkspace/Views/Reminders/VBoxContainer/Panel/Active/Scroll/VBoxContainer/ReminderItem" method="_on_Link_text_changed"]
-[connection signal="date_selected" from="MainWorkspace/Views/Reminders/VBoxContainer/Panel/NewReminderContainer/VBoxContainer2/CalendarButton" to="MainWorkspace/Views/Reminders/VBoxContainer/Panel/NewReminderContainer" method="_on_CalendarButton_date_selected"]
-[connection signal="text_changed" from="MainWorkspace/Views/Reminders/VBoxContainer/Panel/NewReminderContainer/VBoxContainer2/CalendarContainer/Hour" to="MainWorkspace/Views/Reminders/VBoxContainer/Panel/NewReminderContainer" method="_on_Hour_text_changed"]
-[connection signal="text_changed" from="MainWorkspace/Views/Reminders/VBoxContainer/Panel/NewReminderContainer/VBoxContainer2/CalendarContainer/Minute" to="MainWorkspace/Views/Reminders/VBoxContainer/Panel/NewReminderContainer" method="_on_Minute_text_changed"]
-[connection signal="text_changed" from="MainWorkspace/Views/Reminders/VBoxContainer/Panel/NewReminderContainer/VBoxContainer/Link" to="MainWorkspace/Views/Reminders/VBoxContainer/Panel/NewReminderContainer" method="_on_Link_text_changed"]
-[connection signal="pressed" from="MainWorkspace/Views/Reminders/VBoxContainer/Panel/NewReminderContainer/VBoxContainer/Link/LinkBtn" to="MainWorkspace/Views/Reminders/VBoxContainer/Panel/NewReminderContainer" method="_on_LinkBtn_pressed"]
-[connection signal="pressed" from="MainWorkspace/Views/Reminders/VBoxContainer/Panel/NewReminderContainer/VBoxContainer/NewReminder" to="MainWorkspace/Views/Reminders" method="_on_NewReminder_pressed"]
-[connection signal="pressed" from="MainWorkspace/Views/Reminders/ContextOptions/DeleteBtn" to="MainWorkspace/Views/Reminders" method="_on_DeleteBtn_pressed"]
-[connection signal="pressed" from="MainWorkspace/Views/Reminders/ContextOptions/LinkBtn" to="MainWorkspace/Views/Reminders" method="_on_LinkBtn_pressed"]
-[connection signal="timeout" from="MainWorkspace/Views/Reminders/Timer" to="MainWorkspace/Views/Reminders" method="_on_Timer_timeout"]
+[connection signal="text_changed" from="MainWorkspace/Views/Profile/VBoxContainer/UserName" to="MainWorkspace/Views/Profile" method="_on_UserName_text_changed"]
+[connection signal="text_changed" from="MainWorkspace/Views/Profile/VBoxContainer/UserTitle" to="MainWorkspace/Views/Profile" method="_on_UserTitle_text_changed"]

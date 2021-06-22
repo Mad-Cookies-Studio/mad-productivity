@@ -21,7 +21,8 @@ func set_current_item(new: ColorRect) -> void:
 	# TODO: Implement a tween over here.
 	$Tween.remove_all()
 	var final_destination : Vector2 = new.rect_global_position
-	final_destination.x += new.rect_size.x - 1
+	final_destination.x += new.rect_size.x + 7
+#	final_destination.y = final_destination.y + ((new.rect_size.y / 2 ) - ($ContextOptions.rect_size.y/2))
 	$Tween.interpolate_property($ContextOptions, "rect_global_position", $ContextOptions.rect_global_position, final_destination, 0.5, Tween.TRANS_EXPO, Tween.EASE_OUT, 0.0)
 	$Tween.interpolate_property($ContextOptions, "modulate:a", 0.0, 1.0, 1.5, Tween.TRANS_EXPO, Tween.EASE_OUT, 0.0)
 	$Tween.start()
@@ -40,6 +41,7 @@ func entering_view() -> void:
 	
 	
 func leaving_view() -> void:
+	move_context_menu_away()
 	active = false
 	
 	
@@ -50,7 +52,14 @@ func save() -> void:
 # -- functions
 
 func add_reminder(_message : String, _link : String, _remind_date : Dictionary, _remind_date_unix : int) -> void:
-	var id : int = res.reminders.size() + 1
+	# set base for the ID
+	var id : int = res.reminders.size() + 1	
+	
+	# make sure the ID isnt being used by ant other reminder
+	while res.reminders.has(id):
+		id += 1
+	
+	# create the reminder object
 	var reminder : = {
 		"message" : _message,
 		"link" : _link,
@@ -58,9 +67,13 @@ func add_reminder(_message : String, _link : String, _remind_date : Dictionary, 
 		"unix_time" : _remind_date_unix,
 		"id" : id
 	}
+	
+	# assign the rmeinder object
 	res.reminders[id] = reminder
 	
+	
 	var new : ColorRect = create_new_reminder_visual(_message, _link, _remind_date, id)
+	
 	
 	if compare_dates_unix(_remind_date_unix, OS.get_unix_time()):
 		active_reminders.append(reminder)
@@ -111,6 +124,10 @@ func populate_arrays() -> void:
 		else:
 			archived_reminders.append(item)
 
+func move_context_menu_away() -> void:
+	$Tween.remove_all()
+	$Tween.interpolate_property($ContextOptions, "rect_position", $ContextOptions.rect_position, Vector2(482, -112.859), 1.0, Tween.TRANS_EXPO, Tween.EASE_OUT, 0.0)
+	$Tween.start()
 
 static func compare_dates_unix(new_date : int, comparing_date : int) -> bool:
 	return new_date > comparing_date
@@ -142,7 +159,17 @@ func _on_item_link_update(text : String, idx : int) -> void:
 	
 
 func _on_NewReminder_pressed() -> void:
-	add_reminder($VBoxContainer/Panel/NewReminderContainer/VBoxContainer/Message.text, $VBoxContainer/Panel/NewReminderContainer/VBoxContainer/Link.text, $VBoxContainer/Panel/NewReminderContainer.get_datetime_dictionary(), $VBoxContainer/Panel/NewReminderContainer.get_unix_time())
+	if $VBoxContainer/Panel/NewReminderContainer/VBoxContainer2/DateLabel.text == "00/00/0000":
+		return
+	add_reminder($VBoxContainer/Panel/NewReminderContainer/VBoxContainer/Message.text,
+	$VBoxContainer/Panel/NewReminderContainer/VBoxContainer/Link.text,
+	$VBoxContainer/Panel/NewReminderContainer.get_datetime_dictionary(),
+	$VBoxContainer/Panel/NewReminderContainer.get_unix_time())
+	
+	$VBoxContainer/Panel/NewReminderContainer/VBoxContainer2/CalendarContainer/Hour.text = "00"
+	$VBoxContainer/Panel/NewReminderContainer/VBoxContainer2/CalendarContainer/Minute.text = "00"
+	$VBoxContainer/Panel/NewReminderContainer/VBoxContainer/Message.text = ""
+	$VBoxContainer/Panel/NewReminderContainer/VBoxContainer/Link.text = ""
 	
 func _on_item_hovered_over(item : ColorRect) -> void:
 	set_current_item(item)
@@ -152,6 +179,7 @@ func _on_DeleteBtn_pressed() -> void:
 	if current_item:
 		delete_reminder(current_item.idx)
 		current_item.queue_free()
+		move_context_menu_away()
 
 
 func _on_LinkBtn_pressed() -> void:
@@ -159,14 +187,27 @@ func _on_LinkBtn_pressed() -> void:
 		var link : String = res.reminders[current_item.idx].link
 		if link.begins_with("www.") or link.begins_with("http"):
 			OS.shell_open(link)
+			move_context_menu_away()
 
 
 func _on_Timer_timeout() -> void:
-	if $VBoxContainer/Panel/Active/Scroll/VBoxContainer.get_child(0).idx == 0:
-		$VBoxContainer/Panel/Active/Scroll/VBoxContainer.move_child($VBoxContainer/Panel/Active/Scroll/VBoxContainer.get_child(0), 1)
-	if !compare_dates_unix_from_dict(res.reminders[$VBoxContainer/Panel/Active/Scroll/VBoxContainer.get_child(0).idx].remind_date, OS.get_datetime()):
+	if $VBoxContainer/Panel/Active/Scroll/VBoxContainer.get_children().size() == 1 :
+		print("just one child. the default one. Boring")
+		return
+		
+	var child_id : int = 0
+	if $VBoxContainer/Panel/Active/Scroll/VBoxContainer.get_child(child_id).idx == 0:
+		$VBoxContainer/Panel/Active/Scroll/VBoxContainer.move_child($VBoxContainer/Panel/Active/Scroll/VBoxContainer.get_child(child_id), 1)
+		return
+		
+	if !compare_dates_unix_from_dict(res.reminders[$VBoxContainer/Panel/Active/Scroll/VBoxContainer.get_child(child_id).idx].remind_date, OS.get_datetime()):
+		# send a simple os alert to the user.
+		# TODO: MAKE THIS PRETTY.
+		# Best solution that comes to mind is using the native OS notifications.
 		OS.alert(res.reminders[$VBoxContainer/Panel/Active/Scroll/VBoxContainer.get_child(0).idx].message, "Mad productivity alert.")
+		# Get the item to move
 		var moving_item : ColorRect = $VBoxContainer/Panel/Active/Scroll/VBoxContainer.get_child(0)
+		# Move it over to the archive as it no longer needs to be over here
 		$VBoxContainer/Panel/Active/Scroll/VBoxContainer.remove_child(moving_item)
 		$VBoxContainer/Panel/Archive/Scroll/VBoxContainer.add_child(moving_item)
-		
+		# Shake hands and go home

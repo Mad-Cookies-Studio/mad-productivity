@@ -22,7 +22,7 @@ func _on_TopArea_gui_input(event: InputEvent) -> void:
 #			mouse_drag_beg = get_viewport().get_mouse_position()
 			orig_position = get_viewport().get_mouse_position() - OS.window_position
 			drag_amount = get_viewport().get_mouse_position()
-			print(get_global_mouse_position())
+#			print(get_global_mouse_position())
 			Input.set_mouse_mode(2)
 
 			set_process_input(true)

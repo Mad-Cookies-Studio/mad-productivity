@@ -1,0 +1,433 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://Assets/Fonts/Righteous20.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/Fonts/Righteous50.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Assets/Fonts/Righteous-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Assets/Themes/Roboto12Clean.tres" type="Theme" id=4]
+[ext_resource path="res://Assets/Themes/LineEditCool.tres" type="Theme" id=5]
+[ext_resource path="res://addons/calendar_button/scripts/calendar_script.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Buttons/cancelBtn.png" type="Texture" id=7]
+[ext_resource path="res://Scripts/Views/Reminders.gd" type="Script" id=8]
+[ext_resource path="res://Scripts/Views/Reminder/NewReminderContainer.gd" type="Script" id=9]
+[ext_resource path="res://Assets/Buttons/cancelBtn_hover.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Buttons/link_hover.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Buttons/link_idle.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Buttons/CalendarHover.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Buttons/Calendar.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Views/Reminders/ReminderItem.tscn" type="PackedScene" id=16]
+
+[sub_resource type="StyleBoxEmpty" id=17]
+
+[sub_resource type="StyleBoxFlat" id=20]
+bg_color = Color( 0.0745098, 0.133333, 0.141176, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.137255, 0.301961, 0.305882, 1 )
+expand_margin_left = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxEmpty" id=13]
+content_margin_left = 10.0
+
+[sub_resource type="StyleBoxFlat" id=14]
+content_margin_left = 10.0
+bg_color = Color( 0.0588235, 0.105882, 0.109804, 1 )
+
+[sub_resource type="Theme" id=15]
+default_font = ExtResource( 1 )
+LineEdit/colors/clear_button_color = Color( 0.88, 0.88, 0.88, 1 )
+LineEdit/colors/clear_button_color_pressed = Color( 1, 1, 1, 1 )
+LineEdit/colors/cursor_color = Color( 0.94, 0.94, 0.94, 1 )
+LineEdit/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+LineEdit/colors/font_color_selected = Color( 0, 0, 0, 1 )
+LineEdit/colors/font_color_uneditable = Color( 0.88, 0.88, 0.88, 0.5 )
+LineEdit/colors/selection_color = Color( 0.49, 0.49, 0.49, 1 )
+LineEdit/constants/minimum_spaces = 12
+LineEdit/fonts/font = null
+LineEdit/icons/clear = null
+LineEdit/styles/focus = SubResource( 13 )
+LineEdit/styles/normal = SubResource( 14 )
+LineEdit/styles/read_only = SubResource( 14 )
+
+[sub_resource type="DynamicFont" id=7]
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="Theme" id=8]
+default_font = SubResource( 7 )
+Button/colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_hover = Color( 1, 1, 1, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = null
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = null
+Button/styles/normal = null
+Button/styles/pressed = null
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.94902, 0.67451, 0.65098, 1 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.0588235, 0.105882, 0.109804, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=11]
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.854902, 0.423529, 0.384314, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=18]
+
+[node name="Reminders" type="Control"]
+margin_right = 990.0
+margin_bottom = 571.0
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -192.0 ],
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ 690.327 ]
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+margin_right = 990.0
+margin_bottom = 63.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
+text = "REMINDERS"
+
+[node name="Titles" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 67.0
+margin_right = 990.0
+margin_bottom = 93.0
+custom_constants/separation = 20
+alignment = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Titles"]
+margin_right = 300.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 300, 0 )
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.137255, 0.301961, 0.305882, 1 )
+text = "Active"
+
+[node name="Label2" type="Label" parent="VBoxContainer/Titles"]
+margin_left = 320.0
+margin_right = 670.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 350, 0 )
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.137255, 0.301961, 0.305882, 1 )
+align = 2
+
+[node name="Label3" type="Label" parent="VBoxContainer/Titles"]
+margin_left = 690.0
+margin_right = 990.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 300, 0 )
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.137255, 0.301961, 0.305882, 1 )
+text = "Archive"
+
+[node name="Panel" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 97.0
+margin_right = 990.0
+margin_bottom = 571.0
+size_flags_vertical = 3
+theme = ExtResource( 4 )
+custom_constants/separation = 20
+
+[node name="Active" type="Panel" parent="VBoxContainer/Panel"]
+margin_right = 300.0
+margin_bottom = 474.0
+size_flags_horizontal = 3
+theme = ExtResource( 4 )
+custom_styles/panel = SubResource( 17 )
+
+[node name="Scroll" type="ScrollContainer" parent="VBoxContainer/Panel/Active"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Panel/Active/Scroll"]
+margin_right = 290.0
+margin_bottom = 474.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = -1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReminderItem" parent="VBoxContainer/Panel/Active/Scroll/VBoxContainer" instance=ExtResource( 16 )]
+visible = false
+
+[node name="NewReminderContainer" type="Control" parent="VBoxContainer/Panel"]
+margin_left = 320.0
+margin_right = 670.0
+margin_bottom = 474.0
+rect_min_size = Vector2( 350, 0 )
+size_flags_horizontal = 3
+script = ExtResource( 9 )
+
+[node name="Panel" type="Panel" parent="VBoxContainer/Panel/NewReminderContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 9.0
+margin_right = -9.0
+custom_styles/panel = SubResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/Panel/NewReminderContainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -174.0
+margin_top = -155.681
+margin_right = 175.0
+margin_bottom = 49.3188
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CalendarButton" type="TextureButton" parent="VBoxContainer/Panel/NewReminderContainer/VBoxContainer2"]
+margin_right = 349.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 40, 30 )
+toggle_mode = true
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 14 )
+texture_hover = ExtResource( 14 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DateLabel" type="Label" parent="VBoxContainer/Panel/NewReminderContainer/VBoxContainer2"]
+margin_top = 34.0
+margin_right = 349.0
+margin_bottom = 97.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+text = "00/00/0000"
+align = 1
+
+[node name="Control" type="Control" parent="VBoxContainer/Panel/NewReminderContainer/VBoxContainer2"]
+margin_top = 101.0
+margin_right = 349.0
+margin_bottom = 141.0
+rect_min_size = Vector2( 0, 40 )
+
+[node name="Label3" type="Label" parent="VBoxContainer/Panel/NewReminderContainer/VBoxContainer2"]
+margin_top = 145.0
+margin_right = 349.0
+margin_bottom = 171.0
+rect_min_size = Vector2( 64.176, 0 )
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+text = "TIME"
+align = 1
+valign = 1
+
+[node name="Control2" type="Control" parent="VBoxContainer/Panel/NewReminderContainer/VBoxContainer2"]
+margin_top = 175.0
+margin_right = 349.0
+margin_bottom = 185.0
+rect_min_size = Vector2( 0, 10 )
+
+[node name="CalendarContainer" type="HBoxContainer" parent="VBoxContainer/Panel/NewReminderContainer/VBoxContainer2"]
+margin_top = 189.0
+margin_right = 349.0
+margin_bottom = 249.0
+rect_min_size = Vector2( 0, 60 )
+theme = SubResource( 15 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hour" type="LineEdit" parent="VBoxContainer/Panel/NewReminderContainer/VBoxContainer2/CalendarContainer"]
+margin_left = 86.0
+margin_right = 168.0
+margin_bottom = 60.0
+text = "23"
+align = 1
+max_length = 2
+context_menu_enabled = false
+placeholder_text = "23"
+
+[node name="Label2" type="Label" parent="VBoxContainer/Panel/NewReminderContainer/VBoxContainer2/CalendarContainer"]
+margin_left = 172.0
+margin_right = 177.0
+margin_bottom = 60.0
+size_flags_vertical = 1
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+text = ":"
+valign = 1
+
+[node name="Minute" type="LineEdit" parent="VBoxContainer/Panel/NewReminderContainer/VBoxContainer2/CalendarContainer"]
+margin_left = 181.0
+margin_right = 263.0
+margin_bottom = 60.0
+text = "59"
+align = 1
+max_length = 2
+context_menu_enabled = false
+placeholder_text = "59"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Panel/NewReminderContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 9.0
+margin_top = 371.0
+margin_right = -9.0
+theme = ExtResource( 5 )
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Message" type="LineEdit" parent="VBoxContainer/Panel/NewReminderContainer/VBoxContainer"]
+margin_right = 332.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 0, 30 )
+theme = ExtResource( 5 )
+placeholder_text = "Message"
+
+[node name="Link" type="LineEdit" parent="VBoxContainer/Panel/NewReminderContainer/VBoxContainer"]
+margin_top = 34.0
+margin_right = 332.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 0, 30 )
+theme = ExtResource( 5 )
+placeholder_text = "Link"
+
+[node name="LinkBtn" type="TextureButton" parent="VBoxContainer/Panel/NewReminderContainer/VBoxContainer/Link"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -27.0
+margin_right = -4.0
+rect_min_size = Vector2( 0, 26 )
+texture_normal = ExtResource( 13 )
+texture_hover = ExtResource( 12 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewReminder" type="Button" parent="VBoxContainer/Panel/NewReminderContainer/VBoxContainer"]
+margin_top = 68.0
+margin_right = 332.0
+margin_bottom = 103.0
+rect_min_size = Vector2( 55.18, 35 )
+theme = SubResource( 8 )
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/focus = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
+custom_colors/font_color = Color( 0.0588235, 0.105882, 0.109804, 1 )
+custom_colors/font_color_hover = Color( 0.0588235, 0.105882, 0.109804, 1 )
+text = "ADD"
+
+[node name="Tween" type="Tween" parent="VBoxContainer/Panel/NewReminderContainer"]
+
+[node name="Archive" type="Panel" parent="VBoxContainer/Panel"]
+margin_left = 690.0
+margin_right = 990.0
+margin_bottom = 474.0
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 18 )
+
+[node name="Scroll" type="ScrollContainer" parent="VBoxContainer/Panel/Archive"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Panel/Archive/Scroll"]
+margin_right = 290.0
+margin_bottom = 474.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = -1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ContextOptions" type="VBoxContainer" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -13.7198
+margin_top = -398.359
+margin_right = 12.2802
+margin_bottom = -346.359
+rect_pivot_offset = Vector2( 13, 26 )
+custom_constants/separation = 0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeleteBtn" type="TextureButton" parent="ContextOptions"]
+margin_right = 26.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 26, 26 )
+texture_normal = ExtResource( 11 )
+texture_hover = ExtResource( 7 )
+expand = true
+stretch_mode = 5
+
+[node name="LinkBtn" type="TextureButton" parent="ContextOptions"]
+margin_top = 26.0
+margin_right = 26.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 26, 26 )
+texture_normal = ExtResource( 13 )
+texture_hover = ExtResource( 12 )
+expand = true
+stretch_mode = 5
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="date_selected" from="VBoxContainer/Panel/NewReminderContainer/VBoxContainer2/CalendarButton" to="VBoxContainer/Panel/NewReminderContainer" method="_on_CalendarButton_date_selected"]
+[connection signal="text_changed" from="VBoxContainer/Panel/NewReminderContainer/VBoxContainer2/CalendarContainer/Hour" to="VBoxContainer/Panel/NewReminderContainer" method="_on_Hour_text_changed"]
+[connection signal="text_changed" from="VBoxContainer/Panel/NewReminderContainer/VBoxContainer2/CalendarContainer/Minute" to="VBoxContainer/Panel/NewReminderContainer" method="_on_Minute_text_changed"]
+[connection signal="text_changed" from="VBoxContainer/Panel/NewReminderContainer/VBoxContainer/Link" to="VBoxContainer/Panel/NewReminderContainer" method="_on_Link_text_changed"]
+[connection signal="pressed" from="VBoxContainer/Panel/NewReminderContainer/VBoxContainer/Link/LinkBtn" to="VBoxContainer/Panel/NewReminderContainer" method="_on_LinkBtn_pressed"]
+[connection signal="pressed" from="VBoxContainer/Panel/NewReminderContainer/VBoxContainer/NewReminder" to="." method="_on_NewReminder_pressed"]
+[connection signal="pressed" from="ContextOptions/DeleteBtn" to="." method="_on_DeleteBtn_pressed"]
+[connection signal="pressed" from="ContextOptions/LinkBtn" to="." method="_on_LinkBtn_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

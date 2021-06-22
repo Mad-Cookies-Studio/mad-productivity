@@ -1,0 +1,79 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/Views/Reminders/ReminderItem.gd" type="Script" id=1]
+
+[node name="ReminderItem" type="ColorRect"]
+margin_right = 290.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 80 )
+color = Color( 0.0862745, 0.152941, 0.160784, 0 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_right = -8.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Message" type="LineEdit" parent="VBoxContainer"]
+margin_top = 10.0
+margin_right = 274.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 0, 35 )
+mouse_filter = 1
+placeholder_text = "Message"
+
+[node name="Link" type="LineEdit" parent="VBoxContainer"]
+visible = false
+margin_top = 39.0
+margin_right = 274.0
+margin_bottom = 74.0
+rect_min_size = Vector2( 0, 35 )
+mouse_filter = 1
+custom_colors/font_color = Color( 0.854902, 0.760784, 0.384314, 1 )
+placeholder_text = "Link"
+
+[node name="Date" type="Label" parent="VBoxContainer"]
+margin_top = 49.0
+margin_right = 274.0
+margin_bottom = 69.0
+rect_min_size = Vector2( 0, 20 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.333333 )
+text = "DATE"
+align = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_bottom = 1.0
+color = Color( 0.854902, 0.423529, 0.384314, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Panel" type="ReferenceRect" parent="."]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = 1.0
+margin_right = -1.0
+margin_bottom = -1.0
+mouse_filter = 2
+border_color = Color( 0.576471, 0.627451, 0.631373, 0.101961 )
+editor_only = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="mouse_entered" from="." to="." method="_on_ReminderItem_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_ReminderItem_mouse_exited"]
+[connection signal="text_changed" from="VBoxContainer/Message" to="." method="_on_Message_text_changed"]
+[connection signal="text_changed" from="VBoxContainer/Link" to="." method="_on_Link_text_changed"]

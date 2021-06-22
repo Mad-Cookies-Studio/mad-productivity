@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/Fonts/Roboto12.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/Fonts/Righteous-Regular.ttf" type="DynamicFontData" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Assets/Fonts/Righteous20.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Scripts/WelcomeMessage.gd" type="Script" id=5]
 [ext_resource path="res://Assets/Resources/WelcomeMessages.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Icons/official_logo_white.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Themes/Roboto12Clean.tres" type="Theme" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -26,6 +28,7 @@ messages = PoolStringArray( "A big part of staying productive is knowing when to
 [node name="Dashboard" type="Control"]
 margin_right = 990.0
 margin_bottom = 571.0
+rect_pivot_offset = Vector2( 495, 286 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -325,5 +328,31 @@ __meta__ = {
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="Label" type="Label" parent="."]
+visible = false
+margin_left = 700.21
+margin_top = 531.315
+margin_right = 961.21
+margin_bottom = 550.315
+theme = ExtResource( 8 )
+text = "MADE  BY MAD COOKIES STUDIO"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+margin_left = 767.513
+margin_top = 378.398
+margin_right = 896.513
+margin_bottom = 536.398
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
