@@ -7,8 +7,6 @@ func _ready() -> void:
 	update_time()
 	update_date()
 
-func _on_Timer_timeout() -> void:
-	update_time()
 
 func entering_view() -> void:
 	pass
@@ -20,10 +18,18 @@ func leaving_view() -> void:
 
 func update_time() -> void:
 	$VBoxContainer/Time.text = Defaults.get_time_with_semicoloumns({})
+	#Update the date if we've gone over midnight
 	if OS.get_time().hour < midnight_check.hour:
 		update_date()
 	
 	
-	
 func update_date() -> void:
 	$VBoxContainer/Date.text = Defaults.get_full_date_as_string({})
+
+
+func _on_Timer_timeout() -> void:
+	update_time()
+
+
+func _on_Discord_pressed() -> void:
+	OS.shell_open("https://discord.gg/bWxcZjn")
