@@ -5,6 +5,8 @@ var mouse_drag_beg : Vector2
 var orig_position : Vector2
 var drag_amount : Vector2
 
+var initial_mouse_pos : Vector2
+
 func _ready() -> void:
 	set_process_input(false)
 
@@ -23,6 +25,7 @@ func _on_TopArea_gui_input(event: InputEvent) -> void:
 			orig_position = get_viewport().get_mouse_position() - OS.window_position
 			drag_amount = get_viewport().get_mouse_position()
 #			print(get_global_mouse_position())
+			initial_mouse_pos = get_local_mouse_position()
 			Input.set_mouse_mode(2)
 
 			set_process_input(true)
@@ -30,6 +33,7 @@ func _on_TopArea_gui_input(event: InputEvent) -> void:
 			dragging = false
 			set_process_input(false)
 			Input.set_mouse_mode(0)
+			Input.warp_mouse_position(initial_mouse_pos)
 
 
 func _on_Minimuze_pressed() -> void:

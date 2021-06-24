@@ -12,9 +12,8 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		ms_speed = event.relative
-		OS.window_size += event.relative
-		OS.window_size.x = clamp(OS.window_size.x, MIN_WIN_SIZE.x, 10000)
-		OS.window_size.y = clamp(OS.window_size.y, MIN_WIN_SIZE.y, 10000)
+		OS.window_size.x = clamp(OS.window_size.x + event.relative.x, MIN_WIN_SIZE.x, 10000)
+		OS.window_size.y = clamp(OS.window_size.y + event.relative.y, MIN_WIN_SIZE.y, 10000)
 	if event is InputEventMouseButton and !event.pressed:
 		set_process_input(false)
 		Input.set_mouse_mode(0)
