@@ -341,6 +341,7 @@ __meta__ = {
 }
 
 [node name="Discord" type="TextureButton" parent="Control"]
+modulate = Color( 1, 1, 1, 0.447059 )
 margin_left = 5.47174
 margin_top = 8.65118
 margin_right = 45.4717

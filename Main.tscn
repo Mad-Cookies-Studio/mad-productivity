@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://Assets/Icons/MD_concept.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Icons/NoteTaking.png" type="Texture" id=2]
@@ -24,10 +24,14 @@
 [ext_resource path="res://Assets/Views/ToDo.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Assets/Fonts/Righteous20.tres" type="DynamicFont" id=23]
 [ext_resource path="res://Assets/Buttons/cancelBtn_hover.png" type="Texture" id=24]
+[ext_resource path="res://Assets/Buttons/ResizeActive.png" type="Texture" id=25]
+[ext_resource path="res://Assets/Buttons/ResizeHover.png" type="Texture" id=26]
 [ext_resource path="res://Scripts/Views/Profile.gd" type="Script" id=27]
 [ext_resource path="res://Assets/Buttons/PauseBtn.png" type="Texture" id=28]
 [ext_resource path="res://Assets/Buttons/cancelBtn.png" type="Texture" id=29]
 [ext_resource path="res://Assets/Buttons/PauseBtn_hover.png" type="Texture" id=30]
+[ext_resource path="res://Assets/Buttons/ResizeIdle.png" type="Texture" id=31]
+[ext_resource path="res://Scripts/ResizeBtn.gd" type="Script" id=32]
 [ext_resource path="res://Assets/Icons/Random.png" type="Texture" id=35]
 
 [sub_resource type="StyleBoxFlat" id=1]
@@ -506,6 +510,23 @@ __meta__ = {
 
 [node name="Tween2" type="Tween" parent="."]
 
+[node name="ResizeBtn" type="TextureButton" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -24.7246
+margin_top = -25.0397
+margin_right = -4.72461
+margin_bottom = -5.03967
+action_mode = 0
+texture_normal = ExtResource( 31 )
+texture_pressed = ExtResource( 25 )
+texture_hover = ExtResource( 26 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 32 )
+
 [connection signal="view_changed" from="MainWorkspace/Sidebar" to="." method="_on_Sidebar_view_changed"]
 [connection signal="gui_input" from="MainWorkspace/TopArea" to="MainWorkspace/TopArea" method="_on_TopArea_gui_input"]
 [connection signal="pressed" from="MainWorkspace/TopArea/Right/Minimuze" to="MainWorkspace/TopArea" method="_on_Minimuze_pressed"]
@@ -513,3 +534,4 @@ __meta__ = {
 [connection signal="manual_view_toggle" from="MainWorkspace/Views" to="." method="_on_Views_manual_view_toggle"]
 [connection signal="text_changed" from="MainWorkspace/Views/Profile/VBoxContainer/UserName" to="MainWorkspace/Views/Profile" method="_on_UserName_text_changed"]
 [connection signal="text_changed" from="MainWorkspace/Views/Profile/VBoxContainer/UserTitle" to="MainWorkspace/Views/Profile" method="_on_UserTitle_text_changed"]
+[connection signal="pressed" from="ResizeBtn" to="ResizeBtn" method="_on_ResizeBtn_pressed"]
