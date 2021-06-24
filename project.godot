@@ -88,7 +88,6 @@ window/size/borderless=true
 window/dpi/allow_hidpi=true
 window/per_pixel_transparency/allowed=true
 window/per_pixel_transparency/enabled=true
-window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
 
 [editor_plugins]

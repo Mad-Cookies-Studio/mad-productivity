@@ -330,10 +330,12 @@ __meta__ = {
 autostart = true
 
 [node name="Control" type="Control" parent="."]
-margin_left = 946.41
-margin_top = 531.408
-margin_right = 986.41
-margin_bottom = 571.408
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
