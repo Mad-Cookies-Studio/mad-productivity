@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://Assets/Icons/MD_concept.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Icons/NoteTaking.png" type="Texture" id=2]
@@ -32,6 +32,7 @@
 [ext_resource path="res://Assets/Buttons/PauseBtn_hover.png" type="Texture" id=30]
 [ext_resource path="res://Assets/Buttons/ResizeIdle.png" type="Texture" id=31]
 [ext_resource path="res://Scripts/ResizeBtn.gd" type="Script" id=32]
+[ext_resource path="res://Assets/Buttons/Maximize.png" type="Texture" id=33]
 [ext_resource path="res://Assets/Icons/Random.png" type="Texture" id=35]
 
 [sub_resource type="StyleBoxFlat" id=1]
@@ -333,10 +334,19 @@ __meta__ = {
 
 [node name="Minimuze" type="TextureButton" parent="MainWorkspace/TopArea/Right"]
 modulate = Color( 1, 1, 1, 0.490196 )
+margin_left = 72.0
+margin_right = 85.0
+margin_bottom = 13.0
+texture_normal = ExtResource( 6 )
+stretch_mode = 3
+script = ExtResource( 11 )
+
+[node name="Maximize" type="TextureButton" parent="MainWorkspace/TopArea/Right"]
+modulate = Color( 1, 1, 1, 0.490196 )
 margin_left = 99.0
 margin_right = 112.0
 margin_bottom = 13.0
-texture_normal = ExtResource( 6 )
+texture_normal = ExtResource( 33 )
 stretch_mode = 3
 script = ExtResource( 11 )
 
@@ -530,6 +540,7 @@ script = ExtResource( 32 )
 [connection signal="view_changed" from="MainWorkspace/Sidebar" to="." method="_on_Sidebar_view_changed"]
 [connection signal="gui_input" from="MainWorkspace/TopArea" to="MainWorkspace/TopArea" method="_on_TopArea_gui_input"]
 [connection signal="pressed" from="MainWorkspace/TopArea/Right/Minimuze" to="MainWorkspace/TopArea" method="_on_Minimuze_pressed"]
+[connection signal="pressed" from="MainWorkspace/TopArea/Right/Maximize" to="MainWorkspace/TopArea" method="_on_Maximize_pressed"]
 [connection signal="pressed" from="MainWorkspace/TopArea/Right/Exit" to="MainWorkspace/TopArea" method="_on_Exit_pressed"]
 [connection signal="manual_view_toggle" from="MainWorkspace/Views" to="." method="_on_Views_manual_view_toggle"]
 [connection signal="text_changed" from="MainWorkspace/Views/Profile/VBoxContainer/UserName" to="MainWorkspace/Views/Profile" method="_on_UserName_text_changed"]

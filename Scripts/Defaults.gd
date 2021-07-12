@@ -5,6 +5,7 @@ enum RESOURCES {NOTES, TIME_TRACK, TODOS, REMINDER, SETTINGS}
 const DAYS : Array = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 const MONTHS : Array = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
+## save paths
 const NOTES_SAVE_PATH : String = "user://Notes/"
 const TIMETRACKS_SAVE_PATH : String = "user://TimeTracks/"
 const TIMETRACKS_SAVE_NAME : String = "TimeTrackResource.tres"
@@ -28,9 +29,13 @@ var time_tracking : bool = false
 var time_tracked : String = ""
 var item_tracked : String = ""
 
+var settings_res : SettingsResource
+
 func _ready() -> void:
 	randomize()
 	check_folders()
+	load_settings()
+	init_window()
 	
 	
 func check_folders() -> void:
@@ -76,10 +81,30 @@ func check_resource(dir: Directory, path : String, resource_id : int) -> void:
 		var err : int = ResourceSaver.save(path, resource)
 		
 
+func load_settings() -> void:
+	settings_res = load(SETTINGS_SAVE_PATH + SETTINGS_SAVE_NAME)
+
+
+func init_window() -> void:
+	if settings_res.remember_window_settings:
+		OS.window_size = settings_res.window_size
+		OS.window_position = settings_res.window_pos
+	else:
+		OS.center_window()
+
+
 func quit() -> void:
+	# trigger the save function in all the views
 	for i in views:
 		if i.has_method("save"):
 			i.save()
+	
+	# save the last window position
+	if settings_res.remember_window_settings:
+		settings_res.window_pos = OS.window_position
+		settings_res.window_size = OS.window_size
+	save_settings_resource()
+		
 	get_tree().quit()
 
 
@@ -151,6 +176,9 @@ func save_reminders_resource(rr : ReminderResource) -> int:
 	return err
 
 
-func save_settings_resource(sr : SettingsResource) -> int:
-	var err : int = ResourceSaver.save(SETTINGS_SAVE_PATH + SETTINGS_SAVE_NAME, sr)
+func save_settings_resource(sr : SettingsResource = null) -> int:
+	var res : SettingsResource = settings_res
+	if sr != null:
+		res = sr
+	var err : int = ResourceSaver.save(SETTINGS_SAVE_PATH + SETTINGS_SAVE_NAME, res)
 	return err

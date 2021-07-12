@@ -1,7 +1,7 @@
 extends Control
 
-var res : SettingsResource
 
+var res : SettingsResource
 
 # UI state machine functions
 func entering_view() -> void:
@@ -13,11 +13,11 @@ func leaving_view() -> void:
 	
 	
 func save() -> void:
-	Defaults.save_settings_resource(res)
+	Defaults.save_settings_resource()
 
 
 func _ready() -> void:
-	res = load(Defaults.SETTINGS_SAVE_PATH + Defaults.SETTINGS_SAVE_NAME) as SettingsResource
+	res = Defaults.settings_res
 	$VBoxContainer/UserName.text = res.name
 	$VBoxContainer/UserTitle.text = res.title
 

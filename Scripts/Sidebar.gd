@@ -14,8 +14,6 @@ func _ready() -> void:
 		buttons.append(i)
 		i.connect("toggled_menu_btn", self, "on_toggled_menu_btn", [i, idx])
 		idx += 1
-	
-	OS.window_position = (OS.get_screen_size() / 2) - (OS.window_size / 2)
 
 
 func mouse_entered_menu_btn() -> void:

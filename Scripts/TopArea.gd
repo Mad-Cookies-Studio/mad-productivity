@@ -7,6 +7,10 @@ var drag_amount : Vector2
 
 var initial_mouse_pos : Vector2
 
+var maximized : bool = false
+var minimized_size : Vector2
+var minimized_pos : Vector2
+
 func _ready() -> void:
 	set_process_input(false)
 
@@ -42,3 +46,8 @@ func _on_Minimuze_pressed() -> void:
 
 func _on_Exit_pressed() -> void:
 	Defaults.quit()
+
+
+func _on_Maximize_pressed() -> void:
+	OS.window_maximized = !maximized
+	maximized = !maximized

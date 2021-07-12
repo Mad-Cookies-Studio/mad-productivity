@@ -88,6 +88,8 @@ window/size/borderless=true
 window/dpi/allow_hidpi=true
 window/per_pixel_transparency/allowed=true
 window/per_pixel_transparency/enabled=true
+window/handheld/orientation="portrait"
+window/ios/hide_home_indicator=false
 window/stretch/aspect="keep_height"
 
 [editor_plugins]
