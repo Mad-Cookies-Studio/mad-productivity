@@ -9,6 +9,7 @@ var active_btn : TextureButton
 
 
 func _ready() -> void:
+	get_viewport().connect("size_changed", self, "on_window_size_changed")
 	var idx : int = 0
 	for i in $Buttons.get_children():
 		buttons.append(i)
@@ -40,6 +41,11 @@ func on_toggled_menu_btn(which : TextureButton, idx : int) -> void:
 	emit_signal("view_changed", idx)
 	active_btn = which
 	move_selection_box(which.rect_position.y)
+
+
+func on_window_size_changed() -> void:
+	if active_btn:
+		move_selection_box(active_btn.rect_position.y)
 
 
 func move_selection_box(where : float) -> void:
