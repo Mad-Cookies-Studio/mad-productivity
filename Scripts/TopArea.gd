@@ -13,7 +13,8 @@ var minimized_pos : Vector2
 
 func _ready() -> void:
 	set_process_input(false)
-
+	$Right/Maximize.pressed = Defaults.settings_res.window_maximized
+	
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -26,12 +27,19 @@ func _on_TopArea_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.pressed:
 			dragging = true
+
+			if OS.window_maximized:
+				OS.window_maximized = false
+				OS.window_size = Vector2(1100, 700)
+				OS.center_window()
+
 #			mouse_drag_beg = get_viewport().get_mouse_position()
 			orig_position = get_viewport().get_mouse_position() - OS.window_position
 			drag_amount = get_viewport().get_mouse_position()
 #			print(get_global_mouse_position())
 			initial_mouse_pos = get_local_mouse_position()
 			Input.set_mouse_mode(2)
+
 
 			set_process_input(true)
 		else:
@@ -49,6 +57,17 @@ func _on_Exit_pressed() -> void:
 	Defaults.quit()
 
 
-func _on_Maximize_pressed() -> void:
-	OS.window_maximized = !maximized
-	maximized = !maximized
+func _on_Maximize_toggled(button_pressed: bool) -> void:
+	if button_pressed:
+		Defaults.settings_res.minimized_window_size = OS.window_size
+		Defaults.settings_res.minimized_window_position = OS.window_position
+		Defaults.settings_res.window_maximized = true
+		Defaults.save_settings_resource()
+		OS.window_maximized = button_pressed
+	else:
+		OS.window_maximized = false
+		Defaults.settings_res.window_maximized = false
+		OS.window_size = Defaults.settings_res.minimized_window_size
+		OS.window_position = Defaults.settings_res.minimized_window_position
+		Defaults.save_settings_resource()
+		

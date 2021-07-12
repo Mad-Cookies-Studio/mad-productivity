@@ -12,6 +12,11 @@ export var remember_window_settings : bool = true
 export var window_size : Vector2 = Vector2(1100, 650)
 export var window_pos : Vector2 = Vector2.ZERO
 
+# minimized window save
+export var window_maximized : bool = false
+export var minimized_window_position : Vector2
+export var minimized_window_size : Vector2 = Vector2(1100, 650)
+
 # settings
 export var show_secs_dash : bool = true
 export var font_size : int = 0
