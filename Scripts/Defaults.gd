@@ -95,7 +95,7 @@ func get_full_date_as_string(_custom : Dictionary) -> String:
 	var date : Dictionary = OS.get_datetime()
 	if _custom.size() > 0:
 		date = _custom
-	var text : String = DAYS[date.day % 7] + ", " + MONTHS[date.month] + " " + str(date.year)
+	var text : String = DAYS[date.weekday - 1] + ", " + str(date.day)+ " " + MONTHS[date.month - 1] + " " + str(date.year)
 	return text
 
 
