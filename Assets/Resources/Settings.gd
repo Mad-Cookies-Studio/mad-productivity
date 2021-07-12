@@ -11,3 +11,15 @@ export(float) var drag_sensitivity
 export var remember_window_settings : bool = true
 export var window_size : Vector2 = Vector2(1100, 650)
 export var window_pos : Vector2 = Vector2.ZERO
+
+# settings
+export var show_secs_dash : bool = true
+export var font_size : int = 0
+export var remember_last_session_view : bool = false
+export var last_session_view : int = -1
+
+#pomodoro settings
+export var pomo_work_time_length : int = 10
+export var pomo_short_pause_length : int = 10
+export var pomo_long_pause_length : int = 10
+export var pomo_long_pause_freq : int = 3

@@ -24,6 +24,7 @@ export(Color) var custom_check_box_inactive : Color
 
 
 var views : Array
+var active_view : int
 
 var time_tracking : bool = false
 var time_tracked : String = ""
@@ -103,6 +104,9 @@ func quit() -> void:
 	if settings_res.remember_window_settings:
 		settings_res.window_pos = OS.window_position
 		settings_res.window_size = OS.window_size
+		
+	if settings_res.remember_last_session_view:
+		settings_res.last_session_view = active_view
 	save_settings_resource()
 		
 	get_tree().quit()
@@ -182,3 +186,14 @@ func save_settings_resource(sr : SettingsResource = null) -> int:
 		res = sr
 	var err : int = ResourceSaver.save(SETTINGS_SAVE_PATH + SETTINGS_SAVE_NAME, res)
 	return err
+
+
+func change_body_font_size(index : int) -> void:
+	var size : = 12
+	if index == 1:
+		size = 14
+	elif index == 2:
+		size = 18
+	var font_res : DynamicFont = load("res://Assets/Fonts/Roboto12.tres")
+	font_res.size = size
+	save_settings_resource()

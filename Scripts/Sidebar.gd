@@ -1,6 +1,6 @@
 extends Panel
 
-signal view_changed(which)
+signal view_changed(which, target)
 
 var buttons : Array
 
@@ -14,22 +14,32 @@ func _ready() -> void:
 	
 	for i in $Buttons.get_children():
 		buttons.append(i)
-		i.connect("toggled_menu_btn", self, "on_toggled_menu_btn", [i, idx])
+		i.connect("toggled_menu_btn", self, "on_toggled_menu_btn", [i, idx, i.target])
 		idx += 1
 
+	for i in $BotButtons.get_children():
+		buttons.append(i)
+		i.connect("toggled_menu_btn", self, "on_toggled_menu_btn", [i, idx, i.target])
+		idx += 1
 
 func mouse_entered_menu_btn() -> void:
 	pass
 
-
+# IMPORTANT: Last button of the buttons must be the randomiser.
 func manual_view_toggle(which : int) -> void:
-	$Buttons.get_child(which).pressed = true
+	print(which)
+	# IMPORTANT: If the randomiser changes in any way
+	# This part needs a little rework. AKA, remove the -1
+	if which < $Buttons.get_child_count() - 1:
+		$Buttons.get_child(which).pressed = true
+	else:
+		$BotButtons.get_child(which % $BotButtons.get_child_count()).pressed = true
 
 
 # which passes the specific node
 # idx send the id of the child. Can be used for toggling Views
-func on_toggled_menu_btn(which : TextureButton, idx : int) -> void:
-	if idx == 6:
+func on_toggled_menu_btn(which : TextureButton, idx : int, target : String = "") -> void:
+	if target == "Random":
 		print("going to a random view")
 		var rand : = randi() % $Buttons.get_child_count()
 		if rand == get_parent().get_parent().active_view:
@@ -39,18 +49,22 @@ func on_toggled_menu_btn(which : TextureButton, idx : int) -> void:
 	if which != active_btn and active_btn != null:
 		active_btn.deactivate()
 	
-	emit_signal("view_changed", idx)
+	emit_signal("view_changed", idx, target)
 	active_btn = which
-	move_selection_box(which.rect_position.y)
+	if active_btn.bottom:
+		move_selection_box(which.rect_position.y + which.get_parent().rect_position.y)
+	else:
+		move_selection_box(which.rect_position.y)
 
 
 func on_window_size_changed() -> void:
 	yield(get_tree(), "idle_frame")
 	if active_btn:
-		move_selection_box(active_btn.rect_position.y)
+#		move_selection_box(active_btn.rect_position.y)
+		move_selection_box(active_btn.rect_global_position.y)
 
 
-func move_selection_box(where : float) -> void:
+func move_selection_box(where : float = 0.0, add_parent_y : bool = false) -> void:
 	$Tween.interpolate_property($SelectionBox, "rect_position:y", $SelectionBox.rect_position.y, where, 0.5, Tween.TRANS_EXPO, Tween.EASE_OUT, 0.0)
 	$Tween.interpolate_property($SelectionBox/Particles, "speed_scale", 1.75, 0.2, 0.5, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT, 0.0)
 	$Tween.start()

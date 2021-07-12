@@ -192,8 +192,9 @@ func _on_LinkBtn_pressed() -> void:
 
 func _on_Timer_timeout() -> void:
 	if $VBoxContainer/Panel/Active/Scroll/VBoxContainer.get_children().size() == 1 :
-		print("just one child. the default one. Boring")
 		return
+#		print("just one child. the default one. Boring")
+#		return
 		
 	var child_id : int = 0
 	if $VBoxContainer/Panel/Active/Scroll/VBoxContainer.get_child(child_id).idx == 0:

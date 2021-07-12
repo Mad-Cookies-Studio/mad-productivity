@@ -1,0 +1,129 @@
+[gd_resource type="Theme" load_steps=13 format=2]
+
+[ext_resource path="res://Assets/Buttons/CheckBoxOn.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Buttons/CheckBoxOff.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Fonts/Roboto12.tres" type="DynamicFont" id=3]
+
+[sub_resource type="StyleBoxFlat" id=7]
+content_margin_left = 6.0
+bg_color = Color( 0.0588235, 0.105882, 0.109804, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.8, 0.8, 0.8, 0.435294 )
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="ImageTexture" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 6.0
+bg_color = Color( 0.0588235, 0.105882, 0.109804, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 0.376471 )
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id=3]
+content_margin_left = 6.0
+bg_color = Color( 0.0862745, 0.152941, 0.160784, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 0.376471 )
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="ImageTexture" id=8]
+
+[sub_resource type="ImageTexture" id=9]
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.0588235, 0.105882, 0.109804, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.0862745, 0.152941, 0.160784, 1 )
+shadow_color = Color( 0, 0, 0, 0.054902 )
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id=5]
+
+[resource]
+default_font = ExtResource( 3 )
+CheckBox/colors/font_color = Color( 0, 0, 0, 1 )
+CheckBox/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+CheckBox/colors/font_color_hover = Color( 0, 0, 0, 1 )
+CheckBox/colors/font_color_hover_pressed = Color( 0, 0, 0, 1 )
+CheckBox/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+CheckBox/constants/check_vadjust = 0
+CheckBox/constants/hseparation = 0
+CheckBox/fonts/font = null
+CheckBox/icons/checked = ExtResource( 1 )
+CheckBox/icons/checked_disabled = null
+CheckBox/icons/radio_checked = null
+CheckBox/icons/radio_checked_disabled = null
+CheckBox/icons/radio_unchecked = null
+CheckBox/icons/radio_unchecked_disabled = null
+CheckBox/icons/unchecked = ExtResource( 2 )
+CheckBox/icons/unchecked_disabled = null
+CheckBox/styles/disabled = null
+CheckBox/styles/focus = null
+CheckBox/styles/hover = null
+CheckBox/styles/hover_pressed = null
+CheckBox/styles/normal = null
+CheckBox/styles/pressed = null
+LineEdit/colors/clear_button_color = Color( 0, 0, 0, 1 )
+LineEdit/colors/clear_button_color_pressed = Color( 0, 0, 0, 1 )
+LineEdit/colors/cursor_color = Color( 0.854902, 0.423529, 0.384314, 1 )
+LineEdit/colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+LineEdit/colors/font_color_selected = Color( 0.0862745, 0.152941, 0.160784, 1 )
+LineEdit/colors/font_color_uneditable = Color( 0, 0, 0, 1 )
+LineEdit/colors/selection_color = Color( 0.854902, 0.423529, 0.384314, 1 )
+LineEdit/constants/minimum_spaces = 0
+LineEdit/fonts/font = null
+LineEdit/icons/clear = null
+LineEdit/styles/focus = SubResource( 7 )
+LineEdit/styles/normal = SubResource( 7 )
+LineEdit/styles/read_only = null
+OptionButton/colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+OptionButton/colors/font_color_disabled = Color( 0.576471, 0.627451, 0.631373, 0.435294 )
+OptionButton/colors/font_color_hover = Color( 0.854902, 0.423529, 0.384314, 1 )
+OptionButton/colors/font_color_pressed = Color( 0.854902, 0.423529, 0.384314, 1 )
+OptionButton/constants/arrow_margin = 0
+OptionButton/constants/hseparation = 0
+OptionButton/fonts/font = null
+OptionButton/icons/arrow = SubResource( 2 )
+OptionButton/styles/disabled = null
+OptionButton/styles/focus = SubResource( 1 )
+OptionButton/styles/hover = SubResource( 3 )
+OptionButton/styles/normal = SubResource( 1 )
+OptionButton/styles/pressed = SubResource( 1 )
+PopupMenu/colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+PopupMenu/colors/font_color_accel = Color( 1, 1, 1, 1 )
+PopupMenu/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+PopupMenu/colors/font_color_hover = Color( 0.854902, 0.423529, 0.384314, 1 )
+PopupMenu/colors/font_color_separator = Color( 0.156863, 0.733333, 0.776471, 1 )
+PopupMenu/constants/hseparation = 0
+PopupMenu/constants/vseparation = 10
+PopupMenu/fonts/font = null
+PopupMenu/icons/checked = null
+PopupMenu/icons/radio_checked = SubResource( 8 )
+PopupMenu/icons/radio_unchecked = SubResource( 9 )
+PopupMenu/icons/submenu = null
+PopupMenu/icons/unchecked = null
+PopupMenu/styles/hover = SubResource( 6 )
+PopupMenu/styles/labeled_separator_left = null
+PopupMenu/styles/labeled_separator_right = null
+PopupMenu/styles/panel = SubResource( 4 )
+PopupMenu/styles/panel_disabled = null
+PopupMenu/styles/separator = null
+PopupPanel/styles/panel = SubResource( 5 )
