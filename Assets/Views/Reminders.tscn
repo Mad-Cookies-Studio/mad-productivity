@@ -197,22 +197,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/Panel/NewReminderContainer"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -174.0
-margin_top = -155.681
-margin_right = 175.0
-margin_bottom = 49.3188
+[node name="VB" type="VBoxContainer" parent="VBoxContainer/Panel/NewReminderContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CalendarButton" type="TextureButton" parent="VBoxContainer/Panel/NewReminderContainer/VBoxContainer2"]
-margin_right = 349.0
-margin_bottom = 30.0
+[node name="VB1" type="VBoxContainer" parent="VBoxContainer/Panel/NewReminderContainer/Panel/VB"]
+margin_right = 332.0
+margin_bottom = 367.0
+size_flags_vertical = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CalendarButton" type="TextureButton" parent="VBoxContainer/Panel/NewReminderContainer/Panel/VB/VB1"]
+margin_top = 59.0
+margin_right = 332.0
+margin_bottom = 89.0
 rect_min_size = Vector2( 40, 30 )
 toggle_mode = true
 texture_normal = ExtResource( 15 )
@@ -225,25 +229,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DateLabel" type="Label" parent="VBoxContainer/Panel/NewReminderContainer/VBoxContainer2"]
-margin_top = 34.0
-margin_right = 349.0
-margin_bottom = 97.0
+[node name="DateLabel" type="Label" parent="VBoxContainer/Panel/NewReminderContainer/Panel/VB/VB1"]
+margin_top = 93.0
+margin_right = 332.0
+margin_bottom = 156.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
 text = "00/00/0000"
 align = 1
 
-[node name="Control" type="Control" parent="VBoxContainer/Panel/NewReminderContainer/VBoxContainer2"]
-margin_top = 101.0
-margin_right = 349.0
-margin_bottom = 141.0
+[node name="Control" type="Control" parent="VBoxContainer/Panel/NewReminderContainer/Panel/VB/VB1"]
+margin_top = 160.0
+margin_right = 332.0
+margin_bottom = 200.0
 rect_min_size = Vector2( 0, 40 )
 
-[node name="Label3" type="Label" parent="VBoxContainer/Panel/NewReminderContainer/VBoxContainer2"]
-margin_top = 145.0
-margin_right = 349.0
-margin_bottom = 171.0
+[node name="Label3" type="Label" parent="VBoxContainer/Panel/NewReminderContainer/Panel/VB/VB1"]
+margin_top = 204.0
+margin_right = 332.0
+margin_bottom = 230.0
 rect_min_size = Vector2( 64.176, 0 )
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 1 )
@@ -252,16 +256,16 @@ text = "TIME"
 align = 1
 valign = 1
 
-[node name="Control2" type="Control" parent="VBoxContainer/Panel/NewReminderContainer/VBoxContainer2"]
-margin_top = 175.0
-margin_right = 349.0
-margin_bottom = 185.0
+[node name="Control2" type="Control" parent="VBoxContainer/Panel/NewReminderContainer/Panel/VB/VB1"]
+margin_top = 234.0
+margin_right = 332.0
+margin_bottom = 244.0
 rect_min_size = Vector2( 0, 10 )
 
-[node name="CalendarContainer" type="HBoxContainer" parent="VBoxContainer/Panel/NewReminderContainer/VBoxContainer2"]
-margin_top = 189.0
-margin_right = 349.0
-margin_bottom = 249.0
+[node name="CalendarContainer" type="HBoxContainer" parent="VBoxContainer/Panel/NewReminderContainer/Panel/VB/VB1"]
+margin_top = 248.0
+margin_right = 332.0
+margin_bottom = 308.0
 rect_min_size = Vector2( 0, 60 )
 theme = SubResource( 15 )
 alignment = 1
@@ -269,9 +273,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Hour" type="LineEdit" parent="VBoxContainer/Panel/NewReminderContainer/VBoxContainer2/CalendarContainer"]
-margin_left = 86.0
-margin_right = 168.0
+[node name="Hour" type="LineEdit" parent="VBoxContainer/Panel/NewReminderContainer/Panel/VB/VB1/CalendarContainer"]
+margin_left = 77.0
+margin_right = 159.0
 margin_bottom = 60.0
 text = "23"
 align = 1
@@ -279,18 +283,18 @@ max_length = 2
 context_menu_enabled = false
 placeholder_text = "23"
 
-[node name="Label2" type="Label" parent="VBoxContainer/Panel/NewReminderContainer/VBoxContainer2/CalendarContainer"]
-margin_left = 172.0
-margin_right = 177.0
+[node name="Label2" type="Label" parent="VBoxContainer/Panel/NewReminderContainer/Panel/VB/VB1/CalendarContainer"]
+margin_left = 163.0
+margin_right = 168.0
 margin_bottom = 60.0
 size_flags_vertical = 1
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
 text = ":"
 valign = 1
 
-[node name="Minute" type="LineEdit" parent="VBoxContainer/Panel/NewReminderContainer/VBoxContainer2/CalendarContainer"]
-margin_left = 181.0
-margin_right = 263.0
+[node name="Minute" type="LineEdit" parent="VBoxContainer/Panel/NewReminderContainer/Panel/VB/VB1/CalendarContainer"]
+margin_left = 172.0
+margin_right = 254.0
 margin_bottom = 60.0
 text = "59"
 align = 1
@@ -298,26 +302,24 @@ max_length = 2
 context_menu_enabled = false
 placeholder_text = "59"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Panel/NewReminderContainer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 9.0
+[node name="VB2" type="VBoxContainer" parent="VBoxContainer/Panel/NewReminderContainer/Panel/VB"]
 margin_top = 371.0
-margin_right = -9.0
+margin_right = 332.0
+margin_bottom = 474.0
 theme = ExtResource( 5 )
 alignment = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Message" type="LineEdit" parent="VBoxContainer/Panel/NewReminderContainer/VBoxContainer"]
+[node name="Message" type="LineEdit" parent="VBoxContainer/Panel/NewReminderContainer/Panel/VB/VB2"]
 margin_right = 332.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 0, 30 )
 theme = ExtResource( 5 )
 placeholder_text = "Message"
 
-[node name="Link" type="LineEdit" parent="VBoxContainer/Panel/NewReminderContainer/VBoxContainer"]
+[node name="Link" type="LineEdit" parent="VBoxContainer/Panel/NewReminderContainer/Panel/VB/VB2"]
 margin_top = 34.0
 margin_right = 332.0
 margin_bottom = 64.0
@@ -325,7 +327,7 @@ rect_min_size = Vector2( 0, 30 )
 theme = ExtResource( 5 )
 placeholder_text = "Link"
 
-[node name="LinkBtn" type="TextureButton" parent="VBoxContainer/Panel/NewReminderContainer/VBoxContainer/Link"]
+[node name="LinkBtn" type="TextureButton" parent="VBoxContainer/Panel/NewReminderContainer/Panel/VB/VB2/Link"]
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -340,7 +342,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NewReminder" type="Button" parent="VBoxContainer/Panel/NewReminderContainer/VBoxContainer"]
+[node name="NewReminder" type="Button" parent="VBoxContainer/Panel/NewReminderContainer/Panel/VB/VB2"]
 margin_top = 68.0
 margin_right = 332.0
 margin_bottom = 103.0
@@ -422,12 +424,12 @@ stretch_mode = 5
 wait_time = 3.0
 autostart = true
 
-[connection signal="date_selected" from="VBoxContainer/Panel/NewReminderContainer/VBoxContainer2/CalendarButton" to="VBoxContainer/Panel/NewReminderContainer" method="_on_CalendarButton_date_selected"]
-[connection signal="text_changed" from="VBoxContainer/Panel/NewReminderContainer/VBoxContainer2/CalendarContainer/Hour" to="VBoxContainer/Panel/NewReminderContainer" method="_on_Hour_text_changed"]
-[connection signal="text_changed" from="VBoxContainer/Panel/NewReminderContainer/VBoxContainer2/CalendarContainer/Minute" to="VBoxContainer/Panel/NewReminderContainer" method="_on_Minute_text_changed"]
-[connection signal="text_changed" from="VBoxContainer/Panel/NewReminderContainer/VBoxContainer/Link" to="VBoxContainer/Panel/NewReminderContainer" method="_on_Link_text_changed"]
-[connection signal="pressed" from="VBoxContainer/Panel/NewReminderContainer/VBoxContainer/Link/LinkBtn" to="VBoxContainer/Panel/NewReminderContainer" method="_on_LinkBtn_pressed"]
-[connection signal="pressed" from="VBoxContainer/Panel/NewReminderContainer/VBoxContainer/NewReminder" to="." method="_on_NewReminder_pressed"]
+[connection signal="date_selected" from="VBoxContainer/Panel/NewReminderContainer/Panel/VB/VB1/CalendarButton" to="VBoxContainer/Panel/NewReminderContainer" method="_on_CalendarButton_date_selected"]
+[connection signal="text_changed" from="VBoxContainer/Panel/NewReminderContainer/Panel/VB/VB1/CalendarContainer/Hour" to="VBoxContainer/Panel/NewReminderContainer" method="_on_Hour_text_changed"]
+[connection signal="text_changed" from="VBoxContainer/Panel/NewReminderContainer/Panel/VB/VB1/CalendarContainer/Minute" to="VBoxContainer/Panel/NewReminderContainer" method="_on_Minute_text_changed"]
+[connection signal="text_changed" from="VBoxContainer/Panel/NewReminderContainer/Panel/VB/VB2/Link" to="VBoxContainer/Panel/NewReminderContainer" method="_on_Link_text_changed"]
+[connection signal="pressed" from="VBoxContainer/Panel/NewReminderContainer/Panel/VB/VB2/Link/LinkBtn" to="VBoxContainer/Panel/NewReminderContainer" method="_on_LinkBtn_pressed"]
+[connection signal="pressed" from="VBoxContainer/Panel/NewReminderContainer/Panel/VB/VB2/NewReminder" to="." method="_on_NewReminder_pressed"]
 [connection signal="pressed" from="ContextOptions/DeleteBtn" to="." method="_on_DeleteBtn_pressed"]
 [connection signal="pressed" from="ContextOptions/LinkBtn" to="." method="_on_LinkBtn_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
