@@ -14,7 +14,7 @@ var minimized_pos : Vector2
 func _ready() -> void:
 	Defaults.connect("view_changed", self, "on_view_changed")
 	set_process_input(false)
-	$Right/Maximize.pressed = Defaults.settings_res.window_maximized
+#	$Right/Maximize.pressed = Defaults.settings_res.window_maximized
 	
 
 func _input(event: InputEvent) -> void:
