@@ -12,6 +12,7 @@ var minimized_size : Vector2
 var minimized_pos : Vector2
 
 func _ready() -> void:
+	Defaults.connect("view_changed", self, "on_view_changed")
 	set_process_input(false)
 	$Right/Maximize.pressed = Defaults.settings_res.window_maximized
 	
@@ -71,3 +72,18 @@ func _on_Maximize_toggled(button_pressed: bool) -> void:
 		OS.window_position = Defaults.settings_res.minimized_window_position
 		Defaults.save_settings_resource()
 		
+
+func on_view_changed(_name : String, _button : bool, _input_field : bool) -> void:
+	$Title/ViewLabel.text = _name
+	if _name == "Time tracking":
+		$Center/PomodoroBtn.show()
+		$Center/NewBtn.hide()
+	else:
+		$Center/PomodoroBtn.hide()
+		$Center/LineEdit.visible = _input_field
+		$Center/NewBtn.visible = _button
+
+
+func _on_Button_pressed() -> void:
+	if Defaults.active_view_pointer and Defaults.active_view_pointer.has_method("on_new_top_bar_button"):
+		Defaults.active_view_pointer.on_new_top_bar_button({})

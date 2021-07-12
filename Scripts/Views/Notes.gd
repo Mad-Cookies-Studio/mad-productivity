@@ -1,6 +1,6 @@
 extends Control
 
-
+export var title : String
 var active_note : NoteResource
 var active_btn : Button
 
@@ -40,7 +40,8 @@ func select_note(which : int) -> void:
 	
 	
 func entering_view() -> void:
-	pass
+	Defaults.active_view_pointer = self
+	Defaults.emit_signal("view_changed", title, true, false)
 	
 	
 func leaving_view() -> void:
@@ -131,3 +132,7 @@ func _on_note_btn_clicked(_note : NoteResource, _btn : Button) -> void:
 func _on_start_time_track(_name) -> void:
 	print("carrying on")
 	get_parent().start_custom_time_track(_name)
+
+
+func on_new_top_bar_button(message : Dictionary = {}) -> void:
+	add_button()

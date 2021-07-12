@@ -1,5 +1,7 @@
 extends Control
 
+export var title : String
+
 var res: ToDoResource
 
 var tasks_array : Array = []
@@ -11,6 +13,7 @@ func _ready() -> void:
 	load_tasks()
 
 func entering_view() -> void:
+	Defaults.emit_signal("view_changed", title, true, true)
 	active = true
 	set_process_input(true)
 	

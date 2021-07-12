@@ -97,11 +97,16 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 15.0
+margin_top = 15.0
+margin_right = -30.0
+margin_bottom = -15.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Title" type="Label" parent="VBoxContainer"]
+visible = false
 margin_right = 990.0
 margin_bottom = 63.0
 custom_fonts/font = ExtResource( 2 )
@@ -109,9 +114,8 @@ custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
 text = "REMINDERS"
 
 [node name="Titles" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 67.0
 margin_right = 990.0
-margin_bottom = 93.0
+margin_bottom = 26.0
 custom_constants/separation = 20
 alignment = 2
 
@@ -145,16 +149,16 @@ custom_colors/font_color = Color( 0.137255, 0.301961, 0.305882, 1 )
 text = "Archive"
 
 [node name="Panel" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 97.0
+margin_top = 30.0
 margin_right = 990.0
-margin_bottom = 571.0
+margin_bottom = 541.0
 size_flags_vertical = 3
 theme = ExtResource( 4 )
 custom_constants/separation = 20
 
 [node name="Active" type="Panel" parent="VBoxContainer/Panel"]
 margin_right = 300.0
-margin_bottom = 474.0
+margin_bottom = 511.0
 size_flags_horizontal = 3
 theme = ExtResource( 4 )
 custom_styles/panel = SubResource( 17 )
@@ -168,7 +172,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Panel/Active/Scroll"]
 margin_right = 290.0
-margin_bottom = 474.0
+margin_bottom = 511.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = -1
@@ -182,7 +186,7 @@ visible = false
 [node name="NewReminderContainer" type="Control" parent="VBoxContainer/Panel"]
 margin_left = 320.0
 margin_right = 670.0
-margin_bottom = 474.0
+margin_bottom = 511.0
 rect_min_size = Vector2( 350, 0 )
 size_flags_horizontal = 3
 script = ExtResource( 9 )
@@ -206,7 +210,7 @@ __meta__ = {
 
 [node name="VB1" type="VBoxContainer" parent="VBoxContainer/Panel/NewReminderContainer/Panel/VB"]
 margin_right = 332.0
-margin_bottom = 367.0
+margin_bottom = 404.0
 size_flags_vertical = 3
 alignment = 1
 __meta__ = {
@@ -214,9 +218,9 @@ __meta__ = {
 }
 
 [node name="CalendarButton" type="TextureButton" parent="VBoxContainer/Panel/NewReminderContainer/Panel/VB/VB1"]
-margin_top = 59.0
+margin_top = 77.0
 margin_right = 332.0
-margin_bottom = 89.0
+margin_bottom = 107.0
 rect_min_size = Vector2( 40, 30 )
 toggle_mode = true
 texture_normal = ExtResource( 15 )
@@ -230,24 +234,24 @@ __meta__ = {
 }
 
 [node name="DateLabel" type="Label" parent="VBoxContainer/Panel/NewReminderContainer/Panel/VB/VB1"]
-margin_top = 93.0
+margin_top = 111.0
 margin_right = 332.0
-margin_bottom = 156.0
+margin_bottom = 174.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
 text = "00/00/0000"
 align = 1
 
 [node name="Control" type="Control" parent="VBoxContainer/Panel/NewReminderContainer/Panel/VB/VB1"]
-margin_top = 160.0
+margin_top = 178.0
 margin_right = 332.0
-margin_bottom = 200.0
+margin_bottom = 218.0
 rect_min_size = Vector2( 0, 40 )
 
 [node name="Label3" type="Label" parent="VBoxContainer/Panel/NewReminderContainer/Panel/VB/VB1"]
-margin_top = 204.0
+margin_top = 222.0
 margin_right = 332.0
-margin_bottom = 230.0
+margin_bottom = 248.0
 rect_min_size = Vector2( 64.176, 0 )
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 1 )
@@ -257,15 +261,15 @@ align = 1
 valign = 1
 
 [node name="Control2" type="Control" parent="VBoxContainer/Panel/NewReminderContainer/Panel/VB/VB1"]
-margin_top = 234.0
+margin_top = 252.0
 margin_right = 332.0
-margin_bottom = 244.0
+margin_bottom = 262.0
 rect_min_size = Vector2( 0, 10 )
 
 [node name="CalendarContainer" type="HBoxContainer" parent="VBoxContainer/Panel/NewReminderContainer/Panel/VB/VB1"]
-margin_top = 248.0
+margin_top = 266.0
 margin_right = 332.0
-margin_bottom = 308.0
+margin_bottom = 326.0
 rect_min_size = Vector2( 0, 60 )
 theme = SubResource( 15 )
 alignment = 1
@@ -303,9 +307,9 @@ context_menu_enabled = false
 placeholder_text = "59"
 
 [node name="VB2" type="VBoxContainer" parent="VBoxContainer/Panel/NewReminderContainer/Panel/VB"]
-margin_top = 371.0
+margin_top = 408.0
 margin_right = 332.0
-margin_bottom = 474.0
+margin_bottom = 511.0
 theme = ExtResource( 5 )
 alignment = 2
 __meta__ = {
@@ -361,7 +365,7 @@ text = "ADD"
 [node name="Archive" type="Panel" parent="VBoxContainer/Panel"]
 margin_left = 690.0
 margin_right = 990.0
-margin_bottom = 474.0
+margin_bottom = 511.0
 size_flags_horizontal = 3
 custom_styles/panel = SubResource( 18 )
 
@@ -374,7 +378,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Panel/Archive/Scroll"]
 margin_right = 290.0
-margin_bottom = 474.0
+margin_bottom = 511.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = -1

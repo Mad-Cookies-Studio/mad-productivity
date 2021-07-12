@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://Assets/Icons/MD_concept.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Icons/NoteTaking.png" type="Texture" id=2]
@@ -6,7 +6,7 @@
 [ext_resource path="res://Assets/Icons/ToDo.png" type="Texture" id=4]
 [ext_resource path="res://Scripts/Sidebar.gd" type="Script" id=5]
 [ext_resource path="res://Assets/Buttons/Minimize.png" type="Texture" id=6]
-[ext_resource path="res://Assets/Icons/MD.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Themes/CuteButtonTheme.tres" type="Theme" id=7]
 [ext_resource path="res://Assets/Buttons/Close.png" type="Texture" id=8]
 [ext_resource path="res://Scripts/CustomTextureButton.gd" type="Script" id=9]
 [ext_resource path="res://Scripts/TopArea.gd" type="Script" id=10]
@@ -39,6 +39,9 @@
 [ext_resource path="res://Assets/Themes/CheckBox.tres" type="Theme" id=37]
 [ext_resource path="res://Assets/Fonts/Roboto12.tres" type="DynamicFont" id=38]
 [ext_resource path="res://Assets/Fonts/Roboto20.tres" type="DynamicFont" id=39]
+[ext_resource path="res://Assets/Fonts/Righteous-Regular.ttf" type="DynamicFontData" id=40]
+[ext_resource path="res://Assets/Buttons/PomodoroToggleLinear.png" type="Texture" id=41]
+[ext_resource path="res://Assets/Buttons/PomodoroTogglePomodoro.png" type="Texture" id=42]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.0745098, 0.133333, 0.141176, 1 )
@@ -53,6 +56,25 @@ border_color = Color( 0, 0, 0, 0.737255 )
 [sub_resource type="Gradient" id=4]
 offsets = PoolRealArray( 0, 0.219355, 0.36129, 1 )
 colors = PoolColorArray( 0.854902, 0.423529, 0.384314, 0, 0.854902, 0.423529, 0.384314, 1, 0.854902, 0.423529, 0.384314, 0.529412, 0.854902, 0.423529, 0.384314, 0 )
+
+[sub_resource type="StyleBoxFlat" id=23]
+bg_color = Color( 0.0862745, 0.152941, 0.160784, 1 )
+border_width_bottom = 1
+border_color = Color( 0.0588235, 0.105882, 0.109804, 1 )
+
+[sub_resource type="DynamicFont" id=24]
+size = 18
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 40 )
+
+[sub_resource type="StyleBoxFlat" id=25]
+content_margin_left = 10.0
+bg_color = Color( 0.0588235, 0.105882, 0.109804, 1 )
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.576471, 0.627451, 0.631373, 0.392157 )
 
 [sub_resource type="StyleBoxEmpty" id=17]
 
@@ -294,36 +316,113 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Center" type="HBoxContainer" parent="MainWorkspace/TopArea"]
+[node name="ColorRect" type="Panel" parent="MainWorkspace/TopArea"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_constants/separation = 10
-alignment = 1
+custom_styles/panel = SubResource( 23 )
+
+[node name="Title" type="HBoxContainer" parent="MainWorkspace/TopArea"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -88.5
+margin_top = -20.0
+margin_right = 88.5
+margin_bottom = 20.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Logo" type="TextureRect" parent="MainWorkspace/TopArea/Center"]
+[node name="Logo" type="TextureRect" parent="MainWorkspace/TopArea/Title"]
 modulate = Color( 0.854902, 0.423529, 0.384314, 1 )
-margin_left = 447.0
-margin_right = 468.777
-margin_bottom = 45.0
+margin_right = 21.777
+margin_bottom = 40.0
 rect_min_size = Vector2( 21.777, 0 )
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 6
 
-[node name="TextureRect2" type="TextureRect" parent="MainWorkspace/TopArea/Center"]
-margin_left = 478.0
-margin_right = 602.0
+[node name="ViewLabel" type="Label" parent="MainWorkspace/TopArea/Title"]
+margin_left = 25.0
+margin_top = 8.0
+margin_right = 177.0
+margin_bottom = 31.0
+custom_fonts/font = SubResource( 24 )
+custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
+text = "Mad Productivity"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Center" type="HBoxContainer" parent="MainWorkspace/TopArea"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control3" type="Control" parent="MainWorkspace/TopArea/Center"]
+margin_right = 13.0
 margin_bottom = 45.0
-texture = ExtResource( 7 )
-stretch_mode = 4
+rect_min_size = Vector2( 13, 0 )
+
+[node name="NewBtn" type="Button" parent="MainWorkspace/TopArea/Center"]
+margin_left = 13.0
+margin_top = 8.0
+margin_right = 63.0
+margin_bottom = 35.024
+rect_min_size = Vector2( 50, 27.024 )
+size_flags_vertical = 4
+theme = ExtResource( 7 )
+text = "NEW"
+
+[node name="LineEdit" type="LineEdit" parent="MainWorkspace/TopArea/Center"]
+margin_left = 63.0
+margin_top = 8.0
+margin_right = 263.0
+margin_bottom = 35.1
+rect_min_size = Vector2( 200, 27.1 )
+size_flags_vertical = 4
+custom_styles/normal = SubResource( 25 )
+placeholder_text = "type text here"
+
+[node name="PomodoroBtn" type="TextureButton" parent="MainWorkspace/TopArea/Center"]
+visible = false
+margin_left = 13.0
+margin_right = 213.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 200, 0 )
+toggle_mode = true
+texture_normal = ExtResource( 41 )
+texture_pressed = ExtResource( 42 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="MainWorkspace/TopArea/Center"]
+margin_left = 263.0
+margin_right = 656.0
+margin_bottom = 45.0
+mouse_filter = 2
+size_flags_horizontal = 3
+
+[node name="Control2" type="Control" parent="MainWorkspace/TopArea/Center"]
+margin_left = 656.0
+margin_right = 1050.0
+margin_bottom = 45.0
+mouse_filter = 2
+size_flags_horizontal = 3
 
 [node name="TimeTrackingTop" type="HBoxContainer" parent="MainWorkspace/TopArea/Center"]
 visible = false
-margin_left = 407.0
-margin_right = 807.0
+margin_left = 650.0
+margin_right = 1050.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 400, 0 )
 alignment = 1
@@ -387,6 +486,7 @@ modulate = Color( 1, 1, 1, 0.490196 )
 margin_left = 99.0
 margin_right = 112.0
 margin_bottom = 13.0
+toggle_mode = true
 texture_normal = ExtResource( 33 )
 stretch_mode = 3
 script = ExtResource( 11 )
@@ -403,34 +503,48 @@ script = ExtResource( 11 )
 [node name="Views" type="MarginContainer" parent="MainWorkspace"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 30.0
-margin_top = 49.0
-margin_right = -30.0
-margin_bottom = -30.0
+margin_top = 45.0
 script = ExtResource( 16 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Dashboard" parent="MainWorkspace/Views" instance=ExtResource( 12 )]
+visible = false
+margin_right = 1050.0
+margin_bottom = 605.0
+title = "Mad Productivity"
 
 [node name="Notes" parent="MainWorkspace/Views" instance=ExtResource( 19 )]
 visible = false
+margin_right = 1050.0
+margin_bottom = 605.0
+title = "Notes"
 
 [node name="TimeTracking" parent="MainWorkspace/Views" instance=ExtResource( 14 )]
 visible = false
+margin_right = 1050.0
+margin_bottom = 605.0
+title = "Time tracking"
 
 [node name="Reminders" parent="MainWorkspace/Views" instance=ExtResource( 13 )]
 visible = false
+margin_right = 1050.0
+margin_bottom = 605.0
+title = "Reminders"
 
 [node name="ToDo" parent="MainWorkspace/Views" instance=ExtResource( 22 )]
 visible = false
+margin_right = 1050.0
+margin_bottom = 605.0
+title = "TODO"
 
 [node name="Profile" type="Control" parent="MainWorkspace/Views"]
 visible = false
-margin_right = 990.0
-margin_bottom = 571.0
+margin_right = 1050.0
+margin_bottom = 605.0
 script = ExtResource( 27 )
+title = "Profile"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainWorkspace/Views/Profile"]
 anchor_right = 1.0
@@ -559,43 +673,64 @@ __meta__ = {
 }
 
 [node name="Settings" type="Control" parent="MainWorkspace/Views"]
-visible = false
-margin_right = 990.0
-margin_bottom = 571.0
+margin_right = 1050.0
+margin_bottom = 605.0
 script = ExtResource( 36 )
+title = "Settings"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainWorkspace/Views/Settings"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="C" type="CenterContainer" parent="MainWorkspace/Views/Settings"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -318.0
+margin_top = -277.5
+margin_right = 317.0
+margin_bottom = 276.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainWorkspace/Views/Settings/C"]
+margin_left = 100.0
+margin_top = 55.0
+margin_right = 534.0
+margin_bottom = 499.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 14
+size_flags_vertical = 14
 custom_constants/separation = 15
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Title" type="Label" parent="MainWorkspace/Views/Settings/VBoxContainer"]
-margin_right = 990.0
+[node name="Title" type="Label" parent="MainWorkspace/Views/Settings/C/VBoxContainer"]
+margin_right = 434.0
 margin_bottom = 63.0
 custom_styles/normal = SubResource( 19 )
 custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
 text = "SETTINGS"
+align = 1
 
-[node name="Category" type="Label" parent="MainWorkspace/Views/Settings/VBoxContainer"]
+[node name="Category" type="Label" parent="MainWorkspace/Views/Settings/C/VBoxContainer"]
 margin_top = 78.0
-margin_right = 990.0
+margin_right = 434.0
 margin_bottom = 102.0
 rect_min_size = Vector2( 350, 0 )
 custom_styles/normal = SubResource( 22 )
 custom_fonts/font = ExtResource( 39 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
 text = "General"
+align = 1
 
-[node name="SecsDashboard" type="HBoxContainer" parent="MainWorkspace/Views/Settings/VBoxContainer"]
+[node name="SecsDashboard" type="HBoxContainer" parent="MainWorkspace/Views/Settings/C/VBoxContainer"]
 margin_top = 117.0
-margin_right = 990.0
+margin_right = 434.0
 margin_bottom = 141.0
 
-[node name="Text" type="Label" parent="MainWorkspace/Views/Settings/VBoxContainer/SecsDashboard"]
+[node name="Text" type="Label" parent="MainWorkspace/Views/Settings/C/VBoxContainer/SecsDashboard"]
 margin_top = 4.0
 margin_right = 350.0
 margin_bottom = 19.0
@@ -605,18 +740,18 @@ custom_fonts/font = ExtResource( 38 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
 text = "Show seconds in dashboard"
 
-[node name="Option" type="CheckBox" parent="MainWorkspace/Views/Settings/VBoxContainer/SecsDashboard"]
+[node name="Option" type="CheckBox" parent="MainWorkspace/Views/Settings/C/VBoxContainer/SecsDashboard"]
 margin_left = 354.0
 margin_right = 378.0
 margin_bottom = 24.0
 theme = ExtResource( 37 )
 
-[node name="FontSize" type="HBoxContainer" parent="MainWorkspace/Views/Settings/VBoxContainer"]
+[node name="FontSize" type="HBoxContainer" parent="MainWorkspace/Views/Settings/C/VBoxContainer"]
 margin_top = 156.0
-margin_right = 990.0
+margin_right = 434.0
 margin_bottom = 173.0
 
-[node name="Text" type="Label" parent="MainWorkspace/Views/Settings/VBoxContainer/FontSize"]
+[node name="Text" type="Label" parent="MainWorkspace/Views/Settings/C/VBoxContainer/FontSize"]
 margin_top = 1.0
 margin_right = 350.0
 margin_bottom = 16.0
@@ -626,7 +761,7 @@ custom_fonts/font = ExtResource( 38 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
 text = "Font size (notes)"
 
-[node name="Option" type="OptionButton" parent="MainWorkspace/Views/Settings/VBoxContainer/FontSize"]
+[node name="Option" type="OptionButton" parent="MainWorkspace/Views/Settings/C/VBoxContainer/FontSize"]
 margin_left = 354.0
 margin_right = 434.0
 margin_bottom = 17.0
@@ -636,12 +771,12 @@ text = "Small"
 items = [ "Small", null, false, 0, null, "Medium", null, false, 1, null, "Large", null, false, 2, null ]
 selected = 0
 
-[node name="WindowPos" type="HBoxContainer" parent="MainWorkspace/Views/Settings/VBoxContainer"]
+[node name="WindowPos" type="HBoxContainer" parent="MainWorkspace/Views/Settings/C/VBoxContainer"]
 margin_top = 188.0
-margin_right = 990.0
+margin_right = 434.0
 margin_bottom = 212.0
 
-[node name="Text" type="Label" parent="MainWorkspace/Views/Settings/VBoxContainer/WindowPos"]
+[node name="Text" type="Label" parent="MainWorkspace/Views/Settings/C/VBoxContainer/WindowPos"]
 margin_top = 4.0
 margin_right = 350.0
 margin_bottom = 19.0
@@ -651,18 +786,18 @@ custom_fonts/font = ExtResource( 38 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
 text = "Remember window size and position"
 
-[node name="Option" type="CheckBox" parent="MainWorkspace/Views/Settings/VBoxContainer/WindowPos"]
+[node name="Option" type="CheckBox" parent="MainWorkspace/Views/Settings/C/VBoxContainer/WindowPos"]
 margin_left = 354.0
 margin_right = 378.0
 margin_bottom = 24.0
 theme = ExtResource( 37 )
 
-[node name="WindowPos2" type="HBoxContainer" parent="MainWorkspace/Views/Settings/VBoxContainer"]
+[node name="WindowPos2" type="HBoxContainer" parent="MainWorkspace/Views/Settings/C/VBoxContainer"]
 margin_top = 227.0
-margin_right = 990.0
+margin_right = 434.0
 margin_bottom = 251.0
 
-[node name="Text" type="Label" parent="MainWorkspace/Views/Settings/VBoxContainer/WindowPos2"]
+[node name="Text" type="Label" parent="MainWorkspace/Views/Settings/C/VBoxContainer/WindowPos2"]
 margin_top = 4.0
 margin_right = 350.0
 margin_bottom = 19.0
@@ -672,28 +807,30 @@ custom_fonts/font = ExtResource( 38 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
 text = "Remember last session view"
 
-[node name="Option" type="CheckBox" parent="MainWorkspace/Views/Settings/VBoxContainer/WindowPos2"]
+[node name="Option" type="CheckBox" parent="MainWorkspace/Views/Settings/C/VBoxContainer/WindowPos2"]
 margin_left = 354.0
 margin_right = 378.0
 margin_bottom = 24.0
 theme = ExtResource( 37 )
 
-[node name="Pomodoro" type="Label" parent="MainWorkspace/Views/Settings/VBoxContainer"]
+[node name="Pomodoro" type="Label" parent="MainWorkspace/Views/Settings/C/VBoxContainer"]
 margin_top = 266.0
-margin_right = 990.0
-margin_bottom = 290.0
-rect_min_size = Vector2( 350, 0 )
+margin_right = 434.0
+margin_bottom = 316.0
+rect_min_size = Vector2( 350, 50 )
 custom_styles/normal = SubResource( 22 )
 custom_fonts/font = ExtResource( 39 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
 text = "Pomodoro"
+align = 1
+valign = 2
 
-[node name="WorkTimeLength" type="HBoxContainer" parent="MainWorkspace/Views/Settings/VBoxContainer"]
-margin_top = 305.0
-margin_right = 990.0
-margin_bottom = 322.0
+[node name="WorkTimeLength" type="HBoxContainer" parent="MainWorkspace/Views/Settings/C/VBoxContainer"]
+margin_top = 331.0
+margin_right = 434.0
+margin_bottom = 348.0
 
-[node name="Text" type="Label" parent="MainWorkspace/Views/Settings/VBoxContainer/WorkTimeLength"]
+[node name="Text" type="Label" parent="MainWorkspace/Views/Settings/C/VBoxContainer/WorkTimeLength"]
 margin_top = 1.0
 margin_right = 350.0
 margin_bottom = 16.0
@@ -703,7 +840,7 @@ custom_fonts/font = ExtResource( 38 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
 text = "Work time legnth"
 
-[node name="Option" type="SpinBox" parent="MainWorkspace/Views/Settings/VBoxContainer/WorkTimeLength"]
+[node name="Option" type="SpinBox" parent="MainWorkspace/Views/Settings/C/VBoxContainer/WorkTimeLength"]
 margin_left = 354.0
 margin_right = 414.0
 margin_bottom = 17.0
@@ -711,12 +848,12 @@ rect_min_size = Vector2( 60, 0 )
 theme = ExtResource( 37 )
 suffix = "s"
 
-[node name="ShortPause" type="HBoxContainer" parent="MainWorkspace/Views/Settings/VBoxContainer"]
-margin_top = 337.0
-margin_right = 990.0
-margin_bottom = 354.0
+[node name="ShortPause" type="HBoxContainer" parent="MainWorkspace/Views/Settings/C/VBoxContainer"]
+margin_top = 363.0
+margin_right = 434.0
+margin_bottom = 380.0
 
-[node name="Text" type="Label" parent="MainWorkspace/Views/Settings/VBoxContainer/ShortPause"]
+[node name="Text" type="Label" parent="MainWorkspace/Views/Settings/C/VBoxContainer/ShortPause"]
 margin_top = 1.0
 margin_right = 350.0
 margin_bottom = 16.0
@@ -726,7 +863,7 @@ custom_fonts/font = ExtResource( 38 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
 text = "Short pause length"
 
-[node name="Option" type="SpinBox" parent="MainWorkspace/Views/Settings/VBoxContainer/ShortPause"]
+[node name="Option" type="SpinBox" parent="MainWorkspace/Views/Settings/C/VBoxContainer/ShortPause"]
 margin_left = 354.0
 margin_right = 414.0
 margin_bottom = 17.0
@@ -734,12 +871,12 @@ rect_min_size = Vector2( 60, 0 )
 theme = ExtResource( 37 )
 suffix = "s"
 
-[node name="LongPause" type="HBoxContainer" parent="MainWorkspace/Views/Settings/VBoxContainer"]
-margin_top = 369.0
-margin_right = 990.0
-margin_bottom = 386.0
+[node name="LongPause" type="HBoxContainer" parent="MainWorkspace/Views/Settings/C/VBoxContainer"]
+margin_top = 395.0
+margin_right = 434.0
+margin_bottom = 412.0
 
-[node name="Text" type="Label" parent="MainWorkspace/Views/Settings/VBoxContainer/LongPause"]
+[node name="Text" type="Label" parent="MainWorkspace/Views/Settings/C/VBoxContainer/LongPause"]
 margin_top = 1.0
 margin_right = 350.0
 margin_bottom = 16.0
@@ -749,7 +886,7 @@ custom_fonts/font = ExtResource( 38 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
 text = "Long pause length"
 
-[node name="Option" type="SpinBox" parent="MainWorkspace/Views/Settings/VBoxContainer/LongPause"]
+[node name="Option" type="SpinBox" parent="MainWorkspace/Views/Settings/C/VBoxContainer/LongPause"]
 margin_left = 354.0
 margin_right = 414.0
 margin_bottom = 17.0
@@ -757,12 +894,12 @@ rect_min_size = Vector2( 60, 0 )
 theme = ExtResource( 37 )
 suffix = "s"
 
-[node name="LongPauseFreq" type="HBoxContainer" parent="MainWorkspace/Views/Settings/VBoxContainer"]
-margin_top = 401.0
-margin_right = 990.0
-margin_bottom = 418.0
+[node name="LongPauseFreq" type="HBoxContainer" parent="MainWorkspace/Views/Settings/C/VBoxContainer"]
+margin_top = 427.0
+margin_right = 434.0
+margin_bottom = 444.0
 
-[node name="Text" type="Label" parent="MainWorkspace/Views/Settings/VBoxContainer/LongPauseFreq"]
+[node name="Text" type="Label" parent="MainWorkspace/Views/Settings/C/VBoxContainer/LongPauseFreq"]
 margin_top = 1.0
 margin_right = 350.0
 margin_bottom = 16.0
@@ -772,7 +909,7 @@ custom_fonts/font = ExtResource( 38 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
 text = "Long pause frequency"
 
-[node name="Option" type="SpinBox" parent="MainWorkspace/Views/Settings/VBoxContainer/LongPauseFreq"]
+[node name="Option" type="SpinBox" parent="MainWorkspace/Views/Settings/C/VBoxContainer/LongPauseFreq"]
 margin_left = 354.0
 margin_right = 414.0
 margin_bottom = 17.0
@@ -780,7 +917,7 @@ rect_min_size = Vector2( 60, 0 )
 theme = ExtResource( 37 )
 suffix = "s"
 
-[node name="UserTitle" type="LineEdit" parent="MainWorkspace/Views/Settings/VBoxContainer"]
+[node name="UserTitle" type="LineEdit" parent="MainWorkspace/Views/Settings/C/VBoxContainer"]
 visible = false
 margin_top = 144.0
 margin_right = 990.0
@@ -817,19 +954,20 @@ __meta__ = {
 
 [connection signal="view_changed" from="MainWorkspace/Sidebar" to="." method="_on_Sidebar_view_changed"]
 [connection signal="gui_input" from="MainWorkspace/TopArea" to="MainWorkspace/TopArea" method="_on_TopArea_gui_input"]
+[connection signal="pressed" from="MainWorkspace/TopArea/Center/NewBtn" to="MainWorkspace/TopArea" method="_on_Button_pressed"]
 [connection signal="pressed" from="MainWorkspace/TopArea/Right/Minimuze" to="MainWorkspace/TopArea" method="_on_Minimuze_pressed"]
-[connection signal="pressed" from="MainWorkspace/TopArea/Right/Maximize" to="MainWorkspace/TopArea" method="_on_Maximize_pressed"]
+[connection signal="toggled" from="MainWorkspace/TopArea/Right/Maximize" to="MainWorkspace/TopArea" method="_on_Maximize_toggled"]
 [connection signal="pressed" from="MainWorkspace/TopArea/Right/Exit" to="MainWorkspace/TopArea" method="_on_Exit_pressed"]
 [connection signal="manual_view_toggle" from="MainWorkspace/Views" to="." method="_on_Views_manual_view_toggle"]
 [connection signal="text_changed" from="MainWorkspace/Views/Profile/VBoxContainer/UserName" to="MainWorkspace/Views/Profile" method="_on_UserName_text_changed"]
 [connection signal="text_changed" from="MainWorkspace/Views/Profile/VBoxContainer/UserTitle" to="MainWorkspace/Views/Profile" method="_on_UserTitle_text_changed"]
-[connection signal="toggled" from="MainWorkspace/Views/Settings/VBoxContainer/SecsDashboard/Option" to="MainWorkspace/Views/Settings" method="_on_secsDashboard_toggled"]
-[connection signal="item_selected" from="MainWorkspace/Views/Settings/VBoxContainer/FontSize/Option" to="MainWorkspace/Views/Settings" method="_on_Option_item_selected"]
-[connection signal="toggled" from="MainWorkspace/Views/Settings/VBoxContainer/WindowPos/Option" to="MainWorkspace/Views/Settings" method="_on_windowPos_toggled"]
-[connection signal="toggled" from="MainWorkspace/Views/Settings/VBoxContainer/WindowPos2/Option" to="MainWorkspace/Views/Settings" method="_on_lastSessionView_toggled"]
-[connection signal="value_changed" from="MainWorkspace/Views/Settings/VBoxContainer/WorkTimeLength/Option" to="MainWorkspace/Views/Settings" method="_on_workTimeLength_value_changed"]
-[connection signal="value_changed" from="MainWorkspace/Views/Settings/VBoxContainer/ShortPause/Option" to="MainWorkspace/Views/Settings" method="_on_ShortPauseLength_value_changed"]
-[connection signal="value_changed" from="MainWorkspace/Views/Settings/VBoxContainer/LongPause/Option" to="MainWorkspace/Views/Settings" method="_on_LongPauseLength_value_changed"]
-[connection signal="value_changed" from="MainWorkspace/Views/Settings/VBoxContainer/LongPauseFreq/Option" to="MainWorkspace/Views/Settings" method="_on_LongPauseFreq_value_changed"]
-[connection signal="text_changed" from="MainWorkspace/Views/Settings/VBoxContainer/UserTitle" to="MainWorkspace/Views/Settings" method="_on_UserTitle_text_changed"]
+[connection signal="toggled" from="MainWorkspace/Views/Settings/C/VBoxContainer/SecsDashboard/Option" to="MainWorkspace/Views/Settings" method="_on_secsDashboard_toggled"]
+[connection signal="item_selected" from="MainWorkspace/Views/Settings/C/VBoxContainer/FontSize/Option" to="MainWorkspace/Views/Settings" method="_on_Option_item_selected"]
+[connection signal="toggled" from="MainWorkspace/Views/Settings/C/VBoxContainer/WindowPos/Option" to="MainWorkspace/Views/Settings" method="_on_windowPos_toggled"]
+[connection signal="toggled" from="MainWorkspace/Views/Settings/C/VBoxContainer/WindowPos2/Option" to="MainWorkspace/Views/Settings" method="_on_lastSessionView_toggled"]
+[connection signal="value_changed" from="MainWorkspace/Views/Settings/C/VBoxContainer/WorkTimeLength/Option" to="MainWorkspace/Views/Settings" method="_on_workTimeLength_value_changed"]
+[connection signal="value_changed" from="MainWorkspace/Views/Settings/C/VBoxContainer/ShortPause/Option" to="MainWorkspace/Views/Settings" method="_on_ShortPauseLength_value_changed"]
+[connection signal="value_changed" from="MainWorkspace/Views/Settings/C/VBoxContainer/LongPause/Option" to="MainWorkspace/Views/Settings" method="_on_LongPauseLength_value_changed"]
+[connection signal="value_changed" from="MainWorkspace/Views/Settings/C/VBoxContainer/LongPauseFreq/Option" to="MainWorkspace/Views/Settings" method="_on_LongPauseFreq_value_changed"]
+[connection signal="text_changed" from="MainWorkspace/Views/Settings/C/VBoxContainer/UserTitle" to="MainWorkspace/Views/Settings" method="_on_UserTitle_text_changed"]
 [connection signal="pressed" from="ResizeBtn" to="ResizeBtn" method="_on_ResizeBtn_pressed"]

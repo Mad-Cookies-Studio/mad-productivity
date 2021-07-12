@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Assets/Fonts/Righteous50.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/Themes/Roboto12Clean.tres" type="Theme" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Scripts/Views/Todos/CustomCheckBox.gd" type="Script" id=6]
 [ext_resource path="res://Assets/Buttons/Cross.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Buttons/TimeTrackBtnWhite.png" type="Texture" id=8]
+[ext_resource path="res://Scripts/Views/NoteButton.gd" type="Script" id=9]
 
 [sub_resource type="DynamicFont" id=18]
 use_mipmaps = true
@@ -60,6 +61,67 @@ border_color = Color( 0.854902, 0.423529, 0.384314, 1 )
 
 [sub_resource type="StyleBoxEmpty" id=14]
 
+[sub_resource type="StyleBoxFlat" id=19]
+bg_color = Color( 0.0235294, 0.0470588, 0.0470588, 0.498039 )
+border_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=20]
+
+[sub_resource type="ButtonGroup" id=21]
+
+[sub_resource type="StyleBoxFlat" id=22]
+bg_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+draw_center = false
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=23]
+
+[sub_resource type="StyleBoxEmpty" id=24]
+
+[sub_resource type="StyleBoxEmpty" id=25]
+
+[sub_resource type="Theme" id=26]
+TextEdit/colors/background_color = Color( 0, 0, 0, 0 )
+TextEdit/colors/bookmark_color = Color( 0.08, 0.49, 0.98, 1 )
+TextEdit/colors/brace_mismatch_color = Color( 1, 0.2, 0.2, 1 )
+TextEdit/colors/breakpoint_color = Color( 0.8, 0.8, 0.4, 0.2 )
+TextEdit/colors/caret_background_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/caret_color = Color( 0.854902, 0.423529, 0.384314, 1 )
+TextEdit/colors/code_folding_color = Color( 0.8, 0.8, 0.8, 0.8 )
+TextEdit/colors/completion_background_color = Color( 0.17, 0.16, 0.2, 1 )
+TextEdit/colors/completion_existing_color = Color( 0.87, 0.87, 0.87, 0.13 )
+TextEdit/colors/completion_font_color = Color( 0.67, 0.67, 0.67, 1 )
+TextEdit/colors/completion_scroll_color = Color( 1, 1, 1, 1 )
+TextEdit/colors/completion_selected_color = Color( 0.26, 0.26, 0.27, 1 )
+TextEdit/colors/current_line_color = Color( 0.25, 0.25, 0.26, 0.8 )
+TextEdit/colors/executing_line_color = Color( 0.2, 0.8, 0.2, 0.4 )
+TextEdit/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+TextEdit/colors/font_color_readonly = Color( 0.88, 0.88, 0.88, 0.5 )
+TextEdit/colors/font_color_selected = Color( 0, 0, 0, 1 )
+TextEdit/colors/function_color = Color( 0.4, 0.64, 0.81, 1 )
+TextEdit/colors/line_number_color = Color( 0.67, 0.67, 0.67, 0.4 )
+TextEdit/colors/mark_color = Color( 1, 0.4, 0.4, 0.4 )
+TextEdit/colors/member_variable_color = Color( 0.9, 0.31, 0.35, 1 )
+TextEdit/colors/number_color = Color( 0.92, 0.58, 0.2, 1 )
+TextEdit/colors/safe_line_number_color = Color( 0.67, 0.78, 0.67, 0.6 )
+TextEdit/colors/selection_color = Color( 0.49, 0.49, 0.49, 1 )
+TextEdit/colors/symbol_color = Color( 0.94, 0.94, 0.94, 1 )
+TextEdit/colors/word_highlighted_color = Color( 0.8, 0.9, 0.9, 0.15 )
+TextEdit/constants/completion_lines = 7
+TextEdit/constants/completion_max_width = 50
+TextEdit/constants/completion_scroll_width = 3
+TextEdit/constants/line_spacing = 4
+TextEdit/fonts/font = null
+TextEdit/icons/fold = null
+TextEdit/icons/folded = null
+TextEdit/icons/space = null
+TextEdit/icons/tab = null
+TextEdit/styles/completion = SubResource( 6 )
+TextEdit/styles/focus = SubResource( 23 )
+TextEdit/styles/normal = SubResource( 24 )
+TextEdit/styles/read_only = SubResource( 25 )
+
 [node name="ToDo" type="Control"]
 margin_right = 990.0
 margin_bottom = 571.0
@@ -78,6 +140,7 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="VBoxContainer"]
+visible = false
 margin_right = 990.0
 margin_bottom = 63.0
 custom_fonts/font = ExtResource( 1 )
@@ -93,21 +156,23 @@ margin_bottom = 76.867
 rect_min_size = Vector2( 0, 13.867 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 63.0
+visible = false
 margin_right = 990.0
-margin_bottom = 571.0
+margin_bottom = 285.0
 size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TODO" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+visible = false
 margin_right = 990.0
-margin_bottom = 508.0
+margin_bottom = 285.0
 size_flags_horizontal = 3
 custom_constants/separation = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/TODO"]
+visible = false
 margin_right = 990.0
 margin_bottom = 35.0
 custom_constants/separation = 0
@@ -138,25 +203,23 @@ clear_button_enabled = true
 placeholder_text = "Task name"
 
 [node name="Control" type="Control" parent="VBoxContainer/HBoxContainer/TODO"]
-margin_top = 38.0
 margin_right = 990.0
-margin_bottom = 73.0
-rect_min_size = Vector2( 0, 35 )
+margin_bottom = 15.0
+rect_min_size = Vector2( 0, 15 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer/TODO"]
-margin_top = 76.0
+margin_top = 18.0
 margin_right = 990.0
-margin_bottom = 508.0
+margin_bottom = 285.0
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/TODO/ScrollContainer"]
 margin_right = 980.0
-margin_bottom = 432.0
+margin_bottom = 267.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="TODOitem" type="ColorRect" parent="VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer"]
-visible = false
 margin_right = 980.0
 margin_bottom = 37.5
 rect_min_size = Vector2( 0, 37.5 )
@@ -263,6 +326,223 @@ margin_left = 990.0
 margin_right = 990.0
 margin_bottom = 472.0
 
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer"]
+margin_right = 990.0
+margin_bottom = 571.0
+size_flags_vertical = 3
+theme = ExtResource( 2 )
+custom_constants/autohide = 0
+custom_constants/separation = 35
+split_offset = 243
+
+[node name="PanelL" type="Panel" parent="VBoxContainer/HSplitContainer"]
+margin_right = 243.0
+margin_bottom = 571.0
+custom_styles/panel = SubResource( 19 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HSplitContainer/PanelL"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 13.0
+margin_top = 14.0
+margin_right = -13.0
+margin_bottom = -14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NoteButtons" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/PanelL/ScrollContainer"]
+margin_right = 207.0
+margin_bottom = 543.0
+rect_min_size = Vector2( 200, 440 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DefaultButton" type="Button" parent="VBoxContainer/HSplitContainer/PanelL/ScrollContainer/NoteButtons"]
+margin_right = 207.0
+margin_bottom = 25.0
+custom_styles/focus = SubResource( 20 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.643137 )
+custom_colors/font_color_pressed = Color( 0.576471, 0.627451, 0.631373, 1 )
+toggle_mode = true
+group = SubResource( 21 )
+text = "TODO PROJECT"
+flat = true
+align = 0
+script = ExtResource( 9 )
+delete_btn_colour = Color( 0.854902, 0.423529, 0.384314, 0.615686 )
+
+[node name="TimeTrack" type="TextureButton" parent="VBoxContainer/HSplitContainer/PanelL/ScrollContainer/NoteButtons/DefaultButton"]
+modulate = Color( 0.976563, 0.654856, 0.137329, 1 )
+margin_left = 168.0
+margin_top = -4.0
+margin_right = 188.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 19, 0 )
+rect_pivot_offset = Vector2( 9.5, 9.5 )
+hint_tooltip = "Time track again"
+mouse_filter = 1
+size_flags_horizontal = 9
+texture_normal = ExtResource( 8 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeleteBtn" type="TextureButton" parent="VBoxContainer/HSplitContainer/PanelL/ScrollContainer/NoteButtons/DefaultButton"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -19.0
+margin_top = -19.5
+margin_right = 1.0
+margin_bottom = 20.5
+rect_min_size = Vector2( 20, 0 )
+rect_pivot_offset = Vector2( 10, 20 )
+mouse_filter = 2
+texture_normal = ExtResource( 7 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="VBoxContainer/HSplitContainer/PanelL/ScrollContainer/NoteButtons/DefaultButton"]
+
+[node name="PanelR" type="Panel" parent="VBoxContainer/HSplitContainer"]
+margin_left = 278.0
+margin_right = 990.0
+margin_bottom = 571.0
+custom_styles/panel = SubResource( 22 )
+
+[node name="TaskScroll" type="ScrollContainer" parent="VBoxContainer/HSplitContainer/PanelR"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 15.0
+margin_right = -15.0
+margin_bottom = -15.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TaskList" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/PanelR/TaskScroll"]
+margin_right = 687.0
+margin_bottom = 541.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource( 26 )
+custom_constants/separation = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TODOitem" type="ColorRect" parent="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList"]
+margin_right = 687.0
+margin_bottom = 37.5
+rect_min_size = Vector2( 0, 37.5 )
+rect_pivot_offset = Vector2( -261.834, -35 )
+color = Color( 0.0862745, 0.152941, 0.160784, 1 )
+script = ExtResource( 5 )
+
+[node name="DeleteBtn" type="TextureButton" parent="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem"]
+modulate = Color( 0.854902, 0.423529, 0.384314, 1 )
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -30.0
+margin_top = -19.75
+margin_right = -8.0
+margin_bottom = 20.25
+rect_min_size = Vector2( 20, 0 )
+rect_pivot_offset = Vector2( 10, 20 )
+mouse_filter = 1
+texture_normal = ExtResource( 7 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -57.0
+margin_bottom = 0.5
+mouse_filter = 2
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckBox" type="ColorRect" parent="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem/HBoxContainer"]
+margin_right = 38.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 38, 0 )
+mouse_filter = 1
+color = Color( 0.0588235, 0.105882, 0.109804, 1 )
+script = ExtResource( 6 )
+
+[node name="CheckBox2" type="ColorRect" parent="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem/HBoxContainer/CheckBox"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_top = 7.0
+margin_right = -6.0
+margin_bottom = -6.0
+mouse_filter = 1
+color = Color( 0.109804, 0.784314, 0.419608, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimeTrack" type="TextureButton" parent="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem/HBoxContainer"]
+modulate = Color( 0.976563, 0.654856, 0.137329, 1 )
+margin_left = 48.0
+margin_right = 67.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 19, 0 )
+rect_pivot_offset = Vector2( 9.5, 9.5 )
+hint_tooltip = "Time track again"
+mouse_filter = 1
+size_flags_horizontal = 9
+texture_normal = ExtResource( 8 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Task" type="LineEdit" parent="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem/HBoxContainer"]
+margin_left = 77.0
+margin_right = 125.0
+margin_bottom = 38.0
+mouse_filter = 1
+custom_styles/read_only = SubResource( 12 )
+custom_styles/focus = SubResource( 13 )
+custom_styles/normal = SubResource( 14 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+text = "Task"
+expand_to_text_length = true
+
+[node name="Date" type="Label" parent="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem/HBoxContainer"]
+margin_left = 135.0
+margin_top = 9.0
+margin_right = 269.0
+margin_bottom = 28.0
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.439216 )
+text = "21/5/2021 8:45:32"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/TODO/HBoxContainer/NewTask" to="." method="_on_NewTask_pressed"]
 [connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem" to="VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem" method="_on_TODOitem_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem" to="VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem" method="_on_TODOitem_mouse_exited"]
@@ -271,3 +551,11 @@ margin_bottom = 472.0
 [connection signal="set_done" from="VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem/HBoxContainer/CheckBox" to="VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem" method="_on_CheckBox_set_done"]
 [connection signal="button_up" from="VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem/HBoxContainer/TimeTrack" to="VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem" method="_on_TimeTrack_button_up"]
 [connection signal="text_changed" from="VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem/HBoxContainer/Task" to="VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem" method="_on_Task_text_changed"]
+[connection signal="gui_input" from="VBoxContainer/HSplitContainer/PanelL/ScrollContainer/NoteButtons/DefaultButton" to="VBoxContainer/HSplitContainer/PanelL/ScrollContainer/NoteButtons/DefaultButton" method="_on_DefaultButton_gui_input"]
+[connection signal="mouse_entered" from="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem" to="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem" method="_on_TODOitem_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem" to="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem" method="_on_TODOitem_mouse_exited"]
+[connection signal="button_up" from="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem/DeleteBtn" to="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem" method="_on_DeleteBtn_button_up"]
+[connection signal="gui_input" from="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem/HBoxContainer/CheckBox" to="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem/HBoxContainer/CheckBox" method="_on_CheckBox_gui_input"]
+[connection signal="set_done" from="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem/HBoxContainer/CheckBox" to="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem" method="_on_CheckBox_set_done"]
+[connection signal="button_up" from="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem/HBoxContainer/TimeTrack" to="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem" method="_on_TimeTrack_button_up"]
+[connection signal="text_changed" from="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem/HBoxContainer/Task" to="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem" method="_on_Task_text_changed"]

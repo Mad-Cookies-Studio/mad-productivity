@@ -1,11 +1,13 @@
 extends Control
 
 
+export var title : String
+
 var res : SettingsResource
 
 # UI state machine functions
 func entering_view() -> void:
-	pass
+	Defaults.emit_signal("view_changed", title, false, false)
 	
 	
 func leaving_view() -> void:

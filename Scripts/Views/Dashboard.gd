@@ -1,6 +1,8 @@
 extends Control
 
+export var title : String
 var midnight_check : Dictionary
+
 
 func _ready() -> void:
 	midnight_check = OS.get_time()
@@ -9,7 +11,7 @@ func _ready() -> void:
 
 
 func entering_view() -> void:
-	pass
+	Defaults.emit_signal("view_changed", title, false, false)
 	
 	
 func leaving_view() -> void:

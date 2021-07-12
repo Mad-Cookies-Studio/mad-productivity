@@ -16,6 +16,8 @@ const REMINDERS_SAVE_NAME : String = "Reminders.tres"
 const SETTINGS_SAVE_PATH : String = "user://"
 const SETTINGS_SAVE_NAME : String = "Settings.tres"
 
+signal view_changed(_name, _button, _input_field)
+
 export(Color) var btn_active_colour : Color
 export(Color) var btn_inactive_colour : Color
 
@@ -25,6 +27,7 @@ export(Color) var custom_check_box_inactive : Color
 
 var views : Array
 var active_view : int
+var active_view_pointer
 
 var time_tracking : bool = false
 var time_tracked : String = ""

@@ -1,5 +1,7 @@
 extends Control
 
+export var title : String
+
 var active : = false
 
 var res : ReminderResource
@@ -37,6 +39,7 @@ func _ready() -> void:
 # -- view state machine functions
 
 func entering_view() -> void:
+	Defaults.emit_signal("view_changed", title, false, false)
 	active = true
 	
 	
@@ -159,17 +162,18 @@ func _on_item_link_update(text : String, idx : int) -> void:
 	
 
 func _on_NewReminder_pressed() -> void:
-	if $VBoxContainer/Panel/NewReminderContainer/VBoxContainer2/DateLabel.text == "00/00/0000":
+	
+	if $VBoxContainer/Panel/NewReminderContainer/Panel/VB/VB1/DateLabel.text == "00/00/0000":
 		return
-	add_reminder($VBoxContainer/Panel/NewReminderContainer/VBoxContainer/Message.text,
-	$VBoxContainer/Panel/NewReminderContainer/VBoxContainer/Link.text,
+	add_reminder($VBoxContainer/Panel/NewReminderContainer/Panel/VB/VB2/Message.text,
+	$VBoxContainer/Panel/NewReminderContainer/Panel/VB/VB2/Link.text,
 	$VBoxContainer/Panel/NewReminderContainer.get_datetime_dictionary(),
 	$VBoxContainer/Panel/NewReminderContainer.get_unix_time())
 	
-	$VBoxContainer/Panel/NewReminderContainer/VBoxContainer2/CalendarContainer/Hour.text = "00"
-	$VBoxContainer/Panel/NewReminderContainer/VBoxContainer2/CalendarContainer/Minute.text = "00"
-	$VBoxContainer/Panel/NewReminderContainer/VBoxContainer/Message.text = ""
-	$VBoxContainer/Panel/NewReminderContainer/VBoxContainer/Link.text = ""
+	$VBoxContainer/Panel/NewReminderContainer/Panel/VB/VB1/CalendarContainer/Hour.text = "00"
+	$VBoxContainer/Panel/NewReminderContainer/Panel/VB/VB1/CalendarContainer/Minute.text = "00"
+	$VBoxContainer/Panel/NewReminderContainer/Panel/VB/VB2/Message.text= ""
+	$VBoxContainer/Panel/NewReminderContainer/Panel/VB/VB2/Link.text = ""
 	
 func _on_item_hovered_over(item : ColorRect) -> void:
 	set_current_item(item)

@@ -19,8 +19,7 @@ use_filter = true
 font_data = ExtResource( 3 )
 
 [sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.0588235, 0.105882, 0.109804, 0.498039 )
-border_width_top = 1
+bg_color = Color( 0.0235294, 0.0470588, 0.0470588, 0.498039 )
 border_color = Color( 0.576471, 0.627451, 0.631373, 1 )
 
 [sub_resource type="StyleBoxEmpty" id=3]
@@ -31,13 +30,13 @@ border_color = Color( 0.576471, 0.627451, 0.631373, 1 )
 bg_color = Color( 0.576471, 0.627451, 0.631373, 1 )
 draw_center = false
 
-[sub_resource type="StyleBoxEmpty" id=6]
+[sub_resource type="StyleBoxEmpty" id=12]
 
-[sub_resource type="StyleBoxEmpty" id=7]
+[sub_resource type="StyleBoxEmpty" id=13]
 
-[sub_resource type="StyleBoxEmpty" id=8]
+[sub_resource type="StyleBoxEmpty" id=14]
 
-[sub_resource type="StyleBoxEmpty" id=9]
+[sub_resource type="StyleBoxEmpty" id=15]
 
 [sub_resource type="Theme" id=10]
 TextEdit/colors/background_color = Color( 0, 0, 0, 0 )
@@ -75,10 +74,10 @@ TextEdit/icons/fold = null
 TextEdit/icons/folded = null
 TextEdit/icons/space = null
 TextEdit/icons/tab = null
-TextEdit/styles/completion = SubResource( 6 )
-TextEdit/styles/focus = SubResource( 7 )
-TextEdit/styles/normal = SubResource( 8 )
-TextEdit/styles/read_only = SubResource( 9 )
+TextEdit/styles/completion = SubResource( 12 )
+TextEdit/styles/focus = SubResource( 13 )
+TextEdit/styles/normal = SubResource( 14 )
+TextEdit/styles/read_only = SubResource( 15 )
 
 [sub_resource type="Theme" id=11]
 default_font = ExtResource( 1 )
@@ -94,12 +93,14 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = -30.0
 custom_constants/separation = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Title" type="Label" parent="VBoxContainer"]
+visible = false
 margin_right = 990.0
 margin_bottom = 63.0
 rect_pivot_offset = Vector2( 0, 31 )
@@ -111,15 +112,16 @@ script = ExtResource( 9 )
 [node name="Tween" type="Tween" parent="VBoxContainer/Title"]
 
 [node name="Control2" type="Control" parent="VBoxContainer"]
-margin_top = 63.0
+visible = false
 margin_right = 990.0
-margin_bottom = 71.589
+margin_bottom = 8.589
 rect_min_size = Vector2( 0, 8.589 )
 
 [node name="Control" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 71.0
+visible = false
+margin_top = 8.0
 margin_right = 990.0
-margin_bottom = 102.188
+margin_bottom = 39.188
 rect_min_size = Vector2( 0, 31.188 )
 
 [node name="AddBtn" type="TextureButton" parent="VBoxContainer/Control"]
@@ -133,8 +135,7 @@ stretch_mode = 6
 script = ExtResource( 8 )
 
 [node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer"]
-margin_top = 102.0
-margin_right = 990.0
+margin_right = 960.0
 margin_bottom = 571.0
 size_flags_vertical = 3
 theme = ExtResource( 4 )
@@ -144,7 +145,7 @@ split_offset = 243
 
 [node name="Panel" type="Panel" parent="VBoxContainer/HSplitContainer"]
 margin_right = 243.0
-margin_bottom = 469.0
+margin_bottom = 571.0
 custom_styles/panel = SubResource( 2 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HSplitContainer/Panel"]
@@ -160,7 +161,7 @@ __meta__ = {
 
 [node name="NoteButtons" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/Panel/ScrollContainer"]
 margin_right = 207.0
-margin_bottom = 441.0
+margin_bottom = 543.0
 rect_min_size = Vector2( 200, 440 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -225,13 +226,15 @@ __meta__ = {
 
 [node name="Panel2" type="Panel" parent="VBoxContainer/HSplitContainer"]
 margin_left = 278.0
-margin_right = 990.0
-margin_bottom = 469.0
+margin_right = 960.0
+margin_bottom = 571.0
 custom_styles/panel = SubResource( 5 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/Panel2"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 30.0
+margin_bottom = -15.0
 theme = SubResource( 10 )
 custom_constants/separation = 15
 __meta__ = {
@@ -240,7 +243,7 @@ __meta__ = {
 
 [node name="Title" type="TextEdit" parent="VBoxContainer/HSplitContainer/Panel2/VBoxContainer"]
 modulate = Color( 0.576471, 0.627451, 0.631373, 1 )
-margin_right = 712.0
+margin_right = 682.0
 margin_bottom = 54.389
 rect_min_size = Vector2( 0, 54.389 )
 rect_pivot_offset = Vector2( 0, 27 )
@@ -256,8 +259,8 @@ caret_blink = true
 [node name="Note" type="TextEdit" parent="VBoxContainer/HSplitContainer/Panel2/VBoxContainer"]
 modulate = Color( 0.576471, 0.627451, 0.631373, 1 )
 margin_top = 69.0
-margin_right = 712.0
-margin_bottom = 425.0
+margin_right = 682.0
+margin_bottom = 482.0
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -269,47 +272,48 @@ wrap_enabled = true
 minimap_draw = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HSplitContainer/Panel2/VBoxContainer"]
-margin_top = 440.0
-margin_right = 712.0
-margin_bottom = 469.071
+modulate = Color( 1, 1, 1, 0.647059 )
+margin_top = 497.0
+margin_right = 682.0
+margin_bottom = 526.071
 rect_min_size = Vector2( 0, 29.071 )
 theme = SubResource( 11 )
 alignment = 2
 
 [node name="CreatedLabel" type="Label" parent="VBoxContainer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer"]
-margin_left = 483.0
+margin_left = 453.0
 margin_top = 7.0
-margin_right = 525.0
+margin_right = 495.0
 margin_bottom = 22.0
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.470588 )
 text = "Created"
 
 [node name="Created" type="Label" parent="VBoxContainer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer"]
-margin_left = 529.0
+margin_left = 499.0
 margin_top = 7.0
-margin_right = 581.0
+margin_right = 551.0
 margin_bottom = 22.0
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
 text = "00/00/00"
 
 [node name="Control" type="Control" parent="VBoxContainer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer"]
-margin_left = 585.0
-margin_right = 605.0
+margin_left = 555.0
+margin_right = 575.0
 margin_bottom = 29.0
 rect_min_size = Vector2( 20, 0 )
 
 [node name="ModifiedLabel" type="Label" parent="VBoxContainer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer"]
-margin_left = 609.0
+margin_left = 579.0
 margin_top = 7.0
-margin_right = 656.0
+margin_right = 626.0
 margin_bottom = 22.0
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.470588 )
 text = "Modified"
 
 [node name="Modified" type="Label" parent="VBoxContainer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer"]
-margin_left = 660.0
+margin_left = 630.0
 margin_top = 7.0
-margin_right = 712.0
+margin_right = 682.0
 margin_bottom = 22.0
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
 text = "00/00/00"

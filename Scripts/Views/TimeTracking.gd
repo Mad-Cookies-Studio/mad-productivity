@@ -1,5 +1,6 @@
 extends Control
 
+export var title : String
 var res : TimeTrackResource
 var time_tracks_array : Array
 var cancel : = false
@@ -13,7 +14,7 @@ func _ready() -> void:
 
 
 func entering_view() -> void:
-	pass
+	Defaults.emit_signal("view_changed", title, true, false)
 	
 	
 func leaving_view() -> void:
@@ -100,7 +101,7 @@ func change_title(_final : String = "00:00:00") -> void:
 
 func update_total_time() -> void:
 	var _time : Array = get_hours_minutes_seconds(total_secs)
-	$VBoxContainer/TopHorizontalContainer/Total.text = "total " + _time[2] + ":" + _time[1] + ":" + _time[0]
+	$Total.text = "total " + _time[2] + ":" + _time[1] + ":" + _time[0]
 
 
 func remove_time_track(idx : int) -> void:

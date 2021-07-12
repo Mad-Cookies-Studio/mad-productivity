@@ -1,10 +1,12 @@
 extends Control
 
+export var title : String
 
 var res : SettingsResource
 
 # UI state machine functions
 func entering_view() -> void:
+	Defaults.emit_signal("view_changed", title, false, false)
 	set_up_btns()
 	
 	
@@ -22,14 +24,14 @@ func _ready() -> void:
 
 
 func set_up_btns() -> void:
-	$VBoxContainer/FontSize/Option.select(res.font_size)
-	$VBoxContainer/SecsDashboard/Option.pressed = res.show_secs_dash
-	$VBoxContainer/WindowPos/Option.pressed = res.remember_window_settings
-	$VBoxContainer/LongPause/Option.value = res.pomo_long_pause_length
-	$VBoxContainer/LongPauseFreq/Option.value = res.pomo_long_pause_freq
-	$VBoxContainer/ShortPause/Option.value = res.pomo_short_pause_length
-	$VBoxContainer/WorkTimeLength/Option.value = res.pomo_work_time_length
-	$VBoxContainer/WindowPos2/Option.pressed = res.remember_last_session_view
+	$C/VBoxContainer/FontSize/Option.select(res.font_size)
+	$C/VBoxContainer/SecsDashboard/Option.pressed = res.show_secs_dash
+	$C/VBoxContainer/WindowPos/Option.pressed = res.remember_window_settings
+	$C/VBoxContainer/LongPause/Option.value = res.pomo_long_pause_length
+	$C/VBoxContainer/LongPauseFreq/Option.value = res.pomo_long_pause_freq
+	$C/VBoxContainer/ShortPause/Option.value = res.pomo_short_pause_length
+	$C/VBoxContainer/WorkTimeLength/Option.value = res.pomo_work_time_length
+	$C/VBoxContainer/WindowPos2/Option.pressed = res.remember_last_session_view
 
 
 func update_settings() -> void:
