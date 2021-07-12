@@ -86,16 +86,16 @@ func start_time_tracking_custom(_name) -> void:
 
 
 func change_title(_final : String = "00:00:00") -> void:
-	$Tween.interpolate_property($VBoxContainer/Title, 'percent_visible', 1.0, 0.0, 0.5, Tween.TRANS_QUAD, Tween.EASE_OUT, 0.0)
-	$Tween.interpolate_property($VBoxContainer/Title, 'percent_visible', 0.0, 1.0, 0.5, Tween.TRANS_QUAD, Tween.EASE_OUT, 0.5)
+	$Tween.interpolate_property($VBoxContainer/TopHorizontalContainer/Title, 'percent_visible', 1.0, 0.0, 0.5, Tween.TRANS_QUAD, Tween.EASE_OUT, 0.0)
+	$Tween.interpolate_property($VBoxContainer/TopHorizontalContainer/Title, 'percent_visible', 0.0, 1.0, 0.5, Tween.TRANS_QUAD, Tween.EASE_OUT, 0.5)
 	$Tween.start()
 	yield(get_tree().create_timer(0.5), "timeout")
-	$VBoxContainer/Title.text = _final
+	$VBoxContainer/TopHorizontalContainer/Title.text = _final
 
 
 func update_total_time() -> void:
 	var _time : Array = get_hours_minutes_seconds(total_secs)
-	$VBoxContainer/Title/Total.text = "total " + _time[2] + ":" + _time[1] + ":" + _time[0]
+	$VBoxContainer/TopHorizontalContainer/Total.text = "total " + _time[2] + ":" + _time[1] + ":" + _time[0]
 
 
 func remove_time_track(idx : int) -> void:
@@ -134,7 +134,7 @@ func _on_TrackButton_toggled(button_pressed: bool) -> void:
 
 func _on_Timer2_timeout() -> void:
 	var _time : Array = get_hours_minutes_seconds(86400 - $Timer.time_left)
-	$VBoxContainer/Title.text = _time[2] + ":" + _time[1] + ":" + _time[0]
+	$VBoxContainer/TopHorizontalContainer/Title.text = _time[2] + ":" + _time[1] + ":" + _time[0]
 	Defaults.time_tracked = _time[2] + ":" + _time[1] + ":" + _time[0]
 	
 
