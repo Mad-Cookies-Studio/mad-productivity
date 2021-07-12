@@ -18,7 +18,8 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		drag_amount += event.relative
-	OS.window_position = drag_amount - orig_position
+	OS.window_position.x = clamp(drag_amount.x - orig_position.x, 0, OS.get_screen_size().x - OS.window_size.x)
+	OS.window_position.y = clamp(drag_amount.y - orig_position.y, 0, OS.get_screen_size().y - OS.window_size.y)
 
 
 func _on_TopArea_gui_input(event: InputEvent) -> void:
