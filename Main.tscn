@@ -413,7 +413,6 @@ __meta__ = {
 }
 
 [node name="Dashboard" parent="MainWorkspace/Views" instance=ExtResource( 12 )]
-visible = false
 
 [node name="Notes" parent="MainWorkspace/Views" instance=ExtResource( 19 )]
 visible = false
@@ -560,6 +559,7 @@ __meta__ = {
 }
 
 [node name="Settings" type="Control" parent="MainWorkspace/Views"]
+visible = false
 margin_right = 990.0
 margin_bottom = 571.0
 script = ExtResource( 36 )

@@ -66,14 +66,15 @@ margin_right = 990.0
 margin_bottom = 63.0
 
 [node name="Title" type="Label" parent="VBoxContainer/TopHorizontalContainer"]
-margin_right = 365.0
+margin_right = 500.0
 margin_bottom = 63.0
+rect_min_size = Vector2( 500, 63 )
 custom_fonts/font = ExtResource( 13 )
 custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
 text = "TIME TRACKING"
 
 [node name="CheckButton" type="TextureButton" parent="VBoxContainer/TopHorizontalContainer"]
-margin_left = 369.0
+margin_left = 504.0
 margin_right = 931.0
 margin_bottom = 63.0
 size_flags_horizontal = 3

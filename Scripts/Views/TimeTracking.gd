@@ -90,6 +90,11 @@ func change_title(_final : String = "00:00:00") -> void:
 	$Tween.interpolate_property($VBoxContainer/TopHorizontalContainer/Title, 'percent_visible', 0.0, 1.0, 0.5, Tween.TRANS_QUAD, Tween.EASE_OUT, 0.5)
 	$Tween.start()
 	yield(get_tree().create_timer(0.5), "timeout")
+	if _final == "00:00:00":
+		$VBoxContainer/TopHorizontalContainer/Title.add_font_override("font", load("res://Assets/Fonts/NovaMono60.tres"))
+	else:
+		$VBoxContainer/TopHorizontalContainer/Title.add_font_override("font", load("res://Assets/Fonts/Righteous50.tres"))
+		
 	$VBoxContainer/TopHorizontalContainer/Title.text = _final
 
 

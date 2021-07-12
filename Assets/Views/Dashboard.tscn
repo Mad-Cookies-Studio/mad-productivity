@@ -6,17 +6,12 @@
 [ext_resource path="res://Assets/Fonts/Righteous20.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Scripts/WelcomeMessage.gd" type="Script" id=5]
 [ext_resource path="res://Assets/Resources/WelcomeMessages.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Fonts/NovaMono100.tres" type="DynamicFont" id=7]
 [ext_resource path="res://Assets/Icons/Discord-Logo-Color.svg" type="Texture" id=8]
 [ext_resource path="res://Assets/Icons/Discord-Logo-White.svg" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 80
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 2 )
@@ -43,34 +38,34 @@ __meta__ = {
 }
 
 [node name="Date" type="Label" parent="VBoxContainer"]
-margin_top = 121.0
+margin_top = 100.0
 margin_right = 990.0
-margin_bottom = 147.0
+margin_bottom = 126.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
 text = "Date"
 align = 1
 
 [node name="Time" type="Label" parent="VBoxContainer"]
-margin_top = 151.0
+margin_top = 130.0
 margin_right = 990.0
-margin_bottom = 251.0
-custom_fonts/font = SubResource( 2 )
+margin_bottom = 271.0
+custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
-text = "Time"
+text = "00:00:00"
 align = 1
 
 [node name="Control2" type="Control" parent="VBoxContainer"]
-margin_top = 255.0
+margin_top = 275.0
 margin_right = 990.0
-margin_bottom = 302.0
+margin_bottom = 322.0
 rect_min_size = Vector2( 0, 47 )
 
 [node name="WelcomeMessage" type="Label" parent="VBoxContainer"]
 margin_left = 295.0
-margin_top = 306.0
+margin_top = 326.0
 margin_right = 695.0
-margin_bottom = 406.0
+margin_bottom = 426.0
 grow_horizontal = 2
 rect_min_size = Vector2( 400, 100 )
 size_flags_horizontal = 4
@@ -90,9 +85,9 @@ resource = SubResource( 3 )
 [node name="Tween" type="Tween" parent="VBoxContainer/WelcomeMessage"]
 
 [node name="Control" type="Control" parent="VBoxContainer"]
-margin_top = 410.0
+margin_top = 430.0
 margin_right = 990.0
-margin_bottom = 450.0
+margin_bottom = 470.0
 rect_min_size = Vector2( 0, 40 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
