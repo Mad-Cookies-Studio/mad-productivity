@@ -7,6 +7,7 @@ var buttons : Array
 
 var active_btn : TextureButton
 
+var previous_random_view : int = -1
 
 func _ready() -> void:
 	get_viewport().connect("size_changed", self, "on_window_size_changed")
@@ -41,10 +42,16 @@ func manual_view_toggle(which : int) -> void:
 func on_toggled_menu_btn(which : TextureButton, idx : int, target : String = "") -> void:
 	if target == "Random":
 		print("going to a random view")
-		var rand : = randi() % $Buttons.get_child_count()
-		if rand == get_parent().get_parent().active_view:
-			rand += 1
-		$Buttons.get_child(rand).pressed = true
+		
+		var rand : int = get_random_view_number()
+		while rand == previous_random_view:
+			rand = get_random_view_number()
+			
+#		if rand == get_parent().get_parent().active_view:
+#			rand += 1
+#		$Buttons.get_child(rand).pressed = true
+		manual_view_toggle(rand)
+		previous_random_view = rand
 		return
 	if which != active_btn and active_btn != null:
 		active_btn.deactivate()
@@ -55,6 +62,10 @@ func on_toggled_menu_btn(which : TextureButton, idx : int, target : String = "")
 		move_selection_box(which.rect_position.y + which.get_parent().rect_position.y)
 	else:
 		move_selection_box(which.rect_position.y)
+
+
+func get_random_view_number() -> int:
+	return randi() % $Buttons.get_child_count() + $BotButtons.get_child_count()
 
 
 func on_window_size_changed() -> void:
