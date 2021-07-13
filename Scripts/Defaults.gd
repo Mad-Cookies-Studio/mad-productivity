@@ -42,6 +42,7 @@ func _ready() -> void:
 	check_folders()
 	load_settings()
 	init_window()
+#	update_theme()
 	
 	
 func check_folders() -> void:
@@ -100,7 +101,24 @@ func init_window() -> void:
 
 
 func update_theme() -> void:
+	# temp set of the active theme
+	ui_theme = load("res://Assets/Themes/Resources/Newspaper.tres")
+	
+	# commented and prepared to be used in the onset future
 	get_tree().call_group("UI_THEME", "update_theme")
+	# load the styles
+	var panel_dark_green : StyleBoxFlat = load("res://Assets/Themes/Dark/PanelDarkGreen.tres")
+	var panel_green : StyleBoxFlat = load("res://Assets/Themes/Dark/PanelGreen.tres")
+	var panel_highlight : StyleBoxFlat = load("res://Assets/Themes/Dark/PanelHighlight.tres")
+	
+	# set up the colours
+	panel_dark_green.bg_color = ui_theme.primary_col
+	panel_green.bg_color = ui_theme.secondary_col
+	panel_highlight.bg_color = ui_theme.highlight_col
+
+	btn_active_colour = ui_theme.btn_active_col
+	btn_inactive_colour = ui_theme.btn_inactive_col
+
 
 
 func quit() -> void:
@@ -220,3 +238,5 @@ func change_body_font_size(index : int) -> void:
 	var font_res : DynamicFont = load("res://Assets/Fonts/Roboto12.tres")
 	font_res.size = size
 	save_settings_resource()
+
+

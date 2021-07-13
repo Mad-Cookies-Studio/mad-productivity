@@ -99,7 +99,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sidebar" type="Panel" parent="MainWorkspace"]
+[node name="Sidebar" type="Panel" parent="MainWorkspace" groups=[
+"UI_THEME",
+]]
 anchor_bottom = 1.0
 margin_left = -50.0
 rect_min_size = Vector2( 50, 0 )

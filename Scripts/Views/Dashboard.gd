@@ -34,6 +34,12 @@ func update_date() -> void:
 	$VBoxContainer/Date.text = Defaults.get_full_date_as_string({})
 
 
+func update_theme() -> void:
+	$VBoxContainer/Date.add_color_override("font_color", Defaults.ui_theme.tertiary_col)
+	$VBoxContainer/Time.add_color_override("font_color", Defaults.ui_theme.tertiary_col)
+	$VBoxContainer/Panel/WelcomeMessage.add_color_override("font_color", Defaults.ui_theme.primary_col)
+
+
 func _on_Timer_timeout() -> void:
 	update_time()
 

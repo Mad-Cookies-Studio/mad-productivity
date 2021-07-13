@@ -20,7 +20,9 @@ font_data = ExtResource( 2 )
 script = ExtResource( 6 )
 messages = PoolStringArray( "A big part of staying productive is knowing when to rest and when to work, take some time off!", "I hate the \"Don\'t procrastinate\" gang. What\'s wrong with doing nothing\?", "A long time ago a wise old woman told me that being productive is all about being unpredictable. Being unpredictable in what you\'ll be doing next. It\'s the thoughts of work that get you tired before you even begin.", "See that week old, half eaten apple on your desk\? See how juicy it looks\? Don\'t eat it. Gross.", "Spreadsheetsare for amateurs.", "Game development is like coming back from hell with a snickers bar in your irght hand and broken mouse in the other.", "Ever felt like being productive\? Me neither.", "Congratulations! You\'re ready.", "Old wisdom foresees that eventually we\'ll all find happiness where we least expected it.", "Not to be a bore, but that time tracker ain\'t gonna turn itself on. Start tracking something now, even if it\'s nothing." )
 
-[node name="Dashboard" type="Control"]
+[node name="Dashboard" type="Control" groups=[
+"UI_THEME",
+]]
 margin_right = 990.0
 margin_bottom = 571.0
 rect_pivot_offset = Vector2( 495, 286 )

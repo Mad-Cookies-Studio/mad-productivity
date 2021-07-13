@@ -79,3 +79,7 @@ func move_selection_box(where : float = 0.0, add_parent_y : bool = false) -> voi
 	$Tween.interpolate_property($SelectionBox, "rect_position:y", $SelectionBox.rect_position.y, where, 0.5, Tween.TRANS_EXPO, Tween.EASE_OUT, 0.0)
 	$Tween.interpolate_property($SelectionBox/Particles, "speed_scale", 1.75, 0.2, 0.5, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT, 0.0)
 	$Tween.start()
+
+
+func update_theme() -> void:
+	$SelectionBox.color = Defaults.ui_theme.tertiary_col
