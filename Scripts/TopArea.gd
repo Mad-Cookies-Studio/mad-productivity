@@ -32,7 +32,8 @@ func _on_TopArea_gui_input(event: InputEvent) -> void:
 			if OS.window_maximized:
 				OS.window_maximized = false
 				OS.window_size = Vector2(1100, 700)
-				OS.center_window()
+				OS.window_position.y = 0
+				$Right/Maximize.pressed = false
 
 #			mouse_drag_beg = get_viewport().get_mouse_position()
 			orig_position = get_viewport().get_mouse_position() - OS.window_position
