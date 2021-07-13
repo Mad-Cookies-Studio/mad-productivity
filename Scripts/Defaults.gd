@@ -35,6 +35,8 @@ var item_tracked : String = ""
 
 var settings_res : SettingsResource
 
+var ui_theme : ThemeResource
+
 func _ready() -> void:
 	randomize()
 	check_folders()
@@ -95,6 +97,10 @@ func init_window() -> void:
 		OS.window_position = settings_res.window_pos
 	else:
 		OS.center_window()
+
+
+func update_theme() -> void:
+	get_tree().call_group("UI_THEME", "update_theme")
 
 
 func quit() -> void:
