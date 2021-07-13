@@ -682,9 +682,9 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainWorkspace/Views/Settings/C"]
 margin_left = 100.0
-margin_top = 61.0
+margin_top = 42.0
 margin_right = 534.0
-margin_bottom = 492.0
+margin_bottom = 512.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 14
@@ -842,10 +842,31 @@ margin_right = 378.0
 margin_bottom = 24.0
 theme = ExtResource( 37 )
 
-[node name="Category2" type="HBoxContainer" parent="MainWorkspace/Views/Settings/C/VBoxContainer"]
+[node name="Borderless" type="HBoxContainer" parent="MainWorkspace/Views/Settings/C/VBoxContainer"]
 margin_top = 253.0
 margin_right = 434.0
-margin_bottom = 303.0
+margin_bottom = 277.0
+
+[node name="Text" type="Label" parent="MainWorkspace/Views/Settings/C/VBoxContainer/Borderless"]
+margin_top = 4.0
+margin_right = 350.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 350, 0 )
+custom_styles/normal = SubResource( 22 )
+custom_fonts/font = ExtResource( 38 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+text = "Borderless window"
+
+[node name="Option" type="CheckBox" parent="MainWorkspace/Views/Settings/C/VBoxContainer/Borderless"]
+margin_left = 354.0
+margin_right = 378.0
+margin_bottom = 24.0
+theme = ExtResource( 37 )
+
+[node name="Category2" type="HBoxContainer" parent="MainWorkspace/Views/Settings/C/VBoxContainer"]
+margin_top = 292.0
+margin_right = 434.0
+margin_bottom = 342.0
 custom_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false
@@ -873,9 +894,9 @@ theme = ExtResource( 7 )
 text = "reset"
 
 [node name="WorkTimeLength" type="HBoxContainer" parent="MainWorkspace/Views/Settings/C/VBoxContainer"]
-margin_top = 318.0
+margin_top = 357.0
 margin_right = 434.0
-margin_bottom = 335.0
+margin_bottom = 374.0
 
 [node name="Text" type="Label" parent="MainWorkspace/Views/Settings/C/VBoxContainer/WorkTimeLength"]
 margin_top = 1.0
@@ -896,9 +917,9 @@ theme = ExtResource( 37 )
 suffix = "m"
 
 [node name="ShortPause" type="HBoxContainer" parent="MainWorkspace/Views/Settings/C/VBoxContainer"]
-margin_top = 350.0
+margin_top = 389.0
 margin_right = 434.0
-margin_bottom = 367.0
+margin_bottom = 406.0
 
 [node name="Text" type="Label" parent="MainWorkspace/Views/Settings/C/VBoxContainer/ShortPause"]
 margin_top = 1.0
@@ -919,9 +940,9 @@ theme = ExtResource( 37 )
 suffix = "m"
 
 [node name="LongPause" type="HBoxContainer" parent="MainWorkspace/Views/Settings/C/VBoxContainer"]
-margin_top = 382.0
+margin_top = 421.0
 margin_right = 434.0
-margin_bottom = 399.0
+margin_bottom = 438.0
 
 [node name="Text" type="Label" parent="MainWorkspace/Views/Settings/C/VBoxContainer/LongPause"]
 margin_top = 1.0
@@ -942,9 +963,9 @@ theme = ExtResource( 37 )
 suffix = "m"
 
 [node name="LongPauseFreq" type="HBoxContainer" parent="MainWorkspace/Views/Settings/C/VBoxContainer"]
-margin_top = 414.0
+margin_top = 453.0
 margin_right = 434.0
-margin_bottom = 431.0
+margin_bottom = 470.0
 
 [node name="Text" type="Label" parent="MainWorkspace/Views/Settings/C/VBoxContainer/LongPauseFreq"]
 margin_top = 1.0
@@ -1014,6 +1035,7 @@ __meta__ = {
 [connection signal="toggled" from="MainWorkspace/Views/Settings/C/VBoxContainer/WindowPos/Option" to="MainWorkspace/Views/Settings" method="_on_windowPos_toggled"]
 [connection signal="toggled" from="MainWorkspace/Views/Settings/C/VBoxContainer/WindowPos2/Option" to="MainWorkspace/Views/Settings" method="_on_lastSessionView_toggled"]
 [connection signal="toggled" from="MainWorkspace/Views/Settings/C/VBoxContainer/ShowDate/Option" to="MainWorkspace/Views/Settings" method="_on_ShowDateOption_toggled"]
+[connection signal="toggled" from="MainWorkspace/Views/Settings/C/VBoxContainer/Borderless/Option" to="MainWorkspace/Views/Settings" method="_on_BorderlessOption_toggled"]
 [connection signal="pressed" from="MainWorkspace/Views/Settings/C/VBoxContainer/Category2/PomodoroResetButton" to="MainWorkspace/Views/Settings" method="_on_PomodoroResetButton_pressed"]
 [connection signal="value_changed" from="MainWorkspace/Views/Settings/C/VBoxContainer/WorkTimeLength/Option" to="MainWorkspace/Views/Settings" method="_on_workTimeLength_value_changed"]
 [connection signal="value_changed" from="MainWorkspace/Views/Settings/C/VBoxContainer/ShortPause/Option" to="MainWorkspace/Views/Settings" method="_on_ShortPauseLength_value_changed"]

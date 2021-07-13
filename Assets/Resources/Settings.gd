@@ -24,6 +24,7 @@ export var font_size : int = 0
 export var remember_last_session_view : bool = false
 export var last_session_view : int = -1
 export var show_date : bool = true
+export var borderless : bool = true
 
 #pomodoro settings
 export var pomo_work_time_length : int = 25

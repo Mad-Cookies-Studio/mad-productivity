@@ -33,6 +33,7 @@ func set_up_btns() -> void:
 	$C/VBoxContainer/WorkTimeLength/Option.value = res.pomo_work_time_length
 	$C/VBoxContainer/WindowPos2/Option.pressed = res.remember_last_session_view
 	$C/VBoxContainer/ShowDate/Option.pressed = res.show_date
+	$C/VBoxContainer/Borderless/Option.pressed = res.borderless
 
 
 func update_settings() -> void:
@@ -89,3 +90,8 @@ func _on_GeneralResetButton_pressed() -> void:
 
 func _on_ShowDateOption_toggled(button_pressed: bool) -> void:
 	res.show_date = button_pressed
+
+
+func _on_BorderlessOption_toggled(button_pressed: bool) -> void:
+	OS.window_borderless = button_pressed
+	res.borderless = button_pressed

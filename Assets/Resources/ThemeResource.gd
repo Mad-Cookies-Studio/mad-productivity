@@ -15,6 +15,7 @@ export var title_text_col : Color
 export var btn_active_col : Color
 export var btn_inactive_col : Color
 
+
 func trigger_theme_update() -> void:
 	# TODO: Implement necessary methods to get all UI components to update their UI theme.
 	# IDEA: Create a child node object that holds a UI theme update script
