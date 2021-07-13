@@ -157,6 +157,20 @@ func get_time_with_semicoloumns(_custom : Dictionary) -> String:
 	return hour + ":" + minute + ":" + second
 
 
+func get_time_with_semicoloumns_no_secs(_custom : Dictionary) -> String:
+	var date : Dictionary = OS.get_time()
+	if _custom.size() > 0:
+		date = _custom
+	var hour : String = str(date.hour)
+	var minute : String = str(date.minute)
+	if hour.length() == 1:
+		hour = "0" + hour
+	if minute.length() == 1:
+		minute = "0" + minute
+		
+	return hour + ":" + minute
+
+
 func get_date_with_time_string(_dic : Dictionary) -> String:
 	return get_date_as_numbers(_dic) + " " + get_time_with_semicoloumns(_dic)
 

@@ -74,3 +74,13 @@ func _on_lastSessionView_toggled(button_pressed: bool) -> void:
 	
 	if !button_pressed:
 		res.last_session_view = -1
+
+
+func _on_PomodoroResetButton_pressed() -> void:
+	res.reset_pomodoro_settings()
+	set_up_btns()
+
+
+func _on_GeneralResetButton_pressed() -> void:
+	res.reset_general_settings()
+	set_up_btns()

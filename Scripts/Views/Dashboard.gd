@@ -19,7 +19,11 @@ func leaving_view() -> void:
 
 
 func update_time() -> void:
-	$VBoxContainer/Time.text = Defaults.get_time_with_semicoloumns({})
+	if Defaults.settings_res.show_secs_dash:
+		$VBoxContainer/Time.text = Defaults.get_time_with_semicoloumns({})
+	else:
+		$VBoxContainer/Time.text = Defaults.get_time_with_semicoloumns_no_secs({})
+		
 	#Update the date if we've gone over midnight
 	if OS.get_time().hour < midnight_check.hour:
 		update_date()
