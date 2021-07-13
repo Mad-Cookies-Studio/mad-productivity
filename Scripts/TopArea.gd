@@ -74,6 +74,7 @@ func _on_Maximize_toggled(button_pressed: bool) -> void:
 		Defaults.save_settings_resource()
 		
 
+# IMPORTANT: This func sets up the top area according to how to the new view
 func on_view_changed(_name : String, _button : bool, _input_field : bool) -> void:
 	$Title/ViewLabel.text = _name
 	if _name == "Time tracking":
