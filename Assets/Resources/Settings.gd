@@ -23,6 +23,7 @@ export var show_secs_dash : bool = true
 export var font_size : int = 0
 export var remember_last_session_view : bool = false
 export var last_session_view : int = -1
+export var show_date : bool = true
 
 #pomodoro settings
 export var pomo_work_time_length : int = 25
@@ -40,6 +41,7 @@ func reset_pomodoro_settings() -> void:
 	
 func reset_general_settings() -> void:
 	show_secs_dash = true
+	show_date = true
 	remember_last_session_view = false
 	last_session_view = -1
 	remember_window_settings = false

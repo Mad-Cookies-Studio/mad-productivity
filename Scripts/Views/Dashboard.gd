@@ -12,6 +12,7 @@ func _ready() -> void:
 
 func entering_view() -> void:
 	Defaults.emit_signal("view_changed", title, false, false)
+	$VBoxContainer/Date.visible = Defaults.settings_res.show_date
 	
 	
 func leaving_view() -> void:
