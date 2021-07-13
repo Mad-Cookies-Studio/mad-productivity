@@ -79,6 +79,7 @@ func on_view_changed(_name : String, _button : bool, _input_field : bool) -> voi
 	if _name == "Time tracking":
 		$Center/PomodoroBtn.show()
 		$Center/NewBtn.hide()
+		$Center/LineEdit.hide()
 	else:
 		$Center/PomodoroBtn.hide()
 		$Center/LineEdit.visible = _input_field
