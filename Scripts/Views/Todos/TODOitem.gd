@@ -25,13 +25,13 @@ func _on_Task_text_changed(new_text: String) -> void:
 
 func _on_TODOitem_mouse_entered() -> void:
 	# TODO: Update color in an appropriate way
-	color = Color(0.576471, 0.627451, 0.631373, 0.129412)
+	#color = Color(0.576471, 0.627451, 0.631373, 0.129412)
 	$HBoxContainer/TimeTrack.show()
 	$DeleteBtn.show()
 
 
 func _on_TODOitem_mouse_exited() -> void:
-	color = Color(0.086274, 0.152941, 0.160784)
+	#color = Color(0.086274, 0.152941, 0.160784)
 	$HBoxContainer/TimeTrack.hide()
 	$DeleteBtn.hide()
 

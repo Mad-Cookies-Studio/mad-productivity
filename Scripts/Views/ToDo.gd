@@ -56,6 +56,7 @@ func add_new_task_to_resource(_text : String, _done : bool, _date : Dictionary, 
 	
 func add_new_task_visual(_text : String, _done : bool, _date : Dictionary, _idx : int) -> void:
 	# get it!
+	return
 	var new : ColorRect = $VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem.duplicate()
 	# signals
 	new.connect("task_text_changed", self, "_on_task_text_changed")
