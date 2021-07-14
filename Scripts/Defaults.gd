@@ -134,6 +134,7 @@ func quit() -> void:
 		
 	if settings_res.remember_last_session_view:
 		settings_res.last_session_view = active_view
+	
 	save_settings_resource()
 		
 	get_tree().quit()

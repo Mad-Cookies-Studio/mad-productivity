@@ -1,5 +1,7 @@
 extends Control
 
+signal toggle_time_track(_name, really)
+
 export var title : String
 var res : TimeTrackResource
 var time_tracks_array : Array
@@ -87,21 +89,17 @@ func start_time_tracking_custom(_name) -> void:
 
 
 func change_title(_final : String = "00:00:00") -> void:
-	$Tween.interpolate_property($VBoxContainer/TopHorizontalContainer/Title, 'percent_visible', 1.0, 0.0, 0.5, Tween.TRANS_QUAD, Tween.EASE_OUT, 0.0)
-	$Tween.interpolate_property($VBoxContainer/TopHorizontalContainer/Title, 'percent_visible', 0.0, 1.0, 0.5, Tween.TRANS_QUAD, Tween.EASE_OUT, 0.5)
+	$Tween.interpolate_property($VBoxContainer/Panel/TimeTrack, 'percent_visible', 1.0, 0.0, 0.5, Tween.TRANS_QUAD, Tween.EASE_OUT, 0.0)
+	$Tween.interpolate_property($VBoxContainer/Panel/TimeTrack, 'percent_visible', 0.0, 1.0, 0.5, Tween.TRANS_QUAD, Tween.EASE_OUT, 0.5)
 	$Tween.start()
 	yield(get_tree().create_timer(0.5), "timeout")
-	if _final == "00:00:00":
-		$VBoxContainer/TopHorizontalContainer/Title.add_font_override("font", load("res://Assets/Fonts/NovaMono60.tres"))
-	else:
-		$VBoxContainer/TopHorizontalContainer/Title.add_font_override("font", load("res://Assets/Fonts/Righteous50.tres"))
 		
-	$VBoxContainer/TopHorizontalContainer/Title.text = _final
+	$VBoxContainer/Panel/TimeTrack.text = _final
 
 
 func update_total_time() -> void:
 	var _time : Array = get_hours_minutes_seconds(total_secs)
-	$Total.text = "total " + _time[2] + ":" + _time[1] + ":" + _time[0]
+	$VBoxContainer/Panel/Total.text = "total " + _time[2] + ":" + _time[1] + ":" + _time[0]
 
 
 func remove_time_track(idx : int) -> void:
@@ -120,39 +118,37 @@ func _on_TrackButton_toggled(button_pressed: bool) -> void:
 	if button_pressed:
 		Defaults.time_tracking = true
 		Defaults.item_tracked = $VBoxContainer/Panel/Label.text
+		emit_signal("toggle_time_track", Defaults.item_tracked, true)
 		$Timer.start()
-		$Timer2.start()
+		$SecondsTimer.start()
 		change_title()
 		$VBoxContainer/Panel/HBoxContainer/CancelButton.show()
 		$VBoxContainer/Panel/HBoxContainer/PauseButton.show()
 		$VBoxContainer/Panel/Label.editable = false
 	else:
 		Defaults.time_tracking = false
+		emit_signal("toggle_time_track","", false)
 		add_time_track(86400 - $Timer.time_left, $VBoxContainer/Panel/Label.text, OS.get_datetime())
-		change_title("TIME TRACKING")
+		change_title("")
 		$VBoxContainer/Panel/Label.editable = true
 		$Timer.stop()
-		$Timer2.stop()
+		$SecondsTimer.stop()
 		$VBoxContainer/Panel/HBoxContainer/CancelButton.hide()
 		$VBoxContainer/Panel/HBoxContainer/PauseButton.hide()
 		save()
 
-
-func _on_Timer2_timeout() -> void:
-	var _time : Array = get_hours_minutes_seconds(86400 - $Timer.time_left)
-	$VBoxContainer/TopHorizontalContainer/Title.text = _time[2] + ":" + _time[1] + ":" + _time[0]
-	Defaults.time_tracked = _time[2] + ":" + _time[1] + ":" + _time[0]
 	
 
 
 func _on_CancelButton_pressed() -> void:
 	Defaults.time_tracking = false
 	cancel = true
-	change_title("TIME TRACKING")
+	change_title("")
+	emit_signal("toggle_time_track", "", false)
 	$VBoxContainer/Panel/HBoxContainer/TrackButton.pressed = false
 	$VBoxContainer/Panel/Label.editable = true
 	$Timer.stop()
-	$Timer2.stop()
+	$SecondsTimer.stop()
 	$VBoxContainer/Panel/HBoxContainer/CancelButton.hide()
 	$VBoxContainer/Panel/HBoxContainer/PauseButton.hide()
 
@@ -160,10 +156,10 @@ func _on_CancelButton_pressed() -> void:
 func _on_PauseButton_toggled(button_pressed: bool) -> void:
 	if button_pressed:
 		$Timer.paused = true
-		$Timer2.paused = true
+		$SecondsTimer.paused = true
 	else:
 		$Timer.paused = false
-		$Timer2.paused = false
+		$SecondsTimer.paused = false
 		
 		
 func _on_delete_pressed(idx : int) -> void:
@@ -176,3 +172,9 @@ func _time_track_item_pressed(_name : String) -> void:
 
 func _on_new_time_track_item_text(_text : String, _idx : int) -> void:
 	update_time_track_item_text(_text, _idx)
+
+
+func _on_SecondsTimer_timeout() -> void:
+	var _time : Array = get_hours_minutes_seconds(86400 - $Timer.time_left)
+	$VBoxContainer/Panel/TimeTrack.text = _time[2] + ":" + _time[1] + ":" + _time[0]
+	Defaults.time_tracked = _time[2] + ":" + _time[1] + ":" + _time[0]

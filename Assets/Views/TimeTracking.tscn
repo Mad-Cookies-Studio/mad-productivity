@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Assets/Buttons/play_pressed.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Buttons/PauseBtn_idle.png" type="Texture" id=2]
@@ -12,25 +12,23 @@
 [ext_resource path="res://Assets/Buttons/cancelBtn_idle.png" type="Texture" id=10]
 [ext_resource path="res://Scripts/Views/TimeTracking.gd" type="Script" id=11]
 [ext_resource path="res://Scripts/Views/TimeTracking/TrackedItem.gd" type="Script" id=12]
+[ext_resource path="res://Assets/Fonts/NovaMono20.tres" type="DynamicFont" id=13]
 [ext_resource path="res://Assets/Fonts/Roboto20.tres" type="DynamicFont" id=14]
 [ext_resource path="res://Assets/Buttons/PauseBtn_hover.png" type="Texture" id=15]
 [ext_resource path="res://Assets/Buttons/TimeTrackBtnWhite.png" type="Texture" id=16]
-
-[sub_resource type="DynamicFont" id=1]
-size = 20
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 3 )
-
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.0588235, 0.105882, 0.109804, 0.498039 )
-border_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+[ext_resource path="res://Assets/Themes/Dark/PanelSuperDarkGreen.tres" type="StyleBox" id=17]
 
 [sub_resource type="StyleBoxEmpty" id=3]
 
 [sub_resource type="StyleBoxEmpty" id=4]
 
 [sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
 
 [sub_resource type="Shader" id=6]
 code = "shader_type canvas_item;
@@ -46,25 +44,6 @@ shader = SubResource( 6 )
 margin_right = 990.0
 margin_bottom = 571.0
 script = ExtResource( 11 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Total" type="Label" parent="."]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -72.6588
-margin_top = -114.294
-margin_right = -17.6588
-margin_bottom = -88.2942
-grow_horizontal = 0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.415686 )
-text = "total:"
-align = 2
-valign = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -183,13 +162,13 @@ margin_top = 491.0
 margin_right = 960.0
 margin_bottom = 541.0
 rect_min_size = Vector2( 0, 50 )
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = ExtResource( 17 )
 
 [node name="Label" type="LineEdit" parent="VBoxContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_left = 13.0
-margin_top = 13.0
-margin_right = 544.0
-margin_bottom = 37.0
+margin_right = -146.0
 custom_styles/read_only = SubResource( 3 )
 custom_styles/focus = SubResource( 4 )
 custom_styles/normal = SubResource( 5 )
@@ -256,10 +235,38 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Total" type="Label" parent="VBoxContainer/Panel"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -55.0
+margin_top = -30.2381
+margin_bottom = -4.2381
+grow_horizontal = 0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.415686 )
+text = "total:"
+align = 2
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimeTrack" type="Label" parent="VBoxContainer/Panel"]
+margin_top = -33.1213
+margin_right = 180.0
+margin_bottom = -4.12128
+grow_horizontal = 0
+custom_fonts/font = ExtResource( 13 )
+custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 86400.0
 
-[node name="Timer2" type="Timer" parent="."]
+[node name="SecondsTimer" type="Timer" parent="."]
 
 [node name="Tween" type="Tween" parent="."]
 
@@ -283,4 +290,4 @@ __meta__ = {
 [connection signal="pressed" from="VBoxContainer/Panel/HBoxContainer/CancelButton" to="." method="_on_CancelButton_pressed"]
 [connection signal="toggled" from="VBoxContainer/Panel/HBoxContainer/PauseButton" to="." method="_on_PauseButton_toggled"]
 [connection signal="toggled" from="VBoxContainer/Panel/HBoxContainer/TrackButton" to="." method="_on_TrackButton_toggled"]
-[connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]
+[connection signal="timeout" from="SecondsTimer" to="." method="_on_SecondsTimer_timeout"]

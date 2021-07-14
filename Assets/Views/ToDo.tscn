@@ -1,17 +1,14 @@
 [gd_scene load_steps=21 format=2]
 
+[ext_resource path="res://Assets/Themes/Dark/PanelGreenNoBorder.tres" type="StyleBox" id=1]
 [ext_resource path="res://Assets/Themes/Roboto12Clean.tres" type="Theme" id=2]
+[ext_resource path="res://Assets/Themes/Dark/PanelSuperDarkGreen.tres" type="StyleBox" id=3]
 [ext_resource path="res://Scripts/Views/ToDo.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/Views/Todos/TODOitem.gd" type="Script" id=5]
 [ext_resource path="res://Scripts/Views/Todos/CustomCheckBox.gd" type="Script" id=6]
 [ext_resource path="res://Assets/Buttons/Cross.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Buttons/TimeTrackBtnWhite.png" type="Texture" id=8]
 [ext_resource path="res://Scripts/Views/NoteButton.gd" type="Script" id=9]
-[ext_resource path="res://Assets/Themes/Dark/PanelGreen.tres" type="StyleBox" id=10]
-
-[sub_resource type="StyleBoxFlat" id=19]
-bg_color = Color( 0.0235294, 0.0470588, 0.0470588, 0.498039 )
-border_color = Color( 0.576471, 0.627451, 0.631373, 1 )
 
 [sub_resource type="StyleBoxEmpty" id=20]
 
@@ -105,7 +102,7 @@ split_offset = 243
 [node name="PanelL" type="Panel" parent="VBoxContainer/HSplitContainer"]
 margin_right = 243.0
 margin_bottom = 571.0
-custom_styles/panel = SubResource( 19 )
+custom_styles/panel = ExtResource( 3 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HSplitContainer/PanelL"]
 anchor_right = 1.0
@@ -214,7 +211,7 @@ margin_right = 687.0
 margin_bottom = 37.5
 rect_min_size = Vector2( 0, 37.5 )
 rect_pivot_offset = Vector2( -261.834, -35 )
-custom_styles/panel = ExtResource( 10 )
+custom_styles/panel = ExtResource( 1 )
 script = ExtResource( 5 )
 
 [node name="DeleteBtn" type="TextureButton" parent="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem"]

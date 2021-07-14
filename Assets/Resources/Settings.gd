@@ -47,3 +47,4 @@ func reset_general_settings() -> void:
 	last_session_view = -1
 	remember_window_settings = false
 	font_size = 1
+	borderless = true

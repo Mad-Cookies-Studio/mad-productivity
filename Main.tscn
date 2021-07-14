@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://Assets/Icons/MD_concept.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Icons/NoteTaking.png" type="Texture" id=2]
@@ -44,18 +44,13 @@
 [ext_resource path="res://Assets/Buttons/PomodoroTogglePomodoro.png" type="Texture" id=42]
 [ext_resource path="res://Assets/Themes/Dark/PanelDarkGreen.tres" type="StyleBox" id=43]
 [ext_resource path="res://Assets/Themes/Dark/PanelGreen.tres" type="StyleBox" id=44]
+[ext_resource path="res://Assets/Themes/Dark/PanelGreenNoBorder.tres" type="StyleBox" id=45]
 
 [sub_resource type="ButtonGroup" id=3]
 
 [sub_resource type="Gradient" id=4]
 offsets = PoolRealArray( 0, 0.219355, 0.36129, 1 )
 colors = PoolColorArray( 0.854902, 0.423529, 0.384314, 0, 0.854902, 0.423529, 0.384314, 1, 0.854902, 0.423529, 0.384314, 0.529412, 0.854902, 0.423529, 0.384314, 0 )
-
-[sub_resource type="DynamicFont" id=24]
-size = 18
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 40 )
 
 [sub_resource type="StyleBoxFlat" id=25]
 content_margin_left = 10.0
@@ -64,6 +59,12 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color( 0.576471, 0.627451, 0.631373, 0.392157 )
+
+[sub_resource type="DynamicFont" id=24]
+size = 18
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 40 )
 
 [sub_resource type="StyleBoxEmpty" id=17]
 
@@ -310,7 +311,10 @@ __meta__ = {
 [node name="ColorRect" type="Panel" parent="MainWorkspace/TopArea"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = ExtResource( 44 )
+custom_styles/panel = ExtResource( 45 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Title" type="HBoxContainer" parent="MainWorkspace/TopArea"]
 anchor_left = 0.5
@@ -326,28 +330,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Logo" type="TextureRect" parent="MainWorkspace/TopArea/Title"]
-modulate = Color( 0.854902, 0.423529, 0.384314, 1 )
-margin_right = 21.777
-margin_bottom = 40.0
-rect_min_size = Vector2( 21.777, 0 )
-texture = ExtResource( 1 )
-expand = true
-stretch_mode = 6
-
-[node name="ViewLabel" type="Label" parent="MainWorkspace/TopArea/Title"]
-margin_left = 25.0
-margin_top = 8.0
-margin_right = 177.0
-margin_bottom = 31.0
-custom_fonts/font = SubResource( 24 )
-custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
-text = "Mad Productivity"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Center" type="HBoxContainer" parent="MainWorkspace/TopArea"]
+[node name="Left" type="HBoxContainer" parent="MainWorkspace/TopArea"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_constants/separation = 0
@@ -356,12 +339,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Control3" type="Control" parent="MainWorkspace/TopArea/Center"]
+[node name="Control3" type="Control" parent="MainWorkspace/TopArea/Left"]
 margin_right = 13.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 13, 0 )
 
-[node name="NewBtn" type="Button" parent="MainWorkspace/TopArea/Center"]
+[node name="NewBtn" type="Button" parent="MainWorkspace/TopArea/Left"]
 margin_left = 13.0
 margin_top = 8.0
 margin_right = 63.0
@@ -371,7 +354,7 @@ size_flags_vertical = 4
 theme = ExtResource( 7 )
 text = "NEW"
 
-[node name="LineEdit" type="LineEdit" parent="MainWorkspace/TopArea/Center"]
+[node name="LineEdit" type="LineEdit" parent="MainWorkspace/TopArea/Left"]
 margin_left = 63.0
 margin_top = 8.0
 margin_right = 263.0
@@ -381,12 +364,11 @@ size_flags_vertical = 4
 custom_styles/normal = SubResource( 25 )
 placeholder_text = "type text here"
 
-[node name="PomodoroBtn" type="TextureButton" parent="MainWorkspace/TopArea/Center"]
-visible = false
+[node name="PomodoroBtn" type="TextureButton" parent="MainWorkspace/TopArea/Left"]
 margin_left = 263.0
-margin_right = 442.09
+margin_right = 464.845
 margin_bottom = 45.0
-rect_min_size = Vector2( 179.09, 0 )
+rect_min_size = Vector2( 201.845, 0 )
 toggle_mode = true
 texture_normal = ExtResource( 41 )
 texture_pressed = ExtResource( 42 )
@@ -396,21 +378,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Control" type="Control" parent="MainWorkspace/TopArea/Center"]
-margin_left = 263.0
-margin_right = 656.0
-margin_bottom = 45.0
-mouse_filter = 2
-size_flags_horizontal = 3
-
-[node name="Control2" type="Control" parent="MainWorkspace/TopArea/Center"]
-margin_left = 656.0
+[node name="Control2" type="Control" parent="MainWorkspace/TopArea/Left"]
+margin_left = 464.0
 margin_right = 1050.0
 margin_bottom = 45.0
 mouse_filter = 2
 size_flags_horizontal = 3
 
-[node name="TimeTrackingTop" type="HBoxContainer" parent="MainWorkspace/TopArea/Center"]
+[node name="TimeTrackingTop" type="HBoxContainer" parent="MainWorkspace/TopArea/Left"]
 visible = false
 margin_left = 650.0
 margin_right = 1050.0
@@ -421,7 +396,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="MainWorkspace/TopArea/Center/TimeTrackingTop"]
+[node name="Label" type="Label" parent="MainWorkspace/TopArea/Left/TimeTrackingTop"]
 margin_left = 81.0
 margin_top = 13.0
 margin_right = 271.0
@@ -429,7 +404,7 @@ margin_bottom = 32.0
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
 text = "TRACKING NAME 00:00:00"
 
-[node name="TextureButton2" type="TextureButton" parent="MainWorkspace/TopArea/Center/TimeTrackingTop"]
+[node name="TextureButton2" type="TextureButton" parent="MainWorkspace/TopArea/Left/TimeTrackingTop"]
 margin_left = 275.0
 margin_right = 295.117
 margin_bottom = 45.0
@@ -439,7 +414,7 @@ texture_hover = ExtResource( 28 )
 expand = true
 stretch_mode = 5
 
-[node name="TextureButton" type="TextureButton" parent="MainWorkspace/TopArea/Center/TimeTrackingTop"]
+[node name="TextureButton" type="TextureButton" parent="MainWorkspace/TopArea/Left/TimeTrackingTop"]
 margin_left = 299.0
 margin_right = 319.117
 margin_bottom = 45.0
@@ -452,10 +427,11 @@ stretch_mode = 5
 [node name="Right" type="HBoxContainer" parent="MainWorkspace/TopArea"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 896.0
-margin_top = 16.0
+margin_left = 728.0
+margin_top = 5.0
 margin_right = -15.0
-margin_bottom = -16.0
+margin_bottom = -6.0
+grow_horizontal = 0
 mouse_filter = 2
 custom_constants/separation = 14
 alignment = 2
@@ -463,33 +439,69 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Logo" type="TextureRect" parent="MainWorkspace/TopArea/Right"]
+visible = false
+modulate = Color( 0.854902, 0.423529, 0.384314, 1 )
+margin_right = 21.777
+margin_bottom = 34.0
+rect_min_size = Vector2( 21.777, 0 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+
+[node name="ViewLabel" type="Label" parent="MainWorkspace/TopArea/Right"]
+margin_left = 50.0
+margin_top = 5.0
+margin_right = 202.0
+margin_bottom = 28.0
+custom_fonts/font = SubResource( 24 )
+custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
+text = "Mad Productivity"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="MainWorkspace/TopArea/Right"]
+margin_left = 216.0
+margin_right = 226.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 10, 0 )
+
 [node name="Minimuze" type="TextureButton" parent="MainWorkspace/TopArea/Right"]
 modulate = Color( 1, 1, 1, 0.490196 )
-margin_left = 72.0
-margin_right = 85.0
-margin_bottom = 13.0
+margin_left = 240.0
+margin_right = 253.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 13, 0 )
 texture_normal = ExtResource( 6 )
-stretch_mode = 3
+expand = true
+stretch_mode = 5
 script = ExtResource( 11 )
 
 [node name="Maximize" type="TextureButton" parent="MainWorkspace/TopArea/Right"]
 modulate = Color( 1, 1, 1, 0.490196 )
-margin_left = 99.0
-margin_right = 112.0
-margin_bottom = 13.0
+margin_left = 267.0
+margin_right = 280.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 13, 0 )
 toggle_mode = true
 texture_normal = ExtResource( 33 )
-stretch_mode = 3
+expand = true
+stretch_mode = 5
 script = ExtResource( 11 )
 
 [node name="Exit" type="TextureButton" parent="MainWorkspace/TopArea/Right"]
 modulate = Color( 1, 1, 1, 0.490196 )
-margin_left = 126.0
-margin_right = 139.0
-margin_bottom = 13.0
+margin_left = 294.0
+margin_right = 307.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 13, 0 )
 texture_normal = ExtResource( 8 )
-stretch_mode = 3
+expand = true
+stretch_mode = 5
 script = ExtResource( 11 )
+
+[node name="Tween" type="Tween" parent="MainWorkspace/TopArea"]
 
 [node name="Views" type="MarginContainer" parent="MainWorkspace"]
 anchor_right = 1.0
@@ -1024,7 +1036,7 @@ __meta__ = {
 
 [connection signal="view_changed" from="MainWorkspace/Sidebar" to="." method="_on_Sidebar_view_changed"]
 [connection signal="gui_input" from="MainWorkspace/TopArea" to="MainWorkspace/TopArea" method="_on_TopArea_gui_input"]
-[connection signal="pressed" from="MainWorkspace/TopArea/Center/NewBtn" to="MainWorkspace/TopArea" method="_on_Button_pressed"]
+[connection signal="pressed" from="MainWorkspace/TopArea/Left/NewBtn" to="MainWorkspace/TopArea" method="_on_Button_pressed"]
 [connection signal="pressed" from="MainWorkspace/TopArea/Right/Minimuze" to="MainWorkspace/TopArea" method="_on_Minimuze_pressed"]
 [connection signal="toggled" from="MainWorkspace/TopArea/Right/Maximize" to="MainWorkspace/TopArea" method="_on_Maximize_toggled"]
 [connection signal="pressed" from="MainWorkspace/TopArea/Right/Exit" to="MainWorkspace/TopArea" method="_on_Exit_pressed"]

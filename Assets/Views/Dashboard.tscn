@@ -113,8 +113,14 @@ __meta__ = {
 
 [node name="Discord" type="TextureButton" parent="Control"]
 modulate = Color( 1, 1, 1, 0.447059 )
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -55.3507
+margin_top = -55.3506
+margin_right = -15.3507
+margin_bottom = -15.3506
 rect_min_size = Vector2( 0, 40 )
 focus_mode = 0
 enabled_focus_mode = 0

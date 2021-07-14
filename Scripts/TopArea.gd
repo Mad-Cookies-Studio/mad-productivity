@@ -74,17 +74,26 @@ func _on_Maximize_toggled(button_pressed: bool) -> void:
 		Defaults.save_settings_resource()
 		
 
+func change_window_title(_name : String) -> void:
+	$Tween.stop_all()
+	$Tween.interpolate_property($Right/ViewLabel, "percent_visible", $Right/ViewLabel.percent_visible, 0.0, 0.5, Tween.TRANS_LINEAR, Tween.EASE_OUT, 0.0)
+	$Tween.interpolate_property($Right/ViewLabel, "percent_visible", 0.0, 1.0, 0.5, Tween.TRANS_LINEAR, Tween.EASE_OUT, 0.5)
+	$Tween.start()
+	yield(get_tree().create_timer(0.5), "timeout")
+	$Right/ViewLabel.text = _name 
+
+
 # IMPORTANT: This func sets up the top area according to how to the new view
 func on_view_changed(_name : String, _button : bool, _input_field : bool) -> void:
-	$Title/ViewLabel.text = _name
+	change_window_title(_name)
 	if _name == "Time tracking":
-		$Center/PomodoroBtn.show()
-		$Center/NewBtn.hide()
-		$Center/LineEdit.hide()
+		$Left/PomodoroBtn.show()
+		$Left/NewBtn.hide()
+		$Left/LineEdit.hide()
 	else:
-		$Center/PomodoroBtn.hide()
-		$Center/LineEdit.visible = _input_field
-		$Center/NewBtn.visible = _button
+		$Left/PomodoroBtn.hide()
+		$Left/LineEdit.visible = _input_field
+		$Left/NewBtn.visible = _button
 
 
 func _on_Button_pressed() -> void:
