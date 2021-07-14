@@ -350,6 +350,7 @@ margin_top = 8.0
 margin_right = 63.0
 margin_bottom = 35.024
 rect_min_size = Vector2( 50, 27.024 )
+focus_mode = 0
 size_flags_vertical = 4
 theme = ExtResource( 7 )
 text = "NEW"
@@ -360,6 +361,7 @@ margin_top = 8.0
 margin_right = 263.0
 margin_bottom = 35.1
 rect_min_size = Vector2( 200, 27.1 )
+focus_mode = 1
 size_flags_vertical = 4
 custom_styles/normal = SubResource( 25 )
 placeholder_text = "type text here"
@@ -369,6 +371,7 @@ margin_left = 263.0
 margin_right = 464.845
 margin_bottom = 45.0
 rect_min_size = Vector2( 201.845, 0 )
+focus_mode = 0
 toggle_mode = true
 texture_normal = ExtResource( 41 )
 texture_pressed = ExtResource( 42 )
@@ -1203,6 +1206,7 @@ __meta__ = {
 [connection signal="view_changed" from="MainWorkspace/Sidebar" to="." method="_on_Sidebar_view_changed"]
 [connection signal="gui_input" from="MainWorkspace/TopArea" to="MainWorkspace/TopArea" method="_on_TopArea_gui_input"]
 [connection signal="pressed" from="MainWorkspace/TopArea/Left/NewBtn" to="MainWorkspace/TopArea" method="_on_Button_pressed"]
+[connection signal="toggled" from="MainWorkspace/TopArea/Left/PomodoroBtn" to="MainWorkspace/Views/TimeTracking" method="_on_PomodoroBtn_toggled"]
 [connection signal="pressed" from="MainWorkspace/TopArea/Right/Minimuze" to="MainWorkspace/TopArea" method="_on_Minimuze_pressed"]
 [connection signal="toggled" from="MainWorkspace/TopArea/Right/Maximize" to="MainWorkspace/TopArea" method="_on_Maximize_toggled"]
 [connection signal="pressed" from="MainWorkspace/TopArea/Right/Exit" to="MainWorkspace/TopArea" method="_on_Exit_pressed"]

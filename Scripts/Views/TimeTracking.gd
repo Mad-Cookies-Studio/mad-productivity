@@ -37,7 +37,7 @@ func load_time_tracks() -> void:
 	
 	
 func create_track_visual(_name : String, _date : Dictionary, _time : int, _id : int) -> void:
-	var new : ColorRect = $VBoxContainer/ScrollContainer/VBoxContainer/TrackedItem.duplicate()
+	var new : ColorRect = $LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem.duplicate()
 	new.id = _id
 	
 	var time = get_hours_minutes_seconds(_time)
@@ -48,8 +48,8 @@ func create_track_visual(_name : String, _date : Dictionary, _time : int, _id : 
 	new.fill_details(Defaults.get_date_with_time_string(_date), (time[2] + ":" + time[1] + ":" + time[0]), _name)
 
 	new.show()
-	$VBoxContainer/ScrollContainer/VBoxContainer.add_child(new)
-	$VBoxContainer/ScrollContainer/VBoxContainer.move_child(new, 1)
+	$LinearTimeTrackingContainer/ScrollContainer/VBoxContainer.add_child(new)
+	$LinearTimeTrackingContainer/ScrollContainer/VBoxContainer.move_child(new, 1)
 	new.show_up()
 	
 	
@@ -85,22 +85,22 @@ func save() -> void:
 
 func start_time_tracking_custom(_name) -> void:
 	if Defaults.time_tracking : return
-	$VBoxContainer/Panel/Label.text = _name
-	$VBoxContainer/Panel/HBoxContainer/TrackButton.pressed = true
+	$LinearTimeTrackingContainer/Panel/Label.text = _name
+	$LinearTimeTrackingContainer/Panel/HBoxContainer/TrackButton.pressed = true
 
 
 func change_title(_final : String = "00:00:00") -> void:
-	$Tween.interpolate_property($VBoxContainer/Panel/TimeTrack, 'percent_visible', 1.0, 0.0, 0.5, Tween.TRANS_QUAD, Tween.EASE_OUT, 0.0)
-	$Tween.interpolate_property($VBoxContainer/Panel/TimeTrack, 'percent_visible', 0.0, 1.0, 0.5, Tween.TRANS_QUAD, Tween.EASE_OUT, 0.5)
+	$Tween.interpolate_property($LinearTimeTrackingContainer/Panel/TimeTrack, 'percent_visible', 1.0, 0.0, 0.5, Tween.TRANS_QUAD, Tween.EASE_OUT, 0.0)
+	$Tween.interpolate_property($LinearTimeTrackingContainer/Panel/TimeTrack, 'percent_visible', 0.0, 1.0, 0.5, Tween.TRANS_QUAD, Tween.EASE_OUT, 0.5)
 	$Tween.start()
 	yield(get_tree().create_timer(0.5), "timeout")
 		
-	$VBoxContainer/Panel/TimeTrack.text = _final
+	$LinearTimeTrackingContainer/Panel/TimeTrack.text = _final
 
 
 func update_total_time() -> void:
 	var _time : Array = get_hours_minutes_seconds(total_secs)
-	$VBoxContainer/Panel/Total.text = "total " + _time[2] + ":" + _time[1] + ":" + _time[0]
+	$LinearTimeTrackingContainer/Panel/Total.text = "total " + _time[2] + ":" + _time[1] + ":" + _time[0]
 
 
 func remove_time_track(idx : int) -> void:
@@ -118,24 +118,24 @@ func _on_TrackButton_toggled(button_pressed: bool) -> void:
 		return
 	if button_pressed:
 		Defaults.time_tracking = true
-		Defaults.item_tracked = $VBoxContainer/Panel/Label.text
+		Defaults.item_tracked = $LinearTimeTrackingContainer/Panel/Label.text
 		emit_signal("toggle_time_track", Defaults.item_tracked, true)
 		$Timer.start()
 		$SecondsTimer.start()
 		change_title()
-		$VBoxContainer/Panel/HBoxContainer/CancelButton.show()
-		$VBoxContainer/Panel/HBoxContainer/PauseButton.show()
-		$VBoxContainer/Panel/Label.editable = false
+		$LinearTimeTrackingContainer/Panel/HBoxContainer/CancelButton.show()
+		$LinearTimeTrackingContainer/Panel/HBoxContainer/PauseButton.show()
+		$LinearTimeTrackingContainer/Panel/Label.editable = false
 	else:
 		Defaults.time_tracking = false
 		emit_signal("toggle_time_track","", false)
-		add_time_track(86400 - $Timer.time_left, $VBoxContainer/Panel/Label.text, OS.get_datetime())
+		add_time_track(86400 - $Timer.time_left, $LinearTimeTrackingContainer/Panel/Label.text, OS.get_datetime())
 		change_title("")
-		$VBoxContainer/Panel/Label.editable = true
+		$LinearTimeTrackingContainer/Panel/Label.editable = true
 		$Timer.stop()
 		$SecondsTimer.stop()
-		$VBoxContainer/Panel/HBoxContainer/CancelButton.hide()
-		$VBoxContainer/Panel/HBoxContainer/PauseButton.hide()
+		$LinearTimeTrackingContainer/Panel/HBoxContainer/CancelButton.hide()
+		$LinearTimeTrackingContainer/Panel/HBoxContainer/PauseButton.hide()
 		save()
 
 	
@@ -146,12 +146,12 @@ func _on_CancelButton_pressed() -> void:
 	cancel = true
 	change_title("")
 	emit_signal("toggle_time_track", "", false)
-	$VBoxContainer/Panel/HBoxContainer/TrackButton.pressed = false
-	$VBoxContainer/Panel/Label.editable = true
+	$LinearTimeTrackingContainer/Panel/HBoxContainer/TrackButton.pressed = false
+	$LinearTimeTrackingContainer/Panel/Label.editable = true
 	$Timer.stop()
 	$SecondsTimer.stop()
-	$VBoxContainer/Panel/HBoxContainer/CancelButton.hide()
-	$VBoxContainer/Panel/HBoxContainer/PauseButton.hide()
+	$LinearTimeTrackingContainer/Panel/HBoxContainer/CancelButton.hide()
+	$LinearTimeTrackingContainer/Panel/HBoxContainer/PauseButton.hide()
 
 
 func _on_PauseButton_toggled(button_pressed: bool) -> void:
@@ -177,5 +177,10 @@ func _on_new_time_track_item_text(_text : String, _idx : int) -> void:
 
 func _on_SecondsTimer_timeout() -> void:
 	var _time : Array = get_hours_minutes_seconds(86400 - $Timer.time_left)
-	$VBoxContainer/Panel/TimeTrack.text = _time[2] + ":" + _time[1] + ":" + _time[0]
+	$LinearTimeTrackingContainer/Panel/TimeTrack.text = _time[2] + ":" + _time[1] + ":" + _time[0]
 	Defaults.time_tracked = _time[2] + ":" + _time[1] + ":" + _time[0]
+
+
+func _on_PomodoroBtn_toggled(button_pressed: bool) -> void:
+	$PomodoroContainer.visible = button_pressed
+	$LinearTimeTrackingContainer.visible = !button_pressed
