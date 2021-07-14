@@ -30,7 +30,7 @@ export var borderless : bool = true
 export var pomo_work_time_length : int = 25
 export var pomo_short_pause_length : int = 5
 export var pomo_long_pause_length : int = 15
-export var pomo_long_pause_freq : int = 4
+export var pomo_long_pause_freq : int = 3
 
 #note taking
 export var line_numbers : bool = false
