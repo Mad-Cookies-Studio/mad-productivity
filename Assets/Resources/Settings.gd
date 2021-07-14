@@ -32,6 +32,14 @@ export var pomo_short_pause_length : int = 5
 export var pomo_long_pause_length : int = 15
 export var pomo_long_pause_freq : int = 4
 
+#note taking
+export var line_numbers : bool = false
+export var syntax_highlighting : bool = false
+export var draw_tabs : bool = false
+export var draw_spaces : bool = false
+export var minimap : bool = true
+export var highlight_current_line : bool = false
+export var highlight_all_occurances : bool = false
 
 func reset_pomodoro_settings() -> void:
 	pomo_long_pause_freq = 4
@@ -48,3 +56,13 @@ func reset_general_settings() -> void:
 	remember_window_settings = false
 	font_size = 1
 	borderless = true
+
+
+func reset_notes_settings() -> void:
+	line_numbers = false
+	syntax_highlighting = false
+	draw_spaces = false
+	draw_tabs = false
+	minimap = true
+	highlight_current_line = false
+	highlight_all_occurances = false

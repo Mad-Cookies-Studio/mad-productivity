@@ -16,6 +16,7 @@ func _ready() -> void:
 
 
 func entering_view() -> void:
+	Defaults.active_view_pointer = self
 	Defaults.emit_signal("view_changed", title, true, false)
 	
 	

@@ -6,6 +6,7 @@ var res : SettingsResource
 
 # UI state machine functions
 func entering_view() -> void:
+	Defaults.active_view_pointer = self
 	Defaults.emit_signal("view_changed", title, false, false)
 	set_up_btns()
 	
@@ -34,6 +35,13 @@ func set_up_btns() -> void:
 	$C/VBoxContainer/WindowPos2/Option.pressed = res.remember_last_session_view
 	$C/VBoxContainer/ShowDate/Option.pressed = res.show_date
 	$C/VBoxContainer/Borderless/Option.pressed = res.borderless
+	# notes textedit
+	$C/VBoxContainer/LineNumbers/Option.pressed = res.line_numbers
+	$C/VBoxContainer/HighlightLine/Option.pressed = res.highlight_current_line
+	$C/VBoxContainer/Minimap/Option.pressed = res.minimap
+	$C/VBoxContainer/SyntaxHighlighting/Option.pressed = res.syntax_highlighting
+	$C/VBoxContainer/Tabs/Option.pressed = res.draw_tabs
+	$C/VBoxContainer/Spaces/Option.pressed = res.draw_spaces
 
 
 func update_settings() -> void:
@@ -95,3 +103,36 @@ func _on_ShowDateOption_toggled(button_pressed: bool) -> void:
 func _on_BorderlessOption_toggled(button_pressed: bool) -> void:
 	OS.window_borderless = button_pressed
 	res.borderless = button_pressed
+
+
+func _on_lineNumbersOption_toggled(button_pressed: bool) -> void:
+	res.line_numbers = button_pressed
+
+
+func _on_HighlightLineOption_toggled(button_pressed: bool) -> void:
+	res.highlight_current_line = button_pressed
+
+
+func _on_MinimapOption_toggled(button_pressed: bool) -> void:
+	res.minimap = button_pressed
+
+
+func _on_SyntaxHighlightingOption_toggled(button_pressed: bool) -> void:
+	res.syntax_highlighting = button_pressed
+
+
+func _on_TabsOption_toggled(button_pressed: bool) -> void:
+	res.draw_tabs = button_pressed
+
+
+func _on_SpacesOption_toggled(button_pressed: bool) -> void:
+	res.draw_spaces = button_pressed
+
+
+func _on_HighlightOccurancesOption_toggled(button_pressed: bool) -> void:
+	res.highlight_all_occurances = button_pressed
+
+
+func _on_NotesResetButton_pressed() -> void:
+	res.reset_notes_settings()
+	set_up_btns()

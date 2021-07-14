@@ -42,6 +42,7 @@ func select_note(which : int) -> void:
 func entering_view() -> void:
 	Defaults.active_view_pointer = self
 	Defaults.emit_signal("view_changed", title, true, false)
+	update_text_edit()
 	
 	
 func leaving_view() -> void:
@@ -77,6 +78,18 @@ func reset_state() -> void:
 	$VBoxContainer/HSplitContainer/Panel2/VBoxContainer/Note.text = ""
 	active_note = null
 	active_btn = null
+
+
+func update_text_edit() -> void:
+	var res: SettingsResource = Defaults.settings_res
+	var te : TextEdit = $VBoxContainer/HSplitContainer/Panel2/VBoxContainer/Note
+	te.minimap_draw = res.minimap
+	te.highlight_current_line = res.highlight_current_line
+	te.draw_tabs = res.draw_tabs
+	te.draw_spaces = res.draw_spaces
+	te.highlight_all_occurrences = res.highlight_all_occurances
+	te.syntax_highlighting = res.syntax_highlighting
+	te.show_line_numbers = res.line_numbers
 
 
 func add_button_from_resource(res : NoteResource) -> void:

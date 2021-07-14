@@ -13,6 +13,7 @@ func _ready() -> void:
 	load_tasks()
 
 func entering_view() -> void:
+	Defaults.active_view_pointer = self
 	Defaults.emit_signal("view_changed", title, true, true)
 	active = true
 	set_process_input(true)
