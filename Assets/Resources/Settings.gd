@@ -42,7 +42,7 @@ export var highlight_current_line : bool = false
 export var highlight_all_occurances : bool = false
 
 func reset_pomodoro_settings() -> void:
-	pomo_long_pause_freq = 4
+	pomo_long_pause_freq = 3
 	pomo_long_pause_length = 15
 	pomo_short_pause_length = 5
 	pomo_work_time_length = 25
