@@ -84,6 +84,7 @@ func create_project_button(_p_name : String = "", id: int = -1) -> void:
 	var new : Button = $VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons/ProjectButton.duplicate()
 	new.text = _p_name
 	new.id = id
+	new.connect("delete_project", self, "on_delete_project")
 	$VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons.add_child(new)
 	new.show()
 	
@@ -104,8 +105,10 @@ func remove_project() -> void:
 	
 # TODO: implement function which updates the ids on buttons for porjects.
 # for intance if a project from the middle gets deleted, the later numbers should have 1 subtracted from them	
-func update_project_ids_on_buttons() -> void:
-	pass
+func update_project_ids_on_buttons(id : int) -> void:
+	for i in $VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons.get_children():
+		if i.id > id :
+			i.id -= 1
 	
 	
 func update_task_text(idx : int, text : String) -> void:
@@ -172,4 +175,10 @@ func _on_NewTodoBtn_pressed() -> void:
 func _on_ProjectLineEdit_text_changed(new_text: String) -> void:
 	res.change_project_name(new_text, current_project_id)
 	$VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons.get_child(current_project_child_id).text = new_text
+	
+
+func on_delete_project(id : int) -> void:
+	print("going to delte project at id :", id)
+	res.delete_project(id)
+	update_project_ids_on_buttons(id)
 	

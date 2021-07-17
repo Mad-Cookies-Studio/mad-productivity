@@ -1,6 +1,7 @@
 extends Button
 
 signal selected_project(_name, index, child_index)
+signal delete_project(id)
 
 var id : int
 
@@ -24,3 +25,8 @@ func on_mouse_exited() -> void:
 func _on_ProjectButton_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == 1:
 		emit_signal("selected_project", text, id, get_index())
+
+
+func _on_DeleteBtn_pressed() -> void:
+	emit_signal("delete_project", id)
+	queue_free()

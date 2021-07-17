@@ -29,6 +29,13 @@ func add_project(_name : String) -> void:
 	projects.append(_name)
 	
 	
+func delete_project(id : int) -> void:
+	projects.remove(id)
+	for i in tasks:
+		if tasks[i].project == id:
+			tasks.erase(i)
+	
+	
 func add_new_task(_text : String, _done : bool, _date : Dictionary, _done_date : Dictionary, _project : int) -> Dictionary:
 	var word_dic = {
 		"text" : _text,
@@ -44,9 +51,6 @@ func add_new_task(_text : String, _done : bool, _date : Dictionary, _done_date :
 		top_id = tasks.size() + 1
 
 	tasks[top_id] = word_dic
-	
-	if !projects.has(_project):
-		projects.append(_project)
 		
 	top_id += 1
 		

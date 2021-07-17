@@ -132,7 +132,6 @@ __meta__ = {
 }
 
 [node name="ProjectButton" type="Button" parent="VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons"]
-visible = false
 margin_right = 207.0
 margin_bottom = 25.0
 custom_styles/focus = SubResource( 20 )
@@ -147,10 +146,14 @@ script = ExtResource( 9 )
 
 [node name="TimeTrack" type="TextureButton" parent="VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons/ProjectButton"]
 modulate = Color( 0.976563, 0.654856, 0.137329, 1 )
-margin_left = 168.0
-margin_top = -4.0
-margin_right = 188.0
-margin_bottom = 30.0
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -38.9155
+margin_top = -16.7895
+margin_right = -18.9155
+margin_bottom = 17.2105
 rect_min_size = Vector2( 19, 0 )
 rect_pivot_offset = Vector2( 9.5, 9.5 )
 hint_tooltip = "Time track again"
@@ -174,7 +177,7 @@ margin_right = 1.0
 margin_bottom = 20.5
 rect_min_size = Vector2( 20, 0 )
 rect_pivot_offset = Vector2( 10, 20 )
-mouse_filter = 2
+mouse_filter = 1
 texture_normal = ExtResource( 7 )
 expand = true
 stretch_mode = 5
@@ -340,6 +343,7 @@ __meta__ = {
 
 [connection signal="gui_input" from="VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons/ProjectButton" to="VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons/ProjectButton" method="_on_ProjectButton_gui_input"]
 [connection signal="selected_project" from="VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons/ProjectButton" to="." method="_on_ProjectButton_selected_project"]
+[connection signal="pressed" from="VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons/ProjectButton/DeleteBtn" to="VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons/ProjectButton" method="_on_DeleteBtn_pressed"]
 [connection signal="text_changed" from="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/ProjectLineEdit" to="." method="_on_ProjectLineEdit_text_changed"]
 [connection signal="mouse_entered" from="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem" to="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem" method="_on_TODOitem_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem" to="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem" method="_on_TODOitem_mouse_exited"]
