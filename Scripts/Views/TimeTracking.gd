@@ -4,13 +4,15 @@ signal toggle_time_track(_name, really)
 
 export var title : String
 var res : TimeTrackResource
-var time_tracks_array : Array
 var cancel : = false
+
+var active_track : int
 
 var total_secs : int
 
 func _ready() -> void:
 	res = load(Defaults.TIMETRACKS_SAVE_PATH + Defaults.TIMETRACKS_SAVE_NAME)
+	_on_PomodoroBtn_toggled(res.pomodoro_on)
 	load_time_tracks()
 	update_total_time()
 
@@ -27,16 +29,10 @@ func leaving_view() -> void:
 func load_time_tracks() -> void:
 	for i in res.tracks:
 		var item = res.tracks[i]
-		
-		item["id"] = i
-		time_tracks_array.append(item)
-		
-	for i in time_tracks_array:
-		total_secs += i["length"]
-		create_track_visual(i["name"], i["date"], i["length"], i["id"])
+		create_track_visual(item.name, item.get_start_unix_time(), item.get_len(), i)
 	
 	
-func create_track_visual(_name : String, _date : Dictionary, _time : int, _id : int) -> void:
+func create_track_visual(_name : String, _date : int, _time : int, _id : int) -> void:
 	var new : ColorRect = $LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem.duplicate()
 	new.id = _id
 	
@@ -45,23 +41,24 @@ func create_track_visual(_name : String, _date : Dictionary, _time : int, _id : 
 	new.connect("time_track_item", self, "_time_track_item_pressed")
 	new.connect("new_tracked_item_text", self, "_on_new_time_track_item_text")
 	
-	new.fill_details(Defaults.get_date_with_time_string(_date), (time[2] + ":" + time[1] + ":" + time[0]), _name)
+	new.fill_details(Defaults.get_datetime_from_unix_time(_date), (time[2] + ":" + time[1] + ":" + time[0]), _name)
 
 	new.show()
 	$LinearTimeTrackingContainer/ScrollContainer/VBoxContainer.add_child(new)
 	$LinearTimeTrackingContainer/ScrollContainer/VBoxContainer.move_child(new, 1)
 	new.show_up()
+
+
+func add_new_time_track(_name : String, _date : int) -> void:
+	active_track = res.add_track(_date, _name)
 	
 	
-func add_time_track(_length : int, _name : String, _date : Dictionary) -> void:
-	total_secs += _length
+func finish_time_track(_name : String, _date : int) -> void:
+	var track : TimeTrackItem = res.get_track(active_track)
+	track.end_interval(_date)
+	total_secs += track.get_len(true)
 	update_total_time()
-	res.tracks[res.tracks.size() + 1] = {
-		"date" : _date,
-		"length" : _length,
-		"name" : _name
-	}
-	create_track_visual(_name, _date, _length, res.tracks.size())
+	create_track_visual(_name, _date, track.get_len(), res.tracks.size())
 	
 	
 func get_hours_minutes_seconds(_time : int) -> Array:
@@ -120,6 +117,7 @@ func _on_TrackButton_toggled(button_pressed: bool) -> void:
 		Defaults.time_tracking = true
 		Defaults.item_tracked = $LinearTimeTrackingContainer/Panel/Label.text
 		emit_signal("toggle_time_track", Defaults.item_tracked, true)
+		add_new_time_track($LinearTimeTrackingContainer/Panel/Label.text, OS.get_unix_time())
 		$Timer.start()
 		$SecondsTimer.start()
 		change_title()
@@ -129,7 +127,7 @@ func _on_TrackButton_toggled(button_pressed: bool) -> void:
 	else:
 		Defaults.time_tracking = false
 		emit_signal("toggle_time_track","", false)
-		add_time_track(86400 - $Timer.time_left, $LinearTimeTrackingContainer/Panel/Label.text, OS.get_datetime())
+		finish_time_track($LinearTimeTrackingContainer/Panel/Label.text, OS.get_unix_time())
 		change_title("")
 		$LinearTimeTrackingContainer/Panel/Label.editable = true
 		$Timer.stop()
@@ -137,8 +135,6 @@ func _on_TrackButton_toggled(button_pressed: bool) -> void:
 		$LinearTimeTrackingContainer/Panel/HBoxContainer/CancelButton.hide()
 		$LinearTimeTrackingContainer/Panel/HBoxContainer/PauseButton.hide()
 		save()
-
-	
 
 
 func _on_CancelButton_pressed() -> void:
@@ -177,10 +173,13 @@ func _on_new_time_track_item_text(_text : String, _idx : int) -> void:
 
 func _on_SecondsTimer_timeout() -> void:
 	var _time : Array = get_hours_minutes_seconds(86400 - $Timer.time_left)
+	#if _time[1] >= Defaults.settings_res.pomo_work_time_length:
+		#print("rest")
 	$LinearTimeTrackingContainer/Panel/TimeTrack.text = _time[2] + ":" + _time[1] + ":" + _time[0]
 	Defaults.time_tracked = _time[2] + ":" + _time[1] + ":" + _time[0]
 
 
 func _on_PomodoroBtn_toggled(button_pressed: bool) -> void:
-	$PomodoroContainer.visible = button_pressed
-	$LinearTimeTrackingContainer.visible = !button_pressed
+	$LinearTimeTrackingContainer/PomodoroPanel.visible = button_pressed
+	$LinearTimeTrackingContainer/Panel.visible = !button_pressed
+	res.pomodoro_on = button_pressed

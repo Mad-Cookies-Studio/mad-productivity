@@ -199,6 +199,9 @@ func get_time_with_semicoloumns_no_secs(_custom : Dictionary) -> String:
 func get_date_with_time_string(_dic : Dictionary) -> String:
 	return get_date_as_numbers(_dic) + " " + get_time_with_semicoloumns(_dic)
 
+func get_datetime_from_unix_time(_unixTime : int) -> String:
+	return get_date_with_time_string(OS.get_datetime_from_unix_time(_unixTime))
+
 
 func save_note_resource(note : NoteResource) -> int:
 #	var saver : ResourceSaver = ResourceSaver.new()
