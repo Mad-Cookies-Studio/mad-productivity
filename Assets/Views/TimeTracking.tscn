@@ -370,7 +370,6 @@ __meta__ = {
 [connection signal="text_changed" from="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem/H/ProjectName" to="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem" method="_on_ProjectName_text_changed"]
 [connection signal="pressed" from="LinearTimeTrackingContainer/Panel/HBoxContainer/CancelButton" to="." method="_on_CancelButton_pressed"]
 [connection signal="toggled" from="LinearTimeTrackingContainer/Panel/HBoxContainer/PauseButton" to="." method="_on_PauseButton_toggled"]
-[connection signal="toggled" from="LinearTimeTrackingContainer/Panel/HBoxContainer/TrackButton" to="." method="_on_TrackButton_toggled"]
 [connection signal="pressed" from="LinearTimeTrackingContainer/PomodoroPanel/HBoxContainer/CancelButton" to="." method="_on_CancelButton_pressed"]
 [connection signal="toggled" from="LinearTimeTrackingContainer/PomodoroPanel/HBoxContainer/PauseButton" to="." method="_on_PauseButton_toggled"]
 [connection signal="toggled" from="LinearTimeTrackingContainer/PomodoroPanel/HBoxContainer/TrackButton" to="." method="_on_TrackButton_toggled"]

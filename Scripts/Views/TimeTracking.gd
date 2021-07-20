@@ -27,9 +27,21 @@ func leaving_view() -> void:
 	
 	
 func load_time_tracks() -> void:
+	var unfinished_track : bool = false
 	for i in res.tracks:
 		var item = res.tracks[i]
-		create_track_visual(item.name, item.get_start_unix_time(), item.get_len(), i)
+		if item.is_finished():
+			create_track_visual(item.name, item.get_start_unix_time(), item.get_len(), i)
+		elif !unfinished_track:
+			active_track = i
+			$LinearTimeTrackingContainer/Panel/Label.text = item.name
+			$LinearTimeTrackingContainer/Panel/HBoxContainer/TrackButton.pressed = true
+			start_tracking(item)
+			unfinished_track = true
+		else:
+			# TODO: error handling
+			print("there shoudn't be more than one unfinished task")
+	$LinearTimeTrackingContainer/Panel/HBoxContainer/TrackButton.connect("toggled", self, "_on_TrackButton_toggled")
 	
 	
 func create_track_visual(_name : String, _date : int, _time : int, _id : int) -> void:
@@ -47,15 +59,11 @@ func create_track_visual(_name : String, _date : int, _time : int, _id : int) ->
 	$LinearTimeTrackingContainer/ScrollContainer/VBoxContainer.add_child(new)
 	$LinearTimeTrackingContainer/ScrollContainer/VBoxContainer.move_child(new, 1)
 	new.show_up()
-
-
-func add_new_time_track(_name : String, _date : int) -> void:
-	active_track = res.add_track(_date, _name)
 	
 	
 func finish_time_track(_name : String, _date : int) -> void:
 	var track : TimeTrackItem = res.get_track(active_track)
-	track.end_interval(_date)
+	track.end_tracking(_date)
 	total_secs += track.get_len(true)
 	update_total_time()
 	create_track_visual(_name, _date, track.get_len(), res.tracks.size())
@@ -114,15 +122,10 @@ func _on_TrackButton_toggled(button_pressed: bool) -> void:
 		cancel = false
 		return
 	if button_pressed:
-		Defaults.time_tracking = true
-		Defaults.item_tracked = $LinearTimeTrackingContainer/Panel/Label.text
-		emit_signal("toggle_time_track", Defaults.item_tracked, true)
-		add_new_time_track($LinearTimeTrackingContainer/Panel/Label.text, OS.get_unix_time())
-		$SecondsTimer.start()
-		change_title()
-		$LinearTimeTrackingContainer/Panel/HBoxContainer/CancelButton.show()
-		$LinearTimeTrackingContainer/Panel/HBoxContainer/PauseButton.show()
-		$LinearTimeTrackingContainer/Panel/Label.editable = false
+		active_track = res.add_track($LinearTimeTrackingContainer/Panel/Label.text)
+		res.get_track(active_track).start_tracking(OS.get_unix_time())
+		start_tracking(res.get_track(active_track))
+		save()
 	else:
 		Defaults.time_tracking = false
 		emit_signal("toggle_time_track","", false)
@@ -134,6 +137,15 @@ func _on_TrackButton_toggled(button_pressed: bool) -> void:
 		$LinearTimeTrackingContainer/Panel/HBoxContainer/PauseButton.hide()
 		save()
 
+func start_tracking(_track : TimeTrackItem) -> void:
+	Defaults.time_tracking = true
+	Defaults.item_tracked = _track.name
+	emit_signal("toggle_time_track", Defaults.item_tracked, true)
+	$SecondsTimer.start()
+	change_title()
+	$LinearTimeTrackingContainer/Panel/HBoxContainer/CancelButton.show()
+	$LinearTimeTrackingContainer/Panel/HBoxContainer/PauseButton.show()
+	$LinearTimeTrackingContainer/Panel/Label.editable = false
 
 func _on_CancelButton_pressed() -> void:
 	Defaults.time_tracking = false
@@ -150,10 +162,10 @@ func _on_CancelButton_pressed() -> void:
 func _on_PauseButton_toggled(button_pressed: bool) -> void:
 	if button_pressed:
 		$SecondsTimer.paused = true
-		res.get_track(active_track).end_interval(OS.get_unix_time())
+		res.get_track(active_track).end_tracking(OS.get_unix_time())
 	else:
 		$SecondsTimer.paused = false
-		res.get_track(active_track).resume(OS.get_unix_time())
+		res.get_track(active_track).start_tracking(OS.get_unix_time())
 		
 		
 func _on_delete_pressed(idx : int) -> void:

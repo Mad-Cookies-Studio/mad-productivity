@@ -10,9 +10,9 @@ export(Dictionary) var tracks
 export(bool) var pomodoro_on
 export(int) var tracks_count
 
-func add_track(start : int, name : String) -> int:
+func add_track(name : String) -> int:
 	var item = TimeTrackItem.new()
-	item.create_track(start, name)
+	item.create_track(name)
 	tracks_count += 1
 	tracks[tracks_count] = item
 	return tracks_count
