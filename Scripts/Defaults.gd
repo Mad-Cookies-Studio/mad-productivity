@@ -37,7 +37,10 @@ var settings_res : SettingsResource
 
 var ui_theme : ThemeResource
 
+var windows_sdt_bias : int
+
 func _ready() -> void:
+	set_windows_dst_bias()
 	randomize()
 	check_folders()
 	load_settings()
@@ -201,11 +204,8 @@ func get_date_with_time_string(_dic : Dictionary) -> String:
 
 func get_datetime_from_unix_time(_unixTime : int) -> String:
 	# timezone and dst
-	var bias = OS.get_time_zone_info()["bias"]
+	var bias = Defaults.get_time_zone_bias()
 	_unixTime += bias * 60
-	var dst = OS.get_datetime()['dst']
-	if !dst:
-		_unixTime -= 3600 # add an hour, if winter time
 	return get_date_with_time_string(OS.get_datetime_from_unix_time(_unixTime))
 
 
@@ -250,3 +250,14 @@ func change_body_font_size(index : int) -> void:
 	save_settings_resource()
 
 
+func set_windows_dst_bias() -> void:
+	if OS.get_name() == "Windows":
+		var output = []
+		OS.execute('WMIC.exe', ["OS","Get","CurrentTimeZone"],true, output)
+		windows_sdt_bias = int(output[0].split("\n")[1])
+
+func get_time_zone_bias() -> int:
+	if OS.get_name() == "Windows":
+		return windows_sdt_bias
+	else:
+		return OS.get_time_zone_info()['bias']
