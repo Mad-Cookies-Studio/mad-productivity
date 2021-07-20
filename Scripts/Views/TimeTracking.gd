@@ -154,9 +154,11 @@ func _on_PauseButton_toggled(button_pressed: bool) -> void:
 	if button_pressed:
 		$Timer.paused = true
 		$SecondsTimer.paused = true
+		res.get_track(active_track).end_interval(OS.get_unix_time())
 	else:
 		$Timer.paused = false
 		$SecondsTimer.paused = false
+		res.get_track(active_track).resume(OS.get_unix_time())
 		
 		
 func _on_delete_pressed(idx : int) -> void:
