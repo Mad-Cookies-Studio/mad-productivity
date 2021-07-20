@@ -7,6 +7,7 @@ export(String) var date_modified
 export(String) var date_created
 export(Array) var projects : = ["Temporary task list"]
 export(int) var top_id = 0
+export(int) var version : = 0
 
 func get_tasks_in_project(idx : int) -> Dictionary:
 	var dic : Dictionary
@@ -44,12 +45,8 @@ func add_new_task(_text : String, _done : bool, _date : Dictionary, _done_date :
 		"project" : _project,
 		"done_date" : {},
 		"date_created" : OS.get_unix_time(),
-		"id" : tasks.size() + 1
+		"id" : top_id
 	}
-
-	if top_id == 0:
-		top_id = tasks.size() + 1
-
 	tasks[top_id] = word_dic
 		
 	top_id += 1
