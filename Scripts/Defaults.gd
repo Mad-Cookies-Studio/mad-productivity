@@ -200,6 +200,12 @@ func get_date_with_time_string(_dic : Dictionary) -> String:
 	return get_date_as_numbers(_dic) + " " + get_time_with_semicoloumns(_dic)
 
 func get_datetime_from_unix_time(_unixTime : int) -> String:
+	# timezone and dst
+	var bias = OS.get_time_zone_info()["bias"]
+	_unixTime += bias * 60
+	var dst = OS.get_datetime()['dst']
+	if !dst:
+		_unixTime -= 3600 # add an hour, if winter time
 	return get_date_with_time_string(OS.get_datetime_from_unix_time(_unixTime))
 
 
