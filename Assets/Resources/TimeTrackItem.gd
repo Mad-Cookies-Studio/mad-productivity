@@ -22,6 +22,15 @@ func get_start_unix_time() -> int:
 	return date_ranges[0][0]
 
 
+func get_duration() -> int:
+	var length : int = 0
+	for daterange in date_ranges:
+		if len(daterange) > 1:
+			length += (daterange[1] - daterange[0])
+		else:
+			length += (OS.get_unix_time() - daterange[0])
+	return length
+
 func get_len(only_last : bool = false) -> int:
 	var length : int = 0
 	if only_last:

@@ -118,7 +118,6 @@ func _on_TrackButton_toggled(button_pressed: bool) -> void:
 		Defaults.item_tracked = $LinearTimeTrackingContainer/Panel/Label.text
 		emit_signal("toggle_time_track", Defaults.item_tracked, true)
 		add_new_time_track($LinearTimeTrackingContainer/Panel/Label.text, OS.get_unix_time())
-		$Timer.start()
 		$SecondsTimer.start()
 		change_title()
 		$LinearTimeTrackingContainer/Panel/HBoxContainer/CancelButton.show()
@@ -130,7 +129,6 @@ func _on_TrackButton_toggled(button_pressed: bool) -> void:
 		finish_time_track($LinearTimeTrackingContainer/Panel/Label.text, OS.get_unix_time())
 		change_title("")
 		$LinearTimeTrackingContainer/Panel/Label.editable = true
-		$Timer.stop()
 		$SecondsTimer.stop()
 		$LinearTimeTrackingContainer/Panel/HBoxContainer/CancelButton.hide()
 		$LinearTimeTrackingContainer/Panel/HBoxContainer/PauseButton.hide()
@@ -144,7 +142,6 @@ func _on_CancelButton_pressed() -> void:
 	emit_signal("toggle_time_track", "", false)
 	$LinearTimeTrackingContainer/Panel/HBoxContainer/TrackButton.pressed = false
 	$LinearTimeTrackingContainer/Panel/Label.editable = true
-	$Timer.stop()
 	$SecondsTimer.stop()
 	$LinearTimeTrackingContainer/Panel/HBoxContainer/CancelButton.hide()
 	$LinearTimeTrackingContainer/Panel/HBoxContainer/PauseButton.hide()
@@ -152,11 +149,9 @@ func _on_CancelButton_pressed() -> void:
 
 func _on_PauseButton_toggled(button_pressed: bool) -> void:
 	if button_pressed:
-		$Timer.paused = true
 		$SecondsTimer.paused = true
 		res.get_track(active_track).end_interval(OS.get_unix_time())
 	else:
-		$Timer.paused = false
 		$SecondsTimer.paused = false
 		res.get_track(active_track).resume(OS.get_unix_time())
 		
@@ -174,7 +169,7 @@ func _on_new_time_track_item_text(_text : String, _idx : int) -> void:
 
 
 func _on_SecondsTimer_timeout() -> void:
-	var _time : Array = get_hours_minutes_seconds(86400 - $Timer.time_left)
+	var _time : Array = get_hours_minutes_seconds(res.get_track(active_track).get_duration())
 	#if _time[1] >= Defaults.settings_res.pomo_work_time_length:
 		#print("rest")
 	$LinearTimeTrackingContainer/Panel/TimeTrack.text = _time[2] + ":" + _time[1] + ":" + _time[0]
