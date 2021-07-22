@@ -28,6 +28,7 @@ func set_up_btns() -> void:
 	$C/VBoxContainer/FontSize/Option.select(res.font_size)
 	$C/VBoxContainer/SecsDashboard/Option.pressed = res.show_secs_dash
 	$C/VBoxContainer/WindowPos/Option.pressed = res.remember_window_settings
+	$C/VBoxContainer/HidDPI/Option.pressed = res.hidpi
 	$C/VBoxContainer/LongPause/Option.value = res.pomo_long_pause_length
 	$C/VBoxContainer/LongPauseFreq/Option.value = res.pomo_long_pause_freq
 	$C/VBoxContainer/ShortPause/Option.value = res.pomo_short_pause_length
@@ -136,3 +137,8 @@ func _on_HighlightOccurancesOption_toggled(button_pressed: bool) -> void:
 func _on_NotesResetButton_pressed() -> void:
 	res.reset_notes_settings()
 	set_up_btns()
+
+
+func _on_HiDPI_Option_toggled(button_pressed: bool) -> void:
+	res.hidpi = button_pressed
+	ProjectSettings.set_setting("gui/theme/hidpi", button_pressed)

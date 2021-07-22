@@ -25,6 +25,7 @@ export var remember_last_session_view : bool = false
 export var last_session_view : int = -1
 export var show_date : bool = true
 export var borderless : bool = true
+export var hidpi : bool = false
 
 #pomodoro settings
 export var pomo_work_time_length : int = 25
