@@ -132,6 +132,7 @@ __meta__ = {
 }
 
 [node name="ProjectButton" type="Button" parent="VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons"]
+visible = false
 margin_right = 207.0
 margin_bottom = 25.0
 custom_styles/focus = SubResource( 20 )

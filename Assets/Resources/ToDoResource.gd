@@ -5,8 +5,9 @@ export(Dictionary) var tasks
 export(String) var save_name
 export(String) var date_modified
 export(String) var date_created
-export(Array) var projects : = ["Temporary task list"]
+export(Dictionary) var projects
 export(int) var top_id = 0
+export(int) var project_top_id = 0
 export(int) var version : = 0
 
 func get_tasks_in_project(idx : int) -> Dictionary:
@@ -18,20 +19,22 @@ func get_tasks_in_project(idx : int) -> Dictionary:
 	return dic
 	
 	
-func get_id_in_projects_from_string(_name : String) -> int:
-	return projects.find(_name, 0)
+func get_new_project_id() -> int:
+	return project_top_id
 	
 	
-func get_project_list() -> Array:
-	return projects
-	
-	
-func add_project(_name : String) -> void:
-	projects.append(_name)
+func add_project(_name : String) -> int:
+	var _new_p_id = project_top_id
+	var project_data : Dictionary = {
+		"name" : _name
+		}
+	projects[_new_p_id] = project_data
+	project_top_id += 1
+	return _new_p_id
 	
 	
 func delete_project(id : int) -> void:
-	projects.remove(id)
+	projects.erase(id)
 	for i in tasks:
 		if tasks[i].project == id:
 			tasks.erase(i)
@@ -55,7 +58,7 @@ func add_new_task(_text : String, _done : bool, _date : Dictionary, _done_date :
 
 
 func change_project_name(_new : String, id : int) -> void:
-	projects[id] = _new
+	projects[id].name = _new
 
 
 func update_task_project_id(_new : int, _old : int) -> void:

@@ -42,11 +42,8 @@ func _input(event: InputEvent) -> void:
 
 
 func load_projects() -> void:
-	var idx : int = 0
-	for i in res.get_project_list():
-		print(i)
-		create_project_button(str(i), idx)
-		idx += 1
+	for i in res.projects:
+		create_project_button(res.projects[i].name, i)
 
 
 func load_tasks() -> void:
@@ -103,13 +100,6 @@ func reset_tasks_view() -> void:
 func remove_project() -> void:
 	pass
 	
-# TODO: implement function which updates the ids on buttons for porjects.
-# for intance if a project from the middle gets deleted, the later numbers should have 1 subtracted from them	
-func update_project_ids_on_buttons(id : int) -> void:
-	for i in $VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons.get_children():
-		if i.id > id :
-			i.id -= 1
-	
 	
 func update_task_text(idx : int, text : String) -> void:
 	res.tasks[idx].text = text
@@ -117,6 +107,7 @@ func update_task_text(idx : int, text : String) -> void:
 	
 func update_task_done(idx : int, done : bool) -> void:
 	res.tasks[idx].done = done
+	res.tasks[idx].done_date = OS.get_datetime()
 	
 	
 func remove_task_from_resource(idx : int) -> void:
@@ -144,8 +135,11 @@ func _on_task_set_done(really : bool, idx : int) -> void:
 
 
 func on_new_top_bar_button(message : Dictionary = {}) -> void:
-	res.add_project("New project")
-	create_project_button("New Project")
+	var nm : String = "New Project " + str(res.get_new_project_id())
+	if message.has("text"):
+		nm = message.text
+	var _id : int = res.add_project(nm)
+	create_project_button(nm, _id)
 
 
 func _on_ProjectButton_selected_project(_name, index, child_id) -> void:
@@ -161,7 +155,7 @@ func _on_ProjectButton_selected_project(_name, index, child_id) -> void:
 	current_project_child_id = child_id
 #	var id : int = res.get_id_in_projects_from_string(current_project)
 	reset_tasks_view()
-	for i in res.get_tasks_in_project(index):
+	for i in res.get_tasks_in_project(current_project_id):
 		var task = res.tasks[i]
 		add_new_task_visual(task)
 
@@ -180,5 +174,4 @@ func _on_ProjectLineEdit_text_changed(new_text: String) -> void:
 func on_delete_project(id : int) -> void:
 	print("going to delte project at id :", id)
 	res.delete_project(id)
-	update_project_ids_on_buttons(id)
 	
