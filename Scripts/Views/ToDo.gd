@@ -81,6 +81,7 @@ func create_project_button(_p_name : String = "", id: int = -1) -> void:
 	var new : Button = $VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons/ProjectButton.duplicate()
 	new.text = _p_name
 	new.id = id
+	new.set_percent_done(res.get_percent_done(id))
 	new.connect("delete_project", self, "on_delete_project")
 	$VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons.add_child(new)
 	new.show()
@@ -95,6 +96,11 @@ func reset_tasks_view() -> void:
 		if i.name != "TODOitem" and i.name != "NewTodoBtn" and i.name != "ProjectLineEdit":
 			i.queue_free()
 	
+	
+func update_percent_done(p_id : int, child_p_id : int) -> void:
+	$VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons.get_child(child_p_id).set_percent_done(res.get_percent_done(p_id))
+	
+	
 # TODO: Implement method for removing a project.
 # Should remove all tasks with it by default as well
 func remove_project() -> void:
@@ -107,7 +113,11 @@ func update_task_text(idx : int, text : String) -> void:
 	
 func update_task_done(idx : int, done : bool) -> void:
 	res.tasks[idx].done = done
-	res.tasks[idx].done_date = OS.get_datetime()
+	if done:
+		res.tasks[idx].done_date = OS.get_datetime()
+	else:
+		res.tasks[idx].done_date = {}
+	update_percent_done(current_project_id, current_project_child_id)
 	
 	
 func remove_task_from_resource(idx : int) -> void:

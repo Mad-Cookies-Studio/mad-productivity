@@ -18,6 +18,20 @@ func get_tasks_in_project(idx : int) -> Dictionary:
 	
 	return dic
 	
+func get_percent_done(project_id : int) -> float:
+	var tasks_no : int = 0
+	var tasks_done : int = 0
+	for i in tasks:
+		if tasks[i].project == project_id:
+			tasks_no += 1
+			if tasks[i].done:
+				tasks_done += 1
+	if tasks_no > 0:
+		return float(tasks_done) / float(tasks_no)
+	else:
+		return 0.0
+	
+	
 	
 func get_new_project_id() -> int:
 	return project_top_id

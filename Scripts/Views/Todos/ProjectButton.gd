@@ -30,3 +30,6 @@ func _on_ProjectButton_gui_input(event: InputEvent) -> void:
 func _on_DeleteBtn_pressed() -> void:
 	emit_signal("delete_project", id)
 	queue_free()
+
+func set_percent_done(perc : float = 0.0) -> void:
+	$CompleteBG/CompleteBar.rect_scale.x = clamp(perc, 0.0, 1.0)

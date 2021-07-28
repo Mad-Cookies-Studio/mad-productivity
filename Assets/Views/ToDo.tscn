@@ -127,6 +127,7 @@ rect_min_size = Vector2( 200, 440 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 2 )
+custom_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -187,6 +188,26 @@ __meta__ = {
 }
 
 [node name="Tween" type="Tween" parent="VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons/ProjectButton"]
+
+[node name="CompleteBG" type="ColorRect" parent="VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons/ProjectButton"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_top = 4.0
+margin_bottom = 7.0
+color = Color( 0, 0, 0, 0.286275 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CompleteBar" type="ColorRect" parent="VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons/ProjectButton/CompleteBG"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.576471, 0.627451, 0.631373, 0.458824 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="PanelR" type="Panel" parent="VBoxContainer/HSplitContainer"]
 margin_left = 278.0
