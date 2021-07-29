@@ -96,6 +96,7 @@ custom_constants/separation = 35
 split_offset = 243
 
 [node name="Panel" type="Panel" parent="VBoxContainer/HSplitContainer"]
+self_modulate = Color( 1, 1, 1, 0.686275 )
 margin_right = 243.0
 margin_bottom = 571.0
 custom_styles/panel = ExtResource( 3 )
@@ -127,7 +128,7 @@ visible = false
 margin_right = 207.0
 margin_bottom = 25.0
 custom_styles/focus = SubResource( 3 )
-custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.643137 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.352941 )
 custom_colors/font_color_pressed = Color( 0.576471, 0.627451, 0.631373, 1 )
 toggle_mode = true
 group = SubResource( 4 )
