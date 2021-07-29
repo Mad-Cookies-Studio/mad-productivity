@@ -33,14 +33,13 @@ __meta__ = {
 title = "Settings"
 
 [node name="C" type="ScrollContainer" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -222.0
-margin_top = 17.0
-margin_right = 228.0
-margin_bottom = -69.0
-rect_min_size = Vector2( 450, 0 )
+margin_left = 37.0
+margin_top = 20.0
+margin_right = -37.0
+margin_bottom = -43.0
+rect_min_size = Vector2( 480, 0 )
 theme = ExtResource( 4 )
 scroll_horizontal_enabled = false
 __meta__ = {
@@ -48,8 +47,8 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="C"]
-margin_right = 440.0
-margin_bottom = 1269.0
+margin_right = 966.0
+margin_bottom = 1292.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 11
@@ -70,7 +69,7 @@ text = "SETTINGS"
 align = 1
 
 [node name="Category3" type="HBoxContainer" parent="C/VBoxContainer"]
-margin_right = 440.0
+margin_right = 966.0
 margin_bottom = 50.0
 custom_constants/separation = 20
 __meta__ = {
@@ -100,7 +99,7 @@ text = "reset"
 
 [node name="SecsDashboard" type="HBoxContainer" parent="C/VBoxContainer"]
 margin_top = 65.0
-margin_right = 440.0
+margin_right = 966.0
 margin_bottom = 90.0
 
 [node name="Text" type="Label" parent="C/VBoxContainer/SecsDashboard"]
@@ -121,7 +120,7 @@ theme = ExtResource( 6 )
 
 [node name="FontSize" type="HBoxContainer" parent="C/VBoxContainer"]
 margin_top = 105.0
-margin_right = 440.0
+margin_right = 966.0
 margin_bottom = 124.0
 
 [node name="Text" type="Label" parent="C/VBoxContainer/FontSize"]
@@ -146,7 +145,7 @@ selected = 0
 
 [node name="WindowPos" type="HBoxContainer" parent="C/VBoxContainer"]
 margin_top = 139.0
-margin_right = 440.0
+margin_right = 966.0
 margin_bottom = 164.0
 
 [node name="Text" type="Label" parent="C/VBoxContainer/WindowPos"]
@@ -167,7 +166,7 @@ theme = ExtResource( 6 )
 
 [node name="WindowPos2" type="HBoxContainer" parent="C/VBoxContainer"]
 margin_top = 179.0
-margin_right = 440.0
+margin_right = 966.0
 margin_bottom = 204.0
 
 [node name="Text" type="Label" parent="C/VBoxContainer/WindowPos2"]
@@ -188,7 +187,7 @@ theme = ExtResource( 6 )
 
 [node name="ShowDate" type="HBoxContainer" parent="C/VBoxContainer"]
 margin_top = 219.0
-margin_right = 440.0
+margin_right = 966.0
 margin_bottom = 244.0
 
 [node name="Text" type="Label" parent="C/VBoxContainer/ShowDate"]
@@ -209,7 +208,7 @@ theme = ExtResource( 6 )
 
 [node name="Borderless" type="HBoxContainer" parent="C/VBoxContainer"]
 margin_top = 259.0
-margin_right = 440.0
+margin_right = 966.0
 margin_bottom = 284.0
 
 [node name="Text" type="Label" parent="C/VBoxContainer/Borderless"]
@@ -230,7 +229,7 @@ theme = ExtResource( 6 )
 
 [node name="HidDPI" type="HBoxContainer" parent="C/VBoxContainer"]
 margin_top = 299.0
-margin_right = 440.0
+margin_right = 966.0
 margin_bottom = 324.0
 
 [node name="Text" type="Label" parent="C/VBoxContainer/HidDPI"]
@@ -251,7 +250,7 @@ theme = ExtResource( 6 )
 
 [node name="Category2" type="HBoxContainer" parent="C/VBoxContainer"]
 margin_top = 339.0
-margin_right = 440.0
+margin_right = 966.0
 margin_bottom = 389.0
 custom_constants/separation = 20
 __meta__ = {
@@ -281,7 +280,7 @@ text = "reset"
 
 [node name="WorkTimeLength" type="HBoxContainer" parent="C/VBoxContainer"]
 margin_top = 404.0
-margin_right = 440.0
+margin_right = 966.0
 margin_bottom = 423.0
 
 [node name="Text" type="Label" parent="C/VBoxContainer/WorkTimeLength"]
@@ -304,7 +303,7 @@ suffix = "m"
 
 [node name="ShortPause" type="HBoxContainer" parent="C/VBoxContainer"]
 margin_top = 438.0
-margin_right = 440.0
+margin_right = 966.0
 margin_bottom = 457.0
 
 [node name="Text" type="Label" parent="C/VBoxContainer/ShortPause"]
@@ -327,7 +326,7 @@ suffix = "m"
 
 [node name="LongPause" type="HBoxContainer" parent="C/VBoxContainer"]
 margin_top = 472.0
-margin_right = 440.0
+margin_right = 966.0
 margin_bottom = 491.0
 
 [node name="Text" type="Label" parent="C/VBoxContainer/LongPause"]
@@ -350,7 +349,7 @@ suffix = "m"
 
 [node name="LongPauseFreq" type="HBoxContainer" parent="C/VBoxContainer"]
 margin_top = 506.0
-margin_right = 440.0
+margin_right = 966.0
 margin_bottom = 525.0
 
 [node name="Text" type="Label" parent="C/VBoxContainer/LongPauseFreq"]
@@ -373,7 +372,7 @@ suffix = "x"
 
 [node name="NotesCategory" type="HBoxContainer" parent="C/VBoxContainer"]
 margin_top = 540.0
-margin_right = 440.0
+margin_right = 966.0
 margin_bottom = 590.0
 custom_constants/separation = 20
 __meta__ = {
@@ -403,7 +402,7 @@ text = "reset"
 
 [node name="LineNumbers" type="HBoxContainer" parent="C/VBoxContainer"]
 margin_top = 605.0
-margin_right = 440.0
+margin_right = 966.0
 margin_bottom = 630.0
 
 [node name="Text" type="Label" parent="C/VBoxContainer/LineNumbers"]
@@ -424,7 +423,7 @@ theme = ExtResource( 6 )
 
 [node name="HighlightLine" type="HBoxContainer" parent="C/VBoxContainer"]
 margin_top = 645.0
-margin_right = 440.0
+margin_right = 966.0
 margin_bottom = 670.0
 
 [node name="Text" type="Label" parent="C/VBoxContainer/HighlightLine"]
@@ -445,7 +444,7 @@ theme = ExtResource( 6 )
 
 [node name="Minimap" type="HBoxContainer" parent="C/VBoxContainer"]
 margin_top = 685.0
-margin_right = 440.0
+margin_right = 966.0
 margin_bottom = 710.0
 
 [node name="Text" type="Label" parent="C/VBoxContainer/Minimap"]
@@ -466,7 +465,7 @@ theme = ExtResource( 6 )
 
 [node name="SyntaxHighlighting" type="HBoxContainer" parent="C/VBoxContainer"]
 margin_top = 725.0
-margin_right = 440.0
+margin_right = 966.0
 margin_bottom = 750.0
 
 [node name="Text" type="Label" parent="C/VBoxContainer/SyntaxHighlighting"]
@@ -487,7 +486,7 @@ theme = ExtResource( 6 )
 
 [node name="Tabs" type="HBoxContainer" parent="C/VBoxContainer"]
 margin_top = 765.0
-margin_right = 440.0
+margin_right = 966.0
 margin_bottom = 790.0
 
 [node name="Text" type="Label" parent="C/VBoxContainer/Tabs"]
@@ -508,7 +507,7 @@ theme = ExtResource( 6 )
 
 [node name="Spaces" type="HBoxContainer" parent="C/VBoxContainer"]
 margin_top = 805.0
-margin_right = 440.0
+margin_right = 966.0
 margin_bottom = 830.0
 
 [node name="Text" type="Label" parent="C/VBoxContainer/Spaces"]
@@ -529,7 +528,7 @@ theme = ExtResource( 6 )
 
 [node name="Occurances" type="HBoxContainer" parent="C/VBoxContainer"]
 margin_top = 845.0
-margin_right = 440.0
+margin_right = 966.0
 margin_bottom = 870.0
 
 [node name="Text" type="Label" parent="C/VBoxContainer/Occurances"]
@@ -550,7 +549,7 @@ theme = ExtResource( 6 )
 
 [node name="QuotesCategory" type="HBoxContainer" parent="C/VBoxContainer"]
 margin_top = 885.0
-margin_right = 440.0
+margin_right = 966.0
 margin_bottom = 935.0
 custom_constants/separation = 20
 __meta__ = {
