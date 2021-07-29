@@ -24,6 +24,7 @@ func save() -> void:
 func _ready() -> void:
 	res = Defaults.settings_res
 	update_settings()
+	update_quotes()
 
 
 func set_up_btns() -> void:
@@ -45,7 +46,6 @@ func set_up_btns() -> void:
 	$C/VBoxContainer/SyntaxHighlighting/Option.pressed = res.syntax_highlighting
 	$C/VBoxContainer/Tabs/Option.pressed = res.draw_tabs
 	$C/VBoxContainer/Spaces/Option.pressed = res.draw_spaces
-	update_quotes()
 
 
 func update_quotes() -> void:
