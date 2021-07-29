@@ -10,11 +10,21 @@ var active_track : int
 
 var total_secs : int
 
+var pomodoro_count : int
+var notified : bool
+var is_resting : bool
+var rest_time : int
+var rest_len : int
+
 func _ready() -> void:
-	res = load(Defaults.TIMETRACKS_SAVE_PATH + Defaults.TIMETRACKS_SAVE_NAME)
-	_on_PomodoroBtn_toggled(res.pomodoro_on)
+	if res == null:
+		load_res()
 	load_time_tracks()
 	update_total_time()
+
+
+func load_res() -> void:
+	res = load(Defaults.TIMETRACKS_SAVE_PATH + Defaults.TIMETRACKS_SAVE_NAME)
 
 
 func entering_view() -> void:
@@ -99,7 +109,6 @@ func change_title(_final : String = "00:00:00") -> void:
 	$Tween.interpolate_property($LinearTimeTrackingContainer/Panel/TimeTrack, 'percent_visible', 0.0, 1.0, 0.5, Tween.TRANS_QUAD, Tween.EASE_OUT, 0.5)
 	$Tween.start()
 	yield(get_tree().create_timer(0.5), "timeout")
-		
 	$LinearTimeTrackingContainer/Panel/TimeTrack.text = _final
 
 
@@ -125,6 +134,11 @@ func _on_TrackButton_toggled(button_pressed: bool) -> void:
 		active_track = res.add_track($LinearTimeTrackingContainer/Panel/Label.text)
 		res.get_track(active_track).start_tracking(OS.get_unix_time())
 		start_tracking(res.get_track(active_track))
+		is_resting = false
+		notified = false
+		$LinearTimeTrackingContainer/Panel/PomodoroContainer/PomodoroCount.visible = true
+		$LinearTimeTrackingContainer/Panel/PomodoroContainer/RestLabel.hide()
+		$LinearTimeTrackingContainer/Panel/PomodoroContainer/BreakButton.hide()
 		save()
 	else:
 		Defaults.time_tracking = false
@@ -180,15 +194,54 @@ func _on_new_time_track_item_text(_text : String, _idx : int) -> void:
 	update_time_track_item_text(_text, _idx)
 
 
+func update_rest_time():
+	$LinearTimeTrackingContainer/Panel/PomodoroContainer/RestLabel.text = Defaults.get_formatted_time_from_seconds(rest_len)
+
 func _on_SecondsTimer_timeout() -> void:
 	var _time : Array = get_hours_minutes_seconds(res.get_track(active_track).get_duration())
-	#if _time[1] >= Defaults.settings_res.pomo_work_time_length:
-		#print("rest")
+	if res.pomodoro_on:
+		# end of the pomodoro
+		if !is_resting && int(_time[0]) >= Defaults.settings_res.pomo_work_time_length:	# TODO: set back to minutes
+			$LinearTimeTrackingContainer/Panel/PomodoroContainer/BreakButton.show()
+			$LinearTimeTrackingContainer/Panel/PomodoroContainer/BreakButton.text = "Start break"
+			if !notified:
+				$AudioPlayer.playing = true
+				notified = true
 	$LinearTimeTrackingContainer/Panel/TimeTrack.text = _time[2] + ":" + _time[1] + ":" + _time[0]
 	Defaults.time_tracked = _time[2] + ":" + _time[1] + ":" + _time[0]
 
 
+func _on_RestTimer_timeout():
+	rest_len += 1
+	update_rest_time()
+	if rest_len >= rest_time:
+		if !notified:
+			$AudioPlayer.playing = true
+			notified = true
+		$LinearTimeTrackingContainer/Panel/PomodoroContainer/BreakButton.show()
+		$LinearTimeTrackingContainer/Panel/PomodoroContainer/BreakButton.text = "Continue last"
+
+
+func _on_BreakButton_pressed():
+	if !is_resting:
+		$LinearTimeTrackingContainer/Panel/HBoxContainer/TrackButton.pressed = false
+		is_resting = true
+		notified = false
+		rest_time = Defaults.settings_res.pomo_short_pause_length # * 60  TODO: set back to minutes
+		rest_len = 0
+		$RestTimer.start()
+		$LinearTimeTrackingContainer/Panel/PomodoroContainer/BreakButton.hide()
+		$LinearTimeTrackingContainer/Panel/PomodoroContainer/RestLabel.show()
+		update_rest_time()
+	else:
+		$LinearTimeTrackingContainer/Panel/HBoxContainer/TrackButton.pressed = true
+		$RestTimer.stop()
+
+
 func _on_PomodoroBtn_toggled(button_pressed: bool) -> void:
-	$LinearTimeTrackingContainer/PomodoroPanel.visible = button_pressed
-	$LinearTimeTrackingContainer/Panel.visible = !button_pressed
+	$LinearTimeTrackingContainer/Panel/PomodoroContainer.visible = button_pressed
+	if res == null:
+		load_res()
 	res.pomodoro_on = button_pressed
+
+

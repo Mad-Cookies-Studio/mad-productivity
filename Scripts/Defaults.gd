@@ -209,6 +209,14 @@ func get_datetime_from_unix_time(_unixTime : int) -> String:
 	return get_date_with_time_string(OS.get_datetime_from_unix_time(_unixTime))
 
 
+func get_formatted_time_from_seconds(_secs : int) -> String:
+	var hours : int = _secs / 3600
+	_secs -= hours * 3600
+	var minutes : int = _secs / 60
+	_secs -= minutes * 60
+	return ("%2.0d" % hours) + ":" + str(minutes) + ":" + ("%2.0d" % _secs)
+
+
 func save_note_resource(note : NoteResource) -> int:
 #	var saver : ResourceSaver = ResourceSaver.new()
 	if !note: return 0
