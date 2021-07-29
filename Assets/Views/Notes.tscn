@@ -1,26 +1,13 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Assets/Fonts/Roboto12.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/Fonts/Roboto40.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Assets/Fonts/Righteous-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Assets/Themes/Dark/PanelSuperDarkGreen.tres" type="StyleBox" id=3]
 [ext_resource path="res://Assets/Themes/Roboto12Clean.tres" type="Theme" id=4]
 [ext_resource path="res://Assets/Buttons/Cross.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Buttons/PlusAdd.png" type="Texture" id=6]
 [ext_resource path="res://Scripts/Views/NoteButton.gd" type="Script" id=7]
-[ext_resource path="res://Scripts/CustomTransparentButton.gd" type="Script" id=8]
-[ext_resource path="res://Scripts/Views/Notes/Title.gd" type="Script" id=9]
 [ext_resource path="res://Scripts/Views/Notes.gd" type="Script" id=10]
 [ext_resource path="res://Assets/Buttons/TimeTrackBtnWhite.png" type="Texture" id=11]
-
-[sub_resource type="DynamicFont" id=1]
-size = 50
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 3 )
-
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.0235294, 0.0470588, 0.0470588, 0.498039 )
-border_color = Color( 0.576471, 0.627451, 0.631373, 1 )
 
 [sub_resource type="StyleBoxEmpty" id=3]
 
@@ -99,41 +86,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Title" type="Label" parent="VBoxContainer"]
-visible = false
-margin_right = 990.0
-margin_bottom = 63.0
-rect_pivot_offset = Vector2( 0, 31 )
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
-text = "NOTES"
-script = ExtResource( 9 )
-
-[node name="Tween" type="Tween" parent="VBoxContainer/Title"]
-
-[node name="Control2" type="Control" parent="VBoxContainer"]
-visible = false
-margin_right = 990.0
-margin_bottom = 8.589
-rect_min_size = Vector2( 0, 8.589 )
-
-[node name="Control" type="HBoxContainer" parent="VBoxContainer"]
-visible = false
-margin_top = 8.0
-margin_right = 990.0
-margin_bottom = 39.188
-rect_min_size = Vector2( 0, 31.188 )
-
-[node name="AddBtn" type="TextureButton" parent="VBoxContainer/Control"]
-modulate = Color( 1, 1, 1, 0.427451 )
-margin_right = 31.0
-margin_bottom = 31.0
-rect_min_size = Vector2( 31, 0 )
-texture_normal = ExtResource( 6 )
-expand = true
-stretch_mode = 6
-script = ExtResource( 8 )
-
 [node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer"]
 margin_right = 960.0
 margin_bottom = 571.0
@@ -144,9 +96,10 @@ custom_constants/separation = 35
 split_offset = 243
 
 [node name="Panel" type="Panel" parent="VBoxContainer/HSplitContainer"]
+self_modulate = Color( 1, 1, 1, 0.686275 )
 margin_right = 243.0
 margin_bottom = 571.0
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = ExtResource( 3 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HSplitContainer/Panel"]
 anchor_right = 1.0
@@ -175,7 +128,7 @@ visible = false
 margin_right = 207.0
 margin_bottom = 25.0
 custom_styles/focus = SubResource( 3 )
-custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.643137 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.352941 )
 custom_colors/font_color_pressed = Color( 0.576471, 0.627451, 0.631373, 1 )
 toggle_mode = true
 group = SubResource( 4 )
@@ -187,10 +140,14 @@ delete_btn_colour = Color( 0.854902, 0.423529, 0.384314, 0.615686 )
 
 [node name="TimeTrack" type="TextureButton" parent="VBoxContainer/HSplitContainer/Panel/ScrollContainer/NoteButtons/DefaultButton"]
 modulate = Color( 0.976563, 0.654856, 0.137329, 1 )
-margin_left = 168.0
-margin_top = -4.0
-margin_right = 188.0
-margin_bottom = 30.0
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -41.3747
+margin_top = -16.1582
+margin_right = -21.3747
+margin_bottom = 17.8418
 rect_min_size = Vector2( 19, 0 )
 rect_pivot_offset = Vector2( 9.5, 9.5 )
 hint_tooltip = "Time track again"
@@ -284,17 +241,17 @@ alignment = 2
 
 [node name="CreatedLabel" type="Label" parent="VBoxContainer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer"]
 margin_left = 453.0
-margin_top = 7.0
+margin_top = 6.0
 margin_right = 495.0
-margin_bottom = 22.0
+margin_bottom = 23.0
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.470588 )
 text = "Created"
 
 [node name="Created" type="Label" parent="VBoxContainer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer"]
 margin_left = 499.0
-margin_top = 7.0
+margin_top = 6.0
 margin_right = 551.0
-margin_bottom = 22.0
+margin_bottom = 23.0
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
 text = "00/00/00"
 
@@ -306,17 +263,17 @@ rect_min_size = Vector2( 20, 0 )
 
 [node name="ModifiedLabel" type="Label" parent="VBoxContainer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer"]
 margin_left = 579.0
-margin_top = 7.0
+margin_top = 6.0
 margin_right = 626.0
-margin_bottom = 22.0
+margin_bottom = 23.0
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.470588 )
 text = "Modified"
 
 [node name="Modified" type="Label" parent="VBoxContainer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer"]
 margin_left = 630.0
-margin_top = 7.0
+margin_top = 6.0
 margin_right = 682.0
-margin_bottom = 22.0
+margin_bottom = 23.0
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
 text = "00/00/00"
 
