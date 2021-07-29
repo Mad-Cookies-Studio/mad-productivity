@@ -42,6 +42,21 @@ export var minimap : bool = true
 export var highlight_current_line : bool = false
 export var highlight_all_occurances : bool = false
 
+#user quotes
+export var quote_id : int = 10
+export var quote_list : Dictionary = {
+	1:"A big part of staying productive is knowing when to rest and when to work, take some time off!",
+	2:"I hate the \"Don't procrastinate\" gang. What\'s wrong with doing nothing?",
+	3:"A long time ago a wise old woman told me that being productive is all about being unpredictable. Being unpredictable in what you'll be doing next. It's the thoughts of work that get you tired before you even begin.",
+	4:"See that week old, half eaten apple on your desk? See how juicy it looks? Don't eat it. Gross.",
+	5:"Spreadsheetsare for amateurs.",
+	6:"Game development is like coming back from hell with a snickers bar in your irght hand and broken mouse in the other.",
+	7:"Ever felt like being productive? Me neither.",
+	8:"Congratulations! You're ready.",
+	9:"Old wisdom foresees that eventually we'll all find happiness where we least expected it.",
+	10:"Not to be a bore, but that time tracker ain't gonna turn itself on. Start tracking something now, even if it's nothing."
+}
+
 func reset_pomodoro_settings() -> void:
 	pomo_long_pause_freq = 4
 	pomo_long_pause_length = 15
