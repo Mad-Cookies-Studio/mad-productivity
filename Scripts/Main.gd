@@ -26,7 +26,6 @@ func toggle_view(new : int = -1, target : String = "") -> void:
 	# show the new one.
 	# selecting either by id or by name
 	if target != "":
-		print("activating view using the name")
 		$MainWorkspace/Views.get_node(target).show()
 		$MainWorkspace/Views.get_node(target).entering_view()
 		active_view = $MainWorkspace/Views.get_node(target).get_position_in_parent()

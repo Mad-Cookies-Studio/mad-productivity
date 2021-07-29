@@ -725,3 +725,5 @@ script = ExtResource( 37 )
 [connection signal="text_changed" from="MainWorkspace/Views/Profile/VBoxContainer/UserName" to="MainWorkspace/Views/Profile" method="_on_UserName_text_changed"]
 [connection signal="text_changed" from="MainWorkspace/Views/Profile/VBoxContainer/UserTitle" to="MainWorkspace/Views/Profile" method="_on_UserTitle_text_changed"]
 [connection signal="pressed" from="ResizeBtn" to="ResizeBtn" method="_on_ResizeBtn_pressed"]
+[connection signal="shortcut_focus" from="Shortcuts" to="MainWorkspace/TopArea" method="_on_Shortcuts_shortcut_focus"]
+[connection signal="shortcut_use" from="Shortcuts" to="MainWorkspace/TopArea" method="_on_Shortcuts_shortcut_use"]

@@ -24,14 +24,10 @@ func _ready() -> void:
 		i.connect("toggled_menu_btn", self, "on_toggled_menu_btn", [i, idx, i.target])
 		idx += 1
 
-func mouse_entered_menu_btn() -> void:
-	pass
 
 # IMPORTANT: Last button of the buttons must be the randomiser.
 func manual_view_toggle(which : int = 0) -> void:
-	print(which)
-	which = clamp(which, 0, $Buttons.get_child_count() + $BotButtons.get_child_count())
-	print("clamped:", which)
+	which = clamp(which, 0, $Buttons.get_child_count() + $BotButtons.get_child_count() - 1)
 	# IMPORTANT: If the randomiser changes in any way
 	# This part needs a little rework. AKA, remove the -1
 	if which < $Buttons.get_child_count():

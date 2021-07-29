@@ -34,13 +34,6 @@ func save() -> void:
 	Defaults.save_todo_resource(res)
 
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept") and active:
-		res.add_new_task($VBoxContainer/HBoxContainer/TODO/HBoxContainer/NewTaskName.text, false, OS.get_datetime(), {}, current_project_id)
-#		add_new_task_visual(_text, _done, _date, res.tasks.size())
-		$VBoxContainer/HBoxContainer/TODO/HBoxContainer/NewTaskName.text = ""
-
-
 func load_projects() -> void:
 	for i in res.projects:
 		create_project_button(res.projects[i].name, i)
