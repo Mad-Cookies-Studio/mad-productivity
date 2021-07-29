@@ -8,6 +8,7 @@ var buttons : Array
 var active_btn : TextureButton
 
 var previous_random_view : int = -1
+var previous_view : int
 
 func _ready() -> void:
 	get_viewport().connect("size_changed", self, "on_window_size_changed")
@@ -27,14 +28,17 @@ func mouse_entered_menu_btn() -> void:
 	pass
 
 # IMPORTANT: Last button of the buttons must be the randomiser.
-func manual_view_toggle(which : int) -> void:
+func manual_view_toggle(which : int = 0) -> void:
 	print(which)
+	which = clamp(which, 0, $Buttons.get_child_count() + $BotButtons.get_child_count())
+	print("clamped:", which)
 	# IMPORTANT: If the randomiser changes in any way
 	# This part needs a little rework. AKA, remove the -1
-	if which < $Buttons.get_child_count() - 1:
+	if which < $Buttons.get_child_count():
 		$Buttons.get_child(which).pressed = true
 	else:
-		$BotButtons.get_child(which % $BotButtons.get_child_count()).pressed = true
+		$BotButtons.get_child(which - $Buttons.get_child_count()).pressed = true
+		
 
 
 # which passes the specific node
