@@ -1,6 +1,7 @@
 extends Control
 
 var active_view : int = -1
+var active_view_name : String
 
 enum VIEWS {DASH, NOTES, TIMETRACK, REMINDERS, TODO, PROFILE}
 
@@ -18,13 +19,14 @@ func toggle_view(new : int = -1, target : String = "") -> void:
 	# as -1 is the default one
 	# also used for when we want to show nothing
 	# which is probably never
-	if active_view != -1:
-		$MainWorkspace/Views.get_child(active_view).hide()
-		$MainWorkspace/Views.get_child(active_view).leaving_view()
+	if active_view != -1 and active_view_name != "":
+		$MainWorkspace/Views.get_node(active_view_name).hide()
+		$MainWorkspace/Views.get_node(active_view_name).leaving_view()
 		
 	# show the new one.
 	# selecting either by id or by name
 	if target != "":
+		print("activating view using the name")
 		$MainWorkspace/Views.get_node(target).show()
 		$MainWorkspace/Views.get_node(target).entering_view()
 		active_view = $MainWorkspace/Views.get_node(target).get_position_in_parent()
@@ -34,6 +36,7 @@ func toggle_view(new : int = -1, target : String = "") -> void:
 		active_view = $MainWorkspace/Views.get_child(new).get_position_in_parent()
 		
 	Defaults.active_view = active_view
+	active_view_name = target
 
 
 func manual_view_toggle(which : int) -> void:
