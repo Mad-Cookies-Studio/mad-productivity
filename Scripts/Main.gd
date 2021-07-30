@@ -20,26 +20,26 @@ func toggle_view(new : int = -1, target : String = "") -> void:
 	# also used for when we want to show nothing
 	# which is probably never
 	if active_view != -1 and active_view_name != "":
-		$MainWorkspace/Views.get_node(active_view_name).hide()
-		$MainWorkspace/Views.get_node(active_view_name).leaving_view()
+		$MainWorkspace/HBX/VBX/Views.get_node(active_view_name).hide()
+		$MainWorkspace/HBX/VBX/Views.get_node(active_view_name).leaving_view()
 		
 	# show the new one.
 	# selecting either by id or by name
 	if target != "":
-		$MainWorkspace/Views.get_node(target).show()
-		$MainWorkspace/Views.get_node(target).entering_view()
-		active_view = $MainWorkspace/Views.get_node(target).get_position_in_parent()
+		$MainWorkspace/HBX/VBX/Views.get_node(target).show()
+		$MainWorkspace/HBX/VBX/Views.get_node(target).entering_view()
+		active_view = $MainWorkspace/HBX/VBX/Views.get_node(target).get_position_in_parent()
 	else:
-		$MainWorkspace/Views.get_child(new).show()
-		$MainWorkspace/Views.get_child(new).entering_view()
-		active_view = $MainWorkspace/Views.get_child(new).get_position_in_parent()
+		$MainWorkspace/HBX/VBX/Views.get_child(new).show()
+		$MainWorkspace/HBX/VBX/Views.get_child(new).entering_view()
+		active_view = $MainWorkspace/HBX/VBX/Views.get_child(new).get_position_in_parent()
 		
 	Defaults.active_view = active_view
 	active_view_name = target
 
 
 func manual_view_toggle(which : int) -> void:
-	$MainWorkspace/Sidebar.manual_view_toggle(which)
+	$MainWorkspace/HBX/Sidebar.manual_view_toggle(which)
 
 
 func _on_Sidebar_view_changed(which : int, target : String) -> void:
