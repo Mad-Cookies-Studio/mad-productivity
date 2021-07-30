@@ -136,7 +136,9 @@ func _on_TrackButton_toggled(button_pressed: bool) -> void:
 		start_tracking(res.get_track(active_track))
 		is_resting = false
 		notified = false
+		pomodoro_count += 1
 		$LinearTimeTrackingContainer/Panel/PomodoroContainer/PomodoroCount.visible = true
+		$LinearTimeTrackingContainer/Panel/PomodoroContainer/PomodoroCount.text = "Pomodoro count" + str(pomodoro_count) + "/" + str(Defaults.settings_res.pomo_long_pause_freq)
 		$LinearTimeTrackingContainer/Panel/PomodoroContainer/RestLabel.hide()
 		$LinearTimeTrackingContainer/Panel/PomodoroContainer/BreakButton.hide()
 		save()
@@ -227,7 +229,11 @@ func _on_BreakButton_pressed():
 		$LinearTimeTrackingContainer/Panel/HBoxContainer/TrackButton.pressed = false
 		is_resting = true
 		notified = false
-		rest_time = Defaults.settings_res.pomo_short_pause_length # * 60  TODO: set back to minutes
+		if pomodoro_count >= Defaults.settings_res.pomo_long_pause_freq:
+			pomodoro_count = 0
+			rest_time = Defaults.settings_res.pomo_long_pause_length # * 60  TODO: set back to minutes
+		else:
+			rest_time = Defaults.settings_res.pomo_short_pause_length # * 60  TODO: set back to minutes
 		rest_len = 0
 		$RestTimer.start()
 		$LinearTimeTrackingContainer/Panel/PomodoroContainer/BreakButton.hide()
