@@ -100,4 +100,8 @@ func on_view_changed(_name : String, _button : bool, _input_field : bool) -> voi
 
 func _on_Button_pressed() -> void:
 	if Defaults.active_view_pointer and Defaults.active_view_pointer.has_method("on_new_top_bar_button"):
-		Defaults.active_view_pointer.on_new_top_bar_button({})
+		var message : Dictionary = {}
+		if $Left/LineEdit.text != "":
+			message.text = $Left/LineEdit.text
+			$Left/LineEdit.clear()
+		Defaults.active_view_pointer.on_new_top_bar_button(message)

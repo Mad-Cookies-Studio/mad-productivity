@@ -4,6 +4,8 @@ export var title : String
 
 var res : SettingsResource
 
+var quote_nodes : Array
+
 # UI state machine functions
 func entering_view() -> void:
 	Defaults.active_view_pointer = self
@@ -22,12 +24,14 @@ func save() -> void:
 func _ready() -> void:
 	res = Defaults.settings_res
 	update_settings()
+	update_quotes()
 
 
 func set_up_btns() -> void:
 	$C/VBoxContainer/FontSize/Option.select(res.font_size)
 	$C/VBoxContainer/SecsDashboard/Option.pressed = res.show_secs_dash
 	$C/VBoxContainer/WindowPos/Option.pressed = res.remember_window_settings
+	$C/VBoxContainer/HidDPI/Option.pressed = res.hidpi
 	$C/VBoxContainer/LongPause/Option.value = res.pomo_long_pause_length
 	$C/VBoxContainer/LongPauseFreq/Option.value = res.pomo_long_pause_freq
 	$C/VBoxContainer/ShortPause/Option.value = res.pomo_short_pause_length
@@ -44,11 +48,51 @@ func set_up_btns() -> void:
 	$C/VBoxContainer/Spaces/Option.pressed = res.draw_spaces
 
 
+func update_quotes() -> void:
+	for i in res.quote_list:
+		var new = $C/VBoxContainer/QuoteBox.duplicate()
+		new.get_child(0).text = str(i)
+		new.get_child(1).text = res.quote_list[i]
+		new.get_child(2).connect("pressed", self, "on_quote_delete_pressed", [i])
+		new.name = "quote" + str(i)
+		new.show()
+		$C/VBoxContainer.add_child(new)
+		quote_nodes.append(new)
+
+
+func make_new_quote() -> void:
+	res.quote_id += 1
+	var idx : int = res.quote_id
+	var new = $C/VBoxContainer/QuoteBox.duplicate()
+	new.get_child(0).text = str(idx)
+	new.get_child(1).text = "New Quote"
+	new.get_child(2).connect("pressed", self, "on_quote_delete_pressed", [idx])
+	new.name = "quote" + str(idx)
+	new.show()
+	$C/VBoxContainer.add_child(new)
+	quote_nodes.append(new)
+
+
+func save_quotes() -> void:
+	for i in quote_nodes:
+		print(i.name)
+		var text : String = i.get_child(1).text
+		res.quote_list[int(i.name.trim_prefix("quote"))] = text
+		
+	Defaults.save_settings_resource()
+
+
 func update_settings() -> void:
 	Defaults.change_body_font_size(res.font_size)
 
 
 # -- > SIGNALS <-- #
+
+func on_quote_delete_pressed(idx : int) -> void:
+	res.quote_list.erase(idx)
+	$C/VBoxContainer.get_node("quote" + str(idx)).queue_free()
+
+
 func _on_Option_item_selected(index: int) -> void:
 	res.font_size = index
 	Defaults.change_body_font_size(index)
@@ -136,3 +180,16 @@ func _on_HighlightOccurancesOption_toggled(button_pressed: bool) -> void:
 func _on_NotesResetButton_pressed() -> void:
 	res.reset_notes_settings()
 	set_up_btns()
+
+
+func _on_HiDPI_Option_toggled(button_pressed: bool) -> void:
+	res.hidpi = button_pressed
+	ProjectSettings.set_setting("gui/theme/hidpi", button_pressed)
+
+
+func _on_NewQuote_pressed() -> void:
+	make_new_quote()
+
+
+func _on_QuotesSaveButton_pressed() -> void:
+	save_quotes()

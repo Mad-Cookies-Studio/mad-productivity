@@ -8,7 +8,6 @@ var resource_file_paths : Array
 
 func _ready() -> void:
 	reset_state()
-	$VBoxContainer/Control/AddBtn.connect("button_up", self, "_on_click_add_button")
 	load_notes()
 	
 func load_notes() -> void:

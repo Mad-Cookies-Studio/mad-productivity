@@ -8,9 +8,15 @@ var tasks_array : Array = []
 
 var active : bool = false
 
+var current_project : String
+var current_project_id : int
+var current_project_child_id : int
+
 func _ready() -> void:
 	res = load(Defaults.TODOS_SAVE_PATH + Defaults.TODOS_SAVE_NAME)
+	load_projects()
 	load_tasks()
+
 
 func entering_view() -> void:
 	Defaults.active_view_pointer = self
@@ -30,8 +36,14 @@ func save() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept") and active:
-		add_new_task_to_resource($VBoxContainer/HBoxContainer/TODO/HBoxContainer/NewTaskName.text, false, OS.get_datetime(), {})
+		res.add_new_task($VBoxContainer/HBoxContainer/TODO/HBoxContainer/NewTaskName.text, false, OS.get_datetime(), {}, current_project_id)
+#		add_new_task_visual(_text, _done, _date, res.tasks.size())
 		$VBoxContainer/HBoxContainer/TODO/HBoxContainer/NewTaskName.text = ""
+
+
+func load_projects() -> void:
+	for i in res.projects:
+		create_project_button(res.projects[i].name, i)
 
 
 func load_tasks() -> void:
@@ -41,43 +53,57 @@ func load_tasks() -> void:
 		item["id"] = i
 		tasks_array.append(item)
 		
-	for i in tasks_array:
-		add_new_task_visual(i["text"], i["done"], i["date"], i["id"])
-
-
-func add_new_task_to_resource(_text : String, _done : bool, _date : Dictionary, _done_date : Dictionary) -> void:
-	res.tasks[res.tasks.size() + 1] = {
-		"text" : _text,
-		"done" : false,
-		"date" : OS.get_datetime(),
-		"done_date" : {}
-	}
-	add_new_task_visual(_text, _done, _date, res.tasks.size())
+#	for i in tasks_array:
+#		add_new_task_visual(i["text"], i["done"], i["date"], i["id"])
 	
 	
-func add_new_task_visual(_text : String, _done : bool, _date : Dictionary, _idx : int) -> void:
+func add_new_task_visual(task_dic : Dictionary) -> void:
 	# get it!
-	return
-	var new : ColorRect = $VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer/TODOitem.duplicate()
+	var new : Panel = $VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem.duplicate()
 	# signals
 	new.connect("task_text_changed", self, "_on_task_text_changed")
 	new.connect("task_set_done", self, "_on_task_set_done")
 	new.connect("task_delete", self, "_on_task_delete")
 	new.connect("task_time_track", self, "_on_task_time_track")
 	
-	
 	#setup
-	new.idx = _idx
-	new.update_self(_text, _done, _date, _idx)
+#	print(task_dic)
+	new.idx = task_dic.id
+	new.update_self(task_dic.text, task_dic.done, task_dic.date, task_dic.id)
 	new.show()
 	
 	#child stuff
-	$VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer.add_child(new)
-	$VBoxContainer/HBoxContainer/TODO/ScrollContainer/VBoxContainer.move_child(new, 1)
+	$VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList.add_child(new)
+	$VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList.move_child(new, 1)
 		
+	
+func create_project_button(_p_name : String = "", id: int = -1) -> void:
+	var new : Button = $VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons/ProjectButton.duplicate()
+	new.text = _p_name
+	new.id = id
+	new.set_percent_done(res.get_percent_done(id))
+	new.connect("delete_project", self, "on_delete_project")
+	$VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons.add_child(new)
+	new.show()
 	
 	
 func remove_task_visual() -> void:
+	pass
+	
+	
+func reset_tasks_view() -> void:
+	for i in $VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList.get_children():
+		if i.name != "TODOitem" and i.name != "NewTodoBtn" and i.name != "ProjectLineEdit":
+			i.queue_free()
+	
+	
+func update_percent_done(p_id : int, child_p_id : int) -> void:
+	$VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons.get_child(child_p_id).set_percent_done(res.get_percent_done(p_id))
+	
+	
+# TODO: Implement method for removing a project.
+# Should remove all tasks with it by default as well
+func remove_project() -> void:
 	pass
 	
 	
@@ -87,6 +113,11 @@ func update_task_text(idx : int, text : String) -> void:
 	
 func update_task_done(idx : int, done : bool) -> void:
 	res.tasks[idx].done = done
+	if done:
+		res.tasks[idx].done_date = OS.get_datetime()
+	else:
+		res.tasks[idx].done_date = {}
+	update_percent_done(current_project_id, current_project_child_id)
 	
 	
 func remove_task_from_resource(idx : int) -> void:
@@ -94,7 +125,7 @@ func remove_task_from_resource(idx : int) -> void:
 
 
 func _on_NewTask_pressed() -> void:
-	add_new_task_to_resource($VBoxContainer/HBoxContainer/TODO/HBoxContainer/NewTaskName.text, false, OS.get_datetime(), {})
+	res.add_new_task($VBoxContainer/HBoxContainer/TODO/HBoxContainer/NewTaskName.text, false, OS.get_datetime(), {}, current_project_id)
 
 
 func _on_task_text_changed(_name : String, idx : int) -> void:
@@ -111,3 +142,46 @@ func _on_task_time_track(text : String) -> void:
 
 func _on_task_set_done(really : bool, idx : int) -> void:
 	update_task_done(idx, really)
+
+
+func on_new_top_bar_button(message : Dictionary = {}) -> void:
+	var nm : String = "New Project " + str(res.get_new_project_id())
+	if message.has("text"):
+		nm = message.text
+	var _id : int = res.add_project(nm)
+	create_project_button(nm, _id)
+
+
+func _on_ProjectButton_selected_project(_name, index, child_id) -> void:
+	# show the necessary nodes
+	$VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/ProjectLineEdit.show()
+	$VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/NewTodoBtn.show()
+	
+	$VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/ProjectLineEdit.text = _name
+	# cancel if we've clicked the same one
+	if _name == current_project: return
+	current_project = _name
+	current_project_id = index
+	current_project_child_id = child_id
+#	var id : int = res.get_id_in_projects_from_string(current_project)
+	reset_tasks_view()
+	for i in res.get_tasks_in_project(current_project_id):
+		var task = res.tasks[i]
+		add_new_task_visual(task)
+
+
+func _on_NewTodoBtn_pressed() -> void:
+	print("Adding a new button")
+	var new_task : Dictionary = res.add_new_task("new_task", false, OS.get_datetime(), {}, current_project_id)
+	add_new_task_visual(new_task)
+
+
+func _on_ProjectLineEdit_text_changed(new_text: String) -> void:
+	res.change_project_name(new_text, current_project_id)
+	$VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons.get_child(current_project_child_id).text = new_text
+	
+
+func on_delete_project(id : int) -> void:
+	print("going to delte project at id :", id)
+	res.delete_project(id)
+	

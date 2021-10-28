@@ -1,0 +1,648 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Assets/Fonts/Righteous50.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/Fonts/Roboto12.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Assets/Fonts/Roboto20.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Assets/Themes/Roboto12Clean.tres" type="Theme" id=4]
+[ext_resource path="res://Assets/Themes/CuteButtonTheme.tres" type="Theme" id=5]
+[ext_resource path="res://Assets/Themes/CheckBox.tres" type="Theme" id=6]
+[ext_resource path="res://Scripts/Views/Settings.gd" type="Script" id=7]
+[ext_resource path="res://Assets/Buttons/X_idle.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Buttons/X_hoer.png" type="Texture" id=9]
+
+[sub_resource type="StyleBoxEmpty" id=19]
+
+[sub_resource type="StyleBoxEmpty" id=22]
+
+[sub_resource type="StyleBoxFlat" id=23]
+content_margin_left = 10.0
+content_margin_right = 5.0
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color( 0.0588235, 0.105882, 0.109804, 0.698039 )
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[node name="Settings" type="Control"]
+margin_right = 1050.0
+margin_bottom = 1355.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+title = "Settings"
+
+[node name="C" type="ScrollContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 37.0
+margin_top = 20.0
+margin_right = -37.0
+margin_bottom = -43.0
+rect_min_size = Vector2( 480, 0 )
+theme = ExtResource( 4 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="C"]
+margin_right = 966.0
+margin_bottom = 1292.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 11
+size_flags_vertical = 3
+custom_constants/separation = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="C/VBoxContainer"]
+visible = false
+margin_right = 434.0
+margin_bottom = 63.0
+custom_styles/normal = SubResource( 19 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
+text = "SETTINGS"
+align = 1
+
+[node name="Category3" type="HBoxContainer" parent="C/VBoxContainer"]
+margin_right = 966.0
+margin_bottom = 50.0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="General" type="Label" parent="C/VBoxContainer/Category3"]
+margin_right = 70.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+custom_styles/normal = SubResource( 22 )
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+text = "General"
+align = 1
+valign = 1
+
+[node name="GeneralResetButton" type="Button" parent="C/VBoxContainer/Category3"]
+margin_left = 90.0
+margin_top = 10.0
+margin_right = 150.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 60, 30 )
+size_flags_vertical = 4
+theme = ExtResource( 5 )
+text = "reset"
+
+[node name="SecsDashboard" type="HBoxContainer" parent="C/VBoxContainer"]
+margin_top = 65.0
+margin_right = 966.0
+margin_bottom = 90.0
+
+[node name="Text" type="Label" parent="C/VBoxContainer/SecsDashboard"]
+margin_top = 4.0
+margin_right = 350.0
+margin_bottom = 21.0
+rect_min_size = Vector2( 350, 0 )
+custom_styles/normal = SubResource( 22 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+text = "Show seconds in dashboard"
+
+[node name="Option" type="CheckBox" parent="C/VBoxContainer/SecsDashboard"]
+margin_left = 354.0
+margin_right = 378.0
+margin_bottom = 25.0
+theme = ExtResource( 6 )
+
+[node name="FontSize" type="HBoxContainer" parent="C/VBoxContainer"]
+margin_top = 105.0
+margin_right = 966.0
+margin_bottom = 124.0
+
+[node name="Text" type="Label" parent="C/VBoxContainer/FontSize"]
+margin_top = 1.0
+margin_right = 350.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 350, 0 )
+custom_styles/normal = SubResource( 22 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+text = "Font size (notes)"
+
+[node name="Option" type="OptionButton" parent="C/VBoxContainer/FontSize"]
+margin_left = 354.0
+margin_right = 434.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 80, 0 )
+theme = ExtResource( 6 )
+text = "Small"
+items = [ "Small", null, false, 0, null, "Medium", null, false, 1, null, "Large", null, false, 2, null ]
+selected = 0
+
+[node name="WindowPos" type="HBoxContainer" parent="C/VBoxContainer"]
+margin_top = 139.0
+margin_right = 966.0
+margin_bottom = 164.0
+
+[node name="Text" type="Label" parent="C/VBoxContainer/WindowPos"]
+margin_top = 4.0
+margin_right = 350.0
+margin_bottom = 21.0
+rect_min_size = Vector2( 350, 0 )
+custom_styles/normal = SubResource( 22 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+text = "Remember window size and position"
+
+[node name="Option" type="CheckBox" parent="C/VBoxContainer/WindowPos"]
+margin_left = 354.0
+margin_right = 378.0
+margin_bottom = 25.0
+theme = ExtResource( 6 )
+
+[node name="WindowPos2" type="HBoxContainer" parent="C/VBoxContainer"]
+margin_top = 179.0
+margin_right = 966.0
+margin_bottom = 204.0
+
+[node name="Text" type="Label" parent="C/VBoxContainer/WindowPos2"]
+margin_top = 4.0
+margin_right = 350.0
+margin_bottom = 21.0
+rect_min_size = Vector2( 350, 0 )
+custom_styles/normal = SubResource( 22 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+text = "Remember last session view"
+
+[node name="Option" type="CheckBox" parent="C/VBoxContainer/WindowPos2"]
+margin_left = 354.0
+margin_right = 378.0
+margin_bottom = 25.0
+theme = ExtResource( 6 )
+
+[node name="ShowDate" type="HBoxContainer" parent="C/VBoxContainer"]
+margin_top = 219.0
+margin_right = 966.0
+margin_bottom = 244.0
+
+[node name="Text" type="Label" parent="C/VBoxContainer/ShowDate"]
+margin_top = 4.0
+margin_right = 350.0
+margin_bottom = 21.0
+rect_min_size = Vector2( 350, 0 )
+custom_styles/normal = SubResource( 22 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+text = "Show date in Dashboard"
+
+[node name="Option" type="CheckBox" parent="C/VBoxContainer/ShowDate"]
+margin_left = 354.0
+margin_right = 378.0
+margin_bottom = 25.0
+theme = ExtResource( 6 )
+
+[node name="Borderless" type="HBoxContainer" parent="C/VBoxContainer"]
+margin_top = 259.0
+margin_right = 966.0
+margin_bottom = 284.0
+
+[node name="Text" type="Label" parent="C/VBoxContainer/Borderless"]
+margin_top = 4.0
+margin_right = 350.0
+margin_bottom = 21.0
+rect_min_size = Vector2( 350, 0 )
+custom_styles/normal = SubResource( 22 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+text = "Borderless window"
+
+[node name="Option" type="CheckBox" parent="C/VBoxContainer/Borderless"]
+margin_left = 354.0
+margin_right = 378.0
+margin_bottom = 25.0
+theme = ExtResource( 6 )
+
+[node name="HidDPI" type="HBoxContainer" parent="C/VBoxContainer"]
+margin_top = 299.0
+margin_right = 966.0
+margin_bottom = 324.0
+
+[node name="Text" type="Label" parent="C/VBoxContainer/HidDPI"]
+margin_top = 4.0
+margin_right = 350.0
+margin_bottom = 21.0
+rect_min_size = Vector2( 350, 0 )
+custom_styles/normal = SubResource( 22 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+text = "HiDPI"
+
+[node name="Option" type="CheckBox" parent="C/VBoxContainer/HidDPI"]
+margin_left = 354.0
+margin_right = 378.0
+margin_bottom = 25.0
+theme = ExtResource( 6 )
+
+[node name="Category2" type="HBoxContainer" parent="C/VBoxContainer"]
+margin_top = 339.0
+margin_right = 966.0
+margin_bottom = 389.0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pomodoro" type="Label" parent="C/VBoxContainer/Category2"]
+margin_right = 93.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+custom_styles/normal = SubResource( 22 )
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+text = "Pomodoro"
+align = 1
+valign = 1
+
+[node name="PomodoroResetButton" type="Button" parent="C/VBoxContainer/Category2"]
+margin_left = 113.0
+margin_top = 10.0
+margin_right = 173.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 60, 30 )
+size_flags_vertical = 4
+theme = ExtResource( 5 )
+text = "reset"
+
+[node name="WorkTimeLength" type="HBoxContainer" parent="C/VBoxContainer"]
+margin_top = 404.0
+margin_right = 966.0
+margin_bottom = 423.0
+
+[node name="Text" type="Label" parent="C/VBoxContainer/WorkTimeLength"]
+margin_top = 1.0
+margin_right = 350.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 350, 0 )
+custom_styles/normal = SubResource( 22 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+text = "Work time length"
+
+[node name="Option" type="SpinBox" parent="C/VBoxContainer/WorkTimeLength"]
+margin_left = 354.0
+margin_right = 414.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 60, 0 )
+theme = ExtResource( 6 )
+suffix = "m"
+
+[node name="ShortPause" type="HBoxContainer" parent="C/VBoxContainer"]
+margin_top = 438.0
+margin_right = 966.0
+margin_bottom = 457.0
+
+[node name="Text" type="Label" parent="C/VBoxContainer/ShortPause"]
+margin_top = 1.0
+margin_right = 350.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 350, 0 )
+custom_styles/normal = SubResource( 22 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+text = "Short pause length"
+
+[node name="Option" type="SpinBox" parent="C/VBoxContainer/ShortPause"]
+margin_left = 354.0
+margin_right = 414.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 60, 0 )
+theme = ExtResource( 6 )
+suffix = "m"
+
+[node name="LongPause" type="HBoxContainer" parent="C/VBoxContainer"]
+margin_top = 472.0
+margin_right = 966.0
+margin_bottom = 491.0
+
+[node name="Text" type="Label" parent="C/VBoxContainer/LongPause"]
+margin_top = 1.0
+margin_right = 350.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 350, 0 )
+custom_styles/normal = SubResource( 22 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+text = "Long pause length"
+
+[node name="Option" type="SpinBox" parent="C/VBoxContainer/LongPause"]
+margin_left = 354.0
+margin_right = 414.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 60, 0 )
+theme = ExtResource( 6 )
+suffix = "m"
+
+[node name="LongPauseFreq" type="HBoxContainer" parent="C/VBoxContainer"]
+margin_top = 506.0
+margin_right = 966.0
+margin_bottom = 525.0
+
+[node name="Text" type="Label" parent="C/VBoxContainer/LongPauseFreq"]
+margin_top = 1.0
+margin_right = 350.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 350, 0 )
+custom_styles/normal = SubResource( 22 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+text = "Long pause frequency (after how many short breaks)"
+
+[node name="Option" type="SpinBox" parent="C/VBoxContainer/LongPauseFreq"]
+margin_left = 354.0
+margin_right = 414.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 60, 0 )
+theme = ExtResource( 6 )
+suffix = "x"
+
+[node name="NotesCategory" type="HBoxContainer" parent="C/VBoxContainer"]
+margin_top = 540.0
+margin_right = 966.0
+margin_bottom = 590.0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Notes" type="Label" parent="C/VBoxContainer/NotesCategory"]
+margin_right = 53.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+custom_styles/normal = SubResource( 22 )
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+text = "Notes"
+align = 1
+valign = 1
+
+[node name="NotesResetButton" type="Button" parent="C/VBoxContainer/NotesCategory"]
+margin_left = 73.0
+margin_top = 10.0
+margin_right = 133.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 60, 30 )
+size_flags_vertical = 4
+theme = ExtResource( 5 )
+text = "reset"
+
+[node name="LineNumbers" type="HBoxContainer" parent="C/VBoxContainer"]
+margin_top = 605.0
+margin_right = 966.0
+margin_bottom = 630.0
+
+[node name="Text" type="Label" parent="C/VBoxContainer/LineNumbers"]
+margin_top = 4.0
+margin_right = 350.0
+margin_bottom = 21.0
+rect_min_size = Vector2( 350, 0 )
+custom_styles/normal = SubResource( 22 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+text = "Show line numbers"
+
+[node name="Option" type="CheckBox" parent="C/VBoxContainer/LineNumbers"]
+margin_left = 354.0
+margin_right = 378.0
+margin_bottom = 25.0
+theme = ExtResource( 6 )
+
+[node name="HighlightLine" type="HBoxContainer" parent="C/VBoxContainer"]
+margin_top = 645.0
+margin_right = 966.0
+margin_bottom = 670.0
+
+[node name="Text" type="Label" parent="C/VBoxContainer/HighlightLine"]
+margin_top = 4.0
+margin_right = 350.0
+margin_bottom = 21.0
+rect_min_size = Vector2( 350, 0 )
+custom_styles/normal = SubResource( 22 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+text = "Highlight current line"
+
+[node name="Option" type="CheckBox" parent="C/VBoxContainer/HighlightLine"]
+margin_left = 354.0
+margin_right = 378.0
+margin_bottom = 25.0
+theme = ExtResource( 6 )
+
+[node name="Minimap" type="HBoxContainer" parent="C/VBoxContainer"]
+margin_top = 685.0
+margin_right = 966.0
+margin_bottom = 710.0
+
+[node name="Text" type="Label" parent="C/VBoxContainer/Minimap"]
+margin_top = 4.0
+margin_right = 350.0
+margin_bottom = 21.0
+rect_min_size = Vector2( 350, 0 )
+custom_styles/normal = SubResource( 22 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+text = "Show minimap"
+
+[node name="Option" type="CheckBox" parent="C/VBoxContainer/Minimap"]
+margin_left = 354.0
+margin_right = 378.0
+margin_bottom = 25.0
+theme = ExtResource( 6 )
+
+[node name="SyntaxHighlighting" type="HBoxContainer" parent="C/VBoxContainer"]
+margin_top = 725.0
+margin_right = 966.0
+margin_bottom = 750.0
+
+[node name="Text" type="Label" parent="C/VBoxContainer/SyntaxHighlighting"]
+margin_top = 4.0
+margin_right = 350.0
+margin_bottom = 21.0
+rect_min_size = Vector2( 350, 0 )
+custom_styles/normal = SubResource( 22 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+text = "Syntax highlighting"
+
+[node name="Option" type="CheckBox" parent="C/VBoxContainer/SyntaxHighlighting"]
+margin_left = 354.0
+margin_right = 378.0
+margin_bottom = 25.0
+theme = ExtResource( 6 )
+
+[node name="Tabs" type="HBoxContainer" parent="C/VBoxContainer"]
+margin_top = 765.0
+margin_right = 966.0
+margin_bottom = 790.0
+
+[node name="Text" type="Label" parent="C/VBoxContainer/Tabs"]
+margin_top = 4.0
+margin_right = 350.0
+margin_bottom = 21.0
+rect_min_size = Vector2( 350, 0 )
+custom_styles/normal = SubResource( 22 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+text = "Draw tabs"
+
+[node name="Option" type="CheckBox" parent="C/VBoxContainer/Tabs"]
+margin_left = 354.0
+margin_right = 378.0
+margin_bottom = 25.0
+theme = ExtResource( 6 )
+
+[node name="Spaces" type="HBoxContainer" parent="C/VBoxContainer"]
+margin_top = 805.0
+margin_right = 966.0
+margin_bottom = 830.0
+
+[node name="Text" type="Label" parent="C/VBoxContainer/Spaces"]
+margin_top = 4.0
+margin_right = 350.0
+margin_bottom = 21.0
+rect_min_size = Vector2( 350, 0 )
+custom_styles/normal = SubResource( 22 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+text = "Draw spaces"
+
+[node name="Option" type="CheckBox" parent="C/VBoxContainer/Spaces"]
+margin_left = 354.0
+margin_right = 378.0
+margin_bottom = 25.0
+theme = ExtResource( 6 )
+
+[node name="Occurances" type="HBoxContainer" parent="C/VBoxContainer"]
+margin_top = 845.0
+margin_right = 966.0
+margin_bottom = 870.0
+
+[node name="Text" type="Label" parent="C/VBoxContainer/Occurances"]
+margin_top = 4.0
+margin_right = 350.0
+margin_bottom = 21.0
+rect_min_size = Vector2( 350, 0 )
+custom_styles/normal = SubResource( 22 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+text = "Highlight all occurances"
+
+[node name="Option" type="CheckBox" parent="C/VBoxContainer/Occurances"]
+margin_left = 354.0
+margin_right = 378.0
+margin_bottom = 25.0
+theme = ExtResource( 6 )
+
+[node name="QuotesCategory" type="HBoxContainer" parent="C/VBoxContainer"]
+margin_top = 885.0
+margin_right = 966.0
+margin_bottom = 935.0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Notes" type="Label" parent="C/VBoxContainer/QuotesCategory"]
+margin_right = 64.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+custom_styles/normal = SubResource( 22 )
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+text = "Quotes"
+align = 1
+valign = 1
+
+[node name="QuotesSaveButton" type="Button" parent="C/VBoxContainer/QuotesCategory"]
+margin_left = 84.0
+margin_top = 10.0
+margin_right = 144.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 60, 30 )
+size_flags_vertical = 4
+theme = ExtResource( 5 )
+text = "save"
+
+[node name="NewQuote" type="Button" parent="C/VBoxContainer/QuotesCategory"]
+margin_left = 164.0
+margin_top = 10.0
+margin_right = 224.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 60, 30 )
+size_flags_vertical = 4
+theme = ExtResource( 5 )
+text = "new"
+
+[node name="QuoteBox" type="HBoxContainer" parent="C/VBoxContainer"]
+visible = false
+margin_top = 950.0
+margin_right = 440.0
+margin_bottom = 975.0
+rect_min_size = Vector2( 0, 25 )
+
+[node name="Label" type="Label" parent="C/VBoxContainer/QuoteBox"]
+visible = false
+margin_right = 9.0
+margin_bottom = 19.0
+text = "1"
+
+[node name="Text" type="LineEdit" parent="C/VBoxContainer/QuoteBox"]
+margin_right = 421.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 350, 0 )
+size_flags_horizontal = 3
+custom_styles/normal = SubResource( 23 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+text = "This is a quote"
+
+[node name="Delete" type="TextureButton" parent="C/VBoxContainer/QuoteBox"]
+modulate = Color( 1, 1, 1, 0.576471 )
+margin_left = 425.0
+margin_right = 440.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 15, 0 )
+theme = ExtResource( 6 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 9 )
+expand = true
+stretch_mode = 5
+
+[connection signal="pressed" from="C/VBoxContainer/Category3/GeneralResetButton" to="." method="_on_GeneralResetButton_pressed"]
+[connection signal="toggled" from="C/VBoxContainer/SecsDashboard/Option" to="." method="_on_secsDashboard_toggled"]
+[connection signal="item_selected" from="C/VBoxContainer/FontSize/Option" to="." method="_on_Option_item_selected"]
+[connection signal="toggled" from="C/VBoxContainer/WindowPos/Option" to="." method="_on_windowPos_toggled"]
+[connection signal="toggled" from="C/VBoxContainer/WindowPos2/Option" to="." method="_on_lastSessionView_toggled"]
+[connection signal="toggled" from="C/VBoxContainer/ShowDate/Option" to="." method="_on_ShowDateOption_toggled"]
+[connection signal="toggled" from="C/VBoxContainer/Borderless/Option" to="." method="_on_BorderlessOption_toggled"]
+[connection signal="toggled" from="C/VBoxContainer/HidDPI/Option" to="." method="_on_HiDPI_Option_toggled"]
+[connection signal="pressed" from="C/VBoxContainer/Category2/PomodoroResetButton" to="." method="_on_PomodoroResetButton_pressed"]
+[connection signal="value_changed" from="C/VBoxContainer/WorkTimeLength/Option" to="." method="_on_workTimeLength_value_changed"]
+[connection signal="value_changed" from="C/VBoxContainer/ShortPause/Option" to="." method="_on_ShortPauseLength_value_changed"]
+[connection signal="value_changed" from="C/VBoxContainer/LongPause/Option" to="." method="_on_LongPauseLength_value_changed"]
+[connection signal="value_changed" from="C/VBoxContainer/LongPauseFreq/Option" to="." method="_on_LongPauseFreq_value_changed"]
+[connection signal="pressed" from="C/VBoxContainer/NotesCategory/NotesResetButton" to="." method="_on_NotesResetButton_pressed"]
+[connection signal="toggled" from="C/VBoxContainer/LineNumbers/Option" to="." method="_on_lineNumbersOption_toggled"]
+[connection signal="toggled" from="C/VBoxContainer/HighlightLine/Option" to="." method="_on_HighlightLineOption_toggled"]
+[connection signal="toggled" from="C/VBoxContainer/Minimap/Option" to="." method="_on_MinimapOption_toggled"]
+[connection signal="toggled" from="C/VBoxContainer/SyntaxHighlighting/Option" to="." method="_on_SyntaxHighlightingOption_toggled"]
+[connection signal="toggled" from="C/VBoxContainer/Tabs/Option" to="." method="_on_TabsOption_toggled"]
+[connection signal="toggled" from="C/VBoxContainer/Spaces/Option" to="." method="_on_SpacesOption_toggled"]
+[connection signal="toggled" from="C/VBoxContainer/Occurances/Option" to="." method="_on_HighlightOccurancesOption_toggled"]
+[connection signal="pressed" from="C/VBoxContainer/QuotesCategory/QuotesSaveButton" to="." method="_on_QuotesSaveButton_pressed"]
+[connection signal="pressed" from="C/VBoxContainer/QuotesCategory/NewQuote" to="." method="_on_NewQuote_pressed"]
