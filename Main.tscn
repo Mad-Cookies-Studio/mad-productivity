@@ -105,9 +105,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sidebar" type="Panel" parent="MainWorkspace/HBX" groups=[
-"UI_THEME",
-]]
+[node name="Sidebar" type="Panel" parent="MainWorkspace/HBX" groups=["UI_THEME"]]
 margin_right = 50.0
 margin_bottom = 650.0
 rect_min_size = Vector2( 50, 0 )
@@ -478,8 +476,8 @@ margin_left = 74.0
 margin_top = 5.0
 margin_right = 226.0
 margin_bottom = 28.0
-custom_fonts/font = SubResource( 24 )
 custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
+custom_fonts/font = SubResource( 24 )
 text = "Mad Productivity"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -594,11 +592,11 @@ __meta__ = {
 margin_top = 256.0
 margin_right = 1050.0
 margin_bottom = 319.0
+custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
+custom_fonts/font = ExtResource( 20 )
 custom_styles/read_only = SubResource( 17 )
 custom_styles/focus = SubResource( 18 )
 custom_styles/normal = SubResource( 19 )
-custom_fonts/font = ExtResource( 20 )
-custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
 text = "USER NAME"
 align = 1
 caret_blink = true
@@ -607,11 +605,11 @@ caret_blink = true
 margin_top = 323.0
 margin_right = 1050.0
 margin_bottom = 349.0
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+custom_fonts/font = ExtResource( 23 )
 custom_styles/read_only = SubResource( 20 )
 custom_styles/focus = SubResource( 21 )
 custom_styles/normal = SubResource( 22 )
-custom_fonts/font = ExtResource( 23 )
-custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
 text = "USER TITLE"
 align = 1
 caret_blink = true
@@ -660,8 +658,8 @@ margin_left = 20.0
 margin_top = 12.0
 margin_right = 523.0
 margin_bottom = 75.0
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
+custom_fonts/font = ExtResource( 20 )
 text = "Level: 1"
 valign = 2
 __meta__ = {
@@ -673,8 +671,8 @@ margin_left = 462.385
 margin_top = 12.0
 margin_right = 965.385
 margin_bottom = 75.0
-custom_fonts/font = ExtResource( 23 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+custom_fonts/font = ExtResource( 23 )
 text = "23/1000pp"
 align = 2
 valign = 2
@@ -699,8 +697,8 @@ margin_left = -251.5
 margin_top = -31.5
 margin_right = 251.5
 margin_bottom = 31.5
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+custom_fonts/font = ExtResource( 20 )
 text = "TBD"
 align = 1
 valign = 2
@@ -710,6 +708,7 @@ __meta__ = {
 
 [node name="Settings" parent="MainWorkspace/HBX/VBX/Views" instance=ExtResource( 36 )]
 visible = false
+margin_bottom = 605.0
 
 [node name="Tween" type="Tween" parent="."]
 

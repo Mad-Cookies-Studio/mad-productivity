@@ -24,9 +24,7 @@ font_data = ExtResource( 2 )
 script = ExtResource( 6 )
 messages = PoolStringArray( "A big part of staying productive is knowing when to rest and when to work, take some time off!", "I hate the \"Don\'t procrastinate\" gang. What\'s wrong with doing nothing\?", "A long time ago a wise old woman told me that being productive is all about being unpredictable. Being unpredictable in what you\'ll be doing next. It\'s the thoughts of work that get you tired before you even begin.", "See that week old, half eaten apple on your desk\? See how juicy it looks\? Don\'t eat it. Gross.", "Spreadsheetsare for amateurs.", "Game development is like coming back from hell with a snickers bar in your irght hand and broken mouse in the other.", "Ever felt like being productive\? Me neither.", "Congratulations! You\'re ready.", "Old wisdom foresees that eventually we\'ll all find happiness where we least expected it.", "Not to be a bore, but that time tracker ain\'t gonna turn itself on. Start tracking something now, even if it\'s nothing." )
 
-[node name="Dashboard" type="Control" groups=[
-"UI_THEME",
-]]
+[node name="Dashboard" type="Control" groups=["UI_THEME"]]
 margin_right = 990.0
 margin_bottom = 571.0
 rect_pivot_offset = Vector2( 495, 286 )
@@ -51,8 +49,8 @@ __meta__ = {
 margin_top = 92.0
 margin_right = 930.0
 margin_bottom = 118.0
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "Date"
 align = 1
 
@@ -60,8 +58,8 @@ align = 1
 margin_top = 128.0
 margin_right = 930.0
 margin_bottom = 269.0
-custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
+custom_fonts/font = ExtResource( 7 )
 text = "00:00:00"
 align = 1
 
@@ -83,8 +81,8 @@ grow_horizontal = 2
 rect_min_size = Vector2( 400, 100 )
 size_flags_horizontal = 4
 size_flags_vertical = 1
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.0862745, 0.152941, 0.160784, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "\"A big part of staying productive is knowing when to rest and when to work, take some time off!\""
 align = 1
 valign = 1

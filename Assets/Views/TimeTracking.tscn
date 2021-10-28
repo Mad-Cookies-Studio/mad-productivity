@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Assets/Buttons/play_pressed.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Buttons/PauseBtn_idle.png" type="Texture" id=2]
@@ -18,6 +18,9 @@
 [ext_resource path="res://Assets/Buttons/TimeTrackBtnWhite.png" type="Texture" id=16]
 [ext_resource path="res://Assets/Themes/Dark/PanelSuperDarkGreen.tres" type="StyleBox" id=17]
 [ext_resource path="res://Assets/Audio/notification.wav" type="AudioStream" id=18]
+[ext_resource path="res://Assets/Textures/TomatoIcon.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Fonts/Righteous20.tres" type="DynamicFont" id=22]
+[ext_resource path="res://Assets/Fonts/NovaMono60.tres" type="DynamicFont" id=23]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -31,9 +34,83 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 3 )
 
+[sub_resource type="StyleBoxFlat" id=12]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color( 0.968627, 0.352941, 0.352941, 1 )
+
+[sub_resource type="StyleBoxFlat" id=13]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color( 0.67451, 0.129412, 0.129412, 1 )
+
+[sub_resource type="StyleBoxFlat" id=14]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color( 1, 0.121569, 0.121569, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxFlat" id=15]
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color( 0.976471, 0.419608, 0.419608, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color( 1, 0.121569, 0.121569, 0.729412 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 0.121569, 0.121569, 1 )
+
+[sub_resource type="StyleBoxFlat" id=16]
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color( 0.541176, 0.0901961, 0.0901961, 1 )
+
+[sub_resource type="Theme" id=6]
+default_font = SubResource( 4 )
+Button/styles/focus = SubResource( 8 )
+Button/styles/hover = SubResource( 15 )
+Button/styles/normal = SubResource( 5 )
+Button/styles/pressed = SubResource( 16 )
+
+[sub_resource type="StyleBoxFlat" id=17]
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color( 0.956863, 0.231373, 0.231373, 0.145098 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.956863, 0.231373, 0.231373, 1 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color( 0.976471, 0.32549, 0.0705882, 1 )
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.956863, 0.231373, 0.231373, 1 )
+
+[sub_resource type="Theme" id=11]
+default_font = SubResource( 4 )
+Button/colors/font_color = Color( 0.956863, 0.231373, 0.231373, 1 )
+Button/styles/focus = SubResource( 17 )
+Button/styles/hover = SubResource( 17 )
+Button/styles/normal = SubResource( 10 )
+Button/styles/pressed = SubResource( 17 )
+
 [node name="TimeTracking" type="Control"]
 margin_right = 990.0
 margin_bottom = 571.0
+rect_clip_content = true
 script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -160,12 +237,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 13.0
 margin_right = -146.0
+custom_colors/selection_color = Color( 0.854902, 0.423529, 0.384314, 1 )
+custom_colors/font_color_selected = Color( 0.0588235, 0.105882, 0.109804, 1 )
+custom_fonts/font = ExtResource( 14 )
 custom_styles/read_only = SubResource( 1 )
 custom_styles/focus = SubResource( 2 )
 custom_styles/normal = SubResource( 3 )
-custom_fonts/font = ExtResource( 14 )
-custom_colors/selection_color = Color( 0.854902, 0.423529, 0.384314, 1 )
-custom_colors/font_color_selected = Color( 0.0588235, 0.105882, 0.109804, 1 )
 placeholder_text = "Project name"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -178,6 +255,30 @@ anchor_bottom = 1.0
 margin_left = -399.0
 custom_constants/separation = -5
 alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BreakButton" type="Button" parent="LinearTimeTrackingContainer/Panel/HBoxContainer"]
+margin_left = 182.0
+margin_top = 5.0
+margin_right = 259.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 0, 40 )
+size_flags_vertical = 4
+custom_colors/font_color = Color( 1, 1, 1, 0.592157 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 4 )
+custom_styles/hover = SubResource( 12 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/normal = SubResource( 14 )
+text = "Break"
+
+[node name="Control" type="Control" parent="LinearTimeTrackingContainer/Panel/HBoxContainer"]
+margin_left = 254.0
+margin_right = 264.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 10, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -233,8 +334,8 @@ margin_left = -55.0
 margin_top = -30.2381
 margin_bottom = -4.2381
 grow_horizontal = 0
-custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.415686 )
+custom_fonts/font = SubResource( 4 )
 text = "total:"
 align = 2
 valign = 2
@@ -247,48 +348,43 @@ margin_top = -33.1213
 margin_right = 180.0
 margin_bottom = -4.12128
 grow_horizontal = 0
-custom_fonts/font = ExtResource( 13 )
 custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
+custom_fonts/font = ExtResource( 13 )
 valign = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PomodoroContainer" type="HBoxContainer" parent="LinearTimeTrackingContainer/Panel"]
-anchor_right = 1.0
-margin_left = 45.0
-margin_top = -66.0
-margin_right = -61.0
-margin_bottom = -18.0
+[node name="PomodoroContainer" type="TextureRect" parent="LinearTimeTrackingContainer/Panel"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = -79.799
+margin_top = -234.506
+margin_right = 67.201
+margin_bottom = -87.506
+texture = ExtResource( 20 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="LinearTimeTrackingContainer/Panel/PomodoroContainer"]
-margin_top = 17.0
-margin_right = 109.0
-margin_bottom = 31.0
-text = "Pomodoro timer:"
-
 [node name="PomodoroCount" type="Label" parent="LinearTimeTrackingContainer/Panel/PomodoroContainer"]
-margin_left = 113.0
-margin_top = 17.0
-margin_right = 215.0
-margin_bottom = 31.0
-text = "Pomodoros: 0/4"
-
-[node name="RestLabel" type="Label" parent="LinearTimeTrackingContainer/Panel/PomodoroContainer"]
-margin_left = 219.0
-margin_top = 17.0
-margin_right = 283.0
-margin_bottom = 31.0
-text = "Rest: 3:34"
-
-[node name="BreakButton" type="Button" parent="LinearTimeTrackingContainer/Panel/PomodoroContainer"]
-margin_left = 287.0
-margin_right = 367.0
-margin_bottom = 48.0
-text = "start break"
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -26.4891
+margin_top = -8.9108
+margin_right = 62.5109
+margin_bottom = 44.0892
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "0/4"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="SecondsTimer" type="Timer" parent="."]
 
@@ -299,13 +395,94 @@ text = "start break"
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 18 )
 
+[node name="PauseOverlay" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.670588 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBX" type="VBoxContainer" parent="PauseOverlay"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -71.0
+margin_right = 71.0
+grow_horizontal = 2
+rect_min_size = Vector2( 175, 0 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="PauseOverlay/VBX"]
+margin_top = 87.0
+margin_right = 175.0
+margin_bottom = 267.043
+rect_min_size = Vector2( 0, 180.043 )
+texture = ExtResource( 20 )
+expand = true
+stretch_mode = 6
+
+[node name="PauseLbl" type="Label" parent="PauseOverlay/VBX/TextureRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -77.0
+margin_top = -17.6947
+margin_right = 77.0
+margin_bottom = 75.3053
+custom_colors/font_color = Color( 0, 0.145098, 0.152941, 1 )
+custom_fonts/font = ExtResource( 22 )
+text = "PAUSE"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimeLbl" type="Label" parent="PauseOverlay/VBX"]
+margin_top = 271.0
+margin_right = 175.0
+margin_bottom = 333.0
+custom_colors/font_color = Color( 1, 0.121569, 0.121569, 1 )
+custom_fonts/font = ExtResource( 23 )
+text = "00:00"
+align = 1
+valign = 1
+
+[node name="Control" type="Control" parent="PauseOverlay/VBX"]
+margin_top = 337.0
+margin_right = 175.0
+margin_bottom = 387.0
+rect_min_size = Vector2( 0, 50 )
+
+[node name="ContinueBreakBtn" type="Button" parent="PauseOverlay/VBX"]
+margin_top = 391.0
+margin_right = 175.0
+margin_bottom = 435.0
+theme = SubResource( 6 )
+text = "Continue"
+
+[node name="FinishBtn" type="Button" parent="PauseOverlay/VBX"]
+margin_top = 439.0
+margin_right = 175.0
+margin_bottom = 483.0
+theme = SubResource( 11 )
+text = "Finish"
+
 [connection signal="mouse_entered" from="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem" to="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem" method="_on_TrackedItem_mouse_entered"]
 [connection signal="mouse_exited" from="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem" to="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem" method="_on_TrackedItem_mouse_exited"]
 [connection signal="button_up" from="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem/H/Delete" to="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem" method="_on_Delete_button_up"]
 [connection signal="button_up" from="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem/H/TimeTrack" to="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem" method="_on_TimeTrack_button_up"]
 [connection signal="text_changed" from="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem/H/ProjectName" to="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem" method="_on_ProjectName_text_changed"]
+[connection signal="pressed" from="LinearTimeTrackingContainer/Panel/HBoxContainer/BreakButton" to="." method="_on_BreakButton_pressed"]
 [connection signal="pressed" from="LinearTimeTrackingContainer/Panel/HBoxContainer/CancelButton" to="." method="_on_CancelButton_pressed"]
 [connection signal="toggled" from="LinearTimeTrackingContainer/Panel/HBoxContainer/PauseButton" to="." method="_on_PauseButton_toggled"]
-[connection signal="pressed" from="LinearTimeTrackingContainer/Panel/PomodoroContainer/BreakButton" to="." method="_on_BreakButton_pressed"]
 [connection signal="timeout" from="SecondsTimer" to="." method="_on_SecondsTimer_timeout"]
 [connection signal="timeout" from="RestTimer" to="." method="_on_RestTimer_timeout"]
+[connection signal="pressed" from="PauseOverlay/VBX/ContinueBreakBtn" to="." method="_on_ContinueBreakBtn_pressed"]
+[connection signal="pressed" from="PauseOverlay/VBX/FinishBtn" to="." method="_on_FinishBtn_pressed"]

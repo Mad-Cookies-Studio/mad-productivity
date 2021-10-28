@@ -138,9 +138,8 @@ func _on_TrackButton_toggled(button_pressed: bool) -> void:
 		notified = false
 		pomodoro_count += 1
 		$LinearTimeTrackingContainer/Panel/PomodoroContainer/PomodoroCount.visible = true
-		$LinearTimeTrackingContainer/Panel/PomodoroContainer/PomodoroCount.text = "Pomodoro count" + str(pomodoro_count) + "/" + str(Defaults.settings_res.pomo_long_pause_freq)
-		$LinearTimeTrackingContainer/Panel/PomodoroContainer/RestLabel.hide()
-		$LinearTimeTrackingContainer/Panel/PomodoroContainer/BreakButton.hide()
+		$LinearTimeTrackingContainer/Panel/PomodoroContainer/PomodoroCount.text = str(pomodoro_count) + "/" + str(Defaults.settings_res.pomo_long_pause_freq)
+		$LinearTimeTrackingContainer/Panel/HBoxContainer/BreakButton.hide()
 		save()
 	else:
 		Defaults.time_tracking = false
@@ -197,15 +196,16 @@ func _on_new_time_track_item_text(_text : String, _idx : int) -> void:
 
 
 func update_rest_time():
-	$LinearTimeTrackingContainer/Panel/PomodoroContainer/RestLabel.text = Defaults.get_formatted_time_from_seconds(rest_len)
+	$PauseOverlay/VBX/TimeLbl.text = Defaults.get_formatted_time_from_seconds(rest_len)
 
 func _on_SecondsTimer_timeout() -> void:
 	var _time : Array = get_hours_minutes_seconds(res.get_track(active_track).get_duration())
 	if res.pomodoro_on:
 		# end of the pomodoro
-		if !is_resting && int(_time[0]) >= Defaults.settings_res.pomo_work_time_length:	# TODO: set back to minutes
-			$LinearTimeTrackingContainer/Panel/PomodoroContainer/BreakButton.show()
-			$LinearTimeTrackingContainer/Panel/PomodoroContainer/BreakButton.text = "Start break"
+		if !is_resting && int(_time[0]) >= Defaults.settings_res.pomo_work_time_length * 60:
+			$LinearTimeTrackingContainer/Panel/HBoxContainer/BreakButton.show()
+			# start break break button text set is here
+			$LinearTimeTrackingContainer/Panel/HBoxContainer/BreakButton.text = "Break"
 			if !notified:
 				$AudioPlayer.playing = true
 				notified = true
@@ -220,34 +220,41 @@ func _on_RestTimer_timeout():
 		if !notified:
 			$AudioPlayer.playing = true
 			notified = true
-		$LinearTimeTrackingContainer/Panel/PomodoroContainer/BreakButton.show()
-		$LinearTimeTrackingContainer/Panel/PomodoroContainer/BreakButton.text = "Continue last"
 
 
 func _on_BreakButton_pressed():
-	if !is_resting:
-		$LinearTimeTrackingContainer/Panel/HBoxContainer/TrackButton.pressed = false
-		is_resting = true
-		notified = false
-		if pomodoro_count >= Defaults.settings_res.pomo_long_pause_freq:
-			pomodoro_count = 0
-			rest_time = Defaults.settings_res.pomo_long_pause_length # * 60  TODO: set back to minutes
-		else:
-			rest_time = Defaults.settings_res.pomo_short_pause_length # * 60  TODO: set back to minutes
-		rest_len = 0
-		$RestTimer.start()
-		$LinearTimeTrackingContainer/Panel/PomodoroContainer/BreakButton.hide()
-		$LinearTimeTrackingContainer/Panel/PomodoroContainer/RestLabel.show()
-		update_rest_time()
+	$LinearTimeTrackingContainer/Panel/HBoxContainer/TrackButton.pressed = false
+	is_resting = true
+	notified = false
+	if pomodoro_count >= Defaults.settings_res.pomo_long_pause_freq:
+		pomodoro_count = 0
+		rest_time = Defaults.settings_res.pomo_long_pause_length * 60
 	else:
-		$LinearTimeTrackingContainer/Panel/HBoxContainer/TrackButton.pressed = true
-		$RestTimer.stop()
+		rest_time = Defaults.settings_res.pomo_short_pause_length * 60
+	rest_len = 0
+	$RestTimer.start()
+	$LinearTimeTrackingContainer/Panel/HBoxContainer/BreakButton.hide()
+	$PauseOverlay.show()
+	update_rest_time()
+		
 
 
 func _on_PomodoroBtn_toggled(button_pressed: bool) -> void:
 	$LinearTimeTrackingContainer/Panel/PomodoroContainer.visible = button_pressed
+	
 	if res == null:
 		load_res()
 	res.pomodoro_on = button_pressed
 
 
+func _on_ContinueBreakBtn_pressed() -> void:
+	$LinearTimeTrackingContainer/Panel/HBoxContainer/TrackButton.pressed = true
+	$RestTimer.stop()
+	$PauseOverlay.hide()
+	
+
+func _on_FinishBtn_pressed() -> void:
+	$RestTimer.stop()
+	$PauseOverlay.hide()
+	$LinearTimeTrackingContainer/Panel/HBoxContainer/TrackButton.pressed = false
+	_on_TrackButton_toggled(false)

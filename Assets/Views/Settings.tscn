@@ -62,9 +62,9 @@ __meta__ = {
 visible = false
 margin_right = 434.0
 margin_bottom = 63.0
-custom_styles/normal = SubResource( 19 )
-custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
+custom_fonts/font = ExtResource( 1 )
+custom_styles/normal = SubResource( 19 )
 text = "SETTINGS"
 align = 1
 
@@ -80,9 +80,9 @@ __meta__ = {
 margin_right = 70.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
-custom_styles/normal = SubResource( 22 )
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+custom_fonts/font = ExtResource( 3 )
+custom_styles/normal = SubResource( 22 )
 text = "General"
 align = 1
 valign = 1
@@ -107,9 +107,9 @@ margin_top = 4.0
 margin_right = 350.0
 margin_bottom = 21.0
 rect_min_size = Vector2( 350, 0 )
-custom_styles/normal = SubResource( 22 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 22 )
 text = "Show seconds in dashboard"
 
 [node name="Option" type="CheckBox" parent="C/VBoxContainer/SecsDashboard"]
@@ -128,9 +128,9 @@ margin_top = 1.0
 margin_right = 350.0
 margin_bottom = 18.0
 rect_min_size = Vector2( 350, 0 )
-custom_styles/normal = SubResource( 22 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 22 )
 text = "Font size (notes)"
 
 [node name="Option" type="OptionButton" parent="C/VBoxContainer/FontSize"]
@@ -153,9 +153,9 @@ margin_top = 4.0
 margin_right = 350.0
 margin_bottom = 21.0
 rect_min_size = Vector2( 350, 0 )
-custom_styles/normal = SubResource( 22 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 22 )
 text = "Remember window size and position"
 
 [node name="Option" type="CheckBox" parent="C/VBoxContainer/WindowPos"]
@@ -174,9 +174,9 @@ margin_top = 4.0
 margin_right = 350.0
 margin_bottom = 21.0
 rect_min_size = Vector2( 350, 0 )
-custom_styles/normal = SubResource( 22 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 22 )
 text = "Remember last session view"
 
 [node name="Option" type="CheckBox" parent="C/VBoxContainer/WindowPos2"]
@@ -195,9 +195,9 @@ margin_top = 4.0
 margin_right = 350.0
 margin_bottom = 21.0
 rect_min_size = Vector2( 350, 0 )
-custom_styles/normal = SubResource( 22 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 22 )
 text = "Show date in Dashboard"
 
 [node name="Option" type="CheckBox" parent="C/VBoxContainer/ShowDate"]
@@ -216,9 +216,9 @@ margin_top = 4.0
 margin_right = 350.0
 margin_bottom = 21.0
 rect_min_size = Vector2( 350, 0 )
-custom_styles/normal = SubResource( 22 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 22 )
 text = "Borderless window"
 
 [node name="Option" type="CheckBox" parent="C/VBoxContainer/Borderless"]
@@ -237,9 +237,9 @@ margin_top = 4.0
 margin_right = 350.0
 margin_bottom = 21.0
 rect_min_size = Vector2( 350, 0 )
-custom_styles/normal = SubResource( 22 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 22 )
 text = "HiDPI"
 
 [node name="Option" type="CheckBox" parent="C/VBoxContainer/HidDPI"]
@@ -261,9 +261,9 @@ __meta__ = {
 margin_right = 93.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
-custom_styles/normal = SubResource( 22 )
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+custom_fonts/font = ExtResource( 3 )
+custom_styles/normal = SubResource( 22 )
 text = "Pomodoro"
 align = 1
 valign = 1
@@ -288,9 +288,9 @@ margin_top = 1.0
 margin_right = 350.0
 margin_bottom = 18.0
 rect_min_size = Vector2( 350, 0 )
-custom_styles/normal = SubResource( 22 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 22 )
 text = "Work time length"
 
 [node name="Option" type="SpinBox" parent="C/VBoxContainer/WorkTimeLength"]
@@ -311,9 +311,9 @@ margin_top = 1.0
 margin_right = 350.0
 margin_bottom = 18.0
 rect_min_size = Vector2( 350, 0 )
-custom_styles/normal = SubResource( 22 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 22 )
 text = "Short pause length"
 
 [node name="Option" type="SpinBox" parent="C/VBoxContainer/ShortPause"]
@@ -334,9 +334,9 @@ margin_top = 1.0
 margin_right = 350.0
 margin_bottom = 18.0
 rect_min_size = Vector2( 350, 0 )
-custom_styles/normal = SubResource( 22 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 22 )
 text = "Long pause length"
 
 [node name="Option" type="SpinBox" parent="C/VBoxContainer/LongPause"]
@@ -357,9 +357,9 @@ margin_top = 1.0
 margin_right = 350.0
 margin_bottom = 18.0
 rect_min_size = Vector2( 350, 0 )
-custom_styles/normal = SubResource( 22 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 22 )
 text = "Long pause frequency (after how many short breaks)"
 
 [node name="Option" type="SpinBox" parent="C/VBoxContainer/LongPauseFreq"]
@@ -383,9 +383,9 @@ __meta__ = {
 margin_right = 53.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
-custom_styles/normal = SubResource( 22 )
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+custom_fonts/font = ExtResource( 3 )
+custom_styles/normal = SubResource( 22 )
 text = "Notes"
 align = 1
 valign = 1
@@ -410,9 +410,9 @@ margin_top = 4.0
 margin_right = 350.0
 margin_bottom = 21.0
 rect_min_size = Vector2( 350, 0 )
-custom_styles/normal = SubResource( 22 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 22 )
 text = "Show line numbers"
 
 [node name="Option" type="CheckBox" parent="C/VBoxContainer/LineNumbers"]
@@ -431,9 +431,9 @@ margin_top = 4.0
 margin_right = 350.0
 margin_bottom = 21.0
 rect_min_size = Vector2( 350, 0 )
-custom_styles/normal = SubResource( 22 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 22 )
 text = "Highlight current line"
 
 [node name="Option" type="CheckBox" parent="C/VBoxContainer/HighlightLine"]
@@ -452,9 +452,9 @@ margin_top = 4.0
 margin_right = 350.0
 margin_bottom = 21.0
 rect_min_size = Vector2( 350, 0 )
-custom_styles/normal = SubResource( 22 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 22 )
 text = "Show minimap"
 
 [node name="Option" type="CheckBox" parent="C/VBoxContainer/Minimap"]
@@ -473,9 +473,9 @@ margin_top = 4.0
 margin_right = 350.0
 margin_bottom = 21.0
 rect_min_size = Vector2( 350, 0 )
-custom_styles/normal = SubResource( 22 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 22 )
 text = "Syntax highlighting"
 
 [node name="Option" type="CheckBox" parent="C/VBoxContainer/SyntaxHighlighting"]
@@ -494,9 +494,9 @@ margin_top = 4.0
 margin_right = 350.0
 margin_bottom = 21.0
 rect_min_size = Vector2( 350, 0 )
-custom_styles/normal = SubResource( 22 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 22 )
 text = "Draw tabs"
 
 [node name="Option" type="CheckBox" parent="C/VBoxContainer/Tabs"]
@@ -515,9 +515,9 @@ margin_top = 4.0
 margin_right = 350.0
 margin_bottom = 21.0
 rect_min_size = Vector2( 350, 0 )
-custom_styles/normal = SubResource( 22 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 22 )
 text = "Draw spaces"
 
 [node name="Option" type="CheckBox" parent="C/VBoxContainer/Spaces"]
@@ -536,9 +536,9 @@ margin_top = 4.0
 margin_right = 350.0
 margin_bottom = 21.0
 rect_min_size = Vector2( 350, 0 )
-custom_styles/normal = SubResource( 22 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 22 )
 text = "Highlight all occurances"
 
 [node name="Option" type="CheckBox" parent="C/VBoxContainer/Occurances"]
@@ -560,9 +560,9 @@ __meta__ = {
 margin_right = 64.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
-custom_styles/normal = SubResource( 22 )
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+custom_fonts/font = ExtResource( 3 )
+custom_styles/normal = SubResource( 22 )
 text = "Quotes"
 align = 1
 valign = 1
@@ -605,9 +605,9 @@ margin_right = 421.0
 margin_bottom = 25.0
 rect_min_size = Vector2( 350, 0 )
 size_flags_horizontal = 3
-custom_styles/normal = SubResource( 23 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 23 )
 text = "This is a quote"
 
 [node name="Delete" type="TextureButton" parent="C/VBoxContainer/QuoteBox"]
