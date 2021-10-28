@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://Assets/Icons/MD_concept.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Icons/NoteTaking.png" type="Texture" id=2]
@@ -34,8 +34,9 @@
 [ext_resource path="res://Scripts/ResizeBtn.gd" type="Script" id=32]
 [ext_resource path="res://Assets/Buttons/Maximize.png" type="Texture" id=33]
 [ext_resource path="res://Assets/Icons/Settings.png" type="Texture" id=34]
-[ext_resource path="res://Assets/Icons/Random.png" type="Texture" id=35]
+[ext_resource path="res://Assets/Themes/Dark/PanelSuperDarkGreen.tres" type="StyleBox" id=35]
 [ext_resource path="res://Assets/Views/Settings.tscn" type="PackedScene" id=36]
+[ext_resource path="res://Scripts/Shortcuts.gd" type="Script" id=37]
 [ext_resource path="res://Assets/Fonts/Righteous-Regular.ttf" type="DynamicFontData" id=40]
 [ext_resource path="res://Assets/Buttons/PomodoroToggleLinear.png" type="Texture" id=41]
 [ext_resource path="res://Assets/Buttons/PomodoroTogglePomodoro.png" type="Texture" id=42]
@@ -88,22 +89,27 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Tween" type="Tween" parent="."]
-
 [node name="MainWorkspace" type="Panel" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 50.0
 custom_styles/panel = ExtResource( 43 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sidebar" type="Panel" parent="MainWorkspace" groups=[
+[node name="HBX" type="HBoxContainer" parent="MainWorkspace"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sidebar" type="Panel" parent="MainWorkspace/HBX" groups=[
 "UI_THEME",
 ]]
-anchor_bottom = 1.0
-margin_left = -50.0
+margin_right = 50.0
+margin_bottom = 650.0
 rect_min_size = Vector2( 50, 0 )
 custom_styles/panel = ExtResource( 44 )
 script = ExtResource( 5 )
@@ -111,7 +117,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Buttons" type="VBoxContainer" parent="MainWorkspace/Sidebar"]
+[node name="Buttons" type="VBoxContainer" parent="MainWorkspace/HBX/Sidebar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = -104.0
@@ -120,12 +126,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HomeBtn" type="TextureButton" parent="MainWorkspace/Sidebar/Buttons"]
+[node name="HomeBtn" type="TextureButton" parent="MainWorkspace/HBX/Sidebar/Buttons"]
 modulate = Color( 0.137255, 0.301961, 0.305882, 1 )
 margin_left = 13.0
-margin_top = 86.0
+margin_top = 113.0
 margin_right = 36.0
-margin_bottom = 136.0
+margin_bottom = 163.0
 rect_min_size = Vector2( 23, 50 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -137,12 +143,12 @@ stretch_mode = 5
 script = ExtResource( 9 )
 target = "Dashboard"
 
-[node name="NotesBtn" type="TextureButton" parent="MainWorkspace/Sidebar/Buttons"]
+[node name="NotesBtn" type="TextureButton" parent="MainWorkspace/HBX/Sidebar/Buttons"]
 modulate = Color( 0.137255, 0.301961, 0.305882, 1 )
 margin_left = 13.0
-margin_top = 140.0
+margin_top = 167.0
 margin_right = 36.0
-margin_bottom = 190.0
+margin_bottom = 217.0
 rect_min_size = Vector2( 23, 50 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -154,12 +160,12 @@ stretch_mode = 5
 script = ExtResource( 9 )
 target = "Notes"
 
-[node name="TimeTrackingBtn" type="TextureButton" parent="MainWorkspace/Sidebar/Buttons"]
+[node name="TimeTrackingBtn" type="TextureButton" parent="MainWorkspace/HBX/Sidebar/Buttons"]
 modulate = Color( 0.137255, 0.301961, 0.305882, 1 )
 margin_left = 13.0
-margin_top = 194.0
+margin_top = 221.0
 margin_right = 36.0
-margin_bottom = 244.0
+margin_bottom = 271.0
 rect_min_size = Vector2( 23, 50 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -171,12 +177,12 @@ stretch_mode = 5
 script = ExtResource( 9 )
 target = "TimeTracking"
 
-[node name="RemindersBtn" type="TextureButton" parent="MainWorkspace/Sidebar/Buttons"]
+[node name="RemindersBtn" type="TextureButton" parent="MainWorkspace/HBX/Sidebar/Buttons"]
 modulate = Color( 0.137255, 0.301961, 0.305882, 1 )
 margin_left = 13.0
-margin_top = 248.0
+margin_top = 275.0
 margin_right = 36.0
-margin_bottom = 298.0
+margin_bottom = 325.0
 rect_min_size = Vector2( 23, 50 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -188,12 +194,12 @@ stretch_mode = 5
 script = ExtResource( 9 )
 target = "Reminders"
 
-[node name="TodosBtn" type="TextureButton" parent="MainWorkspace/Sidebar/Buttons"]
+[node name="TodosBtn" type="TextureButton" parent="MainWorkspace/HBX/Sidebar/Buttons"]
 modulate = Color( 0.137255, 0.301961, 0.305882, 1 )
 margin_left = 13.0
-margin_top = 302.0
+margin_top = 329.0
 margin_right = 36.0
-margin_bottom = 352.0
+margin_bottom = 379.0
 rect_min_size = Vector2( 23, 50 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -205,12 +211,12 @@ stretch_mode = 5
 script = ExtResource( 9 )
 target = "ToDo"
 
-[node name="GameBtn" type="TextureButton" parent="MainWorkspace/Sidebar/Buttons"]
+[node name="GameBtn" type="TextureButton" parent="MainWorkspace/HBX/Sidebar/Buttons"]
 modulate = Color( 0.137255, 0.301961, 0.305882, 1 )
 margin_left = 13.0
-margin_top = 356.0
+margin_top = 383.0
 margin_right = 36.0
-margin_bottom = 406.0
+margin_bottom = 433.0
 rect_min_size = Vector2( 23, 50 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -222,24 +228,7 @@ stretch_mode = 5
 script = ExtResource( 9 )
 target = "Game"
 
-[node name="RandomBtn" type="TextureButton" parent="MainWorkspace/Sidebar/Buttons"]
-modulate = Color( 0.137255, 0.301961, 0.305882, 1 )
-margin_left = 13.0
-margin_top = 410.0
-margin_right = 36.0
-margin_bottom = 460.0
-rect_min_size = Vector2( 23, 50 )
-size_flags_horizontal = 4
-size_flags_vertical = 4
-toggle_mode = true
-group = SubResource( 3 )
-texture_normal = ExtResource( 35 )
-expand = true
-stretch_mode = 5
-script = ExtResource( 9 )
-target = "Random"
-
-[node name="BotButtons" type="VBoxContainer" parent="MainWorkspace/Sidebar"]
+[node name="BotButtons" type="VBoxContainer" parent="MainWorkspace/HBX/Sidebar"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -249,29 +238,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SettingsBtn" type="TextureButton" parent="MainWorkspace/Sidebar/BotButtons"]
+[node name="ProfileBtn" type="TextureButton" parent="MainWorkspace/HBX/Sidebar/BotButtons"]
 modulate = Color( 0.137255, 0.301961, 0.305882, 1 )
 margin_left = 13.0
 margin_right = 36.0
 margin_bottom = 50.0
-rect_min_size = Vector2( 23, 50 )
-size_flags_horizontal = 4
-size_flags_vertical = 4
-toggle_mode = true
-group = SubResource( 3 )
-texture_normal = ExtResource( 34 )
-expand = true
-stretch_mode = 5
-script = ExtResource( 9 )
-target = "Settings"
-bottom = true
-
-[node name="ProfileBtn" type="TextureButton" parent="MainWorkspace/Sidebar/BotButtons"]
-modulate = Color( 0.137255, 0.301961, 0.305882, 1 )
-margin_left = 13.0
-margin_top = 54.0
-margin_right = 36.0
-margin_bottom = 104.0
 rect_min_size = Vector2( 23, 50 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -284,17 +255,35 @@ script = ExtResource( 9 )
 target = "Profile"
 bottom = true
 
-[node name="SelectionBox" type="ColorRect" parent="MainWorkspace/Sidebar"]
-margin_top = 120.416
+[node name="SettingsBtn" type="TextureButton" parent="MainWorkspace/HBX/Sidebar/BotButtons"]
+modulate = Color( 0.137255, 0.301961, 0.305882, 1 )
+margin_left = 13.0
+margin_top = 54.0
+margin_right = 36.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 23, 50 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+group = SubResource( 3 )
+texture_normal = ExtResource( 34 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 9 )
+target = "Settings"
+bottom = true
+
+[node name="SelectionBox" type="ColorRect" parent="MainWorkspace/HBX/Sidebar"]
+margin_top = 695.992
 margin_right = 2.0
-margin_bottom = 170.416
+margin_bottom = 745.992
 rect_min_size = Vector2( 2, 50 )
 color = Color( 0.854902, 0.423529, 0.384314, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Particles" type="CPUParticles2D" parent="MainWorkspace/Sidebar/SelectionBox"]
+[node name="Particles" type="CPUParticles2D" parent="MainWorkspace/HBX/Sidebar/SelectionBox"]
 show_behind_parent = true
 position = Vector2( 54.7194, 27.3138 )
 rotation = -1.5708
@@ -313,18 +302,33 @@ scale_amount = 5.0
 scale_amount_random = 1.0
 color_ramp = SubResource( 4 )
 
-[node name="Tween" type="Tween" parent="MainWorkspace/Sidebar"]
+[node name="Tween" type="Tween" parent="MainWorkspace/HBX/Sidebar"]
 
-[node name="TopArea" type="Control" parent="MainWorkspace"]
-anchor_right = 1.0
+[node name="ProjectsPanel" type="Panel" parent="MainWorkspace/HBX"]
+margin_left = 50.0
+margin_right = 50.0
+margin_bottom = 650.0
+custom_styles/panel = ExtResource( 35 )
+
+[node name="VBX" type="VBoxContainer" parent="MainWorkspace/HBX"]
+margin_left = 50.0
+margin_right = 1100.0
+margin_bottom = 650.0
+size_flags_horizontal = 3
+custom_constants/separation = 0
+
+[node name="TopArea" type="Control" parent="MainWorkspace/HBX/VBX"]
+margin_right = 1050.0
+margin_bottom = 45.0
 rect_min_size = Vector2( 0, 45 )
+size_flags_horizontal = 3
 theme = ExtResource( 21 )
 script = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="Panel" parent="MainWorkspace/TopArea"]
+[node name="ColorRect" type="Panel" parent="MainWorkspace/HBX/VBX/TopArea"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_styles/panel = ExtResource( 45 )
@@ -332,7 +336,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Title" type="HBoxContainer" parent="MainWorkspace/TopArea"]
+[node name="Title" type="HBoxContainer" parent="MainWorkspace/HBX/VBX/TopArea"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -346,7 +350,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Left" type="HBoxContainer" parent="MainWorkspace/TopArea"]
+[node name="Left" type="HBoxContainer" parent="MainWorkspace/HBX/VBX/TopArea"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_constants/separation = 0
@@ -355,12 +359,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Control3" type="Control" parent="MainWorkspace/TopArea/Left"]
+[node name="Control3" type="Control" parent="MainWorkspace/HBX/VBX/TopArea/Left"]
 margin_right = 13.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 13, 0 )
 
-[node name="NewBtn" type="Button" parent="MainWorkspace/TopArea/Left"]
+[node name="NewBtn" type="Button" parent="MainWorkspace/HBX/VBX/TopArea/Left"]
 margin_left = 13.0
 margin_top = 8.0
 margin_right = 63.0
@@ -371,7 +375,7 @@ size_flags_vertical = 4
 theme = ExtResource( 7 )
 text = "NEW"
 
-[node name="LineEdit" type="LineEdit" parent="MainWorkspace/TopArea/Left"]
+[node name="LineEdit" type="LineEdit" parent="MainWorkspace/HBX/VBX/TopArea/Left"]
 margin_left = 63.0
 margin_top = 8.0
 margin_right = 263.0
@@ -382,7 +386,7 @@ size_flags_vertical = 4
 custom_styles/normal = SubResource( 25 )
 placeholder_text = "type text here"
 
-[node name="PomodoroBtn" type="TextureButton" parent="MainWorkspace/TopArea/Left"]
+[node name="PomodoroBtn" type="TextureButton" parent="MainWorkspace/HBX/VBX/TopArea/Left"]
 margin_left = 263.0
 margin_right = 464.845
 margin_bottom = 45.0
@@ -397,14 +401,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Control2" type="Control" parent="MainWorkspace/TopArea/Left"]
+[node name="Control2" type="Control" parent="MainWorkspace/HBX/VBX/TopArea/Left"]
 margin_left = 464.0
 margin_right = 1050.0
 margin_bottom = 45.0
 mouse_filter = 2
 size_flags_horizontal = 3
 
-[node name="TimeTrackingTop" type="HBoxContainer" parent="MainWorkspace/TopArea/Left"]
+[node name="TimeTrackingTop" type="HBoxContainer" parent="MainWorkspace/HBX/VBX/TopArea/Left"]
 visible = false
 margin_left = 650.0
 margin_right = 1050.0
@@ -415,7 +419,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="MainWorkspace/TopArea/Left/TimeTrackingTop"]
+[node name="Label" type="Label" parent="MainWorkspace/HBX/VBX/TopArea/Left/TimeTrackingTop"]
 margin_left = 81.0
 margin_top = 13.0
 margin_right = 271.0
@@ -423,7 +427,7 @@ margin_bottom = 32.0
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
 text = "TRACKING NAME 00:00:00"
 
-[node name="TextureButton2" type="TextureButton" parent="MainWorkspace/TopArea/Left/TimeTrackingTop"]
+[node name="TextureButton2" type="TextureButton" parent="MainWorkspace/HBX/VBX/TopArea/Left/TimeTrackingTop"]
 margin_left = 275.0
 margin_right = 295.117
 margin_bottom = 45.0
@@ -433,7 +437,7 @@ texture_hover = ExtResource( 28 )
 expand = true
 stretch_mode = 5
 
-[node name="TextureButton" type="TextureButton" parent="MainWorkspace/TopArea/Left/TimeTrackingTop"]
+[node name="TextureButton" type="TextureButton" parent="MainWorkspace/HBX/VBX/TopArea/Left/TimeTrackingTop"]
 margin_left = 299.0
 margin_right = 319.117
 margin_bottom = 45.0
@@ -443,7 +447,7 @@ texture_hover = ExtResource( 29 )
 expand = true
 stretch_mode = 5
 
-[node name="Right" type="HBoxContainer" parent="MainWorkspace/TopArea"]
+[node name="Right" type="HBoxContainer" parent="MainWorkspace/HBX/VBX/TopArea"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 728.0
@@ -458,7 +462,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Logo" type="TextureRect" parent="MainWorkspace/TopArea/Right"]
+[node name="Logo" type="TextureRect" parent="MainWorkspace/HBX/VBX/TopArea/Right"]
 visible = false
 modulate = Color( 0.854902, 0.423529, 0.384314, 1 )
 margin_right = 21.777
@@ -468,7 +472,7 @@ texture = ExtResource( 1 )
 expand = true
 stretch_mode = 6
 
-[node name="ViewLabel" type="Label" parent="MainWorkspace/TopArea/Right"]
+[node name="ViewLabel" type="Label" parent="MainWorkspace/HBX/VBX/TopArea/Right"]
 modulate = Color( 1, 1, 1, 0.443137 )
 margin_left = 74.0
 margin_top = 5.0
@@ -481,14 +485,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Control" type="Control" parent="MainWorkspace/TopArea/Right"]
+[node name="Control" type="Control" parent="MainWorkspace/HBX/VBX/TopArea/Right"]
 visible = false
 margin_left = 216.0
 margin_right = 226.0
 margin_bottom = 34.0
 rect_min_size = Vector2( 10, 0 )
 
-[node name="Minimuze" type="TextureButton" parent="MainWorkspace/TopArea/Right"]
+[node name="Minimuze" type="TextureButton" parent="MainWorkspace/HBX/VBX/TopArea/Right"]
 modulate = Color( 1, 1, 1, 0.490196 )
 margin_left = 240.0
 margin_right = 253.0
@@ -499,7 +503,7 @@ expand = true
 stretch_mode = 5
 script = ExtResource( 11 )
 
-[node name="Maximize" type="TextureButton" parent="MainWorkspace/TopArea/Right"]
+[node name="Maximize" type="TextureButton" parent="MainWorkspace/HBX/VBX/TopArea/Right"]
 modulate = Color( 1, 1, 1, 0.490196 )
 margin_left = 267.0
 margin_right = 280.0
@@ -511,7 +515,7 @@ expand = true
 stretch_mode = 5
 script = ExtResource( 11 )
 
-[node name="Exit" type="TextureButton" parent="MainWorkspace/TopArea/Right"]
+[node name="Exit" type="TextureButton" parent="MainWorkspace/HBX/VBX/TopArea/Right"]
 modulate = Color( 1, 1, 1, 0.490196 )
 margin_left = 294.0
 margin_right = 307.0
@@ -522,62 +526,63 @@ expand = true
 stretch_mode = 5
 script = ExtResource( 11 )
 
-[node name="Tween" type="Tween" parent="MainWorkspace/TopArea"]
+[node name="Tween" type="Tween" parent="MainWorkspace/HBX/VBX/TopArea"]
 
-[node name="Views" type="MarginContainer" parent="MainWorkspace"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="Views" type="MarginContainer" parent="MainWorkspace/HBX/VBX"]
 margin_top = 45.0
+margin_right = 1050.0
+margin_bottom = 650.0
+size_flags_vertical = 3
 script = ExtResource( 16 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Dashboard" parent="MainWorkspace/Views" instance=ExtResource( 12 )]
+[node name="Dashboard" parent="MainWorkspace/HBX/VBX/Views" instance=ExtResource( 12 )]
 visible = false
 margin_right = 1050.0
 margin_bottom = 605.0
 title = "Mad Productivity"
 
-[node name="Notes" parent="MainWorkspace/Views" instance=ExtResource( 19 )]
+[node name="Notes" parent="MainWorkspace/HBX/VBX/Views" instance=ExtResource( 19 )]
 visible = false
 margin_right = 1050.0
 margin_bottom = 605.0
 title = "Notes"
 
-[node name="TimeTracking" parent="MainWorkspace/Views" instance=ExtResource( 14 )]
+[node name="TimeTracking" parent="MainWorkspace/HBX/VBX/Views" instance=ExtResource( 14 )]
 visible = false
 margin_right = 1050.0
 margin_bottom = 605.0
 title = "Time tracking"
 
-[node name="Reminders" parent="MainWorkspace/Views" instance=ExtResource( 13 )]
+[node name="Reminders" parent="MainWorkspace/HBX/VBX/Views" instance=ExtResource( 13 )]
 visible = false
 margin_right = 1050.0
 margin_bottom = 605.0
 title = "Reminders"
 
-[node name="ToDo" parent="MainWorkspace/Views" instance=ExtResource( 22 )]
+[node name="ToDo" parent="MainWorkspace/HBX/VBX/Views" instance=ExtResource( 22 )]
 visible = false
 margin_right = 1050.0
 margin_bottom = 605.0
 title = "TODO"
 
-[node name="Game" type="Control" parent="MainWorkspace/Views"]
+[node name="Game" type="Control" parent="MainWorkspace/HBX/VBX/Views"]
 visible = false
 margin_right = 1050.0
 margin_bottom = 605.0
 script = ExtResource( 47 )
 title = "Game"
 
-[node name="Profile" type="Control" parent="MainWorkspace/Views"]
+[node name="Profile" type="Control" parent="MainWorkspace/HBX/VBX/Views"]
 visible = false
 margin_right = 1050.0
 margin_bottom = 605.0
 script = ExtResource( 27 )
 title = "Profile"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainWorkspace/Views/Profile"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainWorkspace/HBX/VBX/Views/Profile"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 alignment = 1
@@ -585,7 +590,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="UserName" type="LineEdit" parent="MainWorkspace/Views/Profile/VBoxContainer"]
+[node name="UserName" type="LineEdit" parent="MainWorkspace/HBX/VBX/Views/Profile/VBoxContainer"]
 margin_top = 256.0
 margin_right = 1050.0
 margin_bottom = 319.0
@@ -598,7 +603,7 @@ text = "USER NAME"
 align = 1
 caret_blink = true
 
-[node name="UserTitle" type="LineEdit" parent="MainWorkspace/Views/Profile/VBoxContainer"]
+[node name="UserTitle" type="LineEdit" parent="MainWorkspace/HBX/VBX/Views/Profile/VBoxContainer"]
 margin_top = 323.0
 margin_right = 1050.0
 margin_bottom = 349.0
@@ -611,14 +616,14 @@ text = "USER TITLE"
 align = 1
 caret_blink = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainWorkspace/Views/Profile/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainWorkspace/HBX/VBX/Views/Profile/VBoxContainer"]
 visible = false
 margin_top = 97.0
 margin_right = 990.0
 margin_bottom = 571.0
 size_flags_vertical = 3
 
-[node name="Panel" type="Panel" parent="MainWorkspace/Views/Profile/VBoxContainer"]
+[node name="Panel" type="Panel" parent="MainWorkspace/HBX/VBX/Views/Profile/VBoxContainer"]
 visible = false
 margin_top = 474.0
 margin_right = 990.0
@@ -626,7 +631,7 @@ margin_bottom = 571.0
 rect_min_size = Vector2( 0, 97 )
 custom_styles/panel = SubResource( 16 )
 
-[node name="ColorRect" type="ColorRect" parent="MainWorkspace/Views/Profile/VBoxContainer/Panel"]
+[node name="ColorRect" type="ColorRect" parent="MainWorkspace/HBX/VBX/Views/Profile/VBoxContainer/Panel"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -637,7 +642,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect2" type="ColorRect" parent="MainWorkspace/Views/Profile/VBoxContainer/Panel/ColorRect"]
+[node name="ColorRect2" type="ColorRect" parent="MainWorkspace/HBX/VBX/Views/Profile/VBoxContainer/Panel/ColorRect"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -650,7 +655,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Title" type="Label" parent="MainWorkspace/Views/Profile/VBoxContainer/Panel"]
+[node name="Title" type="Label" parent="MainWorkspace/HBX/VBX/Views/Profile/VBoxContainer/Panel"]
 margin_left = 20.0
 margin_top = 12.0
 margin_right = 523.0
@@ -663,7 +668,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Title2" type="Label" parent="MainWorkspace/Views/Profile/VBoxContainer/Panel"]
+[node name="Title2" type="Label" parent="MainWorkspace/HBX/VBX/Views/Profile/VBoxContainer/Panel"]
 margin_left = 462.385
 margin_top = 12.0
 margin_right = 965.385
@@ -677,7 +682,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect2" type="ColorRect" parent="MainWorkspace/Views/Profile/VBoxContainer/Panel"]
+[node name="ColorRect2" type="ColorRect" parent="MainWorkspace/HBX/VBX/Views/Profile/VBoxContainer/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.737255 )
@@ -685,7 +690,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Title3" type="Label" parent="MainWorkspace/Views/Profile/VBoxContainer/Panel/ColorRect2"]
+[node name="Title3" type="Label" parent="MainWorkspace/HBX/VBX/Views/Profile/VBoxContainer/Panel/ColorRect2"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -703,7 +708,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Settings" parent="MainWorkspace/Views" instance=ExtResource( 36 )]
+[node name="Settings" parent="MainWorkspace/HBX/VBX/Views" instance=ExtResource( 36 )]
+visible = false
+
+[node name="Tween" type="Tween" parent="."]
 
 [node name="Tween2" type="Tween" parent="."]
 
@@ -727,14 +735,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="view_changed" from="MainWorkspace/Sidebar" to="." method="_on_Sidebar_view_changed"]
-[connection signal="gui_input" from="MainWorkspace/TopArea" to="MainWorkspace/TopArea" method="_on_TopArea_gui_input"]
-[connection signal="pressed" from="MainWorkspace/TopArea/Left/NewBtn" to="MainWorkspace/TopArea" method="_on_Button_pressed"]
-[connection signal="toggled" from="MainWorkspace/TopArea/Left/PomodoroBtn" to="MainWorkspace/Views/TimeTracking" method="_on_PomodoroBtn_toggled"]
-[connection signal="pressed" from="MainWorkspace/TopArea/Right/Minimuze" to="MainWorkspace/TopArea" method="_on_Minimuze_pressed"]
-[connection signal="toggled" from="MainWorkspace/TopArea/Right/Maximize" to="MainWorkspace/TopArea" method="_on_Maximize_toggled"]
-[connection signal="pressed" from="MainWorkspace/TopArea/Right/Exit" to="MainWorkspace/TopArea" method="_on_Exit_pressed"]
-[connection signal="manual_view_toggle" from="MainWorkspace/Views" to="." method="_on_Views_manual_view_toggle"]
-[connection signal="text_changed" from="MainWorkspace/Views/Profile/VBoxContainer/UserName" to="MainWorkspace/Views/Profile" method="_on_UserName_text_changed"]
-[connection signal="text_changed" from="MainWorkspace/Views/Profile/VBoxContainer/UserTitle" to="MainWorkspace/Views/Profile" method="_on_UserTitle_text_changed"]
+[node name="Shortcuts" type="Node" parent="."]
+script = ExtResource( 37 )
+
+[connection signal="view_changed" from="MainWorkspace/HBX/Sidebar" to="." method="_on_Sidebar_view_changed"]
+[connection signal="gui_input" from="MainWorkspace/HBX/VBX/TopArea" to="MainWorkspace/HBX/VBX/TopArea" method="_on_TopArea_gui_input"]
+[connection signal="pressed" from="MainWorkspace/HBX/VBX/TopArea/Left/NewBtn" to="MainWorkspace/HBX/VBX/TopArea" method="_on_Button_pressed"]
+[connection signal="toggled" from="MainWorkspace/HBX/VBX/TopArea/Left/PomodoroBtn" to="MainWorkspace/HBX/VBX/Views/TimeTracking" method="_on_PomodoroBtn_toggled"]
+[connection signal="pressed" from="MainWorkspace/HBX/VBX/TopArea/Right/Minimuze" to="MainWorkspace/HBX/VBX/TopArea" method="_on_Minimuze_pressed"]
+[connection signal="toggled" from="MainWorkspace/HBX/VBX/TopArea/Right/Maximize" to="MainWorkspace/HBX/VBX/TopArea" method="_on_Maximize_toggled"]
+[connection signal="pressed" from="MainWorkspace/HBX/VBX/TopArea/Right/Exit" to="MainWorkspace/HBX/VBX/TopArea" method="_on_Exit_pressed"]
+[connection signal="manual_view_toggle" from="MainWorkspace/HBX/VBX/Views" to="." method="_on_Views_manual_view_toggle"]
+[connection signal="text_changed" from="MainWorkspace/HBX/VBX/Views/Profile/VBoxContainer/UserName" to="MainWorkspace/HBX/VBX/Views/Profile" method="_on_UserName_text_changed"]
+[connection signal="text_changed" from="MainWorkspace/HBX/VBX/Views/Profile/VBoxContainer/UserTitle" to="MainWorkspace/HBX/VBX/Views/Profile" method="_on_UserTitle_text_changed"]
 [connection signal="pressed" from="ResizeBtn" to="ResizeBtn" method="_on_ResizeBtn_pressed"]
+[connection signal="shortcut_focus" from="Shortcuts" to="MainWorkspace/HBX/VBX/TopArea" method="_on_Shortcuts_shortcut_focus"]
+[connection signal="shortcut_use" from="Shortcuts" to="MainWorkspace/HBX/VBX/TopArea" method="_on_Shortcuts_shortcut_use"]

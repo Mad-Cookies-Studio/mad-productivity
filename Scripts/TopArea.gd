@@ -105,3 +105,12 @@ func _on_Button_pressed() -> void:
 			message.text = $Left/LineEdit.text
 			$Left/LineEdit.clear()
 		Defaults.active_view_pointer.on_new_top_bar_button(message)
+
+
+func _on_Shortcuts_shortcut_use() -> void:
+	_on_Button_pressed()
+
+
+func _on_Shortcuts_shortcut_focus() -> void:
+	if $Left/LineEdit.visible:
+		$Left/LineEdit.grab_focus()
