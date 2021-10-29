@@ -140,6 +140,7 @@ func update_theme() -> void:
 	panel_highlight.bg_color = ui_theme.highlight_colour
 	panel_super_dark.bg_color = ui_theme.super_dark
 	line_edit.bg_color = ui_theme.super_dark
+	line_edit.border_color = ui_theme.highlight_colour
 
 	## Cute button theme
 	var cute_button_theme : Theme = load("res://Assets/Themes/CuteButtonTheme.tres")

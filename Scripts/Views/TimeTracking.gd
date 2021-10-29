@@ -166,7 +166,7 @@ func start_tracking(_track : TimeTrackItem) -> void:
 
 func update_theme() -> void:
 	$CommandPanel/HBoxContainer/TimeTrack.add_color_override("font_color", Defaults.ui_theme.highlight_colour)
-	$CommandPanel/TextureRect.modulate = Defaults.ui_theme.highlight_colour.linear_interpolate(Color.black, 0.7)
+#	$CommandPanel/TextureRect.modulate = Defaults.ui_theme.highlight_colour.linear_interpolate(Color.black, 1.0)
 	
 	
 	

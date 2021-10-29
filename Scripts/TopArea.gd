@@ -119,5 +119,5 @@ func _on_Shortcuts_shortcut_focus() -> void:
 
 
 func on_theme_changed() -> void:
-	$Right/ViewLabel.add_color_override("font_color", Defaults.ui_theme.highlight_colour)
+	$Right/ViewLabel.add_color_override("font_color", Defaults.ui_theme.text_color)
 	$Left/PomodoroBtn.modulate = Defaults.ui_theme.highlight_colour

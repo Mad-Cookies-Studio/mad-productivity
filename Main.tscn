@@ -465,12 +465,10 @@ expand = true
 stretch_mode = 6
 
 [node name="ViewLabel" type="Label" parent="MainWorkspace/HBX/VBX/TopArea/Right"]
-modulate = Color( 1, 1, 1, 0.443137 )
 margin_left = 74.0
 margin_top = 5.0
 margin_right = 226.0
 margin_bottom = 28.0
-custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
 custom_fonts/font = SubResource( 24 )
 text = "Mad Productivity"
 __meta__ = {

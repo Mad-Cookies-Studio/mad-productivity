@@ -1,10 +1,10 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Assets/Buttons/play_pressed.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Buttons/PauseBtn_idle.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Fonts/Righteous-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Assets/Themes/Roboto12Clean.tres" type="Theme" id=4]
-[ext_resource path="res://Assets/Buttons/Cross.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Buttons/cancelBtn_hover.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Buttons/PauseBtn.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Buttons/cancelBtn.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Buttons/play_hovered.png" type="Texture" id=8]
@@ -16,21 +16,26 @@
 [ext_resource path="res://Assets/Fonts/Roboto20.tres" type="DynamicFont" id=14]
 [ext_resource path="res://Assets/Buttons/PauseBtn_hover.png" type="Texture" id=15]
 [ext_resource path="res://Assets/Buttons/TimeTrackBtnWhite.png" type="Texture" id=16]
-[ext_resource path="res://Assets/Themes/Dark/PanelSuperDarkGreen.tres" type="StyleBox" id=17]
+[ext_resource path="res://Assets/Themes/Dark/LineEditTop.tres" type="StyleBox" id=17]
 [ext_resource path="res://Assets/Audio/notification.wav" type="AudioStream" id=18]
-[ext_resource path="res://Assets/Textures/SimpleGradient.png" type="Texture" id=19]
 [ext_resource path="res://Assets/Textures/TomatoIcon.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Buttons/TimeTrackBtn.png" type="Texture" id=21]
 [ext_resource path="res://Assets/Fonts/Righteous20.tres" type="DynamicFont" id=22]
 [ext_resource path="res://Assets/Fonts/NovaMono60.tres" type="DynamicFont" id=23]
+[ext_resource path="res://Assets/Themes/Dark/PanelGreenNoBorder.tres" type="StyleBox" id=24]
 
 [sub_resource type="StyleBoxEmpty" id=1]
+content_margin_left = 15.0
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
-[sub_resource type="StyleBoxEmpty" id=3]
-
 [sub_resource type="DynamicFont" id=4]
 size = 20
+use_mipmaps = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=18]
+size = 34
 use_mipmaps = true
 font_data = ExtResource( 3 )
 
@@ -179,14 +184,15 @@ custom_colors/font_color = Color( 0.854902, 0.854902, 0.854902, 1 )
 text = "00:03:68"
 
 [node name="Delete" type="TextureButton" parent="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem/H"]
-modulate = Color( 0.854902, 0.423529, 0.384314, 1 )
 margin_left = 104.0
 margin_right = 123.0
 margin_bottom = 25.0
 rect_min_size = Vector2( 19, 0 )
 rect_pivot_offset = Vector2( 9.5, 9.5 )
 mouse_filter = 1
-texture_normal = ExtResource( 5 )
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 5 )
 expand = true
 stretch_mode = 5
 __meta__ = {
@@ -194,7 +200,6 @@ __meta__ = {
 }
 
 [node name="TimeTrack" type="TextureButton" parent="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem/H"]
-modulate = Color( 0.976563, 0.654856, 0.137329, 1 )
 margin_left = 127.0
 margin_right = 146.0
 margin_bottom = 25.0
@@ -203,7 +208,9 @@ rect_pivot_offset = Vector2( 9.5, 9.5 )
 hint_tooltip = "Time track again"
 mouse_filter = 1
 size_flags_horizontal = 9
-texture_normal = ExtResource( 16 )
+texture_normal = ExtResource( 21 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 16 )
 expand = true
 stretch_mode = 5
 
@@ -235,33 +242,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_vertical = 0
 rect_min_size = Vector2( 0, 50 )
-custom_styles/panel = ExtResource( 17 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="CommandPanel"]
-modulate = Color( 0.231373, 0.12549, 0.227451, 1 )
-anchor_right = 1.0
-margin_left = -210.0
-margin_top = -125.0
-margin_right = 208.0
-mouse_filter = 2
-texture = ExtResource( 19 )
-expand = true
-stretch_mode = 1
+custom_styles/panel = ExtResource( 24 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CommandPanel"]
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_left = 10.0
-margin_top = -25.0
-margin_right = 987.0
-margin_bottom = 25.0
-custom_constants/separation = 10
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 18.0
+margin_right = -17.0
+custom_constants/separation = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -281,8 +272,8 @@ __meta__ = {
 }
 
 [node name="PauseButton" type="TextureButton" parent="CommandPanel/HBoxContainer"]
-margin_left = 40.0
-margin_right = 70.0
+margin_left = 30.0
+margin_right = 60.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 30, 0 )
 toggle_mode = true
@@ -296,8 +287,8 @@ __meta__ = {
 }
 
 [node name="CancelButton" type="TextureButton" parent="CommandPanel/HBoxContainer"]
-margin_left = 80.0
-margin_right = 110.0
+margin_left = 60.0
+margin_right = 90.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 30, 0 )
 texture_normal = ExtResource( 10 )
@@ -309,41 +300,45 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TimeTrack" type="Label" parent="CommandPanel/HBoxContainer"]
-margin_left = 120.0
+[node name="Label" type="LineEdit" parent="CommandPanel/HBoxContainer"]
+margin_left = 90.0
 margin_top = 10.0
-margin_right = 340.0
-margin_bottom = 39.0
-rect_min_size = Vector2( 150, 0 )
-custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
-custom_fonts/font = ExtResource( 13 )
-text = "56dsadasasdasdsadasd"
-valign = 1
+margin_right = 412.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 30 )
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource( 4 )
+custom_fonts/font = ExtResource( 14 )
+custom_styles/read_only = SubResource( 1 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = ExtResource( 17 )
+placeholder_text = "Project name"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Control" type="Control" parent="CommandPanel/HBoxContainer"]
-margin_left = 350.0
-margin_right = 360.0
+margin_left = 412.0
+margin_right = 735.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 10, 0 )
+size_flags_horizontal = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="LineEdit" parent="CommandPanel/HBoxContainer"]
-margin_left = 370.0
-margin_right = 977.0
-margin_bottom = 50.0
-size_flags_horizontal = 3
-custom_colors/selection_color = Color( 0.854902, 0.423529, 0.384314, 1 )
-custom_colors/font_color_selected = Color( 0.0588235, 0.105882, 0.109804, 1 )
-custom_fonts/font = ExtResource( 14 )
-custom_styles/read_only = SubResource( 1 )
-custom_styles/focus = SubResource( 2 )
-custom_styles/normal = SubResource( 3 )
-placeholder_text = "Project name"
+[node name="TimeTrack" type="Label" parent="CommandPanel/HBoxContainer"]
+margin_left = 735.0
+margin_top = 10.0
+margin_right = 955.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 150, 0 )
+custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
+custom_fonts/font = ExtResource( 13 )
+text = "56dsadasasdasdsadasd"
+align = 2
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -366,12 +361,14 @@ __meta__ = {
 }
 
 [node name="PomodoroContainer" type="TextureRect" parent="CommandPanel"]
+anchor_left = 1.0
 anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -57.799
-margin_top = -226.506
-margin_right = 89.201
-margin_bottom = -79.506
+margin_left = -102.638
+margin_top = -239.5
+margin_right = 44.3621
+margin_bottom = -92.4996
 texture = ExtResource( 20 )
 expand = true
 __meta__ = {
@@ -383,12 +380,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -26.4891
-margin_top = -8.9108
-margin_right = 62.5109
-margin_bottom = 44.0892
+margin_left = -52.9176
+margin_top = -1.35983
+margin_right = 36.0824
+margin_bottom = 51.6402
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 18 )
 text = "0/4"
 align = 1
 valign = 1
@@ -397,6 +394,7 @@ __meta__ = {
 }
 
 [node name="BreakButton" type="Button" parent="CommandPanel/PomodoroContainer"]
+visible = false
 margin_left = 154.278
 margin_top = 69.7867
 margin_right = 231.278
