@@ -10,8 +10,8 @@ export(Color) var delete_btn_colour
 var target_opacity : float
 
 func _ready() -> void:
-	$DeleteBtn.modulate = delete_btn_colour
-	$DeleteBtn.modulate.a = 1.0
+#	$DeleteBtn.modulate = delete_btn_colour
+#	$DeleteBtn.modulate.a = 1.0
 	target_opacity = $DeleteBtn.modulate.a
 	$DeleteBtn.hide()
 	$TimeTrack.hide()

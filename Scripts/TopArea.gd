@@ -13,6 +13,8 @@ var minimized_pos : Vector2
 
 func _ready() -> void:
 	Defaults.connect("view_changed", self, "on_view_changed")
+	Defaults.connect("theme_changed", self, "on_theme_changed")
+	on_theme_changed()
 	set_process_input(false)
 	var res = load(Defaults.TIMETRACKS_SAVE_PATH + Defaults.TIMETRACKS_SAVE_NAME)	# TODO: access this resource in some more elegant way
 	$Left/PomodoroBtn.pressed = res.pomodoro_on
@@ -114,3 +116,8 @@ func _on_Shortcuts_shortcut_use() -> void:
 func _on_Shortcuts_shortcut_focus() -> void:
 	if $Left/LineEdit.visible:
 		$Left/LineEdit.grab_focus()
+
+
+func on_theme_changed() -> void:
+	$Right/ViewLabel.add_color_override("font_color", Defaults.ui_theme.highlight_colour)
+	$Left/PomodoroBtn.modulate = Defaults.ui_theme.highlight_colour

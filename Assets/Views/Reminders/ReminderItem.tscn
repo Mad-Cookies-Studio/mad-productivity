@@ -58,21 +58,6 @@ __meta__ = {
 
 [node name="Tween" type="Tween" parent="."]
 
-[node name="Panel" type="ReferenceRect" parent="."]
-show_behind_parent = true
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 1.0
-margin_top = 1.0
-margin_right = -1.0
-margin_bottom = -1.0
-mouse_filter = 2
-border_color = Color( 0.576471, 0.627451, 0.631373, 0.101961 )
-editor_only = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [connection signal="mouse_entered" from="." to="." method="_on_ReminderItem_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_ReminderItem_mouse_exited"]
 [connection signal="text_changed" from="VBoxContainer/Message" to="." method="_on_Message_text_changed"]

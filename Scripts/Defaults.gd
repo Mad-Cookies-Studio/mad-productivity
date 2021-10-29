@@ -17,6 +17,7 @@ const SETTINGS_SAVE_PATH : String = "user://"
 const SETTINGS_SAVE_NAME : String = "Settings.tres"
 
 signal view_changed(_name, _button, _input_field)
+signal theme_changed
 
 export(Color) var btn_active_colour : Color
 export(Color) var btn_inactive_colour : Color
@@ -45,7 +46,7 @@ func _ready() -> void:
 	check_folders()
 	load_settings()
 	init_window()
-#	update_theme()
+	update_theme()
 	
 	
 func check_folders() -> void:
@@ -105,22 +106,65 @@ func init_window() -> void:
 
 func update_theme() -> void:
 	# temp set of the active theme
-	ui_theme = load("res://Assets/Themes/Resources/Newspaper.tres")
-	
+	ui_theme = load("res://Assets/Themes/Resources/DarkGrey.tres")
+	ui_theme.update_theme_values()
 	# commented and prepared to be used in the onset future
 	get_tree().call_group("UI_THEME", "update_theme")
-	# load the styles
-	var panel_dark_green : StyleBoxFlat = load("res://Assets/Themes/Dark/PanelDarkGreen.tres")
-	var panel_green : StyleBoxFlat = load("res://Assets/Themes/Dark/PanelGreen.tres")
-	var panel_highlight : StyleBoxFlat = load("res://Assets/Themes/Dark/PanelHighlight.tres")
 	
-	# set up the colours
-	panel_dark_green.bg_color = ui_theme.primary_col
-	panel_green.bg_color = ui_theme.secondary_col
-	panel_highlight.bg_color = ui_theme.highlight_col
+	# load the styles
+	var panel_dark : StyleBoxFlat = load("res://Assets/Themes/Dark/PanelDarkGreen.tres")
+	var panel_normal : StyleBoxFlat = load("res://Assets/Themes/Dark/PanelGreen.tres")
+	var panel_normal_no_border : StyleBoxFlat = load("res://Assets/Themes/Dark/PanelGreenNoBorder.tres")
+	var panel_highlight : StyleBoxFlat = load("res://Assets/Themes/Dark/PanelHighlight.tres")
+	var panel_super_dark : StyleBoxFlat = load("res://Assets/Themes/Dark/PanelSuperDarkGreen.tres")
+	var line_edit : StyleBoxFlat = load("res://Assets/Themes/Dark/LineEditTop.tres")
+	
+	
+	# apply colours to styles
+	panel_dark.bg_color = ui_theme.darker
+	panel_normal.bg_color = ui_theme.normal
+	panel_normal_no_border.bg_color = ui_theme.normal
+	panel_highlight.bg_color = ui_theme.highlight_colour
+	panel_super_dark.bg_color = ui_theme.super_dark
+	line_edit.bg_color = ui_theme.super_dark
 
+	## Cute button theme
+	var cute_button_theme : Theme = load("res://Assets/Themes/CuteButtonTheme.tres")
+	# normal
+	cute_button_theme.get_stylebox("normal", "Button").bg_color = ui_theme.highlight_colour
+	# hover
+	cute_button_theme.get_stylebox("hover", "Button").bg_color = ui_theme.highlight_lighter
+	# pressed
+	cute_button_theme.get_stylebox("pressed", "Button").bg_color = ui_theme.highlight_darker
+
+	## Roboto 12 clean
+	var roboto_clean : Theme = load("res://Assets/Themes/Roboto12Clean.tres")
+	# colors
+	roboto_clean.set_color("selection_color", "LineEdit", ui_theme.highlight_colour)
+	roboto_clean.set_color("cursor_color", "LineEdit", ui_theme.highlight_colour)
+
+	# set up local colours
 	btn_active_colour = ui_theme.btn_active_col
 	btn_inactive_colour = ui_theme.btn_inactive_col
+	
+	
+	## checkbox theme
+	var checkbox_theme : Theme = load("res://Assets/Themes/CheckBox.tres")
+	# pop up panel
+	checkbox_theme.get_stylebox("panel", "PopupMenu").bg_color = ui_theme.normal
+	checkbox_theme.get_stylebox("hover", "PopupMenu").bg_color = ui_theme.darker
+	checkbox_theme.set_color("font_color_hover", "PopupMenu", ui_theme.highlight_colour)
+	# options button
+	checkbox_theme.get_stylebox("normal", "OptionButton").bg_color = ui_theme.darker
+	checkbox_theme.get_stylebox("hover", "OptionButton").bg_color = ui_theme.normal
+	checkbox_theme.set_color("font_color_pressed", "OptionButton", ui_theme.highlight_colour)
+	checkbox_theme.set_color("font_color_hover", "OptionButton", ui_theme.highlight_colour)
+	# line edit
+	checkbox_theme.set_color("cursor_color", "LinEdit", ui_theme.highlight_colour)
+	checkbox_theme.set_color("selection_color", "LinEdit", ui_theme.highlight_colour)
+	
+	
+	emit_signal("theme_changed")
 
 
 

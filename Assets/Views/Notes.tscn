@@ -1,11 +1,13 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Assets/Fonts/Roboto12.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/Fonts/Roboto40.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Assets/Themes/Dark/PanelSuperDarkGreen.tres" type="StyleBox" id=3]
 [ext_resource path="res://Assets/Themes/Roboto12Clean.tres" type="Theme" id=4]
 [ext_resource path="res://Assets/Buttons/Cross.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Buttons/cancelBtn_idle.png" type="Texture" id=6]
 [ext_resource path="res://Scripts/Views/NoteButton.gd" type="Script" id=7]
+[ext_resource path="res://Assets/Buttons/TimeTrackBtn.png" type="Texture" id=8]
 [ext_resource path="res://Scripts/Views/Notes.gd" type="Script" id=10]
 [ext_resource path="res://Assets/Buttons/TimeTrackBtnWhite.png" type="Texture" id=11]
 
@@ -139,7 +141,6 @@ script = ExtResource( 7 )
 delete_btn_colour = Color( 0.854902, 0.423529, 0.384314, 0.615686 )
 
 [node name="TimeTrack" type="TextureButton" parent="VBoxContainer/HSplitContainer/Panel/ScrollContainer/NoteButtons/DefaultButton"]
-modulate = Color( 0.976563, 0.654856, 0.137329, 1 )
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -153,7 +154,8 @@ rect_pivot_offset = Vector2( 9.5, 9.5 )
 hint_tooltip = "Time track again"
 mouse_filter = 1
 size_flags_horizontal = 9
-texture_normal = ExtResource( 11 )
+texture_normal = ExtResource( 8 )
+texture_hover = ExtResource( 11 )
 expand = true
 stretch_mode = 5
 __meta__ = {
@@ -172,7 +174,8 @@ margin_bottom = 20.5
 rect_min_size = Vector2( 20, 0 )
 rect_pivot_offset = Vector2( 10, 20 )
 mouse_filter = 2
-texture_normal = ExtResource( 5 )
+texture_normal = ExtResource( 6 )
+texture_hover = ExtResource( 5 )
 expand = true
 stretch_mode = 5
 __meta__ = {
@@ -199,7 +202,7 @@ __meta__ = {
 }
 
 [node name="Title" type="TextEdit" parent="VBoxContainer/HSplitContainer/Panel2/VBoxContainer"]
-modulate = Color( 0.576471, 0.627451, 0.631373, 1 )
+modulate = Color( 0.831373, 0.831373, 0.831373, 1 )
 margin_right = 682.0
 margin_bottom = 54.389
 rect_min_size = Vector2( 0, 54.389 )
@@ -214,13 +217,13 @@ wrap_enabled = true
 caret_blink = true
 
 [node name="Note" type="TextEdit" parent="VBoxContainer/HSplitContainer/Panel2/VBoxContainer"]
-modulate = Color( 0.576471, 0.627451, 0.631373, 1 )
+modulate = Color( 0.635294, 0.635294, 0.635294, 1 )
 margin_top = 69.0
 margin_right = 682.0
 margin_bottom = 482.0
 size_flags_vertical = 3
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/line_number_color = Color( 0.576471, 0.627451, 0.631373, 0.576471 )
+custom_colors/line_number_color = Color( 0.647059, 0.647059, 0.647059, 0.576471 )
 custom_colors/current_line_color = Color( 0, 0, 0, 0.0862745 )
 custom_fonts/font = ExtResource( 1 )
 text = "NOTE"

@@ -1,6 +1,7 @@
-[gd_resource type="Theme" load_steps=4 format=2]
+[gd_resource type="Theme" load_steps=5 format=2]
 
 [ext_resource path="res://Assets/Fonts/Roboto12.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/Themes/Dark/PanelGreenNoBorder.tres" type="StyleBox" id=2]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 content_margin_left = 12.0
@@ -22,5 +23,5 @@ LineEdit/constants/minimum_spaces = 12
 LineEdit/fonts/font = null
 LineEdit/icons/clear = null
 LineEdit/styles/focus = SubResource( 1 )
-LineEdit/styles/normal = SubResource( 2 )
+LineEdit/styles/normal = ExtResource( 2 )
 LineEdit/styles/read_only = SubResource( 2 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Assets/Themes/Dark/PanelGreenNoBorder.tres" type="StyleBox" id=1]
 [ext_resource path="res://Assets/Themes/Roboto12Clean.tres" type="Theme" id=2]
@@ -12,6 +12,11 @@
 [ext_resource path="res://Assets/Fonts/Righteous20.tres" type="DynamicFont" id=10]
 [ext_resource path="res://Assets/Themes/LineEditCool.tres" type="Theme" id=11]
 [ext_resource path="res://Assets/Buttons/PlusAdd.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Themes/Dark/PanelHighlight.tres" type="StyleBox" id=13]
+[ext_resource path="res://Assets/Buttons/cancelBtn_idle.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Buttons/cancelBtn_hover.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Buttons/cancelBtn.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Buttons/TimeTrackBtn.png" type="Texture" id=17]
 
 [sub_resource type="StyleBoxEmpty" id=20]
 
@@ -137,9 +142,9 @@ __meta__ = {
 visible = false
 margin_right = 207.0
 margin_bottom = 25.0
-custom_styles/focus = SubResource( 20 )
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.352941 )
 custom_colors/font_color_pressed = Color( 0.576471, 0.627451, 0.631373, 1 )
+custom_styles/focus = SubResource( 20 )
 toggle_mode = true
 group = SubResource( 21 )
 text = "TODO PROJECT"
@@ -148,7 +153,6 @@ align = 0
 script = ExtResource( 9 )
 
 [node name="TimeTrack" type="TextureButton" parent="VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons/ProjectButton"]
-modulate = Color( 0.976563, 0.654856, 0.137329, 1 )
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -162,7 +166,9 @@ rect_pivot_offset = Vector2( 9.5, 9.5 )
 hint_tooltip = "Time track again"
 mouse_filter = 1
 size_flags_horizontal = 9
-texture_normal = ExtResource( 8 )
+texture_normal = ExtResource( 17 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 8 )
 expand = true
 stretch_mode = 5
 __meta__ = {
@@ -181,7 +187,9 @@ margin_bottom = 20.5
 rect_min_size = Vector2( 20, 0 )
 rect_pivot_offset = Vector2( 10, 20 )
 mouse_filter = 1
-texture_normal = ExtResource( 7 )
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 7 )
 expand = true
 stretch_mode = 5
 __meta__ = {
@@ -190,25 +198,19 @@ __meta__ = {
 
 [node name="Tween" type="Tween" parent="VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons/ProjectButton"]
 
-[node name="CompleteBG" type="ColorRect" parent="VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons/ProjectButton"]
+[node name="CompleteBG" type="Panel" parent="VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons/ProjectButton"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 7.0
 margin_top = 4.0
 margin_bottom = 7.0
-color = Color( 0, 0, 0, 0.286275 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_styles/panel = ExtResource( 3 )
 
-[node name="CompleteBar" type="ColorRect" parent="VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons/ProjectButton/CompleteBG"]
+[node name="CompleteBar" type="Panel" parent="VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons/ProjectButton/CompleteBG"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.576471, 0.627451, 0.631373, 0.458824 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_styles/panel = ExtResource( 13 )
 
 [node name="PanelR" type="Panel" parent="VBoxContainer/HSplitContainer"]
 margin_left = 278.0
@@ -242,23 +244,21 @@ visible = false
 margin_right = 687.0
 margin_bottom = 26.0
 theme = ExtResource( 11 )
-custom_styles/normal = SubResource( 27 )
+custom_colors/font_color = Color( 0.623529, 0.623529, 0.623529, 1 )
 custom_fonts/font = ExtResource( 10 )
-custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+custom_styles/normal = SubResource( 27 )
 text = "Project_name"
 
 [node name="TODOitem" type="Panel" parent="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList"]
 visible = false
-margin_top = 41.0
 margin_right = 687.0
-margin_bottom = 78.5
+margin_bottom = 37.5
 rect_min_size = Vector2( 0, 37.5 )
 rect_pivot_offset = Vector2( -261.834, -35 )
 custom_styles/panel = ExtResource( 1 )
 script = ExtResource( 5 )
 
 [node name="DeleteBtn" type="TextureButton" parent="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem"]
-modulate = Color( 0.854902, 0.423529, 0.384314, 1 )
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -270,7 +270,9 @@ margin_bottom = 20.25
 rect_min_size = Vector2( 20, 0 )
 rect_pivot_offset = Vector2( 10, 20 )
 mouse_filter = 1
-texture_normal = ExtResource( 7 )
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 15 )
+texture_hover = ExtResource( 16 )
 expand = true
 stretch_mode = 5
 __meta__ = {
@@ -288,15 +290,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CheckBox" type="ColorRect" parent="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem/HBoxContainer"]
+[node name="CheckBox" type="Panel" parent="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem/HBoxContainer"]
 margin_right = 38.0
 margin_bottom = 38.0
 rect_min_size = Vector2( 38, 0 )
 mouse_filter = 1
-color = Color( 0.0588235, 0.105882, 0.109804, 1 )
+custom_styles/panel = ExtResource( 3 )
 script = ExtResource( 6 )
 
-[node name="CheckBox2" type="ColorRect" parent="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem/HBoxContainer/CheckBox"]
+[node name="CheckBox2" type="Panel" parent="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem/HBoxContainer/CheckBox"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 7.0
@@ -304,13 +306,9 @@ margin_top = 7.0
 margin_right = -6.0
 margin_bottom = -6.0
 mouse_filter = 1
-color = Color( 0.109804, 0.784314, 0.419608, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_styles/panel = ExtResource( 13 )
 
 [node name="TimeTrack" type="TextureButton" parent="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem/HBoxContainer"]
-modulate = Color( 0.976563, 0.654856, 0.137329, 1 )
 margin_left = 48.0
 margin_right = 67.0
 margin_bottom = 38.0
@@ -319,7 +317,9 @@ rect_pivot_offset = Vector2( 9.5, 9.5 )
 hint_tooltip = "Time track again"
 mouse_filter = 1
 size_flags_horizontal = 9
-texture_normal = ExtResource( 8 )
+texture_normal = ExtResource( 17 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 8 )
 expand = true
 stretch_mode = 5
 __meta__ = {
@@ -328,20 +328,20 @@ __meta__ = {
 
 [node name="Task" type="LineEdit" parent="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem/HBoxContainer"]
 margin_left = 77.0
-margin_right = 125.0
+margin_right = 149.0
 margin_bottom = 38.0
 mouse_filter = 1
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
 custom_styles/read_only = SubResource( 12 )
 custom_styles/focus = SubResource( 13 )
 custom_styles/normal = SubResource( 14 )
-custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
 text = "Task"
 expand_to_text_length = true
 
 [node name="Date" type="Label" parent="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem/HBoxContainer"]
-margin_left = 135.0
+margin_left = 159.0
 margin_top = 9.0
-margin_right = 269.0
+margin_right = 310.0
 margin_bottom = 28.0
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.439216 )
 text = "21/5/2021 8:45:32"
@@ -352,7 +352,7 @@ __meta__ = {
 
 [node name="NewTodoBtn" type="TextureButton" parent="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList"]
 visible = false
-modulate = Color( 0.576471, 0.627451, 0.631373, 1 )
+modulate = Color( 1, 1, 1, 0.470588 )
 margin_right = 38.0
 margin_bottom = 38.0
 rect_min_size = Vector2( 38, 38 )

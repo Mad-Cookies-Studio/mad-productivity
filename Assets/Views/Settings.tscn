@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Assets/Fonts/Righteous50.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/Fonts/Roboto12.tres" type="DynamicFont" id=2]
@@ -9,19 +9,17 @@
 [ext_resource path="res://Scripts/Views/Settings.gd" type="Script" id=7]
 [ext_resource path="res://Assets/Buttons/X_idle.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Buttons/X_hoer.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Views/Settings/ThemeColorOption.gd" type="Script" id=10]
+[ext_resource path="res://Assets/Themes/Dark/PanelSuperDarkGreen.tres" type="StyleBox" id=11]
+[ext_resource path="res://Assets/Views/Settings/Contrast.gd" type="Script" id=12]
+[ext_resource path="res://Assets/Views/Settings/ThemeOptions.gd" type="Script" id=13]
+[ext_resource path="res://Assets/Views/Settings/ThemeColorPicker.gd" type="Script" id=14]
 
 [sub_resource type="StyleBoxEmpty" id=19]
 
 [sub_resource type="StyleBoxEmpty" id=22]
 
-[sub_resource type="StyleBoxFlat" id=23]
-content_margin_left = 10.0
-content_margin_right = 5.0
-content_margin_top = 2.0
-content_margin_bottom = 2.0
-bg_color = Color( 0.0588235, 0.105882, 0.109804, 0.698039 )
-expand_margin_top = 2.0
-expand_margin_bottom = 2.0
+[sub_resource type="StyleBoxEmpty" id=23]
 
 [node name="Settings" type="Control"]
 margin_right = 1050.0
@@ -68,9 +66,134 @@ custom_styles/normal = SubResource( 19 )
 text = "SETTINGS"
 align = 1
 
-[node name="Category3" type="HBoxContainer" parent="C/VBoxContainer"]
+[node name="CatTheme" type="HBoxContainer" parent="C/VBoxContainer"]
 margin_right = 966.0
 margin_bottom = 50.0
+custom_constants/separation = 20
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Theme" type="Label" parent="C/VBoxContainer/CatTheme"]
+margin_right = 63.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+custom_fonts/font = ExtResource( 3 )
+custom_styles/normal = SubResource( 22 )
+text = "Theme"
+align = 1
+valign = 1
+
+[node name="TheneResetButton" type="Button" parent="C/VBoxContainer/CatTheme"]
+margin_left = 83.0
+margin_top = 10.0
+margin_right = 143.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 60, 30 )
+size_flags_vertical = 4
+theme = ExtResource( 5 )
+text = "reset"
+
+[node name="Primary" type="HBoxContainer" parent="C/VBoxContainer"]
+margin_top = 65.0
+margin_right = 966.0
+margin_bottom = 82.0
+
+[node name="Text" type="Label" parent="C/VBoxContainer/Primary"]
+margin_right = 350.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 350, 0 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 22 )
+text = "Primary color"
+
+[node name="Option" type="ColorRect" parent="C/VBoxContainer/Primary"]
+margin_left = 354.0
+margin_right = 371.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 17, 0 )
+theme = ExtResource( 6 )
+script = ExtResource( 10 )
+
+[node name="Highlight" type="HBoxContainer" parent="C/VBoxContainer"]
+margin_top = 97.0
+margin_right = 966.0
+margin_bottom = 114.0
+
+[node name="Text" type="Label" parent="C/VBoxContainer/Highlight"]
+margin_right = 350.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 350, 0 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 22 )
+text = "Highlight color"
+
+[node name="Option" type="ColorRect" parent="C/VBoxContainer/Highlight"]
+margin_left = 354.0
+margin_right = 371.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 17, 0 )
+theme = ExtResource( 6 )
+script = ExtResource( 10 )
+set_name = 1
+
+[node name="Contrast" type="HBoxContainer" parent="C/VBoxContainer"]
+margin_top = 129.0
+margin_right = 966.0
+margin_bottom = 148.0
+script = ExtResource( 12 )
+
+[node name="Text" type="Label" parent="C/VBoxContainer/Contrast"]
+margin_top = 1.0
+margin_right = 350.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 350, 0 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 22 )
+text = "Contrast"
+
+[node name="Option" type="SpinBox" parent="C/VBoxContainer/Contrast"]
+margin_left = 354.0
+margin_right = 417.425
+margin_bottom = 19.0
+rect_min_size = Vector2( 63.425, 0 )
+theme = ExtResource( 6 )
+min_value = -5.0
+max_value = 5.0
+step = 0.01
+
+[node name="TextColour" type="HBoxContainer" parent="C/VBoxContainer"]
+margin_top = 163.0
+margin_right = 966.0
+margin_bottom = 180.0
+
+[node name="Text" type="Label" parent="C/VBoxContainer/TextColour"]
+margin_right = 350.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 350, 0 )
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 22 )
+text = "Text Color"
+
+[node name="Option" type="ColorRect" parent="C/VBoxContainer/TextColour"]
+margin_left = 354.0
+margin_right = 371.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 17, 0 )
+theme = ExtResource( 6 )
+script = ExtResource( 10 )
+set_name = 2
+
+[node name="Category3" type="HBoxContainer" parent="C/VBoxContainer"]
+margin_top = 195.0
+margin_right = 966.0
+margin_bottom = 245.0
 custom_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false
@@ -98,9 +221,9 @@ theme = ExtResource( 5 )
 text = "reset"
 
 [node name="SecsDashboard" type="HBoxContainer" parent="C/VBoxContainer"]
-margin_top = 65.0
+margin_top = 260.0
 margin_right = 966.0
-margin_bottom = 90.0
+margin_bottom = 285.0
 
 [node name="Text" type="Label" parent="C/VBoxContainer/SecsDashboard"]
 margin_top = 4.0
@@ -119,9 +242,9 @@ margin_bottom = 25.0
 theme = ExtResource( 6 )
 
 [node name="FontSize" type="HBoxContainer" parent="C/VBoxContainer"]
-margin_top = 105.0
+margin_top = 300.0
 margin_right = 966.0
-margin_bottom = 124.0
+margin_bottom = 319.0
 
 [node name="Text" type="Label" parent="C/VBoxContainer/FontSize"]
 margin_top = 1.0
@@ -144,9 +267,9 @@ items = [ "Small", null, false, 0, null, "Medium", null, false, 1, null, "Large"
 selected = 0
 
 [node name="WindowPos" type="HBoxContainer" parent="C/VBoxContainer"]
-margin_top = 139.0
+margin_top = 334.0
 margin_right = 966.0
-margin_bottom = 164.0
+margin_bottom = 359.0
 
 [node name="Text" type="Label" parent="C/VBoxContainer/WindowPos"]
 margin_top = 4.0
@@ -165,9 +288,9 @@ margin_bottom = 25.0
 theme = ExtResource( 6 )
 
 [node name="WindowPos2" type="HBoxContainer" parent="C/VBoxContainer"]
-margin_top = 179.0
+margin_top = 374.0
 margin_right = 966.0
-margin_bottom = 204.0
+margin_bottom = 399.0
 
 [node name="Text" type="Label" parent="C/VBoxContainer/WindowPos2"]
 margin_top = 4.0
@@ -186,9 +309,9 @@ margin_bottom = 25.0
 theme = ExtResource( 6 )
 
 [node name="ShowDate" type="HBoxContainer" parent="C/VBoxContainer"]
-margin_top = 219.0
+margin_top = 414.0
 margin_right = 966.0
-margin_bottom = 244.0
+margin_bottom = 439.0
 
 [node name="Text" type="Label" parent="C/VBoxContainer/ShowDate"]
 margin_top = 4.0
@@ -207,9 +330,9 @@ margin_bottom = 25.0
 theme = ExtResource( 6 )
 
 [node name="Borderless" type="HBoxContainer" parent="C/VBoxContainer"]
-margin_top = 259.0
+margin_top = 454.0
 margin_right = 966.0
-margin_bottom = 284.0
+margin_bottom = 479.0
 
 [node name="Text" type="Label" parent="C/VBoxContainer/Borderless"]
 margin_top = 4.0
@@ -228,9 +351,9 @@ margin_bottom = 25.0
 theme = ExtResource( 6 )
 
 [node name="HidDPI" type="HBoxContainer" parent="C/VBoxContainer"]
-margin_top = 299.0
+margin_top = 494.0
 margin_right = 966.0
-margin_bottom = 324.0
+margin_bottom = 519.0
 
 [node name="Text" type="Label" parent="C/VBoxContainer/HidDPI"]
 margin_top = 4.0
@@ -249,9 +372,9 @@ margin_bottom = 25.0
 theme = ExtResource( 6 )
 
 [node name="Category2" type="HBoxContainer" parent="C/VBoxContainer"]
-margin_top = 339.0
+margin_top = 534.0
 margin_right = 966.0
-margin_bottom = 389.0
+margin_bottom = 584.0
 custom_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false
@@ -279,9 +402,9 @@ theme = ExtResource( 5 )
 text = "reset"
 
 [node name="WorkTimeLength" type="HBoxContainer" parent="C/VBoxContainer"]
-margin_top = 404.0
+margin_top = 599.0
 margin_right = 966.0
-margin_bottom = 423.0
+margin_bottom = 618.0
 
 [node name="Text" type="Label" parent="C/VBoxContainer/WorkTimeLength"]
 margin_top = 1.0
@@ -302,9 +425,9 @@ theme = ExtResource( 6 )
 suffix = "m"
 
 [node name="ShortPause" type="HBoxContainer" parent="C/VBoxContainer"]
-margin_top = 438.0
+margin_top = 633.0
 margin_right = 966.0
-margin_bottom = 457.0
+margin_bottom = 652.0
 
 [node name="Text" type="Label" parent="C/VBoxContainer/ShortPause"]
 margin_top = 1.0
@@ -325,9 +448,9 @@ theme = ExtResource( 6 )
 suffix = "m"
 
 [node name="LongPause" type="HBoxContainer" parent="C/VBoxContainer"]
-margin_top = 472.0
+margin_top = 667.0
 margin_right = 966.0
-margin_bottom = 491.0
+margin_bottom = 686.0
 
 [node name="Text" type="Label" parent="C/VBoxContainer/LongPause"]
 margin_top = 1.0
@@ -348,9 +471,9 @@ theme = ExtResource( 6 )
 suffix = "m"
 
 [node name="LongPauseFreq" type="HBoxContainer" parent="C/VBoxContainer"]
-margin_top = 506.0
+margin_top = 701.0
 margin_right = 966.0
-margin_bottom = 525.0
+margin_bottom = 720.0
 
 [node name="Text" type="Label" parent="C/VBoxContainer/LongPauseFreq"]
 margin_top = 1.0
@@ -371,9 +494,9 @@ theme = ExtResource( 6 )
 suffix = "x"
 
 [node name="NotesCategory" type="HBoxContainer" parent="C/VBoxContainer"]
-margin_top = 540.0
+margin_top = 735.0
 margin_right = 966.0
-margin_bottom = 590.0
+margin_bottom = 785.0
 custom_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false
@@ -401,9 +524,9 @@ theme = ExtResource( 5 )
 text = "reset"
 
 [node name="LineNumbers" type="HBoxContainer" parent="C/VBoxContainer"]
-margin_top = 605.0
+margin_top = 800.0
 margin_right = 966.0
-margin_bottom = 630.0
+margin_bottom = 825.0
 
 [node name="Text" type="Label" parent="C/VBoxContainer/LineNumbers"]
 margin_top = 4.0
@@ -422,9 +545,9 @@ margin_bottom = 25.0
 theme = ExtResource( 6 )
 
 [node name="HighlightLine" type="HBoxContainer" parent="C/VBoxContainer"]
-margin_top = 645.0
+margin_top = 840.0
 margin_right = 966.0
-margin_bottom = 670.0
+margin_bottom = 865.0
 
 [node name="Text" type="Label" parent="C/VBoxContainer/HighlightLine"]
 margin_top = 4.0
@@ -443,9 +566,9 @@ margin_bottom = 25.0
 theme = ExtResource( 6 )
 
 [node name="Minimap" type="HBoxContainer" parent="C/VBoxContainer"]
-margin_top = 685.0
+margin_top = 880.0
 margin_right = 966.0
-margin_bottom = 710.0
+margin_bottom = 905.0
 
 [node name="Text" type="Label" parent="C/VBoxContainer/Minimap"]
 margin_top = 4.0
@@ -464,9 +587,9 @@ margin_bottom = 25.0
 theme = ExtResource( 6 )
 
 [node name="SyntaxHighlighting" type="HBoxContainer" parent="C/VBoxContainer"]
-margin_top = 725.0
+margin_top = 920.0
 margin_right = 966.0
-margin_bottom = 750.0
+margin_bottom = 945.0
 
 [node name="Text" type="Label" parent="C/VBoxContainer/SyntaxHighlighting"]
 margin_top = 4.0
@@ -485,9 +608,9 @@ margin_bottom = 25.0
 theme = ExtResource( 6 )
 
 [node name="Tabs" type="HBoxContainer" parent="C/VBoxContainer"]
-margin_top = 765.0
+margin_top = 960.0
 margin_right = 966.0
-margin_bottom = 790.0
+margin_bottom = 985.0
 
 [node name="Text" type="Label" parent="C/VBoxContainer/Tabs"]
 margin_top = 4.0
@@ -506,9 +629,9 @@ margin_bottom = 25.0
 theme = ExtResource( 6 )
 
 [node name="Spaces" type="HBoxContainer" parent="C/VBoxContainer"]
-margin_top = 805.0
+margin_top = 1000.0
 margin_right = 966.0
-margin_bottom = 830.0
+margin_bottom = 1025.0
 
 [node name="Text" type="Label" parent="C/VBoxContainer/Spaces"]
 margin_top = 4.0
@@ -527,9 +650,9 @@ margin_bottom = 25.0
 theme = ExtResource( 6 )
 
 [node name="Occurances" type="HBoxContainer" parent="C/VBoxContainer"]
-margin_top = 845.0
+margin_top = 1040.0
 margin_right = 966.0
-margin_bottom = 870.0
+margin_bottom = 1065.0
 
 [node name="Text" type="Label" parent="C/VBoxContainer/Occurances"]
 margin_top = 4.0
@@ -548,9 +671,9 @@ margin_bottom = 25.0
 theme = ExtResource( 6 )
 
 [node name="QuotesCategory" type="HBoxContainer" parent="C/VBoxContainer"]
-margin_top = 885.0
+margin_top = 1080.0
 margin_right = 966.0
-margin_bottom = 935.0
+margin_bottom = 1130.0
 custom_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false
@@ -590,9 +713,10 @@ text = "new"
 [node name="QuoteBox" type="HBoxContainer" parent="C/VBoxContainer"]
 visible = false
 margin_top = 950.0
-margin_right = 440.0
+margin_right = 966.0
 margin_bottom = 975.0
 rect_min_size = Vector2( 0, 25 )
+custom_constants/separation = 20
 
 [node name="Label" type="Label" parent="C/VBoxContainer/QuoteBox"]
 visible = false
@@ -600,20 +724,9 @@ margin_right = 9.0
 margin_bottom = 19.0
 text = "1"
 
-[node name="Text" type="LineEdit" parent="C/VBoxContainer/QuoteBox"]
-margin_right = 421.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 350, 0 )
-size_flags_horizontal = 3
-custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
-custom_fonts/font = ExtResource( 2 )
-custom_styles/normal = SubResource( 23 )
-text = "This is a quote"
-
 [node name="Delete" type="TextureButton" parent="C/VBoxContainer/QuoteBox"]
 modulate = Color( 1, 1, 1, 0.576471 )
-margin_left = 425.0
-margin_right = 440.0
+margin_right = 15.0
 margin_bottom = 25.0
 rect_min_size = Vector2( 15, 0 )
 theme = ExtResource( 6 )
@@ -623,6 +736,44 @@ texture_hover = ExtResource( 9 )
 expand = true
 stretch_mode = 5
 
+[node name="Text" type="LineEdit" parent="C/VBoxContainer/QuoteBox"]
+margin_left = 35.0
+margin_right = 966.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 350, 0 )
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 23 )
+text = "This is a quote"
+
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -381.0
+custom_styles/panel = ExtResource( 11 )
+
+[node name="ColorPicker" type="ColorPicker" parent="Panel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -154.0
+margin_top = 50.9425
+margin_right = 154.0
+margin_bottom = 556.943
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="C/VBoxContainer/CatTheme/TheneResetButton" to="." method="_on_GeneralResetButton_pressed"]
+[connection signal="setting_color" from="C/VBoxContainer/Primary/Option" to="C/VBoxContainer/CatTheme" method="_on_Option_setting_color"]
+[connection signal="setting_color" from="C/VBoxContainer/Primary/Option" to="Panel/ColorPicker" method="_on_Option_setting_color"]
+[connection signal="setting_color" from="C/VBoxContainer/Highlight/Option" to="C/VBoxContainer/CatTheme" method="_on_Option_setting_color"]
+[connection signal="setting_color" from="C/VBoxContainer/Highlight/Option" to="Panel/ColorPicker" method="_on_Option_setting_color"]
+[connection signal="value_changed" from="C/VBoxContainer/Contrast/Option" to="C/VBoxContainer/CatTheme" method="_on_Option_value_changed"]
+[connection signal="setting_color" from="C/VBoxContainer/TextColour/Option" to="C/VBoxContainer/CatTheme" method="_on_Option_setting_color"]
+[connection signal="setting_color" from="C/VBoxContainer/TextColour/Option" to="Panel/ColorPicker" method="_on_Option_setting_color"]
 [connection signal="pressed" from="C/VBoxContainer/Category3/GeneralResetButton" to="." method="_on_GeneralResetButton_pressed"]
 [connection signal="toggled" from="C/VBoxContainer/SecsDashboard/Option" to="." method="_on_secsDashboard_toggled"]
 [connection signal="item_selected" from="C/VBoxContainer/FontSize/Option" to="." method="_on_Option_item_selected"]
@@ -646,3 +797,4 @@ stretch_mode = 5
 [connection signal="toggled" from="C/VBoxContainer/Occurances/Option" to="." method="_on_HighlightOccurancesOption_toggled"]
 [connection signal="pressed" from="C/VBoxContainer/QuotesCategory/QuotesSaveButton" to="." method="_on_QuotesSaveButton_pressed"]
 [connection signal="pressed" from="C/VBoxContainer/QuotesCategory/NewQuote" to="." method="_on_NewQuote_pressed"]
+[connection signal="color_changed" from="Panel/ColorPicker" to="C/VBoxContainer/CatTheme" method="_on_ColorPicker_color_changed"]

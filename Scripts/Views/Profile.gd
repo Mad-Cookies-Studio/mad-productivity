@@ -23,6 +23,8 @@ func _ready() -> void:
 	res = Defaults.settings_res
 	$VBoxContainer/UserName.text = res.name
 	$VBoxContainer/UserTitle.text = res.title
+	update_theme()
+	Defaults.connect("theme_changed", self, "on_theme_changed")
 
 
 func _on_UserName_text_changed(new_text: String) -> void:
@@ -31,3 +33,10 @@ func _on_UserName_text_changed(new_text: String) -> void:
 
 func _on_UserTitle_text_changed(new_text: String) -> void:
 	res.title = new_text
+
+
+func update_theme() -> void:
+	$VBoxContainer/UserName.add_color_override("font_color", Defaults.ui_theme.highlight_colour)
+
+func on_theme_changed() -> void:
+	update_theme()

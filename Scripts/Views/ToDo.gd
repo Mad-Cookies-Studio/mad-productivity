@@ -13,10 +13,17 @@ var current_project_id : int
 var current_project_child_id : int
 
 func _ready() -> void:
+	Defaults.connect("theme_changed", self, "on_theme_changed")
+	update_theme()
 	res = load(Defaults.TODOS_SAVE_PATH + Defaults.TODOS_SAVE_NAME)
 	load_projects()
 	load_tasks()
 
+
+func update_theme() -> void:
+#	for i in $VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons.get_children():
+#		update_theme()
+	pass
 
 func entering_view() -> void:
 	Defaults.active_view_pointer = self
@@ -178,3 +185,7 @@ func on_delete_project(id : int) -> void:
 	print("going to delte project at id :", id)
 	res.delete_project(id)
 	
+
+
+func on_theme_changed() -> void:
+	update_theme()

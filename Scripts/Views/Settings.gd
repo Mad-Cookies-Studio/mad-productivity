@@ -52,8 +52,8 @@ func update_quotes() -> void:
 	for i in res.quote_list:
 		var new = $C/VBoxContainer/QuoteBox.duplicate()
 		new.get_child(0).text = str(i)
-		new.get_child(1).text = res.quote_list[i]
-		new.get_child(2).connect("pressed", self, "on_quote_delete_pressed", [i])
+		new.get_child(2).text = res.quote_list[i]
+		new.get_child(1).connect("pressed", self, "on_quote_delete_pressed", [i])
 		new.name = "quote" + str(i)
 		new.show()
 		$C/VBoxContainer.add_child(new)

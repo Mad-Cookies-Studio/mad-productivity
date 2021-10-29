@@ -10,6 +10,12 @@ func _ready() -> void:
 	connect("mouse_entered", self, "on_mouse_entered")
 	connect("mouse_exited", self, "on_mouse_exited")
 	on_mouse_exited()
+	update_theme()
+	
+	
+func update_theme() -> void:
+#	$CompleteBG/CompleteBar.color = Defaults.ui_theme.highlight_colour
+	pass
 	
 	
 func on_mouse_entered() -> void:

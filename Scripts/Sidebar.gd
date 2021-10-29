@@ -11,6 +11,7 @@ var previous_random_view : int = -1
 var previous_view : int
 
 func _ready() -> void:
+	update_theme()
 	get_viewport().connect("size_changed", self, "on_window_size_changed")
 	var idx : int = 0
 	
@@ -82,4 +83,7 @@ func move_selection_box(where : float = 0.0, add_parent_y : bool = false) -> voi
 
 
 func update_theme() -> void:
-	$SelectionBox.color = Defaults.ui_theme.tertiary_col
+	$SelectionBox.color = Defaults.ui_theme.highlight_colour
+	$SelectionBox/Particles.modulate = Defaults.ui_theme.highlight_colour
+	if active_btn:
+		active_btn.modulate = Defaults.btn_active_colour

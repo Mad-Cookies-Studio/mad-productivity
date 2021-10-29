@@ -17,6 +17,7 @@ var rest_time : int
 var rest_len : int
 
 func _ready() -> void:
+	Defaults.connect("theme_changed", self, "on_theme_changed")
 	if res == null:
 		load_res()
 	load_time_tracks()
@@ -44,14 +45,14 @@ func load_time_tracks() -> void:
 			create_track_visual(item.name, item.get_start_unix_time(), item.get_len(), i)
 		elif !unfinished_track:
 			active_track = i
-			$LinearTimeTrackingContainer/Panel/Label.text = item.name
-			$LinearTimeTrackingContainer/Panel/HBoxContainer/TrackButton.pressed = true
+			$CommandPanel/HBoxContainer/Label.text = item.name
+			$CommandPanel/HBoxContainer/TrackButton.pressed = true
 			start_tracking(item)
 			unfinished_track = true
 		else:
 			# TODO: error handling
 			print("there shoudn't be more than one unfinished task")
-	$LinearTimeTrackingContainer/Panel/HBoxContainer/TrackButton.connect("toggled", self, "_on_TrackButton_toggled")
+	$CommandPanel/HBoxContainer/TrackButton.connect("toggled", self, "_on_TrackButton_toggled")
 	
 	
 func create_track_visual(_name : String, _date : int, _time : int, _id : int) -> void:
@@ -100,21 +101,21 @@ func save() -> void:
 
 func start_time_tracking_custom(_name) -> void:
 	if Defaults.time_tracking : return
-	$LinearTimeTrackingContainer/Panel/Label.text = _name
-	$LinearTimeTrackingContainer/Panel/HBoxContainer/TrackButton.pressed = true
+	$CommandPanel/HBoxContainer/Label.text = _name
+	$CommandPanel/HBoxContainer/TrackButton.pressed = true
 
 
 func change_title(_final : String = "00:00:00") -> void:
-	$Tween.interpolate_property($LinearTimeTrackingContainer/Panel/TimeTrack, 'percent_visible', 1.0, 0.0, 0.5, Tween.TRANS_QUAD, Tween.EASE_OUT, 0.0)
-	$Tween.interpolate_property($LinearTimeTrackingContainer/Panel/TimeTrack, 'percent_visible', 0.0, 1.0, 0.5, Tween.TRANS_QUAD, Tween.EASE_OUT, 0.5)
+	$Tween.interpolate_property($CommandPanel/HBoxContainer/TimeTrack, 'percent_visible', 1.0, 0.0, 0.5, Tween.TRANS_QUAD, Tween.EASE_OUT, 0.0)
+	$Tween.interpolate_property($CommandPanel/HBoxContainer/TimeTrack, 'percent_visible', 0.0, 1.0, 0.5, Tween.TRANS_QUAD, Tween.EASE_OUT, 0.5)
 	$Tween.start()
 	yield(get_tree().create_timer(0.5), "timeout")
-	$LinearTimeTrackingContainer/Panel/TimeTrack.text = _final
+	$CommandPanel/HBoxContainer/TimeTrack.text = _final
 
 
 func update_total_time() -> void:
 	var _time : Array = get_hours_minutes_seconds(total_secs)
-	$LinearTimeTrackingContainer/Panel/Total.text = "total " + _time[2] + ":" + _time[1] + ":" + _time[0]
+	$CommandPanel/Total.text = "total " + _time[2] + ":" + _time[1] + ":" + _time[0]
 
 
 func remove_time_track(idx : int) -> void:
@@ -131,25 +132,25 @@ func _on_TrackButton_toggled(button_pressed: bool) -> void:
 		cancel = false
 		return
 	if button_pressed:
-		active_track = res.add_track($LinearTimeTrackingContainer/Panel/Label.text)
+		active_track = res.add_track($CommandPanel/HBoxContainer/Label.text)
 		res.get_track(active_track).start_tracking(OS.get_unix_time())
 		start_tracking(res.get_track(active_track))
 		is_resting = false
 		notified = false
 		pomodoro_count += 1
-		$LinearTimeTrackingContainer/Panel/PomodoroContainer/PomodoroCount.visible = true
-		$LinearTimeTrackingContainer/Panel/PomodoroContainer/PomodoroCount.text = str(pomodoro_count) + "/" + str(Defaults.settings_res.pomo_long_pause_freq)
-		$LinearTimeTrackingContainer/Panel/HBoxContainer/BreakButton.hide()
+		$CommandPanel/PomodoroContainer/PomodoroCount.visible = true
+		$CommandPanel/PomodoroContainer/PomodoroCount.text = str(pomodoro_count) + "/" + str(Defaults.settings_res.pomo_long_pause_freq)
+		$CommandPanel/PomodoroContainer/BreakButton.hide()
 		save()
 	else:
 		Defaults.time_tracking = false
 		emit_signal("toggle_time_track","", false)
-		finish_time_track($LinearTimeTrackingContainer/Panel/Label.text, OS.get_unix_time())
+		finish_time_track($CommandPanel/HBoxContainer/Label.text, OS.get_unix_time())
 		change_title("")
-		$LinearTimeTrackingContainer/Panel/Label.editable = true
+		$CommandPanel/HBoxContainer/Label.editable = true
 		$SecondsTimer.stop()
-		$LinearTimeTrackingContainer/Panel/HBoxContainer/CancelButton.hide()
-		$LinearTimeTrackingContainer/Panel/HBoxContainer/PauseButton.hide()
+		$CommandPanel/HBoxContainer/CancelButton.hide()
+		$CommandPanel/HBoxContainer/PauseButton.hide()
 		save()
 
 func start_tracking(_track : TimeTrackItem) -> void:
@@ -158,20 +159,31 @@ func start_tracking(_track : TimeTrackItem) -> void:
 	emit_signal("toggle_time_track", Defaults.item_tracked, true)
 	$SecondsTimer.start()
 	change_title()
-	$LinearTimeTrackingContainer/Panel/HBoxContainer/CancelButton.show()
-	$LinearTimeTrackingContainer/Panel/HBoxContainer/PauseButton.show()
-	$LinearTimeTrackingContainer/Panel/Label.editable = false
+	$CommandPanel/HBoxContainer/CancelButton.show()
+	$CommandPanel/HBoxContainer/PauseButton.show()
+	$CommandPanel/HBoxContainer/Label.editable = false
+
+
+func update_theme() -> void:
+	$CommandPanel/HBoxContainer/TimeTrack.add_color_override("font_color", Defaults.ui_theme.highlight_colour)
+	$CommandPanel/TextureRect.modulate = Defaults.ui_theme.highlight_colour.linear_interpolate(Color.black, 0.7)
+	
+	
+	
+func on_theme_changed() -> void:
+	update_theme()
+
 
 func _on_CancelButton_pressed() -> void:
 	Defaults.time_tracking = false
 	cancel = true
 	change_title("")
 	emit_signal("toggle_time_track", "", false)
-	$LinearTimeTrackingContainer/Panel/HBoxContainer/TrackButton.pressed = false
-	$LinearTimeTrackingContainer/Panel/Label.editable = true
+	$CommandPanel/HBoxContainer/TrackButton.pressed = false
+	$CommandPanel/HBoxContainer/Label.editable = true
 	$SecondsTimer.stop()
-	$LinearTimeTrackingContainer/Panel/HBoxContainer/CancelButton.hide()
-	$LinearTimeTrackingContainer/Panel/HBoxContainer/PauseButton.hide()
+	$CommandPanel/HBoxContainer/CancelButton.hide()
+	$CommandPanel/HBoxContainer/PauseButton.hide()
 
 
 func _on_PauseButton_toggled(button_pressed: bool) -> void:
@@ -203,13 +215,13 @@ func _on_SecondsTimer_timeout() -> void:
 	if res.pomodoro_on:
 		# end of the pomodoro
 		if !is_resting && int(_time[0]) >= Defaults.settings_res.pomo_work_time_length * 60:
-			$LinearTimeTrackingContainer/Panel/HBoxContainer/BreakButton.show()
+			$CommandPanel/PomodoroContainer/BreakButton.show()
 			# start break break button text set is here
-			$LinearTimeTrackingContainer/Panel/HBoxContainer/BreakButton.text = "Break"
+			$CommandPanel/PomodoroContainer/BreakButton.text = "Break"
 			if !notified:
 				$AudioPlayer.playing = true
 				notified = true
-	$LinearTimeTrackingContainer/Panel/TimeTrack.text = _time[2] + ":" + _time[1] + ":" + _time[0]
+	$CommandPanel/HBoxContainer/TimeTrack.text = _time[2] + ":" + _time[1] + ":" + _time[0]
 	Defaults.time_tracked = _time[2] + ":" + _time[1] + ":" + _time[0]
 
 
@@ -223,7 +235,7 @@ func _on_RestTimer_timeout():
 
 
 func _on_BreakButton_pressed():
-	$LinearTimeTrackingContainer/Panel/HBoxContainer/TrackButton.pressed = false
+	$CommandPanel/HBoxContainer/TrackButton.pressed = false
 	is_resting = true
 	notified = false
 	if pomodoro_count >= Defaults.settings_res.pomo_long_pause_freq:
@@ -233,14 +245,14 @@ func _on_BreakButton_pressed():
 		rest_time = Defaults.settings_res.pomo_short_pause_length * 60
 	rest_len = 0
 	$RestTimer.start()
-	$LinearTimeTrackingContainer/Panel/HBoxContainer/BreakButton.hide()
+	$CommandPanel/PomodoroContainer/BreakButton.hide()
 	$PauseOverlay.show()
 	update_rest_time()
 		
 
 
 func _on_PomodoroBtn_toggled(button_pressed: bool) -> void:
-	$LinearTimeTrackingContainer/Panel/PomodoroContainer.visible = button_pressed
+	$CommandPanel/PomodoroContainer.visible = button_pressed
 	
 	if res == null:
 		load_res()
@@ -248,7 +260,7 @@ func _on_PomodoroBtn_toggled(button_pressed: bool) -> void:
 
 
 func _on_ContinueBreakBtn_pressed() -> void:
-	$LinearTimeTrackingContainer/Panel/HBoxContainer/TrackButton.pressed = true
+	$CommandPanel/HBoxContainer/TrackButton.pressed = true
 	$RestTimer.stop()
 	$PauseOverlay.hide()
 	
@@ -256,5 +268,5 @@ func _on_ContinueBreakBtn_pressed() -> void:
 func _on_FinishBtn_pressed() -> void:
 	$RestTimer.stop()
 	$PauseOverlay.hide()
-	$LinearTimeTrackingContainer/Panel/HBoxContainer/TrackButton.pressed = false
+	$CommandPanel/HBoxContainer/TrackButton.pressed = false
 	_on_TrackButton_toggled(false)

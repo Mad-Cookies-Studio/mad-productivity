@@ -8,7 +8,9 @@ var idx : int = 0
 
 
 func _ready() -> void:
-	pass
+	Defaults.connect("theme_changed", self, "on_theme_changed")
+	update_theme()
+	
 
 
 func populate(_comment : String, _link : String, _date : Dictionary, _id) -> void:
@@ -24,7 +26,6 @@ func show_highlight(final_size : float, final_alpha : float, border_alpha : floa
 	$Tween.interpolate_property($ColorRect, "rect_size:x", $ColorRect.rect_size.x, final_size, 0.4, Tween.TRANS_EXPO, Tween.EASE_OUT, 0.0)
 	$Tween.interpolate_property(self, "color:a", color.a, final_alpha, 0.4, Tween.TRANS_EXPO, Tween.EASE_OUT, 0.0)
 	$Tween.interpolate_property(self, "rect_min_size:y", rect_min_size.y, final_height, 0.4, Tween.TRANS_EXPO, Tween.EASE_OUT, 0.0)
-	$Tween.interpolate_property($Panel, "border_color:a", $Panel.border_color.a, border_alpha, 0.4, Tween.TRANS_EXPO, Tween.EASE_OUT, 0.0)
 	$Tween.start()
 
 
@@ -45,3 +46,13 @@ func _on_Message_text_changed(new_text: String) -> void:
 
 func _on_Link_text_changed(new_text: String) -> void:
 	emit_signal("update_link", new_text, idx)
+
+
+func update_theme() -> void:
+	$ColorRect.color = Defaults.ui_theme.highlight_colour
+	color = Defaults.ui_theme.normal
+	color.a = 0.0
+
+
+func on_theme_changed() -> void:
+	update_theme()

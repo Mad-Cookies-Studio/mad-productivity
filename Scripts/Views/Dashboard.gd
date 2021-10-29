@@ -36,9 +36,11 @@ func update_date() -> void:
 
 
 func update_theme() -> void:
-	$VBoxContainer/Date.add_color_override("font_color", Defaults.ui_theme.tertiary_col)
-	$VBoxContainer/Time.add_color_override("font_color", Defaults.ui_theme.tertiary_col)
-	$VBoxContainer/Panel/WelcomeMessage.add_color_override("font_color", Defaults.ui_theme.primary_col)
+	$VBoxContainer/Date.add_color_override("font_color", Defaults.ui_theme.text_color)
+	$VBoxContainer/Time.add_color_override("font_color", Defaults.ui_theme.text_color)
+	$VBoxContainer/Panel/WelcomeMessage.add_color_override("font_color", Defaults.ui_theme.text_color.inverted())
+	$VBoxContainer/Panel/Next.modulate = Defaults.ui_theme.highlight_colour
+	$VBoxContainer/Panel/Next2.modulate = Defaults.ui_theme.highlight_colour
 
 
 func _on_Timer_timeout() -> void:

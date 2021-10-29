@@ -13,6 +13,10 @@ func _ready() -> void:
 	$DeleteBtn.hide()
 
 
+func update_theme() -> void:
+	pass
+
+
 func update_self(_text : String, _done : bool, _date : Dictionary, _idx : int) -> void:
 	$HBoxContainer/CheckBox.pressed = _done
 	$HBoxContainer/Task.text = _text

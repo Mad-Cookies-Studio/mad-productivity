@@ -37,6 +37,7 @@
 [ext_resource path="res://Assets/Themes/Dark/PanelSuperDarkGreen.tres" type="StyleBox" id=35]
 [ext_resource path="res://Assets/Views/Settings.tscn" type="PackedScene" id=36]
 [ext_resource path="res://Scripts/Shortcuts.gd" type="Script" id=37]
+[ext_resource path="res://Assets/Themes/Dark/LineEditTop.tres" type="StyleBox" id=38]
 [ext_resource path="res://Assets/Fonts/Righteous-Regular.ttf" type="DynamicFontData" id=40]
 [ext_resource path="res://Assets/Buttons/PomodoroToggleLinear.png" type="Texture" id=41]
 [ext_resource path="res://Assets/Buttons/PomodoroTogglePomodoro.png" type="Texture" id=42]
@@ -50,15 +51,7 @@
 
 [sub_resource type="Gradient" id=4]
 offsets = PoolRealArray( 0, 0.219355, 0.36129, 1 )
-colors = PoolColorArray( 0.854902, 0.423529, 0.384314, 0, 0.854902, 0.423529, 0.384314, 1, 0.854902, 0.423529, 0.384314, 0.529412, 0.854902, 0.423529, 0.384314, 0 )
-
-[sub_resource type="StyleBoxFlat" id=25]
-content_margin_left = 10.0
-bg_color = Color( 0.0588235, 0.105882, 0.109804, 1 )
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 0.576471, 0.627451, 0.631373, 0.392157 )
+colors = PoolColorArray( 0.839844, 0.839844, 0.839844, 0, 0.910156, 0.910156, 0.910156, 1, 0.867188, 0.867188, 0.867188, 0.529412, 0.855469, 0.855469, 0.855469, 0 )
 
 [sub_resource type="DynamicFont" id=24]
 size = 18
@@ -125,7 +118,7 @@ __meta__ = {
 }
 
 [node name="HomeBtn" type="TextureButton" parent="MainWorkspace/HBX/Sidebar/Buttons"]
-modulate = Color( 0.137255, 0.301961, 0.305882, 1 )
+modulate = Color( 0.521569, 0.521569, 0.521569, 1 )
 margin_left = 13.0
 margin_top = 113.0
 margin_right = 36.0
@@ -142,7 +135,7 @@ script = ExtResource( 9 )
 target = "Dashboard"
 
 [node name="NotesBtn" type="TextureButton" parent="MainWorkspace/HBX/Sidebar/Buttons"]
-modulate = Color( 0.137255, 0.301961, 0.305882, 1 )
+modulate = Color( 0.521569, 0.521569, 0.521569, 1 )
 margin_left = 13.0
 margin_top = 167.0
 margin_right = 36.0
@@ -159,7 +152,7 @@ script = ExtResource( 9 )
 target = "Notes"
 
 [node name="TimeTrackingBtn" type="TextureButton" parent="MainWorkspace/HBX/Sidebar/Buttons"]
-modulate = Color( 0.137255, 0.301961, 0.305882, 1 )
+modulate = Color( 0.521569, 0.521569, 0.521569, 1 )
 margin_left = 13.0
 margin_top = 221.0
 margin_right = 36.0
@@ -176,7 +169,7 @@ script = ExtResource( 9 )
 target = "TimeTracking"
 
 [node name="RemindersBtn" type="TextureButton" parent="MainWorkspace/HBX/Sidebar/Buttons"]
-modulate = Color( 0.137255, 0.301961, 0.305882, 1 )
+modulate = Color( 0.521569, 0.521569, 0.521569, 1 )
 margin_left = 13.0
 margin_top = 275.0
 margin_right = 36.0
@@ -193,7 +186,7 @@ script = ExtResource( 9 )
 target = "Reminders"
 
 [node name="TodosBtn" type="TextureButton" parent="MainWorkspace/HBX/Sidebar/Buttons"]
-modulate = Color( 0.137255, 0.301961, 0.305882, 1 )
+modulate = Color( 0.521569, 0.521569, 0.521569, 1 )
 margin_left = 13.0
 margin_top = 329.0
 margin_right = 36.0
@@ -210,7 +203,7 @@ script = ExtResource( 9 )
 target = "ToDo"
 
 [node name="GameBtn" type="TextureButton" parent="MainWorkspace/HBX/Sidebar/Buttons"]
-modulate = Color( 0.137255, 0.301961, 0.305882, 1 )
+modulate = Color( 0.521569, 0.521569, 0.521569, 1 )
 margin_left = 13.0
 margin_top = 383.0
 margin_right = 36.0
@@ -237,7 +230,7 @@ __meta__ = {
 }
 
 [node name="ProfileBtn" type="TextureButton" parent="MainWorkspace/HBX/Sidebar/BotButtons"]
-modulate = Color( 0.137255, 0.301961, 0.305882, 1 )
+modulate = Color( 0.521569, 0.521569, 0.521569, 1 )
 margin_left = 13.0
 margin_right = 36.0
 margin_bottom = 50.0
@@ -254,7 +247,7 @@ target = "Profile"
 bottom = true
 
 [node name="SettingsBtn" type="TextureButton" parent="MainWorkspace/HBX/Sidebar/BotButtons"]
-modulate = Color( 0.137255, 0.301961, 0.305882, 1 )
+modulate = Color( 0.521569, 0.521569, 0.521569, 1 )
 margin_left = 13.0
 margin_top = 54.0
 margin_right = 36.0
@@ -282,6 +275,7 @@ __meta__ = {
 }
 
 [node name="Particles" type="CPUParticles2D" parent="MainWorkspace/HBX/Sidebar/SelectionBox"]
+modulate = Color( 0.854902, 0.423529, 0.384314, 1 )
 show_behind_parent = true
 position = Vector2( 54.7194, 27.3138 )
 rotation = -1.5708
@@ -381,7 +375,7 @@ margin_bottom = 35.1
 rect_min_size = Vector2( 200, 27.1 )
 focus_mode = 1
 size_flags_vertical = 4
-custom_styles/normal = SubResource( 25 )
+custom_styles/normal = ExtResource( 38 )
 placeholder_text = "type text here"
 
 [node name="PomodoroBtn" type="TextureButton" parent="MainWorkspace/HBX/VBX/TopArea/Left"]
@@ -574,7 +568,6 @@ script = ExtResource( 47 )
 title = "Game"
 
 [node name="Profile" type="Control" parent="MainWorkspace/HBX/VBX/Views"]
-visible = false
 margin_right = 1050.0
 margin_bottom = 605.0
 script = ExtResource( 27 )

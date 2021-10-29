@@ -1,4 +1,4 @@
-extends ColorRect
+extends Panel
 
 signal set_done(really)
 

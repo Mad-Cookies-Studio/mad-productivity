@@ -6,6 +6,14 @@ signal time_track_item(_name)
 
 var id : int
 
+var highlight_color : Color
+var idle_color : Color
+
+func _ready() -> void:
+	idle_color = Color(1, 1, 1, 0)
+	highlight_color = Defaults.ui_theme.normal
+	color = idle_color
+
 
 func fill_details(date : String, time : String, _name : String) -> void:
 	$H/Date.text = date
@@ -21,7 +29,7 @@ func show_up() -> void:
 
 
 func _on_TrackedItem_mouse_entered() -> void:
-	color = Color(0.086274, 0.152941, 0.160784)
+	color = highlight_color
 	if Defaults.time_tracking:
 		$H/TimeTrack.modulate.a = 0.5
 	else:
@@ -32,7 +40,7 @@ func _on_TrackedItem_mouse_entered() -> void:
 
 
 func _on_TrackedItem_mouse_exited() -> void:
-	color = Color(0.07451, 0.133333, 0.141176)
+	color = idle_color
 	$H/TimeTrack.hide()
 	$H/Delete.hide()
 

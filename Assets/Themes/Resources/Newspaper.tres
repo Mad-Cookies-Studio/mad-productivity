@@ -4,13 +4,9 @@
 
 [resource]
 script = ExtResource( 1 )
-primary_col = Color( 0.921569, 0.921569, 0.921569, 1 )
-secondary_col = Color( 0.921569, 0.921569, 0.921569, 1 )
-tertiary_col = Color( 0.27451, 0.278431, 0.282353, 1 )
-highlight_col = Color( 0.552941, 0.556863, 0.564706, 1 )
-highlight_text_col = Color( 0.921569, 0.921569, 0.921569, 1 )
-text_on_light_col = Color( 0.262745, 0.262745, 0.270588, 1 )
-text_on_dark_col = Color( 0.262745, 0.262745, 0.270588, 1 )
-title_text_col = Color( 0.262745, 0.262745, 0.270588, 1 )
+primary_col = Color( 0.65098, 0.65098, 0.65098, 1 )
+highlight_colour = Color( 0.27451, 0.27451, 0.27451, 1 )
+contrast = 0.3
 btn_active_col = Color( 0.262745, 0.262745, 0.270588, 1 )
 btn_inactive_col = Color( 0.592157, 0.592157, 0.607843, 1 )
+text_color = Color( 0, 0, 0, 1 )
