@@ -13,7 +13,15 @@ func _ready() -> void:
 	connect("gui_input", self, "on_gui_input")
 
 
+func update_values() -> void:
+	value = Defaults.ui_theme.get_color(set_name)
+	color = value
+	
 
 func on_gui_input(event : InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		emit_signal("setting_color", set_name, self)
+
+
+func _on_CatTheme_update_values() -> void:
+	update_values()

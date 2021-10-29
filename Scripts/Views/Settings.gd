@@ -15,6 +15,7 @@ func entering_view() -> void:
 	
 func leaving_view() -> void:
 	Defaults.save_settings_resource()
+	$Panel.hide()
 	
 	
 func save() -> void:
@@ -193,3 +194,8 @@ func _on_NewQuote_pressed() -> void:
 
 func _on_QuotesSaveButton_pressed() -> void:
 	save_quotes()
+
+
+func _on_TheneResetButton_pressed() -> void:
+	Defaults.load_default_theme()
+	$C/VBoxContainer/CatTheme.update_values()

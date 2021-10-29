@@ -1,6 +1,8 @@
 class_name SettingsResource
 extends Resource
 
+const THEME_SAVE_PATH : String = "user://theme.tres"
+
 export(String) var name = "Name"
 export(String) var title = "User title"
 export(bool) var particles
@@ -28,7 +30,7 @@ export var borderless : bool = true
 export var hidpi : bool = false
 
 #pomodoro settings
-export var pomo_work_time_length : int = 25
+export var pomo_work_time_length : int = 254
 export var pomo_short_pause_length : int = 5
 export var pomo_long_pause_length : int = 15
 export var pomo_long_pause_freq : int = 3
@@ -57,6 +59,8 @@ export var quote_list : Dictionary = {
 	10:"Not to be a bore, but that time tracker ain't gonna turn itself on. Start tracking something now, even if it's nothing."
 }
 
+export(bool) var custom_theme : bool = false
+
 func reset_pomodoro_settings() -> void:
 	pomo_long_pause_freq = 3
 	pomo_long_pause_length = 15
@@ -82,3 +86,4 @@ func reset_notes_settings() -> void:
 	minimap = true
 	highlight_current_line = false
 	highlight_all_occurances = false
+

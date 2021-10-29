@@ -46,6 +46,7 @@ func _ready() -> void:
 	check_folders()
 	load_settings()
 	init_window()
+	load_theme_res()
 	update_theme()
 	
 	
@@ -104,9 +105,21 @@ func init_window() -> void:
 		OS.center_window()
 
 
+func load_theme_res() -> void:
+	var dir : Directory = Directory.new()
+	if dir.file_exists(settings_res.THEME_SAVE_PATH):
+		ui_theme = load(settings_res.THEME_SAVE_PATH)
+	else:
+		ui_theme = load("res://Assets/Themes/Resources/DarkGrey.tres")
+
+
+func load_default_theme() -> void:
+	ui_theme = load("res://Assets/Themes/Resources/DarkGrey.tres").duplicate()
+	ui_theme.save_theme()
+	update_theme()
+
+
 func update_theme() -> void:
-	# temp set of the active theme
-	ui_theme = load("res://Assets/Themes/Resources/DarkGrey.tres")
 	ui_theme.update_theme_values()
 	# commented and prepared to be used in the onset future
 	get_tree().call_group("UI_THEME", "update_theme")
@@ -182,8 +195,10 @@ func quit() -> void:
 	if settings_res.remember_last_session_view:
 		settings_res.last_session_view = active_view
 	
+	ui_theme.save_theme()
 	save_settings_resource()
-		
+	
+	
 	get_tree().quit()
 
 

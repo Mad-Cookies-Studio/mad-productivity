@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Assets/Fonts/Righteous50.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/Fonts/Roboto12.tres" type="DynamicFont" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Assets/Views/Settings/Contrast.gd" type="Script" id=12]
 [ext_resource path="res://Assets/Views/Settings/ThemeOptions.gd" type="Script" id=13]
 [ext_resource path="res://Assets/Views/Settings/ThemeColorPicker.gd" type="Script" id=14]
+[ext_resource path="res://Assets/Themes/Dark/PanelHighlight.tres" type="StyleBox" id=15]
 
 [sub_resource type="StyleBoxEmpty" id=19]
 
@@ -753,20 +754,45 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -381.0
 custom_styles/panel = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ColorPicker" type="ColorPicker" parent="Panel"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -154.0
-margin_top = 50.9425
-margin_right = 154.0
-margin_bottom = 556.943
+margin_left = -153.5
+margin_top = 51.0
+margin_right = 154.5
+margin_bottom = 487.0
+presets_enabled = false
+presets_visible = false
 script = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="C/VBoxContainer/CatTheme/TheneResetButton" to="." method="_on_GeneralResetButton_pressed"]
+[node name="Button" type="Button" parent="Panel"]
+margin_left = -16.459
+margin_top = 264.663
+margin_right = 20.541
+margin_bottom = 303.663
+grow_vertical = 0
+theme = ExtResource( 5 )
+text = ">>"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Panel"]
+modulate = Color( 1, 1, 1, 0.372549 )
+anchor_bottom = 1.0
+rect_min_size = Vector2( 2, 0 )
+custom_styles/panel = ExtResource( 15 )
+
+[connection signal="update_values" from="C/VBoxContainer/CatTheme" to="C/VBoxContainer/Primary/Option" method="_on_CatTheme_update_values"]
+[connection signal="update_values" from="C/VBoxContainer/CatTheme" to="C/VBoxContainer/Contrast" method="_on_CatTheme_update_values"]
+[connection signal="pressed" from="C/VBoxContainer/CatTheme/TheneResetButton" to="." method="_on_TheneResetButton_pressed"]
 [connection signal="setting_color" from="C/VBoxContainer/Primary/Option" to="C/VBoxContainer/CatTheme" method="_on_Option_setting_color"]
 [connection signal="setting_color" from="C/VBoxContainer/Primary/Option" to="Panel/ColorPicker" method="_on_Option_setting_color"]
 [connection signal="setting_color" from="C/VBoxContainer/Highlight/Option" to="C/VBoxContainer/CatTheme" method="_on_Option_setting_color"]
@@ -798,3 +824,4 @@ __meta__ = {
 [connection signal="pressed" from="C/VBoxContainer/QuotesCategory/QuotesSaveButton" to="." method="_on_QuotesSaveButton_pressed"]
 [connection signal="pressed" from="C/VBoxContainer/QuotesCategory/NewQuote" to="." method="_on_NewQuote_pressed"]
 [connection signal="color_changed" from="Panel/ColorPicker" to="C/VBoxContainer/CatTheme" method="_on_ColorPicker_color_changed"]
+[connection signal="pressed" from="Panel/Button" to="Panel/ColorPicker" method="_on_Button_pressed"]

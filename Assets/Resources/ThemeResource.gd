@@ -65,3 +65,7 @@ func set_color(which : int, new : Color) -> void:
 
 	Defaults.update_theme()
 #	Defaults.emit_signal("theme_changed")
+
+
+func save_theme() -> void:
+	ResourceSaver.save(Defaults.settings_res.THEME_SAVE_PATH, self)
