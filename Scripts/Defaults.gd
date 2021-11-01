@@ -157,6 +157,11 @@ func update_theme() -> void:
 	roboto_clean.set_color("selection_color", "LineEdit", ui_theme.highlight_colour)
 	roboto_clean.set_color("cursor_color", "LineEdit", ui_theme.highlight_colour)
 
+	## Roboto 12 clean
+	var popupTheme : Theme = load("res://Assets/Themes/PopupTheme.tres")
+	# colors
+	popupTheme.set_color("font_color_hover", "Button", ui_theme.highlight_colour)
+
 	# set up local colours
 	btn_active_colour = ui_theme.btn_active_col
 	btn_inactive_colour = ui_theme.btn_inactive_col

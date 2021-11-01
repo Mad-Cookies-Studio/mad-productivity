@@ -173,6 +173,7 @@ margin_right = 1.0
 margin_bottom = 20.5
 rect_min_size = Vector2( 20, 0 )
 rect_pivot_offset = Vector2( 10, 20 )
+focus_mode = 0
 mouse_filter = 2
 texture_normal = ExtResource( 6 )
 texture_hover = ExtResource( 5 )

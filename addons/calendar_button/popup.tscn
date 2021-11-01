@@ -1,103 +1,46 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/Fonts/Roboto12.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/Fonts/Righteous20.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Assets/Fonts/Righteous-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Assets/Themes/PopupTheme.tres" type="Theme" id=3]
+[ext_resource path="res://Assets/Themes/Dark/PanelSuperDarkGreen.tres" type="StyleBox" id=4]
+[ext_resource path="res://Assets/Themes/Dark/PanelGreenNoBorder.tres" type="StyleBox" id=5]
+[ext_resource path="res://Assets/Themes/Dark/PanelDarkGreen.tres" type="StyleBox" id=6]
 
 [sub_resource type="StyleBoxFlat" id=4]
 content_margin_left = 4.0
 content_margin_right = 4.0
 content_margin_top = 4.0
 content_margin_bottom = 4.0
-bg_color = Color( 0.0862745, 0.152941, 0.160784, 0.364706 )
+bg_color = Color( 0.168627, 0.168627, 0.168627, 0.364706 )
 
 [sub_resource type="StyleBoxEmpty" id=7]
 
-[sub_resource type="StyleBoxFlat" id=5]
-content_margin_left = 4.0
-content_margin_right = 4.0
-content_margin_top = 4.0
-content_margin_bottom = 4.0
-bg_color = Color( 0.0588235, 0.105882, 0.109804, 1 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 0.854902, 0.423529, 0.384314, 1 )
-
-[sub_resource type="StyleBoxFlat" id=6]
-content_margin_left = 4.0
-content_margin_right = 4.0
-content_margin_top = 4.0
-content_margin_bottom = 4.0
-bg_color = Color( 0.0862745, 0.152941, 0.160784, 1 )
-
 [sub_resource type="StyleBoxEmpty" id=8]
-
-[sub_resource type="StyleBoxFlat" id=3]
-content_margin_left = 10.0
-content_margin_right = 10.0
-content_margin_top = 10.0
-content_margin_bottom = 10.0
-bg_color = Color( 0.0745098, 0.133333, 0.141176, 1 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 0.137255, 0.301961, 0.305882, 1 )
-shadow_color = Color( 0, 0, 0, 0.054902 )
-shadow_size = 20
-
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.137255, 0.301961, 0.305882, 1 )
 
 [sub_resource type="Theme" id=2]
 default_font = ExtResource( 1 )
-Button/colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+Button/colors/font_color = Color( 0.584314, 0.584314, 0.584314, 1 )
 Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
 Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
 Button/constants/hseparation = 2
-Button/fonts/font = null
 Button/styles/disabled = SubResource( 4 )
 Button/styles/focus = SubResource( 7 )
-Button/styles/hover = SubResource( 5 )
-Button/styles/normal = SubResource( 6 )
+Button/styles/hover = ExtResource( 4 )
+Button/styles/normal = ExtResource( 5 )
 Button/styles/pressed = SubResource( 8 )
-PanelContainer/styles/panel = SubResource( 3 )
-PopupPanel/styles/panel = SubResource( 1 )
-
-[sub_resource type="StyleBoxEmpty" id=10]
-
-[sub_resource type="StyleBoxEmpty" id=11]
-
-[sub_resource type="StyleBoxEmpty" id=12]
-
-[sub_resource type="StyleBoxEmpty" id=13]
-
-[sub_resource type="StyleBoxEmpty" id=14]
-
-[sub_resource type="DynamicFont" id=15]
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 3 )
-
-[sub_resource type="Theme" id=9]
-default_font = SubResource( 15 )
-Button/colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.52549 )
-Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
-Button/colors/font_color_hover = Color( 0.854902, 0.423529, 0.384314, 1 )
-Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
-Button/constants/hseparation = 2
-Button/fonts/font = null
-Button/styles/disabled = SubResource( 10 )
-Button/styles/focus = SubResource( 11 )
-Button/styles/hover = SubResource( 12 )
-Button/styles/normal = SubResource( 13 )
-Button/styles/pressed = SubResource( 14 )
+PanelContainer/styles/panel = ExtResource( 6 )
+PopupPanel/styles/panel = ExtResource( 5 )
 
 [node name="popup" type="Popup"]
+margin_left = -223.0
+margin_top = -146.0
+margin_right = -223.0
+margin_bottom = -146.0
+rect_pivot_offset = Vector2( 223, 146 )
 theme = SubResource( 2 )
+popup_exclusive = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -111,14 +54,17 @@ __meta__ = {
 
 [node name="vbox" type="VBoxContainer" parent="PanelContainer"]
 margin_left = 10.0
-margin_top = 10.0
+margin_top = 8.0
 margin_right = 437.0
-margin_bottom = 282.0
+margin_bottom = 284.0
+rect_min_size = Vector2( 427, 272 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="hbox_month_year" type="HBoxContainer" parent="PanelContainer/vbox"]
 margin_right = 427.0
 margin_bottom = 26.0
-theme = SubResource( 9 )
+theme = ExtResource( 3 )
 custom_constants/separation = 20
 alignment = 1
 
@@ -158,27 +104,27 @@ text = "year >"
 [node name="hbox_deadspace" type="HBoxContainer" parent="PanelContainer/vbox"]
 margin_top = 30.0
 margin_right = 427.0
-margin_bottom = 45.0
+margin_bottom = 47.0
 alignment = 1
 
 [node name="label_empty" type="Label" parent="PanelContainer/vbox/hbox_deadspace"]
-margin_left = 210.0
-margin_right = 216.0
-margin_bottom = 15.0
+margin_left = 208.0
+margin_right = 218.0
+margin_bottom = 17.0
 text = "  "
 align = 1
 valign = 1
 
 [node name="hbox_label_days" type="GridContainer" parent="PanelContainer/vbox"]
-margin_top = 49.0
+margin_top = 51.0
 margin_right = 427.0
-margin_bottom = 64.0
+margin_bottom = 68.0
 custom_constants/hseparation = 10
 columns = 7
 
 [node name="label_sunday" type="Label" parent="PanelContainer/vbox/hbox_label_days"]
 margin_right = 52.0
-margin_bottom = 15.0
+margin_bottom = 17.0
 rect_min_size = Vector2( 30, 15 )
 size_flags_horizontal = 3
 text = "Sun"
@@ -187,7 +133,7 @@ align = 1
 [node name="label_monday" type="Label" parent="PanelContainer/vbox/hbox_label_days"]
 margin_left = 62.0
 margin_right = 114.0
-margin_bottom = 15.0
+margin_bottom = 17.0
 rect_min_size = Vector2( 30, 15 )
 size_flags_horizontal = 3
 text = "Mon"
@@ -196,7 +142,7 @@ align = 1
 [node name="label_thuesday" type="Label" parent="PanelContainer/vbox/hbox_label_days"]
 margin_left = 124.0
 margin_right = 176.0
-margin_bottom = 15.0
+margin_bottom = 17.0
 size_flags_horizontal = 3
 text = "Tue"
 align = 1
@@ -204,7 +150,7 @@ align = 1
 [node name="label_wednesday" type="Label" parent="PanelContainer/vbox/hbox_label_days"]
 margin_left = 186.0
 margin_right = 238.0
-margin_bottom = 15.0
+margin_bottom = 17.0
 rect_min_size = Vector2( 30, 15 )
 size_flags_horizontal = 3
 text = "Wed"
@@ -213,7 +159,7 @@ align = 1
 [node name="label_thursday" type="Label" parent="PanelContainer/vbox/hbox_label_days"]
 margin_left = 248.0
 margin_right = 300.0
-margin_bottom = 15.0
+margin_bottom = 17.0
 rect_min_size = Vector2( 30, 15 )
 size_flags_horizontal = 3
 text = "Thu"
@@ -222,7 +168,7 @@ align = 1
 [node name="label_friday" type="Label" parent="PanelContainer/vbox/hbox_label_days"]
 margin_left = 310.0
 margin_right = 362.0
-margin_bottom = 15.0
+margin_bottom = 17.0
 rect_min_size = Vector2( 30, 15 )
 size_flags_horizontal = 3
 text = "Fri"
@@ -231,15 +177,15 @@ align = 1
 [node name="label_saturday" type="Label" parent="PanelContainer/vbox/hbox_label_days"]
 margin_left = 372.0
 margin_right = 424.0
-margin_bottom = 15.0
+margin_bottom = 17.0
 size_flags_horizontal = 3
 text = "Sat"
 align = 1
 
 [node name="hbox_days" type="GridContainer" parent="PanelContainer/vbox"]
-margin_top = 68.0
+margin_top = 72.0
 margin_right = 427.0
-margin_bottom = 268.0
+margin_bottom = 272.0
 rect_min_size = Vector2( 0, 200 )
 custom_constants/vseparation = 7
 custom_constants/hseparation = 10
@@ -611,6 +557,6 @@ size_flags_vertical = 3
 disabled = true
 
 [node name="TimeContainer" type="HBoxContainer" parent="PanelContainer/vbox"]
-margin_top = 272.0
+margin_top = 276.0
 margin_right = 427.0
-margin_bottom = 272.0
+margin_bottom = 276.0

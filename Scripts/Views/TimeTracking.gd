@@ -252,6 +252,11 @@ func _on_BreakButton_pressed():
 
 
 func _on_PomodoroBtn_toggled(button_pressed: bool) -> void:
+	match button_pressed:
+		true:
+			$CommandPanel.add_stylebox_override("panel", load("res://Assets/Themes/Dark/PomodoroPanel.tres"))
+		false:
+			$CommandPanel.add_stylebox_override("panel", load("res://Assets/Themes/Dark/PanelGreenNoBorder.tres"))
 	$CommandPanel/PomodoroContainer.visible = button_pressed
 	
 	if res == null:
