@@ -149,6 +149,9 @@ func continue_time_tracking() -> void:
 
 func update_time() -> void:
 	match state :
+		STATES.NORMAL:
+
+			formatted_time = Defaults.get_formatted_time_from_seconds(tracked_seconds)
 		STATES.POMODORO:
 			formatted_time = Defaults.get_formatted_time_from_seconds(Defaults.settings_res.pomo_work_time_length - tracked_seconds)
 		STATES.POMODORO_BREAK:
