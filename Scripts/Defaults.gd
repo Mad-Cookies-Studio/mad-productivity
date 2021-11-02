@@ -290,7 +290,7 @@ func get_formatted_time_from_seconds(_secs : int) -> String:
 	_secs -= hours * 3600
 	var minutes : int = _secs / 60
 	_secs -= minutes * 60
-	return ("%2.0d" % hours) + ":" + str(minutes) + ":" + ("%2.0d" % _secs)
+	return ("%02d" % hours) + ":" + str("%02d" % minutes) + ":" + ("%02d" % _secs)
 
 
 func save_note_resource(note : NoteResource) -> int:
