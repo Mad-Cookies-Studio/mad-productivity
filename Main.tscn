@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://Assets/Icons/MD_concept.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Icons/NoteTaking.png" type="Texture" id=2]
@@ -23,13 +23,9 @@
 [ext_resource path="res://Assets/Themes/Roboto12Clean.tres" type="Theme" id=21]
 [ext_resource path="res://Assets/Views/ToDo.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Assets/Fonts/Righteous20.tres" type="DynamicFont" id=23]
-[ext_resource path="res://Assets/Buttons/cancelBtn_hover.png" type="Texture" id=24]
 [ext_resource path="res://Assets/Buttons/ResizeActive.png" type="Texture" id=25]
 [ext_resource path="res://Assets/Buttons/ResizeHover.png" type="Texture" id=26]
 [ext_resource path="res://Scripts/Views/Profile.gd" type="Script" id=27]
-[ext_resource path="res://Assets/Buttons/PauseBtn.png" type="Texture" id=28]
-[ext_resource path="res://Assets/Buttons/cancelBtn.png" type="Texture" id=29]
-[ext_resource path="res://Assets/Buttons/PauseBtn_hover.png" type="Texture" id=30]
 [ext_resource path="res://Assets/Buttons/ResizeIdle.png" type="Texture" id=31]
 [ext_resource path="res://Scripts/ResizeBtn.gd" type="Script" id=32]
 [ext_resource path="res://Assets/Buttons/AppBar/MinimizeBtn.png" type="Texture" id=33]
@@ -51,12 +47,6 @@
 [sub_resource type="Gradient" id=4]
 offsets = PoolRealArray( 0, 0.219355, 0.36129, 1 )
 colors = PoolColorArray( 0.839844, 0.839844, 0.839844, 0, 0.910156, 0.910156, 0.910156, 1, 0.867188, 0.867188, 0.867188, 0.529412, 0.855469, 0.855469, 0.855469, 0 )
-
-[sub_resource type="DynamicFont" id=24]
-size = 18
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 40 )
 
 [sub_resource type="DynamicFont" id=25]
 size = 20
@@ -393,13 +383,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Control4" type="Control" parent="MainWorkspace/HBX/VBX/TopArea/Left"]
-visible = false
-margin_left = 146.0
-margin_right = 159.0
-margin_bottom = 45.0
-rect_min_size = Vector2( 13, 0 )
-
 [node name="NewBtn" type="Button" parent="MainWorkspace/HBX/VBX/TopArea/Left"]
 margin_left = 46.0
 margin_top = 8.0
@@ -429,45 +412,6 @@ margin_bottom = 45.0
 mouse_filter = 2
 size_flags_horizontal = 3
 
-[node name="TimeTrackingTop" type="HBoxContainer" parent="MainWorkspace/HBX/VBX/TopArea/Left"]
-visible = false
-margin_left = 650.0
-margin_right = 1050.0
-margin_bottom = 45.0
-rect_min_size = Vector2( 400, 0 )
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="MainWorkspace/HBX/VBX/TopArea/Left/TimeTrackingTop"]
-margin_left = 81.0
-margin_top = 13.0
-margin_right = 271.0
-margin_bottom = 32.0
-custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
-text = "TRACKING NAME 00:00:00"
-
-[node name="TextureButton2" type="TextureButton" parent="MainWorkspace/HBX/VBX/TopArea/Left/TimeTrackingTop"]
-margin_left = 275.0
-margin_right = 295.117
-margin_bottom = 45.0
-rect_min_size = Vector2( 20.117, 0 )
-texture_normal = ExtResource( 30 )
-texture_hover = ExtResource( 28 )
-expand = true
-stretch_mode = 5
-
-[node name="TextureButton" type="TextureButton" parent="MainWorkspace/HBX/VBX/TopArea/Left/TimeTrackingTop"]
-margin_left = 299.0
-margin_right = 319.117
-margin_bottom = 45.0
-rect_min_size = Vector2( 20.117, 0 )
-texture_normal = ExtResource( 24 )
-texture_hover = ExtResource( 29 )
-expand = true
-stretch_mode = 5
-
 [node name="Right" type="HBoxContainer" parent="MainWorkspace/HBX/VBX/TopArea"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -482,35 +426,6 @@ alignment = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Logo" type="TextureRect" parent="MainWorkspace/HBX/VBX/TopArea/Right"]
-visible = false
-modulate = Color( 0.854902, 0.423529, 0.384314, 1 )
-margin_right = 21.777
-margin_bottom = 34.0
-rect_min_size = Vector2( 21.777, 0 )
-texture = ExtResource( 1 )
-expand = true
-stretch_mode = 6
-
-[node name="ViewLabel" type="Label" parent="MainWorkspace/HBX/VBX/TopArea/Right"]
-visible = false
-margin_left = 74.0
-margin_top = 5.0
-margin_right = 226.0
-margin_bottom = 28.0
-custom_fonts/font = SubResource( 24 )
-text = "Mad Productivity"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Control" type="Control" parent="MainWorkspace/HBX/VBX/TopArea/Right"]
-visible = false
-margin_left = 216.0
-margin_right = 226.0
-margin_bottom = 34.0
-rect_min_size = Vector2( 10, 0 )
 
 [node name="Minimuze" type="TextureButton" parent="MainWorkspace/HBX/VBX/TopArea/Right"]
 modulate = Color( 1, 1, 1, 0.490196 )

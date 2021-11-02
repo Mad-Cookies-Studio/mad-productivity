@@ -20,7 +20,6 @@ func _ready() -> void:
 	on_theme_changed()
 	set_process_input(false)
 	var res = load(Defaults.TIMETRACKS_SAVE_PATH + Defaults.TIMETRACKS_SAVE_NAME)	# TODO: access this resource in some more elegant way
-	$Left/PomodoroBtn.pressed = res.pomodoro_on
 #	$Right/Maximize.pressed = Defaults.settings_res.window_maximized
 	
 
@@ -82,23 +81,22 @@ func _on_Maximize_toggled(button_pressed: bool) -> void:
 		
 
 func change_window_title(_name : String) -> void:
-	$Tween.stop_all()
-	$Tween.interpolate_property($Right/ViewLabel, "percent_visible", $Right/ViewLabel.percent_visible, 0.0, 0.5, Tween.TRANS_LINEAR, Tween.EASE_OUT, 0.0)
-	$Tween.interpolate_property($Right/ViewLabel, "percent_visible", 0.0, 1.0, 0.5, Tween.TRANS_LINEAR, Tween.EASE_OUT, 0.5)
-	$Tween.start()
-	yield(get_tree().create_timer(0.5), "timeout")
-	$Right/ViewLabel.text = _name 
+	$ViewLabel.text = _name
+#	$Tween.stop_all()
+#	$Tween.interpolate_property($Right/ViewLabel, "percent_visible", $Right/ViewLabel.percent_visible, 0.0, 0.5, Tween.TRANS_LINEAR, Tween.EASE_OUT, 0.0)
+#	$Tween.interpolate_property($Right/ViewLabel, "percent_visible", 0.0, 1.0, 0.5, Tween.TRANS_LINEAR, Tween.EASE_OUT, 0.5)
+#	$Tween.start()
+#	yield(get_tree().create_timer(0.5), "timeout")
+#	$Right/ViewLabel.text = _name 
 
 
 # IMPORTANT: This func sets up the top area according to how to the new view
 func on_view_changed(_name : String, _button : bool, _input_field : bool) -> void:
 	change_window_title(_name)
 	if _name == "Time tracking":
-		$Left/PomodoroBtn.show()
 		$Left/NewBtn.hide()
 		$Left/LineEdit.hide()
 	else:
-		$Left/PomodoroBtn.hide()
 		$Left/LineEdit.visible = _input_field
 		$Left/NewBtn.visible = _button
 
@@ -122,8 +120,6 @@ func _on_Shortcuts_shortcut_focus() -> void:
 
 
 func on_theme_changed() -> void:
-	$Right/ViewLabel.add_color_override("font_color", Defaults.ui_theme.text_color)
-	$Left/PomodoroBtn.modulate = Defaults.ui_theme.highlight_colour
 	$Left/TimeTrackPanel.update_colours()
 
 
