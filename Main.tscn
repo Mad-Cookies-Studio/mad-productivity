@@ -1,13 +1,13 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://Assets/Icons/MD_concept.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Icons/NoteTaking.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Icons/TimeTracking.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Icons/ToDo.png" type="Texture" id=4]
 [ext_resource path="res://Scripts/Sidebar.gd" type="Script" id=5]
-[ext_resource path="res://Assets/Buttons/Minimize.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Buttons/AppBar/MaximizeBtn.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Themes/CuteButtonTheme.tres" type="Theme" id=7]
-[ext_resource path="res://Assets/Buttons/Close.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Buttons/AppBar/ExitBtn.png" type="Texture" id=8]
 [ext_resource path="res://Scripts/CustomTextureButton.gd" type="Script" id=9]
 [ext_resource path="res://Scripts/TopArea.gd" type="Script" id=10]
 [ext_resource path="res://Scripts/CustomTransparentButton.gd" type="Script" id=11]
@@ -32,7 +32,7 @@
 [ext_resource path="res://Assets/Buttons/PauseBtn_hover.png" type="Texture" id=30]
 [ext_resource path="res://Assets/Buttons/ResizeIdle.png" type="Texture" id=31]
 [ext_resource path="res://Scripts/ResizeBtn.gd" type="Script" id=32]
-[ext_resource path="res://Assets/Buttons/Maximize.png" type="Texture" id=33]
+[ext_resource path="res://Assets/Buttons/AppBar/MinimizeBtn.png" type="Texture" id=33]
 [ext_resource path="res://Assets/Icons/Settings.png" type="Texture" id=34]
 [ext_resource path="res://Assets/Views/TimeTrackingPanel.tscn" type="PackedScene" id=35]
 [ext_resource path="res://Assets/Views/Settings.tscn" type="PackedScene" id=36]
@@ -40,8 +40,6 @@
 [ext_resource path="res://Assets/Themes/Dark/LineEditTop.tres" type="StyleBox" id=38]
 [ext_resource path="res://Assets/Fonts/NovaMono20.tres" type="DynamicFont" id=39]
 [ext_resource path="res://Assets/Fonts/Righteous-Regular.ttf" type="DynamicFontData" id=40]
-[ext_resource path="res://Assets/Buttons/PomodoroToggleLinear.png" type="Texture" id=41]
-[ext_resource path="res://Assets/Buttons/PomodoroTogglePomodoro.png" type="Texture" id=42]
 [ext_resource path="res://Assets/Themes/Dark/PanelDarkGreen.tres" type="StyleBox" id=43]
 [ext_resource path="res://Assets/Themes/Dark/PanelGreen.tres" type="StyleBox" id=44]
 [ext_resource path="res://Assets/Themes/Dark/PanelGreenNoBorder.tres" type="StyleBox" id=45]
@@ -56,6 +54,12 @@ colors = PoolColorArray( 0.839844, 0.839844, 0.839844, 0, 0.910156, 0.910156, 0.
 
 [sub_resource type="DynamicFont" id=24]
 size = 18
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 40 )
+
+[sub_resource type="DynamicFont" id=25]
+size = 20
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 40 )
@@ -103,6 +107,7 @@ __meta__ = {
 margin_right = 50.0
 margin_bottom = 650.0
 rect_min_size = Vector2( 50, 0 )
+rect_clip_content = true
 custom_styles/panel = ExtResource( 44 )
 script = ExtResource( 5 )
 __meta__ = {
@@ -378,24 +383,27 @@ rect_min_size = Vector2( 13, 0 )
 visible = false
 margin_left = 46.0
 margin_top = 8.0
-margin_right = 134.0
+margin_right = 146.0
 margin_bottom = 37.0
+rect_min_size = Vector2( 100, 0 )
 custom_fonts/font = ExtResource( 39 )
 text = "00:00:00"
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Control4" type="Control" parent="MainWorkspace/HBX/VBX/TopArea/Left"]
-margin_left = 46.0
-margin_right = 59.0
+visible = false
+margin_left = 146.0
+margin_right = 159.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 13, 0 )
 
 [node name="NewBtn" type="Button" parent="MainWorkspace/HBX/VBX/TopArea/Left"]
-margin_left = 59.0
+margin_left = 46.0
 margin_top = 8.0
-margin_right = 109.0
+margin_right = 96.0
 margin_bottom = 35.024
 rect_min_size = Vector2( 50, 27.024 )
 focus_mode = 0
@@ -404,9 +412,9 @@ theme = ExtResource( 7 )
 text = "NEW"
 
 [node name="LineEdit" type="LineEdit" parent="MainWorkspace/HBX/VBX/TopArea/Left"]
-margin_left = 109.0
+margin_left = 96.0
 margin_top = 8.0
-margin_right = 309.0
+margin_right = 296.0
 margin_bottom = 35.1
 rect_min_size = Vector2( 200, 27.1 )
 focus_mode = 1
@@ -414,23 +422,8 @@ size_flags_vertical = 4
 custom_styles/normal = ExtResource( 38 )
 placeholder_text = "type text here"
 
-[node name="PomodoroBtn" type="TextureButton" parent="MainWorkspace/HBX/VBX/TopArea/Left"]
-margin_left = 309.0
-margin_right = 510.845
-margin_bottom = 45.0
-rect_min_size = Vector2( 201.845, 0 )
-focus_mode = 0
-toggle_mode = true
-texture_normal = ExtResource( 41 )
-texture_pressed = ExtResource( 42 )
-expand = true
-stretch_mode = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Control2" type="Control" parent="MainWorkspace/HBX/VBX/TopArea/Left"]
-margin_left = 510.0
+margin_left = 296.0
 margin_right = 1050.0
 margin_bottom = 45.0
 mouse_filter = 2
@@ -479,7 +472,7 @@ stretch_mode = 5
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 728.0
-margin_top = 5.0
+margin_top = 7.0
 margin_right = -15.0
 margin_bottom = -6.0
 grow_horizontal = 0
@@ -501,6 +494,7 @@ expand = true
 stretch_mode = 6
 
 [node name="ViewLabel" type="Label" parent="MainWorkspace/HBX/VBX/TopArea/Right"]
+visible = false
 margin_left = 74.0
 margin_top = 5.0
 margin_right = 226.0
@@ -520,39 +514,57 @@ rect_min_size = Vector2( 10, 0 )
 
 [node name="Minimuze" type="TextureButton" parent="MainWorkspace/HBX/VBX/TopArea/Right"]
 modulate = Color( 1, 1, 1, 0.490196 )
-margin_left = 240.0
-margin_right = 253.0
-margin_bottom = 34.0
+margin_left = 237.0
+margin_right = 250.0
+margin_bottom = 32.0
 rect_min_size = Vector2( 13, 0 )
-texture_normal = ExtResource( 6 )
+texture_normal = ExtResource( 33 )
 expand = true
 stretch_mode = 5
 script = ExtResource( 11 )
 
 [node name="Maximize" type="TextureButton" parent="MainWorkspace/HBX/VBX/TopArea/Right"]
 modulate = Color( 1, 1, 1, 0.490196 )
-margin_left = 267.0
-margin_right = 280.0
-margin_bottom = 34.0
+margin_left = 264.0
+margin_right = 277.0
+margin_bottom = 32.0
 rect_min_size = Vector2( 13, 0 )
 toggle_mode = true
-texture_normal = ExtResource( 33 )
+texture_normal = ExtResource( 6 )
 expand = true
 stretch_mode = 5
 script = ExtResource( 11 )
 
 [node name="Exit" type="TextureButton" parent="MainWorkspace/HBX/VBX/TopArea/Right"]
 modulate = Color( 1, 1, 1, 0.490196 )
-margin_left = 294.0
+margin_left = 291.0
 margin_right = 307.0
-margin_bottom = 34.0
-rect_min_size = Vector2( 13, 0 )
+margin_bottom = 32.0
+rect_min_size = Vector2( 16, 0 )
 texture_normal = ExtResource( 8 )
 expand = true
 stretch_mode = 5
 script = ExtResource( 11 )
 
 [node name="Tween" type="Tween" parent="MainWorkspace/HBX/VBX/TopArea"]
+
+[node name="ViewLabel" type="Label" parent="MainWorkspace/HBX/VBX/TopArea"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -69.0
+margin_top = -31.5
+margin_right = 69.0
+margin_bottom = 31.5
+custom_colors/font_color = Color( 0, 0, 0, 0.25098 )
+custom_fonts/font = SubResource( 25 )
+text = "Notes"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Views" type="MarginContainer" parent="MainWorkspace/HBX/VBX"]
 margin_top = 45.0
@@ -769,7 +781,6 @@ script = ExtResource( 37 )
 [connection signal="toggle_time_tracking_bar" from="MainWorkspace/HBX/VBX/TopArea" to="MainWorkspace/HBX/TimeTrackingPanel" method="_on_TopArea_toggle_time_tracking_bar"]
 [connection signal="toggled" from="MainWorkspace/HBX/VBX/TopArea/Left/TimeTrackPanel" to="MainWorkspace/HBX/VBX/TopArea" method="_on_TimeTrackPanel_toggled"]
 [connection signal="pressed" from="MainWorkspace/HBX/VBX/TopArea/Left/NewBtn" to="MainWorkspace/HBX/VBX/TopArea" method="_on_Button_pressed"]
-[connection signal="toggled" from="MainWorkspace/HBX/VBX/TopArea/Left/PomodoroBtn" to="MainWorkspace/HBX/VBX/Views/TimeTracking" method="_on_PomodoroBtn_toggled"]
 [connection signal="pressed" from="MainWorkspace/HBX/VBX/TopArea/Right/Minimuze" to="MainWorkspace/HBX/VBX/TopArea" method="_on_Minimuze_pressed"]
 [connection signal="toggled" from="MainWorkspace/HBX/VBX/TopArea/Right/Maximize" to="MainWorkspace/HBX/VBX/TopArea" method="_on_Maximize_toggled"]
 [connection signal="pressed" from="MainWorkspace/HBX/VBX/TopArea/Right/Exit" to="MainWorkspace/HBX/VBX/TopArea" method="_on_Exit_pressed"]
