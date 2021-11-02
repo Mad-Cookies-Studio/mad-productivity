@@ -9,7 +9,7 @@
 [ext_resource path="res://Assets/Buttons/cancelBtn.png" type="Texture" id=7]
 [ext_resource path="res://Scripts/Views/Reminders.gd" type="Script" id=8]
 [ext_resource path="res://Scripts/Views/Reminder/NewReminderContainer.gd" type="Script" id=9]
-[ext_resource path="res://Assets/Themes/Dark/PanelSuperDarkGreen.tres" type="StyleBox" id=10]
+[ext_resource path="res://Assets/Themes/Dark/PanelDarkGreen.tres" type="StyleBox" id=10]
 [ext_resource path="res://Assets/Buttons/cancelBtn_hover.png" type="Texture" id=11]
 [ext_resource path="res://Assets/Buttons/link_hover.png" type="Texture" id=12]
 [ext_resource path="res://Assets/Buttons/link_idle.png" type="Texture" id=13]
@@ -59,7 +59,9 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 15.0
+margin_top = 28.0
 margin_right = -30.0
+margin_bottom = -29.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -74,14 +76,14 @@ text = "REMINDERS"
 
 [node name="Panel" type="HBoxContainer" parent="VBoxContainer"]
 margin_right = 945.0
-margin_bottom = 571.0
+margin_bottom = 514.0
 size_flags_vertical = 3
 theme = ExtResource( 4 )
 custom_constants/separation = 20
 
 [node name="Active" type="Panel" parent="VBoxContainer/Panel"]
 margin_right = 277.0
-margin_bottom = 571.0
+margin_bottom = 514.0
 size_flags_horizontal = 3
 theme = ExtResource( 4 )
 custom_styles/panel = SubResource( 17 )
@@ -95,7 +97,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Panel/Active/Scroll"]
 margin_right = 267.0
-margin_bottom = 571.0
+margin_bottom = 514.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = -1
@@ -109,7 +111,7 @@ visible = false
 [node name="NewReminderContainer" type="Control" parent="VBoxContainer/Panel"]
 margin_left = 297.0
 margin_right = 647.0
-margin_bottom = 571.0
+margin_bottom = 514.0
 rect_min_size = Vector2( 350, 0 )
 size_flags_horizontal = 3
 script = ExtResource( 9 )
@@ -137,7 +139,7 @@ __meta__ = {
 
 [node name="VB1" type="VBoxContainer" parent="VBoxContainer/Panel/NewReminderContainer/Panel/VB"]
 margin_right = 306.0
-margin_bottom = 379.0
+margin_bottom = 322.0
 size_flags_vertical = 3
 alignment = 1
 __meta__ = {
@@ -145,9 +147,9 @@ __meta__ = {
 }
 
 [node name="CalendarButton" type="TextureButton" parent="VBoxContainer/Panel/NewReminderContainer/Panel/VB/VB1"]
-margin_top = 65.0
+margin_top = 36.0
 margin_right = 306.0
-margin_bottom = 95.0
+margin_bottom = 66.0
 rect_min_size = Vector2( 40, 30 )
 toggle_mode = true
 texture_normal = ExtResource( 15 )
@@ -161,24 +163,24 @@ __meta__ = {
 }
 
 [node name="DateLabel" type="Label" parent="VBoxContainer/Panel/NewReminderContainer/Panel/VB/VB1"]
-margin_top = 99.0
+margin_top = 70.0
 margin_right = 306.0
-margin_bottom = 162.0
+margin_bottom = 133.0
 custom_colors/font_color = Color( 0.796078, 0.796078, 0.796078, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "00/00/0000"
 align = 1
 
 [node name="Control" type="Control" parent="VBoxContainer/Panel/NewReminderContainer/Panel/VB/VB1"]
-margin_top = 166.0
+margin_top = 137.0
 margin_right = 306.0
-margin_bottom = 206.0
+margin_bottom = 177.0
 rect_min_size = Vector2( 0, 40 )
 
 [node name="Label3" type="Label" parent="VBoxContainer/Panel/NewReminderContainer/Panel/VB/VB1"]
-margin_top = 210.0
+margin_top = 181.0
 margin_right = 306.0
-margin_bottom = 236.0
+margin_bottom = 207.0
 rect_min_size = Vector2( 64.176, 0 )
 size_flags_vertical = 1
 custom_colors/font_color = Color( 0.709804, 0.709804, 0.709804, 1 )
@@ -188,15 +190,15 @@ align = 1
 valign = 1
 
 [node name="Control2" type="Control" parent="VBoxContainer/Panel/NewReminderContainer/Panel/VB/VB1"]
-margin_top = 240.0
+margin_top = 211.0
 margin_right = 306.0
-margin_bottom = 250.0
+margin_bottom = 221.0
 rect_min_size = Vector2( 0, 10 )
 
 [node name="CalendarContainer" type="HBoxContainer" parent="VBoxContainer/Panel/NewReminderContainer/Panel/VB/VB1"]
-margin_top = 254.0
+margin_top = 225.0
 margin_right = 306.0
-margin_bottom = 314.0
+margin_bottom = 285.0
 rect_min_size = Vector2( 0, 60 )
 theme = SubResource( 15 )
 alignment = 1
@@ -234,9 +236,9 @@ context_menu_enabled = false
 placeholder_text = "59"
 
 [node name="VB2" type="VBoxContainer" parent="VBoxContainer/Panel/NewReminderContainer/Panel/VB"]
-margin_top = 383.0
+margin_top = 326.0
 margin_right = 306.0
-margin_bottom = 486.0
+margin_bottom = 429.0
 theme = ExtResource( 5 )
 alignment = 2
 __meta__ = {
@@ -288,7 +290,7 @@ text = "ADD"
 [node name="Archive" type="Panel" parent="VBoxContainer/Panel"]
 margin_left = 667.0
 margin_right = 945.0
-margin_bottom = 571.0
+margin_bottom = 514.0
 size_flags_horizontal = 3
 custom_styles/panel = SubResource( 18 )
 
@@ -301,7 +303,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Panel/Archive/Scroll"]
 margin_right = 268.0
-margin_bottom = 571.0
+margin_bottom = 514.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = -1

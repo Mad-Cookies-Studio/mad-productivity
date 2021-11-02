@@ -1,5 +1,7 @@
 extends Control
 
+signal toggle_time_tracking_bar(really)
+
 var dragging : = false
 var mouse_drag_beg : Vector2
 var orig_position : Vector2
@@ -14,6 +16,7 @@ var minimized_pos : Vector2
 func _ready() -> void:
 	Defaults.connect("view_changed", self, "on_view_changed")
 	Defaults.connect("theme_changed", self, "on_theme_changed")
+
 	on_theme_changed()
 	set_process_input(false)
 	var res = load(Defaults.TIMETRACKS_SAVE_PATH + Defaults.TIMETRACKS_SAVE_NAME)	# TODO: access this resource in some more elegant way
@@ -121,3 +124,12 @@ func _on_Shortcuts_shortcut_focus() -> void:
 func on_theme_changed() -> void:
 	$Right/ViewLabel.add_color_override("font_color", Defaults.ui_theme.text_color)
 	$Left/PomodoroBtn.modulate = Defaults.ui_theme.highlight_colour
+	$Left/TimeTrackPanel.update_colours()
+
+
+func _on_TimeTrackPanel_toggled(button_pressed: bool) -> void:
+	emit_signal("toggle_time_tracking_bar", button_pressed)
+
+
+func _on_Shortcuts_shortcut_timetrack_panel() -> void:
+	$Left/TimeTrackPanel.pressed = !$Left/TimeTrackPanel.pressed

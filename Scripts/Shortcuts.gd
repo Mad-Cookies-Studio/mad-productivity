@@ -2,6 +2,7 @@ extends Node
 
 signal shortcut_use
 signal shortcut_focus
+signal shortcut_timetrack_panel
 
 
 func _input(event: InputEvent) -> void:
@@ -13,3 +14,5 @@ func _input(event: InputEvent) -> void:
 		emit_signal("shortcut_use")
 	if event.is_action_pressed("shortcut_focus"):
 		emit_signal("shortcut_focus")
+	if event.is_action_pressed("shortcut_timetrack_panel"):
+		emit_signal("shortcut_timetrack_panel")

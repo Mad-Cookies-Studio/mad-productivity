@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/ChargeButton.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Themes/ChargeButtonTheme.tres" type="Theme" id=2]
+
+[node name="ChargeButton" type="Button"]
+margin_top = 546.0
+margin_right = 199.0
+margin_bottom = 576.0
+rect_min_size = Vector2( 0, 30 )
+theme = ExtResource( 2 )
+text = "Button"
+script = ExtResource( 1 )
+
+[node name="ChargeCol" type="ColorRect" parent="."]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_scale = Vector2( 1e-05, 1 )
+color = Color( 0.854902, 0.423529, 0.384314, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]

@@ -126,6 +126,7 @@ func update_theme() -> void:
 	
 	# load the styles
 	var panel_dark : StyleBoxFlat = load("res://Assets/Themes/Dark/PanelDarkGreen.tres")
+	var panel_dark_border : StyleBoxFlat = load("res://Assets/Themes/Dark/PanelDarkGreenBorder.tres")
 	var panel_normal : StyleBoxFlat = load("res://Assets/Themes/Dark/PanelGreen.tres")
 	var panel_normal_no_border : StyleBoxFlat = load("res://Assets/Themes/Dark/PanelGreenNoBorder.tres")
 	var panel_highlight : StyleBoxFlat = load("res://Assets/Themes/Dark/PanelHighlight.tres")
@@ -135,6 +136,7 @@ func update_theme() -> void:
 	
 	# apply colours to styles
 	panel_dark.bg_color = ui_theme.darker
+	panel_dark_border.bg_color = ui_theme.darker
 	panel_normal.bg_color = ui_theme.normal
 	panel_normal_no_border.bg_color = ui_theme.normal
 	panel_highlight.bg_color = ui_theme.highlight_colour
@@ -181,6 +183,15 @@ func update_theme() -> void:
 	# line edit
 	checkbox_theme.set_color("cursor_color", "LinEdit", ui_theme.highlight_colour)
 	checkbox_theme.set_color("selection_color", "LinEdit", ui_theme.highlight_colour)
+	
+	## charge button
+	var charge_theme : Theme = load("res://Assets/Themes/ChargeButtonTheme.tres")
+	# button panels
+	charge_theme.get_stylebox("hover", "Button").border_color = ui_theme.highlight_colour
+	charge_theme.get_stylebox("pressed", "Button").border_color = ui_theme.highlight_colour
+	# button colours
+	charge_theme.set_color("font_color_pressed", "Button", ui_theme.highlight_colour)
+	charge_theme.set_color("font_color_hover", "Button", ui_theme.highlight_colour)
 	
 	
 	emit_signal("theme_changed")

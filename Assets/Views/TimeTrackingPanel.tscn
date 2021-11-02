@@ -1,0 +1,224 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Assets/Themes/Dark/PanelSuperDarkGreen.tres" type="StyleBox" id=1]
+[ext_resource path="res://Scripts/Views/TimeTrackingPanel/TimeTrackingPanel.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Themes/ChargeButtonTheme.tres" type="Theme" id=3]
+[ext_resource path="res://Assets/Fonts/NovaMono/NovaMono-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Assets/Textures/RoundProgress.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Themes/Dark/PanelDarkGreen.tres" type="StyleBox" id=6]
+[ext_resource path="res://Assets/Themes/Dark/PanelGreenNoBorder.tres" type="StyleBox" id=7]
+[ext_resource path="res://Assets/Scenes/ChargeButton.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/Themes/Dark/PanelDarkGreenBorder.tres" type="StyleBox" id=9]
+[ext_resource path="res://Assets/Themes/Dark/LineEdit.tres" type="StyleBox" id=10]
+[ext_resource path="res://Assets/Themes/LineEditCool.tres" type="Theme" id=11]
+[ext_resource path="res://Assets/Textures/RoundProgressBG.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Fonts/Righteous20.tres" type="DynamicFont" id=13]
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="ButtonGroup" id=4]
+
+[node name="TimeTrackingPanel" type="Panel"]
+margin_left = 50.0
+margin_right = 300.0
+margin_bottom = 650.0
+rect_clip_content = true
+custom_styles/panel = ExtResource( 9 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+pomodoro_color = Color( 1, 0.121569, 0.121569, 1 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Content" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 25.0
+margin_top = 49.0
+margin_right = -26.0
+margin_bottom = -25.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control2" type="Control" parent="Content/VBoxContainer"]
+margin_right = 199.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 100 )
+size_flags_horizontal = 11
+
+[node name="Time" type="Label" parent="Content/VBoxContainer"]
+self_modulate = Color( 1, 0.121569, 0.121569, 1 )
+margin_top = 104.0
+margin_right = 199.0
+margin_bottom = 149.0
+custom_fonts/font = SubResource( 3 )
+text = "00:00"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PomodoroProgress" type="TextureProgress" parent="Content/VBoxContainer/Time"]
+modulate = Color( 1, 0.121569, 0.121569, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -78.5
+margin_top = -78.0629
+margin_right = 78.5
+margin_bottom = 79.9371
+value = 82.0
+texture_under = ExtResource( 12 )
+texture_progress = ExtResource( 5 )
+fill_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Content/VBoxContainer/Time"]
+modulate = Color( 1, 1, 1, 0.168627 )
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -74.5
+margin_top = 68.3394
+margin_right = 73.5
+margin_bottom = 98.3394
+custom_fonts/font = ExtResource( 13 )
+text = "Item name"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control3" type="Control" parent="Content/VBoxContainer"]
+margin_top = 153.0
+margin_right = 199.0
+margin_bottom = 542.0
+size_flags_vertical = 3
+
+[node name="ItemInput" type="LineEdit" parent="Content/VBoxContainer"]
+margin_top = 546.0
+margin_right = 199.0
+margin_bottom = 576.0
+rect_min_size = Vector2( 0, 30 )
+theme = ExtResource( 11 )
+custom_styles/normal = ExtResource( 10 )
+placeholder_text = "Item name"
+
+[node name="PomodoroButtons" type="VBoxContainer" parent="Content/VBoxContainer"]
+visible = false
+margin_top = 410.0
+margin_right = 199.0
+margin_bottom = 576.0
+
+[node name="Start" parent="Content/VBoxContainer/PomodoroButtons" instance=ExtResource( 8 )]
+margin_top = 0.0
+margin_bottom = 30.0
+text = "Start"
+instant = true
+
+[node name="Continue" parent="Content/VBoxContainer/PomodoroButtons" instance=ExtResource( 8 )]
+margin_top = 34.0
+margin_bottom = 64.0
+text = "Continue"
+
+[node name="Finish" parent="Content/VBoxContainer/PomodoroButtons" instance=ExtResource( 8 )]
+margin_top = 68.0
+margin_bottom = 98.0
+text = "Finish"
+
+[node name="Break" parent="Content/VBoxContainer/PomodoroButtons" instance=ExtResource( 8 )]
+margin_top = 102.0
+margin_bottom = 132.0
+text = "Break"
+
+[node name="Cancel" parent="Content/VBoxContainer/PomodoroButtons" instance=ExtResource( 8 )]
+margin_top = 136.0
+margin_bottom = 166.0
+text = "Cancel"
+
+[node name="NormalButtons" type="VBoxContainer" parent="Content/VBoxContainer"]
+visible = false
+margin_top = 546.0
+margin_right = 199.0
+margin_bottom = 576.0
+
+[node name="Start" parent="Content/VBoxContainer/NormalButtons" instance=ExtResource( 8 )]
+margin_top = 0.0
+margin_bottom = 30.0
+text = "Start"
+instant = true
+
+[node name="Finish" parent="Content/VBoxContainer/NormalButtons" instance=ExtResource( 8 )]
+margin_top = 0.0
+margin_bottom = 30.0
+text = "Finish"
+
+[node name="Cancel" parent="Content/VBoxContainer/NormalButtons" instance=ExtResource( 8 )]
+margin_top = 0.0
+margin_bottom = 30.0
+text = "Cancel"
+
+[node name="StateButtons" type="HBoxContainer" parent="Content"]
+anchor_right = 1.0
+margin_right = -1.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 0, 45 )
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Normal" type="Button" parent="Content/StateButtons"]
+margin_right = 124.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+theme = ExtResource( 3 )
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 6 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/disabled = SubResource( 6 )
+custom_styles/normal = ExtResource( 1 )
+toggle_mode = true
+pressed = true
+group = SubResource( 4 )
+text = "Normal"
+
+[node name="Pomodoro" type="Button" parent="Content/StateButtons"]
+margin_left = 124.0
+margin_right = 249.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+theme = ExtResource( 3 )
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 6 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/disabled = SubResource( 6 )
+custom_styles/normal = ExtResource( 1 )
+toggle_mode = true
+group = SubResource( 4 )
+text = "Pomodoro"
+
+[connection signal="pressed" from="Content/StateButtons/Normal" to="." method="_on_Normal_pressed"]
+[connection signal="pressed" from="Content/StateButtons/Pomodoro" to="." method="_on_Pomodoro_pressed"]

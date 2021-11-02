@@ -119,7 +119,7 @@ func update_total_time() -> void:
 
 
 func remove_time_track(idx : int) -> void:
-	total_secs -= res.tracks[idx].length
+	#total_secs -= res.tracks[idx].length
 	res.tracks.erase(idx)
 	update_total_time()
 
