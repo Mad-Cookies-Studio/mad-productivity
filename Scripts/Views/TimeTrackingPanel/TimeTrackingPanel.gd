@@ -6,7 +6,7 @@ export(Color) var pomodoro_color
 
 enum STATES { NORMAL, POMODORO, POMODORO_BREAK }
 enum TRACKING_STATE { IDLE, ACTIVE, PAUSED}
-enum BUTTONS {START, CONTINUE, FINISH, BREAK, CANCEL, PAUSE}
+enum BUTTONS {START, CONTINUE, FINISH, BREAK, CANCEL, PAUSE, RESET}
 
 const OPEN_SIZE : int = 250
 
@@ -30,6 +30,7 @@ func hookup_signals() -> void:
 	$Content/VBoxContainer/PomodoroButtons/PomodoroFinish.connect("charged",self, "on_pom_charged", [BUTTONS.FINISH])
 	$Content/VBoxContainer/PomodoroButtons/PomodoroBreak.connect("charged",self, "on_pom_charged", [BUTTONS.BREAK])
 	$Content/VBoxContainer/PomodoroButtons/PomodoroCancel.connect("charged",self, "on_pom_charged", [BUTTONS.CANCEL])
+	$Content/VBoxContainer/PomodoroButtons/PomodoroReset.connect("charged",self, "on_pom_charged", [BUTTONS.RESET])
 	# Normal
 	$Content/VBoxContainer/NormalButtons/NormalStart.connect("charged",self, "on_normal_charged", [BUTTONS.START])
 	$Content/VBoxContainer/NormalButtons/NormalPause.connect("charged",self, "on_normal_charged", [BUTTONS.PAUSE])
@@ -98,12 +99,21 @@ func start_pomodoro_break() -> void:
 	if state != STATES.POMODORO:
 		return
 	state = STATES.POMODORO_BREAK
+	tracked_seconds = 0
+	$Content/VBoxContainer/Control3/BreakLabel.show()
 	start_time_tracking()
 	
 
 func stop_time_tracking(cancel : bool ) -> void:
-	# we send out a signal to register the item first
-	emit_signal("register_time_track_item", $Content/VBoxContainer/ItemInput.text, tracked_seconds, state)
+	if !cancel:
+		# we send out a signal to register the item first
+		emit_signal("register_time_track_item", $Content/VBoxContainer/ItemInput.text, tracked_seconds, state)
+		print("sending a signal of a completed time track to be added to the database - TODO")
+		print("name, seconds tracked, state")
+		print($Content/VBoxContainer/ItemInput.text,", " , tracked_seconds, ", ", state)
+		if state == STATES.POMODORO_BREAK:
+			update_pomo_number(!cancel)
+		
 	
 	# take care of the state and buttons
 	time_tracking = false
@@ -117,10 +127,10 @@ func stop_time_tracking(cancel : bool ) -> void:
 	
 	if cancel and state == STATES.POMODORO_BREAK:
 		state = STATES.POMODORO
+		$Content/VBoxContainer/Control3/BreakLabel.hide()
 	
 	# functions
 	update_time()
-	update_pomo_number(!cancel)
 	reset_buttons()
 
 
@@ -143,26 +153,30 @@ func continue_time_tracking() -> void:
 	
 	match state:
 		STATES.POMODORO_BREAK:
+			update_pomo_number(true)
 			stop_time_tracking(true)
 			state = STATES.POMODORO
 			start_time_tracking()
+			$Content/VBoxContainer/Control3/BreakLabel.hide()
 
 func update_time() -> void:
 	match state :
 		STATES.NORMAL:
-
 			formatted_time = Defaults.get_formatted_time_from_seconds(tracked_seconds)
 		STATES.POMODORO:
 			formatted_time = Defaults.get_formatted_time_from_seconds(Defaults.settings_res.pomo_work_time_length - tracked_seconds)
 		STATES.POMODORO_BREAK:
-			formatted_time = Defaults.get_formatted_time_from_seconds(Defaults.settings_res.pomo_short_pause_length - tracked_seconds)
+			if get_pomodoro_phase_simple() != Defaults.settings_res.pomo_long_pause_freq:
+				formatted_time = Defaults.get_formatted_time_from_seconds(Defaults.settings_res.pomo_short_pause_length - tracked_seconds)
+			else:
+				formatted_time = Defaults.get_formatted_time_from_seconds(Defaults.settings_res.pomo_long_pause_length - tracked_seconds)
 	if formatted_time.begins_with("00:"):
 		formatted_time = formatted_time.trim_prefix("00:")
 	$Content/VBoxContainer/Time.text = formatted_time
 
 
 func update_pomo_number(increase : bool) -> void:
-	pomodoro_phase += int(increase)
+	pomodoro_phase = (pomodoro_phase + int(increase)) % (Defaults.settings_res.pomo_long_pause_freq + 1)
 	$Content/VBoxContainer/Time/PomodoroCount.text = str(pomodoro_phase) + "/" + str(Defaults.settings_res.pomo_long_pause_freq)
 
 
@@ -180,8 +194,16 @@ func set_up_pomo_progress_bar() -> void:
 		STATES.POMODORO:
 			$Content/VBoxContainer/Time/PomodoroProgress.max_value = Defaults.settings_res.pomo_work_time_length
 		STATES.POMODORO_BREAK:
-			$Content/VBoxContainer/Time/PomodoroProgress.max_value = Defaults.settings_res.pomo_short_pause_length
+			if get_pomodoro_phase_simple() == Defaults.settings_res.pomo_long_pause_freq:
+				$Content/VBoxContainer/Time/PomodoroProgress.max_value = Defaults.settings_res.pomo_long_pause_length
+			else:
+				$Content/VBoxContainer/Time/PomodoroProgress.max_value = Defaults.settings_res.pomo_short_pause_length
+				
 	$Content/VBoxContainer/Time/PomodoroProgress.value = $Content/VBoxContainer/Time/PomodoroProgress.max_value
+
+
+func get_pomodoro_phase_simple() -> int:
+	return pomodoro_phase % (Defaults.settings_res.pomo_long_pause_freq + 1)
 
 
 ## Signals
@@ -201,7 +223,7 @@ func _on_Pomodoro_pressed() -> void:
 func on_pom_charged(which : int) -> void:
 	match which:
 		BUTTONS.BREAK:
-			print("break pom")
+			start_pomodoro_break()
 		BUTTONS.CANCEL:
 			stop_time_tracking(true)
 		BUTTONS.CONTINUE:
@@ -210,6 +232,8 @@ func on_pom_charged(which : int) -> void:
 			stop_time_tracking(false)
 		BUTTONS.START:
 			start_time_tracking()
+		BUTTONS.RESET:
+			pomodoro_phase = 0
 			
 
 func on_normal_charged(which : int) -> void:
@@ -233,14 +257,20 @@ func _on_SecondsTimer_timeout() -> void:
 	tracked_seconds += 1
 	update_time()
 	
-	$Content/VBoxContainer/Time/PomodoroProgress.value = $Content/VBoxContainer/Time/PomodoroProgress.max_value - tracked_seconds
+#	$Content/VBoxContainer/Time/PomodoroProgress.value = $Content/VBoxContainer/Time/PomodoroProgress.max_value - tracked_seconds
+	$Tween.interpolate_property($Content/VBoxContainer/Time/PomodoroProgress, "value", $Content/VBoxContainer/Time/PomodoroProgress.value, $Content/VBoxContainer/Time/PomodoroProgress.max_value - tracked_seconds, 1.0, Tween.TRANS_LINEAR, Tween.EASE_OUT, 0.0)
+	$Tween.start()
+	
 	
 	if state == STATES.POMODORO and tracked_seconds >= Defaults.settings_res.pomo_work_time_length:
 		stop_time_tracking(false)
 		start_pomodoro_break()
 	
-	if state == STATES.POMODORO_BREAK and tracked_seconds >= Defaults.settings_res.pomo_short_pause_length:
-		pass
+	if state == STATES.POMODORO_BREAK:
+		if get_pomodoro_phase_simple() == Defaults.settings_res.pomo_long_pause_freq and tracked_seconds >= Defaults.settings_res.pomo_long_pause_length:
+			pass # TODO what happends when the break is over
+		if get_pomodoro_phase_simple() != Defaults.settings_res.pomo_long_pause_freq and tracked_seconds >= Defaults.settings_res.pomo_short_pause_length:
+			pass # TODO what happends when the break is over
 	
 
 
