@@ -105,6 +105,8 @@ func toggle_view(which : int) -> void:
 			$Content/VBoxContainer/Time/PomodoroCount.show()
 			$Content/VBoxContainer/NormalButtons.hide()
 			$Content/VBoxContainer/Time.self_modulate = pomodoro_color
+			update_pomo_number()
+	update_time()
 	reset_buttons()
 
 
@@ -243,7 +245,7 @@ func update_time() -> void:
 	$Content/VBoxContainer/Time.text = formatted_time
 
 
-func update_pomo_number(increase : bool) -> void:
+func update_pomo_number(increase : bool = false) -> void:
 	pomodoro_phase = (pomodoro_phase + int(increase)) % (Defaults.settings_res.pomo_long_pause_freq + 1)
 	$Content/VBoxContainer/Time/PomodoroCount.text = str(pomodoro_phase) + "/" + str(Defaults.settings_res.pomo_long_pause_freq)
 
