@@ -105,7 +105,7 @@ func start_pomodoro_break() -> void:
 		return
 	state = STATES.POMODORO_BREAK
 	reset_time()
-	$Content/VBoxContainer/Control3/BreakLabel.show()
+	$Content/VBoxContainer/Time/BreakLabel.show()
 	start_time_tracking()
 	
 
@@ -131,7 +131,7 @@ func stop_time_tracking(cancel : bool ) -> void:
 	
 	if cancel and state == STATES.POMODORO_BREAK:
 		state = STATES.POMODORO
-		$Content/VBoxContainer/Control3/BreakLabel.hide()
+		$Content/VBoxContainer/Time/BreakLabel.hide()
 	
 	# functions
 	update_time()
@@ -161,7 +161,7 @@ func continue_time_tracking() -> void:
 			stop_time_tracking(true)
 			state = STATES.POMODORO
 			start_time_tracking()
-			$Content/VBoxContainer/Control3/BreakLabel.hide()
+			$Content/VBoxContainer/Time/BreakLabel.hide()
 
 func update_time() -> void:
 	match state :
