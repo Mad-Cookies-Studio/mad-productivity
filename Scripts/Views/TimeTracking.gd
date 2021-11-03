@@ -79,8 +79,9 @@ func save() -> void:
 
 
 func update_total_time() -> void:
-	var _time : Array = get_hours_minutes_seconds(total_secs)
-	$CommandPanel/Total.text = "total " + _time[2] + ":" + _time[1] + ":" + _time[0]
+	pass
+#	var _time : Array = get_hours_minutes_seconds(total_secs)
+#	$CommandPanel/Total.text = "total " + _time[2] + ":" + _time[1] + ":" + _time[0]
 
 
 func remove_time_track(idx : int) -> void:
@@ -94,7 +95,7 @@ func update_time_track_item_text(_text : String, _id : int) -> void:
 
 
 func update_theme() -> void:
-	$CommandPanel/HBoxContainer/TimeTrack.add_color_override("font_color", Defaults.ui_theme.highlight_colour)
+	pass
 	
 	
 func on_theme_changed() -> void:
