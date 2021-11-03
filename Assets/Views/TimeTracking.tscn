@@ -1,62 +1,18 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://Assets/Buttons/play_pressed.png" type="Texture" id=1]
-[ext_resource path="res://Assets/Buttons/PauseBtn_idle.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Fonts/Righteous-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Assets/Themes/Roboto12Clean.tres" type="Theme" id=4]
 [ext_resource path="res://Assets/Buttons/cancelBtn_hover.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Buttons/PauseBtn.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Buttons/cancelBtn.png" type="Texture" id=7]
-[ext_resource path="res://Assets/Buttons/play_hovered.png" type="Texture" id=8]
-[ext_resource path="res://Assets/Buttons/play_idle.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Buttons/cancelBtn_idle.png" type="Texture" id=10]
 [ext_resource path="res://Scripts/Views/TimeTracking.gd" type="Script" id=11]
 [ext_resource path="res://Scripts/Views/TimeTracking/TrackedItem.gd" type="Script" id=12]
-[ext_resource path="res://Assets/Fonts/NovaMono20.tres" type="DynamicFont" id=13]
-[ext_resource path="res://Assets/Fonts/Roboto20.tres" type="DynamicFont" id=14]
-[ext_resource path="res://Assets/Buttons/PauseBtn_hover.png" type="Texture" id=15]
 [ext_resource path="res://Assets/Buttons/TimeTrackBtnWhite.png" type="Texture" id=16]
-[ext_resource path="res://Assets/Themes/Dark/LineEditTop.tres" type="StyleBox" id=17]
 [ext_resource path="res://Assets/Audio/notification.wav" type="AudioStream" id=18]
 [ext_resource path="res://Assets/Textures/TomatoIcon.png" type="Texture" id=20]
 [ext_resource path="res://Assets/Buttons/TimeTrackBtn.png" type="Texture" id=21]
 [ext_resource path="res://Assets/Fonts/Righteous20.tres" type="DynamicFont" id=22]
 [ext_resource path="res://Assets/Fonts/NovaMono60.tres" type="DynamicFont" id=23]
-[ext_resource path="res://Assets/Themes/Dark/PanelGreenNoBorder.tres" type="StyleBox" id=24]
-
-[sub_resource type="StyleBoxEmpty" id=1]
-content_margin_left = 15.0
-
-[sub_resource type="StyleBoxEmpty" id=2]
-
-[sub_resource type="DynamicFont" id=4]
-size = 20
-use_mipmaps = true
-font_data = ExtResource( 3 )
-
-[sub_resource type="DynamicFont" id=18]
-size = 34
-use_mipmaps = true
-font_data = ExtResource( 3 )
-
-[sub_resource type="StyleBoxFlat" id=12]
-content_margin_left = 10.0
-content_margin_right = 10.0
-bg_color = Color( 0.968627, 0.352941, 0.352941, 1 )
-
-[sub_resource type="StyleBoxFlat" id=13]
-content_margin_left = 10.0
-content_margin_right = 10.0
-bg_color = Color( 0.67451, 0.129412, 0.129412, 1 )
-
-[sub_resource type="StyleBoxFlat" id=14]
-content_margin_left = 10.0
-content_margin_right = 10.0
-bg_color = Color( 1, 0.121569, 0.121569, 1 )
-corner_radius_top_left = 35
-corner_radius_top_right = 35
-corner_radius_bottom_right = 35
-corner_radius_bottom_left = 35
 
 [sub_resource type="StyleBoxEmpty" id=8]
 
@@ -79,6 +35,11 @@ border_color = Color( 1, 0.121569, 0.121569, 1 )
 content_margin_top = 10.0
 content_margin_bottom = 10.0
 bg_color = Color( 0.541176, 0.0901961, 0.0901961, 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 20
+use_mipmaps = true
+font_data = ExtResource( 3 )
 
 [sub_resource type="Theme" id=6]
 default_font = SubResource( 4 )
@@ -236,183 +197,6 @@ align = 2
 
 [node name="Tween" type="Tween" parent="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem"]
 
-[node name="CommandPanel" type="Panel" parent="."]
-visible = false
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_vertical = 0
-rect_min_size = Vector2( 0, 50 )
-custom_styles/panel = ExtResource( 24 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CommandPanel"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 18.0
-margin_right = -17.0
-custom_constants/separation = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TrackButton" type="TextureButton" parent="CommandPanel/HBoxContainer"]
-margin_right = 30.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 30, 0 )
-toggle_mode = true
-texture_normal = ExtResource( 9 )
-texture_pressed = ExtResource( 1 )
-texture_hover = ExtResource( 8 )
-expand = true
-stretch_mode = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PauseButton" type="TextureButton" parent="CommandPanel/HBoxContainer"]
-margin_left = 30.0
-margin_right = 60.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 30, 0 )
-toggle_mode = true
-texture_normal = ExtResource( 2 )
-texture_pressed = ExtResource( 6 )
-texture_hover = ExtResource( 15 )
-expand = true
-stretch_mode = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CancelButton" type="TextureButton" parent="CommandPanel/HBoxContainer"]
-margin_left = 60.0
-margin_right = 90.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 30, 0 )
-texture_normal = ExtResource( 10 )
-texture_pressed = ExtResource( 7 )
-texture_hover = ExtResource( 7 )
-expand = true
-stretch_mode = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="LineEdit" parent="CommandPanel/HBoxContainer"]
-margin_left = 90.0
-margin_top = 10.0
-margin_right = 412.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 0, 30 )
-size_flags_horizontal = 3
-size_flags_vertical = 4
-theme = ExtResource( 4 )
-custom_fonts/font = ExtResource( 14 )
-custom_styles/read_only = SubResource( 1 )
-custom_styles/focus = SubResource( 2 )
-custom_styles/normal = ExtResource( 17 )
-placeholder_text = "Project name"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Control" type="Control" parent="CommandPanel/HBoxContainer"]
-margin_left = 412.0
-margin_right = 735.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 10, 0 )
-size_flags_horizontal = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TimeTrack" type="Label" parent="CommandPanel/HBoxContainer"]
-margin_left = 735.0
-margin_top = 10.0
-margin_right = 955.0
-margin_bottom = 39.0
-rect_min_size = Vector2( 150, 0 )
-custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
-custom_fonts/font = ExtResource( 13 )
-text = "56dsadasasdasdsadasd"
-align = 2
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Total" type="Label" parent="CommandPanel"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -83.7203
-margin_top = -30.2381
-margin_right = -28.7203
-margin_bottom = -4.2381
-grow_horizontal = 0
-custom_colors/font_color = Color( 0.643137, 0.643137, 0.643137, 0.415686 )
-custom_fonts/font = SubResource( 4 )
-text = "total:"
-align = 2
-valign = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PomodoroContainer" type="TextureRect" parent="CommandPanel"]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -102.638
-margin_top = -239.5
-margin_right = 44.3621
-margin_bottom = -92.4996
-texture = ExtResource( 20 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PomodoroCount" type="Label" parent="CommandPanel/PomodoroContainer"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -52.9176
-margin_top = -1.35983
-margin_right = 36.0824
-margin_bottom = 51.6402
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 18 )
-text = "0/4"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="BreakButton" type="Button" parent="CommandPanel/PomodoroContainer"]
-visible = false
-margin_left = 154.278
-margin_top = 69.7867
-margin_right = 231.278
-margin_bottom = 109.787
-rect_min_size = Vector2( 0, 40 )
-size_flags_vertical = 4
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 4 )
-custom_styles/hover = SubResource( 12 )
-custom_styles/pressed = SubResource( 13 )
-custom_styles/normal = SubResource( 14 )
-text = "Break"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="SecondsTimer" type="Timer" parent="."]
 
 [node name="RestTimer" type="Timer" parent="."]
@@ -506,9 +290,6 @@ text = "Finish"
 [connection signal="button_up" from="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem/H/Delete" to="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem" method="_on_Delete_button_up"]
 [connection signal="button_up" from="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem/H/TimeTrack" to="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem" method="_on_TimeTrack_button_up"]
 [connection signal="text_changed" from="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem/H/ProjectName" to="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem" method="_on_ProjectName_text_changed"]
-[connection signal="toggled" from="CommandPanel/HBoxContainer/PauseButton" to="." method="_on_PauseButton_toggled"]
-[connection signal="pressed" from="CommandPanel/HBoxContainer/CancelButton" to="." method="_on_CancelButton_pressed"]
-[connection signal="pressed" from="CommandPanel/PomodoroContainer/BreakButton" to="." method="_on_BreakButton_pressed"]
 [connection signal="timeout" from="SecondsTimer" to="." method="_on_SecondsTimer_timeout"]
 [connection signal="timeout" from="RestTimer" to="." method="_on_RestTimer_timeout"]
 [connection signal="pressed" from="PauseOverlay/VBX/ContinueBreakBtn" to="." method="_on_ContinueBreakBtn_pressed"]
