@@ -275,3 +275,7 @@ func _on_FinishBtn_pressed() -> void:
 	$PauseOverlay.hide()
 	$CommandPanel/HBoxContainer/TrackButton.pressed = false
 	_on_TrackButton_toggled(false)
+
+
+func _on_TimeTrackingPanel_register_time_track_item(_name, _length, _state) -> void:
+	pass # Replace with function body.

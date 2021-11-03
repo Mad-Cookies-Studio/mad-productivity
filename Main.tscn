@@ -692,6 +692,7 @@ __meta__ = {
 script = ExtResource( 37 )
 
 [connection signal="view_changed" from="MainWorkspace/HBX/Sidebar" to="." method="_on_Sidebar_view_changed"]
+[connection signal="register_time_track_item" from="MainWorkspace/HBX/TimeTrackingPanel" to="MainWorkspace/HBX/VBX/Views/TimeTracking" method="_on_TimeTrackingPanel_register_time_track_item"]
 [connection signal="gui_input" from="MainWorkspace/HBX/VBX/TopArea" to="MainWorkspace/HBX/VBX/TopArea" method="_on_TopArea_gui_input"]
 [connection signal="toggle_time_tracking_bar" from="MainWorkspace/HBX/VBX/TopArea" to="MainWorkspace/HBX/TimeTrackingPanel" method="_on_TopArea_toggle_time_tracking_bar"]
 [connection signal="toggled" from="MainWorkspace/HBX/VBX/TopArea/Left/TimeTrackPanel" to="MainWorkspace/HBX/VBX/TopArea" method="_on_TimeTrackPanel_toggled"]
