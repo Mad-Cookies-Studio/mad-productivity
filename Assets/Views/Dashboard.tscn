@@ -46,10 +46,11 @@ __meta__ = {
 }
 
 [node name="Date" type="Label" parent="VBoxContainer"]
+modulate = Color( 1, 1, 1, 0.611765 )
 margin_top = 92.0
 margin_right = 930.0
 margin_bottom = 118.0
-custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Date"
 align = 1

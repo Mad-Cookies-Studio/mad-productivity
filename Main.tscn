@@ -429,10 +429,10 @@ __meta__ = {
 
 [node name="Minimuze" type="TextureButton" parent="MainWorkspace/HBX/VBX/TopArea/Right"]
 modulate = Color( 1, 1, 1, 0.490196 )
-margin_left = 237.0
-margin_right = 250.0
+margin_left = 242.0
+margin_right = 254.0
 margin_bottom = 32.0
-rect_min_size = Vector2( 13, 0 )
+rect_min_size = Vector2( 12, 0 )
 texture_normal = ExtResource( 33 )
 expand = true
 stretch_mode = 5
@@ -440,10 +440,10 @@ script = ExtResource( 11 )
 
 [node name="Maximize" type="TextureButton" parent="MainWorkspace/HBX/VBX/TopArea/Right"]
 modulate = Color( 1, 1, 1, 0.490196 )
-margin_left = 264.0
-margin_right = 277.0
+margin_left = 268.0
+margin_right = 280.0
 margin_bottom = 32.0
-rect_min_size = Vector2( 13, 0 )
+rect_min_size = Vector2( 12, 0 )
 toggle_mode = true
 texture_normal = ExtResource( 6 )
 expand = true
@@ -452,10 +452,10 @@ script = ExtResource( 11 )
 
 [node name="Exit" type="TextureButton" parent="MainWorkspace/HBX/VBX/TopArea/Right"]
 modulate = Color( 1, 1, 1, 0.490196 )
-margin_left = 291.0
+margin_left = 294.0
 margin_right = 307.0
 margin_bottom = 32.0
-rect_min_size = Vector2( 16, 0 )
+rect_min_size = Vector2( 13, 0 )
 texture_normal = ExtResource( 8 )
 expand = true
 stretch_mode = 5
