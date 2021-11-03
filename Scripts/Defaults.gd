@@ -31,7 +31,7 @@ var active_view : int
 var active_view_pointer
 
 var time_tracking : bool = false
-var time_tracked : String = ""
+var time_tracked : int = 0
 var item_tracked : String = ""
 
 var settings_res : SettingsResource

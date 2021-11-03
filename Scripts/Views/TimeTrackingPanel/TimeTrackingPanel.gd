@@ -67,6 +67,7 @@ func toggle_view(which : int) -> void:
 			$Content/VBoxContainer/Time/PomodoroCount.show()
 			$Content/VBoxContainer/NormalButtons.hide()
 			$Content/VBoxContainer/Time.self_modulate = pomodoro_color
+	reset_buttons()
 
 
 func start_time_tracking() -> void:
@@ -77,17 +78,21 @@ func start_time_tracking() -> void:
 	match state:
 		STATES.NORMAL:
 			$Content/VBoxContainer/NormalButtons/NormalStart.hide()
+			$Content/VBoxContainer/NormalButtons/NormalContinue.hide()
 			$Content/VBoxContainer/NormalButtons/NormalPause.show()
 			$Content/VBoxContainer/NormalButtons/NormalFinish.show()
 			$Content/VBoxContainer/NormalButtons/NormalCancel.show()
 		STATES.POMODORO:
 			$Content/VBoxContainer/PomodoroButtons/PomodoroStart.hide()
+			$Content/VBoxContainer/PomodoroButtons/PomodoroReset.hide()
+			$Content/VBoxContainer/PomodoroButtons/PomodoroContinue.show()
 			$Content/VBoxContainer/PomodoroButtons/PomodoroFinish.show()
 			$Content/VBoxContainer/PomodoroButtons/PomodoroBreak.show()
 			$Content/VBoxContainer/PomodoroButtons/PomodoroCancel.show()
 			set_up_pomo_progress_bar()
 		STATES.POMODORO_BREAK:
 			$Content/VBoxContainer/PomodoroButtons/PomodoroStart.hide()
+			$Content/VBoxContainer/PomodoroButtons/PomodoroReset.hide()
 			$Content/VBoxContainer/PomodoroButtons/PomodoroContinue.show()
 			$Content/VBoxContainer/PomodoroButtons/PomodoroFinish.show()
 			$Content/VBoxContainer/PomodoroButtons/PomodoroCancel.show()
@@ -99,7 +104,7 @@ func start_pomodoro_break() -> void:
 	if state != STATES.POMODORO:
 		return
 	state = STATES.POMODORO_BREAK
-	tracked_seconds = 0
+	reset_time()
 	$Content/VBoxContainer/Control3/BreakLabel.show()
 	start_time_tracking()
 	
@@ -122,8 +127,7 @@ func stop_time_tracking(cancel : bool ) -> void:
 	$Content/StateButtons/Pomodoro.disabled = false
 	$Content/VBoxContainer/Time/PomodoroProgress.value = 0
 	# reset vars
-	tracked_seconds = 0
-	formatted_time = "00:00:00"
+	reset_time()
 	
 	if cancel and state == STATES.POMODORO_BREAK:
 		state = STATES.POMODORO
@@ -170,6 +174,7 @@ func update_time() -> void:
 				formatted_time = Defaults.get_formatted_time_from_seconds(Defaults.settings_res.pomo_short_pause_length - tracked_seconds)
 			else:
 				formatted_time = Defaults.get_formatted_time_from_seconds(Defaults.settings_res.pomo_long_pause_length - tracked_seconds)
+		
 	if formatted_time.begins_with("00:"):
 		formatted_time = formatted_time.trim_prefix("00:")
 	$Content/VBoxContainer/Time.text = formatted_time
@@ -187,6 +192,7 @@ func reset_buttons() -> void:
 	for i in $Content/VBoxContainer/PomodoroButtons.get_children():
 		i.hide()
 	$Content/VBoxContainer/PomodoroButtons/PomodoroStart.show()
+	$Content/VBoxContainer/PomodoroButtons/PomodoroReset.show()
 
 
 func set_up_pomo_progress_bar() -> void:
@@ -204,6 +210,13 @@ func set_up_pomo_progress_bar() -> void:
 
 func get_pomodoro_phase_simple() -> int:
 	return pomodoro_phase % (Defaults.settings_res.pomo_long_pause_freq + 1)
+
+
+func reset_time() -> void:
+	tracked_seconds = 0
+	$ProgressTween.remove_all()
+	$Content/VBoxContainer/Time.text = "00:00"
+	$Content/VBoxContainer/Time/PomodoroProgress.value = $Content/VBoxContainer/Time/PomodoroProgress.max_value
 
 
 ## Signals
@@ -258,8 +271,8 @@ func _on_SecondsTimer_timeout() -> void:
 	update_time()
 	
 #	$Content/VBoxContainer/Time/PomodoroProgress.value = $Content/VBoxContainer/Time/PomodoroProgress.max_value - tracked_seconds
-	$Tween.interpolate_property($Content/VBoxContainer/Time/PomodoroProgress, "value", $Content/VBoxContainer/Time/PomodoroProgress.value, $Content/VBoxContainer/Time/PomodoroProgress.max_value - tracked_seconds, 1.0, Tween.TRANS_LINEAR, Tween.EASE_OUT, 0.0)
-	$Tween.start()
+	$ProgressTween.interpolate_property($Content/VBoxContainer/Time/PomodoroProgress, "value", $Content/VBoxContainer/Time/PomodoroProgress.value, $Content/VBoxContainer/Time/PomodoroProgress.max_value - tracked_seconds, 1.0, Tween.TRANS_LINEAR, Tween.EASE_OUT, 0.0)
+	$ProgressTween.start()
 	
 	
 	if state == STATES.POMODORO and tracked_seconds >= Defaults.settings_res.pomo_work_time_length:
