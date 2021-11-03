@@ -1,6 +1,6 @@
 extends Panel
 
-signal register_time_track_item(_name, _length, _state)
+signal register_time_track_item(track_item)
 
 export(Color) var pomodoro_color
 
@@ -17,10 +17,21 @@ var tracked_seconds : int = 0
 var formatted_time : String = ""
 var pomodoro_phase : = 0
 
+# stats
+var track_start : int
+var track_end : int
+
+
+# current time track item
+var curr_track_item : TimeTrackItem
+
+
 func _ready() -> void:
+	Defaults.time_tracking_panel = self
 	toggle_view(STATES.NORMAL)
 	hookup_signals()
 	update_pomo_number(false)
+	check_unfinished_track()
 	
 	
 func hookup_signals() -> void:
@@ -39,6 +50,33 @@ func hookup_signals() -> void:
 	$Content/VBoxContainer/NormalButtons/NormalCancel.connect("charged",self, "on_normal_charged", [BUTTONS.CANCEL])
 	# others perhaps?
 
+
+func check_unfinished_track() -> void:
+	if Defaults.settings_res.unsaved_time_track:
+		
+		
+		curr_track_item = Defaults.settings_res.unsaved_time_track
+		print(curr_track_item.type)
+		if curr_track_item.type == STATES.NORMAL:
+			$Content/StateButtons/Normal.pressed = true
+			_on_Normal_pressed()
+		else:
+			$Content/StateButtons/Pomodoro.pressed = true
+			_on_Pomodoro_pressed()
+			
+		$Content/StateButtons/Pomodoro.disabled = true
+		$Content/StateButtons/Normal.disabled = true
+		
+		
+		tracked_seconds = curr_track_item.get_duration()
+		update_time()
+		
+		$Content/VBoxContainer/ItemInput.text = curr_track_item.name
+		$Content/VBoxContainer/Time/ItemLabel.text = curr_track_item.name
+		
+		continue_time_tracking()
+	
+	
 
 func toggle_self(really : bool) -> void:
 	update_pomo_number(false)
@@ -60,7 +98,7 @@ func toggle_view(which : int) -> void:
 			$Content/VBoxContainer/Time/PomodoroProgress.hide()
 			$Content/VBoxContainer/Time.self_modulate = Defaults.ui_theme.text_color
 			$Content/VBoxContainer/Time/PomodoroCount.hide()
-		STATES.POMODORO: # Pomodoro
+		_: # Pomodoro
 			state = STATES.POMODORO
 			$Content/VBoxContainer/Time/PomodoroProgress.show()
 			$Content/VBoxContainer/PomodoroButtons.show()
@@ -75,6 +113,14 @@ func start_time_tracking() -> void:
 	$Content/StateButtons/Normal.disabled = true
 	$Content/StateButtons/Pomodoro.disabled = true
 	$SecondsTimer.start()
+	
+	curr_track_item = TimeTrackItem.new()
+	curr_track_item.create_track($Content/VBoxContainer/ItemInput.text)
+	curr_track_item.start_tracking(OS.get_unix_time())
+	curr_track_item.type = state
+	
+	$ProgressTween.remove_all()
+	
 	match state:
 		STATES.NORMAL:
 			$Content/VBoxContainer/NormalButtons/NormalStart.hide()
@@ -110,9 +156,14 @@ func start_pomodoro_break() -> void:
 	
 
 func stop_time_tracking(cancel : bool ) -> void:
-	if !cancel:
-		# we send out a signal to register the item first
-		emit_signal("register_time_track_item", $Content/VBoxContainer/ItemInput.text, tracked_seconds, state)
+	if !cancel and state != STATES.POMODORO_BREAK:
+		# wrap up the time track officialy and send it off
+		curr_track_item.end_tracking(OS.get_unix_time())
+		curr_track_item.type = state
+		emit_signal("register_time_track_item", curr_track_item)
+		print(tracked_seconds)
+		print(curr_track_item.get_duration())
+		curr_track_item = null
 		print("sending a signal of a completed time track to be added to the database - TODO")
 		print("name, seconds tracked, state")
 		print($Content/VBoxContainer/ItemInput.text,", " , tracked_seconds, ", ", state)
@@ -126,6 +177,8 @@ func stop_time_tracking(cancel : bool ) -> void:
 	$Content/StateButtons/Normal.disabled = false
 	$Content/StateButtons/Pomodoro.disabled = false
 	$Content/VBoxContainer/Time/PomodoroProgress.value = 0
+	
+	Defaults.settings_res.unsaved_time_track = null
 	# reset vars
 	reset_time()
 	
@@ -141,19 +194,29 @@ func stop_time_tracking(cancel : bool ) -> void:
 func pause_time_tracking() -> void:
 	$SecondsTimer.paused = true
 	#normal
+	$Content/VBoxContainer/NormalButtons/NormalStart.hide()
 	$Content/VBoxContainer/NormalButtons/NormalPause.hide()
 	$Content/VBoxContainer/NormalButtons/NormalContinue.show()
 	#pomdoro
 
 
 func continue_time_tracking() -> void:
+	time_tracking = true
+	if !$SecondsTimer.paused:
+		$SecondsTimer.start()
 	$SecondsTimer.paused = false
 	#normal
+	$Content/VBoxContainer/NormalButtons/NormalStart.hide()
 	$Content/VBoxContainer/NormalButtons/NormalPause.show()
 	$Content/VBoxContainer/NormalButtons/NormalContinue.hide()
+	$Content/VBoxContainer/NormalButtons/NormalFinish.show()
+	$Content/VBoxContainer/NormalButtons/NormalCancel.show()
 	#pomodoro
+	$Content/VBoxContainer/PomodoroButtons/PomodoroStart.hide()
 	$Content/VBoxContainer/PomodoroButtons/PomodoroContinue.hide()
 	$Content/VBoxContainer/PomodoroButtons/PomodoroBreak.show()
+	$Content/VBoxContainer/PomodoroButtons/PomodoroFinish.show()
+	$Content/VBoxContainer/PomodoroButtons/PomodoroCancel.show()
 	
 	match state:
 		STATES.POMODORO_BREAK:
@@ -217,6 +280,11 @@ func reset_time() -> void:
 	$ProgressTween.remove_all()
 	$Content/VBoxContainer/Time.text = "00:00"
 	$Content/VBoxContainer/Time/PomodoroProgress.value = $Content/VBoxContainer/Time/PomodoroProgress.max_value
+
+
+func quit() -> void:
+	if time_tracking:
+		Defaults.settings_res.unsaved_time_track = curr_track_item
 
 
 ## Signals
@@ -289,3 +357,5 @@ func _on_SecondsTimer_timeout() -> void:
 
 func _on_ItemInput_text_changed(new_text: String) -> void:
 	$Content/VBoxContainer/Time/ItemLabel.text = new_text
+	if curr_track_item:
+		curr_track_item.name = new_text

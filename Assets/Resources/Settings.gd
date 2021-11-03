@@ -61,6 +61,8 @@ export var quote_list : Dictionary = {
 
 export(bool) var custom_theme : bool = false
 
+export(Resource) var unsaved_time_track
+
 func reset_pomodoro_settings() -> void:
 	pomo_long_pause_freq = 3
 	pomo_long_pause_length = 15

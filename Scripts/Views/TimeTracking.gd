@@ -277,5 +277,6 @@ func _on_FinishBtn_pressed() -> void:
 	_on_TrackButton_toggled(false)
 
 
-func _on_TimeTrackingPanel_register_time_track_item(_name, _length, _state) -> void:
-	pass # Replace with function body.
+func _on_TimeTrackingPanel_register_time_track_item(item : TimeTrackItem) -> void:
+	var id : int = res.add_finished_track(item)
+	create_track_visual(item.name, item.get_start_unix_time(), item.get_duration(), id)

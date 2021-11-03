@@ -20,6 +20,8 @@ func _ready() -> void:
 	on_theme_changed()
 	set_process_input(false)
 	var res = load(Defaults.TIMETRACKS_SAVE_PATH + Defaults.TIMETRACKS_SAVE_NAME)	# TODO: access this resource in some more elegant way
+	if Defaults.settings_res.unsaved_time_track:
+		$Left/TimeTrackPanel.pressed = true
 #	$Right/Maximize.pressed = Defaults.settings_res.window_maximized
 	
 

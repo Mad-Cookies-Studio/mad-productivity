@@ -34,11 +34,17 @@ var time_tracking : bool = false
 var time_tracked : int = 0
 var item_tracked : String = ""
 
+var time_tracking_panel
+
 var settings_res : SettingsResource
 
 var ui_theme : ThemeResource
 
 var windows_sdt_bias : int
+
+func _notification(what):
+	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
+		quit()
 
 func _ready() -> void:
 	set_windows_dst_bias()
@@ -211,6 +217,9 @@ func quit() -> void:
 		
 	if settings_res.remember_last_session_view:
 		settings_res.last_session_view = active_view
+	
+	if time_tracking_panel:
+		time_tracking_panel.quit()
 	
 	ui_theme.save_theme()
 	save_settings_resource()

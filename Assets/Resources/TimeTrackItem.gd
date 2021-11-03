@@ -4,7 +4,7 @@ class_name TimeTrackItem
 
 export(Array) var date_ranges
 export(String) var name
-
+export(int) var type
 
 func create_track(n : String) -> void:
 	name = n
