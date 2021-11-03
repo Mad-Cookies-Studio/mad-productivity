@@ -45,7 +45,8 @@ func _on_TopArea_gui_input(event: InputEvent) -> void:
 			orig_position = get_viewport().get_mouse_position() - OS.window_position
 			drag_amount = get_viewport().get_mouse_position()
 #			print(get_global_mouse_position())
-			initial_mouse_pos = get_local_mouse_position()
+#			initial_mouse_pos = get_local_mouse_position()
+			initial_mouse_pos = get_global_mouse_position()
 			Input.set_mouse_mode(2)
 
 
