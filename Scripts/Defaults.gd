@@ -152,6 +152,7 @@ func update_theme() -> void:
 	line_edit.bg_color = ui_theme.super_dark
 	line_edit.border_color = ui_theme.highlight_colour
 
+
 	## Cute button theme
 	var cute_button_theme : Theme = load("res://Assets/Themes/CuteButtonTheme.tres")
 	# normal
@@ -161,21 +162,19 @@ func update_theme() -> void:
 	# pressed
 	cute_button_theme.get_stylebox("pressed", "Button").bg_color = ui_theme.highlight_darker
 
-	## Roboto 12 clean
+	## Roboto 12 clean theme
 	var roboto_clean : Theme = load("res://Assets/Themes/Roboto12Clean.tres")
 	# colors
 	roboto_clean.set_color("selection_color", "LineEdit", ui_theme.highlight_colour)
 	roboto_clean.set_color("cursor_color", "LineEdit", ui_theme.highlight_colour)
 
-	## Roboto 12 clean
+	## PopUp theme
 	var popupTheme : Theme = load("res://Assets/Themes/PopupTheme.tres")
 	# colors
 	popupTheme.set_color("font_color_hover", "Button", ui_theme.highlight_colour)
-
 	# set up local colours
 	btn_active_colour = ui_theme.btn_active_col
 	btn_inactive_colour = ui_theme.btn_inactive_col
-	
 	
 	## checkbox theme
 	var checkbox_theme : Theme = load("res://Assets/Themes/CheckBox.tres")
@@ -192,7 +191,7 @@ func update_theme() -> void:
 	checkbox_theme.set_color("cursor_color", "LineEdit", ui_theme.highlight_colour)
 	checkbox_theme.set_color("selection_color", "LineEdit", ui_theme.highlight_colour)
 	
-	## charge button
+	## charge button theme
 	var charge_theme : Theme = load("res://Assets/Themes/ChargeButtonTheme.tres")
 	# button panels
 	charge_theme.get_stylebox("hover", "Button").border_color = ui_theme.highlight_colour
