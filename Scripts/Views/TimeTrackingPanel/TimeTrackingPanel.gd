@@ -259,7 +259,7 @@ func update_time() -> void:
 
 func update_pomo_number(increase : bool = false) -> void:
 	pomodoro_phase = (pomodoro_phase + int(increase)) % (Defaults.settings_res.pomo_long_pause_freq + 1)
-	$Content/VBoxContainer/Time/PomodoroCount.text = str(pomodoro_phase) + "/" + str(Defaults.settings_res.pomo_long_pause_freq)
+	$Content/VBoxContainer/Time/PomodoroCount.text = str((pomodoro_phase % Defaults.settings_res.pomo_long_pause_freq) + 1 ) + "/" + str(Defaults.settings_res.pomo_long_pause_freq)
 
 
 func reset_buttons() -> void:
