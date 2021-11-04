@@ -11,8 +11,6 @@ const TIMETRACKS_SAVE_PATH : String = "user://TimeTracks/"
 const TIMETRACKS_SAVE_NAME : String = "TimeTrackResource.tres"
 const TODOS_SAVE_PATH : String = "user://Todos/"
 const TODOS_SAVE_NAME : String = "Todos.tres"
-const REMINDERS_SAVE_PATH : String = "user://Reminders/"
-const REMINDERS_SAVE_NAME : String = "Reminders.tres"
 const SETTINGS_SAVE_PATH : String = "user://"
 const SETTINGS_SAVE_NAME : String = "Settings.tres"
 
@@ -61,10 +59,8 @@ func check_folders() -> void:
 	check_directory(dir, NOTES_SAVE_PATH)
 	check_directory(dir, TIMETRACKS_SAVE_PATH)
 	check_directory(dir, TODOS_SAVE_PATH)
-	check_directory(dir, REMINDERS_SAVE_PATH)
 	check_resource(dir, TIMETRACKS_SAVE_PATH + TIMETRACKS_SAVE_NAME, RESOURCES.TIME_TRACK)
 	check_resource(dir, TODOS_SAVE_PATH + TODOS_SAVE_NAME, RESOURCES.TODOS)
-	check_resource(dir, REMINDERS_SAVE_PATH + REMINDERS_SAVE_NAME, RESOURCES.REMINDER)
 	check_resource(dir, SETTINGS_SAVE_PATH + SETTINGS_SAVE_NAME, RESOURCES.SETTINGS)
 
 
@@ -90,9 +86,6 @@ func check_resource(dir: Directory, path : String, resource_id : int) -> void:
 			RESOURCES.TODOS:
 				resource = ToDoResource.new()
 				print("Todo resource missing, creating it now!")
-			RESOURCES.REMINDER:
-				resource = ReminderResource.new()
-				print("Reminder resource missing, creating it now!")
 			RESOURCES.SETTINGS:
 				resource = SettingsResource.new()
 				
@@ -328,10 +321,6 @@ func save_todo_resource(td : ToDoResource) -> int:
 	var err : int = ResourceSaver.save(TODOS_SAVE_PATH + TODOS_SAVE_NAME, td)
 	return err
 
-
-func save_reminders_resource(rr : ReminderResource) -> int:
-	var err : int = ResourceSaver.save(REMINDERS_SAVE_PATH + REMINDERS_SAVE_NAME, rr)
-	return err
 
 
 func save_settings_resource(sr : SettingsResource = null) -> int:
