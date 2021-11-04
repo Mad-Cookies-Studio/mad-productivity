@@ -36,8 +36,10 @@ func load_time_tracks() -> void:
 		if item.is_finished():
 			create_track_visual(item.name, item.get_start_unix_time(), item.get_len(), i)
 		else:
-			# TODO: error handling
-			print("there shoudn't be any unfinished tracks")
+			print("deleting item:")
+			print(item.name)
+			print("as it was unfinished")
+			res.tracks.erase(item)
 	
 	
 func create_track_visual(_name : String, _date : int, _time : int, _id : int) -> void:
