@@ -297,11 +297,19 @@ func get_datetime_from_unix_time(_unixTime : int) -> String:
 
 
 func get_formatted_time_from_seconds(_secs : int) -> String:
+	var neg : bool = false
+	if _secs < 0: 
+		_secs = abs(_secs)
+		neg = true
 	var hours : int = _secs / 3600
 	_secs -= hours * 3600
 	var minutes : int = _secs / 60
 	_secs -= minutes * 60
-	return ("%02d" % hours) + ":" + str("%02d" % minutes) + ":" + ("%02d" % _secs)
+	
+	if neg:
+		return ("-" + "%02d" % hours) + ":" + str("%02d" % minutes) + ":" + ("%02d" % _secs)
+	else:
+		return ("%02d" % hours) + ":" + str("%02d" % minutes) + ":" + ("%02d" % _secs)
 
 
 func save_note_resource(note : NoteResource) -> int:

@@ -252,6 +252,8 @@ func update_time() -> void:
 		
 	if formatted_time.begins_with("00:"):
 		formatted_time = formatted_time.trim_prefix("00:")
+	elif formatted_time.begins_with("-00:"):
+		formatted_time = "-" + formatted_time.trim_prefix("-00:")
 	$Content/VBoxContainer/Time.text = formatted_time
 
 
