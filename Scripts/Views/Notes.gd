@@ -7,6 +7,7 @@ var active_btn : Button
 var resource_file_paths : Array
 
 func _ready() -> void:
+	$VBoxContainer/HSplitContainer/Panel/ScrollContainer/NoteButtons/DefaultButton.hide()
 	reset_state()
 	load_notes()
 	

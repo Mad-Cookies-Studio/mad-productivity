@@ -824,10 +824,10 @@ __meta__ = {
 [node name="ColorPicker" type="ColorPicker" parent="Panel"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -133.5
-margin_top = 71.0
-margin_right = 174.5
-margin_bottom = 507.0
+margin_left = -129.5
+margin_top = 75.0
+margin_right = 178.5
+margin_bottom = 511.0
 presets_enabled = false
 presets_visible = false
 script = ExtResource( 14 )

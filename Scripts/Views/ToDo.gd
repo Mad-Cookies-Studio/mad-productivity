@@ -13,6 +13,8 @@ var current_project_id : int
 var current_project_child_id : int
 
 func _ready() -> void:
+	$VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons/ProjectButton.hide()
+	$VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem.hide()
 	Defaults.connect("theme_changed", self, "on_theme_changed")
 	update_theme()
 	res = load(Defaults.TODOS_SAVE_PATH + Defaults.TODOS_SAVE_NAME)
