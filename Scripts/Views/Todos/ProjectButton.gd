@@ -49,4 +49,5 @@ func set_percent_done(perc : float = 0.0) -> void:
 
 func on_tween_done() -> void:
 	if finished:
-		$CompleteSound.play()
+#		$CompleteSound.play()
+		pass
