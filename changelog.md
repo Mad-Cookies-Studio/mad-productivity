@@ -15,6 +15,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Theme settings
 - Top panel contextual button and user input fields
 - User shortcuts
+- User saves
+- User themes
 - Empty game view
 - Customizable user quotes
 - Concepts (./.concepts/)
