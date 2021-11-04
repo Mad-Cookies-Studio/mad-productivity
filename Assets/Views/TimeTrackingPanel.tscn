@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Assets/Themes/Dark/PanelSuperDarkGreen.tres" type="StyleBox" id=1]
 [ext_resource path="res://Scripts/Views/TimeTrackingPanel/TimeTrackingPanel.gd" type="Script" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Assets/Themes/LineEditCool.tres" type="Theme" id=11]
 [ext_resource path="res://Assets/Textures/RoundProgressBG.png" type="Texture" id=12]
 [ext_resource path="res://Assets/Fonts/Righteous20.tres" type="DynamicFont" id=13]
+[ext_resource path="res://Assets/Audio/notification2.wav" type="AudioStream" id=14]
 
 [sub_resource type="DynamicFont" id=3]
 size = 32
@@ -291,6 +292,9 @@ text = "Pomodoro"
 [node name="SecondsTimer" type="Timer" parent="."]
 
 [node name="ProgressTween" type="Tween" parent="."]
+
+[node name="NotificationSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
 
 [connection signal="text_changed" from="Content/VBoxContainer/ItemInput" to="." method="_on_ItemInput_text_changed"]
 [connection signal="pressed" from="Content/StateButtons/Normal" to="." method="_on_Normal_pressed"]

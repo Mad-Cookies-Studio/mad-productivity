@@ -25,6 +25,7 @@ var track_end : int
 # current time track item
 var curr_track_item : TimeTrackItem
 
+var notified : bool = false
 
 func _ready() -> void:
 	Defaults.time_tracking_panel = self
@@ -112,6 +113,7 @@ func toggle_view(which : int) -> void:
 
 func start_time_tracking() -> void:
 	time_tracking = true
+	notified = false
 	$Content/StateButtons/Normal.disabled = true
 	$Content/StateButtons/Pomodoro.disabled = true
 	$SecondsTimer.start()
@@ -133,7 +135,7 @@ func start_time_tracking() -> void:
 		STATES.POMODORO:
 			$Content/VBoxContainer/PomodoroButtons/PomodoroStart.hide()
 			$Content/VBoxContainer/PomodoroButtons/PomodoroReset.hide()
-			$Content/VBoxContainer/PomodoroButtons/PomodoroContinue.show()
+			$Content/VBoxContainer/PomodoroButtons/PomodoroContinue.hide()
 			$Content/VBoxContainer/PomodoroButtons/PomodoroFinish.show()
 			$Content/VBoxContainer/PomodoroButtons/PomodoroBreak.show()
 			$Content/VBoxContainer/PomodoroButtons/PomodoroCancel.show()
@@ -151,9 +153,16 @@ func start_time_tracking() -> void:
 func start_pomodoro_break() -> void:
 	if state != STATES.POMODORO:
 		return
+	notified = false
+	# this one stops the timing and sends time tracking data
+	stop_time_tracking(false)
+	# set the state
 	state = STATES.POMODORO_BREAK
+	# time reset
 	reset_time()
+	# show the break label
 	$Content/VBoxContainer/Time/BreakLabel.show()
+	# start time tracking
 	start_time_tracking()
 	
 
@@ -207,6 +216,7 @@ func continue_time_tracking() -> void:
 	if !$SecondsTimer.paused:
 		$SecondsTimer.start()
 	$SecondsTimer.paused = false
+	notified = false
 	#normal
 	$Content/VBoxContainer/NormalButtons/NormalStart.hide()
 	$Content/VBoxContainer/NormalButtons/NormalPause.show()
@@ -289,6 +299,35 @@ func quit() -> void:
 		Defaults.settings_res.unsaved_time_track = curr_track_item
 
 
+func play_notification(break_time : bool = false) -> void:
+	if !notified:
+		if !break_time:
+			show_pomodoro_pause_buttons()
+		else:
+			show_pomodoro_continue_buttons()
+		$NotificationSound.play()
+		notified = true
+		if !OS.is_window_focused():
+			OS.set_window_always_on_top(true)
+			OS.set_window_always_on_top(false)
+
+
+func show_pomodoro_pause_buttons() -> void:
+	$"Content/VBoxContainer/PomodoroButtons/PomodoroStart".visible = false
+	$"Content/VBoxContainer/PomodoroButtons/PomodoroReset".visible = false
+	$"Content/VBoxContainer/PomodoroButtons/PomodoroContinue".visible = false
+	$"Content/VBoxContainer/PomodoroButtons/PomodoroBreak".visible = true
+	$"Content/VBoxContainer/PomodoroButtons/PomodoroFinish".visible = true
+	$"Content/VBoxContainer/PomodoroButtons/PomodoroCancel".visible = true
+	
+func show_pomodoro_continue_buttons() -> void:
+	$"Content/VBoxContainer/PomodoroButtons/PomodoroStart".visible = false
+	$"Content/VBoxContainer/PomodoroButtons/PomodoroReset".visible = false
+	$"Content/VBoxContainer/PomodoroButtons/PomodoroContinue".visible = true
+	$"Content/VBoxContainer/PomodoroButtons/PomodoroBreak".visible = false
+	$"Content/VBoxContainer/PomodoroButtons/PomodoroFinish".visible = true
+	$"Content/VBoxContainer/PomodoroButtons/PomodoroCancel".visible = true
+
 ## Signals
 # -----------------------
 func _on_TopArea_toggle_time_tracking_bar(really : bool) -> void:
@@ -346,14 +385,14 @@ func _on_SecondsTimer_timeout() -> void:
 	
 	
 	if state == STATES.POMODORO and tracked_seconds >= Defaults.settings_res.pomo_work_time_length:
-		stop_time_tracking(false)
-		start_pomodoro_break()
+		#stop_time_tracking(false)
+		play_notification(false)
 	
 	if state == STATES.POMODORO_BREAK:
 		if get_pomodoro_phase_simple() == Defaults.settings_res.pomo_long_pause_freq and tracked_seconds >= Defaults.settings_res.pomo_long_pause_length:
-			pass # TODO what happends when the break is over
+			play_notification(true)
 		if get_pomodoro_phase_simple() != Defaults.settings_res.pomo_long_pause_freq and tracked_seconds >= Defaults.settings_res.pomo_short_pause_length:
-			pass # TODO what happends when the break is over
+			play_notification(true)
 	
 
 
