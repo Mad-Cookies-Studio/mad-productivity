@@ -44,7 +44,6 @@ func save() -> void:
 func load_projects() -> void:
 	for i in res.projects:
 		create_project_button(res.projects[i].name, i)
-	update_project_progress_bars()
 
 
 func load_tasks() -> void:
@@ -89,17 +88,12 @@ func create_project_button(_p_name : String = "", id: int = -1) -> void:
 	new.show()
 	
 	
-func update_project_progress_bars() -> void:
-	for i in $VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons.get_children():
-#		i.set_percent_done(res.get_percent_done(i.id))
-		pass
-	
-	
 func remove_task_visual() -> void:
 	pass
 	
 	
 func reset_tasks_view() -> void:
+#	$VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/ProjectLineEdit.clear()
 	for i in $VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList.get_children():
 		if i.name != "TODOitem" and i.name != "ProjectLineEdit":
 			i.queue_free()
@@ -171,7 +165,6 @@ func _on_ProjectButton_selected_project(_name, index, child_id) -> void:
 	current_project = _name
 	current_project_id = index
 	current_project_child_id = child_id
-#	var id : int = res.get_id_in_projects_from_string(current_project)
 	reset_tasks_view()
 	for i in res.get_tasks_in_project(current_project_id):
 		var task = res.tasks[i]
@@ -185,13 +178,16 @@ func _on_NewTodoBtn_pressed() -> void:
 
 
 func _on_ProjectLineEdit_text_changed(new_text: String) -> void:
+	if current_project_id == -1:
+		return
 	res.change_project_name(new_text, current_project_id)
 	$VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons.get_child(current_project_child_id).text = new_text
 	
 
 func on_delete_project(id : int) -> void:
-	print("going to delte project at id :", id)
+	current_project_id = -1
 	res.delete_project(id)
+	reset_tasks_view()
 	
 
 
