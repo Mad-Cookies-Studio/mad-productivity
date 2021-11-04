@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Assets/Themes/Dark/PanelGreenNoBorder.tres" type="StyleBox" id=1]
 [ext_resource path="res://Assets/Themes/Roboto12Clean.tres" type="Theme" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://Assets/Buttons/cancelBtn.png" type="Texture" id=16]
 [ext_resource path="res://Assets/Buttons/TimeTrackBtn.png" type="Texture" id=17]
 [ext_resource path="res://Assets/Audio/notification2.wav" type="AudioStream" id=18]
+[ext_resource path="res://Assets/Textures/SimpleGradient.png" type="Texture" id=19]
 
 [sub_resource type="StyleBoxEmpty" id=20]
 
@@ -114,6 +115,7 @@ split_offset = 243
 self_modulate = Color( 1, 1, 1, 0.686275 )
 margin_right = 243.0
 margin_bottom = 571.0
+rect_clip_content = true
 custom_styles/panel = ExtResource( 3 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HSplitContainer/PanelL"]
@@ -222,6 +224,7 @@ stream = ExtResource( 18 )
 margin_left = 278.0
 margin_right = 990.0
 margin_bottom = 571.0
+rect_clip_content = true
 custom_styles/panel = SubResource( 22 )
 
 [node name="TaskScroll" type="ScrollContainer" parent="VBoxContainer/HSplitContainer/PanelR"]
@@ -358,13 +361,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NewTodoBtn" type="Button" parent="VBoxContainer/HSplitContainer/PanelR"]
-visible = false
+[node name="Gradient" type="TextureRect" parent="VBoxContainer/HSplitContainer/PanelR"]
+modulate = Color( 0.156863, 0.156863, 0.156863, 1 )
 anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -61.7841
-margin_right = 109.0
-margin_bottom = -23.7841
+margin_left = -81.0
+margin_top = -158.0
+margin_right = 81.0
+mouse_filter = 2
+texture = ExtResource( 19 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewTodoBtn" type="Button" parent="VBoxContainer/HSplitContainer/PanelR"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -131.449
+margin_top = -60.4492
+margin_right = -22.4492
+margin_bottom = -22.4492
 rect_min_size = Vector2( 38, 38 )
 size_flags_horizontal = 0
 theme = ExtResource( 12 )
