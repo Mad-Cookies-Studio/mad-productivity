@@ -95,7 +95,6 @@ __meta__ = {
 margin_right = 50.0
 margin_bottom = 650.0
 rect_min_size = Vector2( 50, 0 )
-rect_clip_content = true
 custom_styles/panel = ExtResource( 44 )
 script = ExtResource( 5 )
 __meta__ = {
