@@ -9,16 +9,6 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Reference",
-"class": "CalendarButtons",
-"language": "GDScript",
-"path": "res://addons/calendar_button/scripts/calendar_buttons.gd"
-}, {
-"base": "Reference",
-"class": "Date",
-"language": "GDScript",
-"path": "res://addons/calendar_button/class/Date.gd"
-}, {
 "base": "Resource",
 "class": "NoteResource",
 "language": "GDScript",
@@ -58,15 +48,8 @@ _global_script_classes=[ {
 "class": "WelcomeNoteResource",
 "language": "GDScript",
 "path": "res://Assets/Resources/WelcomeMessages.gd"
-}, {
-"base": "Reference",
-"class": "WindowRestrictor",
-"language": "GDScript",
-"path": "res://addons/calendar_button/scripts/window_restrictor.gd"
 } ]
 _global_script_class_icons={
-"CalendarButtons": "",
-"Date": "",
 "NoteResource": "",
 "ReminderResource": "",
 "SettingsResource": "",
@@ -74,8 +57,7 @@ _global_script_class_icons={
 "TimeTrackItem": "",
 "TimeTrackResource": "",
 "ToDoResource": "",
-"WelcomeNoteResource": "",
-"WindowRestrictor": ""
+"WelcomeNoteResource": ""
 }
 
 [application]
