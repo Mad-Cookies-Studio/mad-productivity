@@ -273,6 +273,7 @@ func reset_buttons() -> void:
 
 
 func set_up_pomo_progress_bar() -> void:
+	
 	match state:
 		STATES.POMODORO:
 			$Content/VBoxContainer/Time/PomodoroProgress.max_value = Defaults.settings_res.pomo_work_time_length
@@ -283,6 +284,10 @@ func set_up_pomo_progress_bar() -> void:
 				$Content/VBoxContainer/Time/PomodoroProgress.max_value = Defaults.settings_res.pomo_short_pause_length
 				
 	$Content/VBoxContainer/Time/PomodoroProgress.value = $Content/VBoxContainer/Time/PomodoroProgress.max_value
+	
+	$ProgressTween.remove_all()
+	$ProgressTween.interpolate_property($Content/VBoxContainer/Time/PomodoroProgress, "value", $Content/VBoxContainer/Time/PomodoroProgress.max_value, 0.0, $Content/VBoxContainer/Time/PomodoroProgress.max_value, Tween.TRANS_LINEAR, Tween.EASE_OUT, 0.0)
+	$ProgressTween.start()
 
 
 func get_pomodoro_phase_simple() -> int:
@@ -382,8 +387,6 @@ func _on_SecondsTimer_timeout() -> void:
 	update_time()
 	
 #	$Content/VBoxContainer/Time/PomodoroProgress.value = $Content/VBoxContainer/Time/PomodoroProgress.max_value - tracked_seconds
-	$ProgressTween.interpolate_property($Content/VBoxContainer/Time/PomodoroProgress, "value", $Content/VBoxContainer/Time/PomodoroProgress.value, $Content/VBoxContainer/Time/PomodoroProgress.max_value - tracked_seconds, 1.0, Tween.TRANS_LINEAR, Tween.EASE_OUT, 0.0)
-	$ProgressTween.start()
 	
 	
 	if state == STATES.POMODORO and tracked_seconds >= Defaults.settings_res.pomo_work_time_length:
