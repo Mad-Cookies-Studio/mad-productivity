@@ -102,7 +102,6 @@ __meta__ = {
 }
 
 [node name="PomodoroProgress" type="TextureProgress" parent="Content/VBoxContainer/Time"]
-modulate = Color( 1, 0.121569, 0.121569, 1 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -112,10 +111,12 @@ margin_top = -93.6536
 margin_right = 78.5
 margin_bottom = 64.3464
 step = 0.01
-value = 82.0
+value = 100.0
 texture_under = ExtResource( 12 )
 texture_progress = ExtResource( 5 )
 fill_mode = 4
+tint_progress = Color( 1, 0.121569, 0.121569, 1 )
+radial_initial_angle = 180.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
