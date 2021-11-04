@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Assets/Themes/Dark/PanelGreenNoBorder.tres" type="StyleBox" id=1]
 [ext_resource path="res://Assets/Themes/Roboto12Clean.tres" type="Theme" id=2]
@@ -11,12 +11,13 @@
 [ext_resource path="res://Scripts/Views/Todos/ProjectButton.gd" type="Script" id=9]
 [ext_resource path="res://Assets/Fonts/Righteous20.tres" type="DynamicFont" id=10]
 [ext_resource path="res://Assets/Themes/LineEditCool.tres" type="Theme" id=11]
-[ext_resource path="res://Assets/Buttons/PlusAdd.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Themes/CuteButtonTheme.tres" type="Theme" id=12]
 [ext_resource path="res://Assets/Themes/Dark/PanelHighlight.tres" type="StyleBox" id=13]
 [ext_resource path="res://Assets/Buttons/cancelBtn_idle.png" type="Texture" id=14]
 [ext_resource path="res://Assets/Buttons/cancelBtn_hover.png" type="Texture" id=15]
 [ext_resource path="res://Assets/Buttons/cancelBtn.png" type="Texture" id=16]
 [ext_resource path="res://Assets/Buttons/TimeTrackBtn.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Audio/notification2.wav" type="AudioStream" id=18]
 
 [sub_resource type="StyleBoxEmpty" id=20]
 
@@ -214,6 +215,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 custom_styles/panel = ExtResource( 13 )
 
+[node name="CompleteSound" type="AudioStreamPlayer" parent="VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons/ProjectButton"]
+stream = ExtResource( 18 )
+
 [node name="PanelR" type="Panel" parent="VBoxContainer/HSplitContainer"]
 margin_left = 278.0
 margin_right = 990.0
@@ -354,16 +358,33 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NewTodoBtn" type="TextureButton" parent="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList"]
+[node name="NewTodoBtn" type="Button" parent="VBoxContainer/HSplitContainer/PanelR"]
 visible = false
-modulate = Color( 1, 1, 1, 0.470588 )
-margin_right = 38.0
-margin_bottom = 38.0
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -61.7841
+margin_right = 109.0
+margin_bottom = -23.7841
 rect_min_size = Vector2( 38, 38 )
 size_flags_horizontal = 0
-texture_normal = ExtResource( 12 )
-expand = true
-stretch_mode = 5
+theme = ExtResource( 12 )
+text = "New task"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Debug" type="Button" parent="VBoxContainer/HSplitContainer/PanelR"]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 141.581
+margin_top = -61.7841
+margin_right = 250.581
+margin_bottom = -23.7841
+rect_min_size = Vector2( 38, 38 )
+size_flags_horizontal = 0
+theme = ExtResource( 12 )
+text = "Check data"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -379,4 +400,5 @@ __meta__ = {
 [connection signal="set_done" from="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem/HBoxContainer/CheckBox" to="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem" method="_on_CheckBox_set_done"]
 [connection signal="button_up" from="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem/HBoxContainer/TimeTrack" to="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem" method="_on_TimeTrack_button_up"]
 [connection signal="text_changed" from="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem/HBoxContainer/Task" to="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem" method="_on_Task_text_changed"]
-[connection signal="pressed" from="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/NewTodoBtn" to="." method="_on_NewTodoBtn_pressed"]
+[connection signal="pressed" from="VBoxContainer/HSplitContainer/PanelR/NewTodoBtn" to="." method="_on_NewTodoBtn_pressed"]
+[connection signal="pressed" from="VBoxContainer/HSplitContainer/PanelR/Debug" to="." method="_on_Debug_pressed"]

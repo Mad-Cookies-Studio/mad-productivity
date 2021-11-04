@@ -4,11 +4,12 @@ signal selected_project(_name, index, child_index)
 signal delete_project(id)
 
 var id : int
-
+var finished : bool = false
 
 func _ready() -> void:
 	connect("mouse_entered", self, "on_mouse_entered")
 	connect("mouse_exited", self, "on_mouse_exited")
+	$Tween.connect("tween_all_completed", self, "on_tween_done")
 	on_mouse_exited()
 	update_theme()
 	
@@ -38,4 +39,14 @@ func _on_DeleteBtn_pressed() -> void:
 	queue_free()
 
 func set_percent_done(perc : float = 0.0) -> void:
-	$CompleteBG/CompleteBar.rect_scale.x = clamp(perc, 0.0, 1.0)
+	finished = bool(floor(perc))
+	$Tween.remove_all()
+	$Tween.interpolate_property($CompleteBG/CompleteBar, "rect_scale:x", $CompleteBG/CompleteBar.rect_scale.x, perc, 0.5, Tween.TRANS_EXPO, Tween.EASE_OUT, 0.0)
+	$Tween.interpolate_property($CompleteBG/CompleteBar, "modulate:a", $CompleteBG/CompleteBar.modulate.a, perc, 0.5, Tween.TRANS_EXPO, Tween.EASE_OUT, 0.0)
+	$Tween.start()
+#	$CompleteBG/CompleteBar.rect_scale.x = clamp(perc, 0.0, 1.0)
+
+
+func on_tween_done() -> void:
+	if finished:
+		$CompleteSound.play()

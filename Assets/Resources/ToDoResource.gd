@@ -10,6 +10,18 @@ export(int) var top_id = 0
 export(int) var project_top_id = 0
 export(int) var version : = 0
 
+
+func get_project_ids() -> Array:
+	var arr : Array = []
+	for i in projects:
+		arr.append(i)
+	return arr
+	
+	
+func get_tasks() -> Dictionary:
+	return tasks[10]
+
+
 func get_tasks_in_project(idx : int) -> Dictionary:
 	var dic : Dictionary
 	for i in tasks:
@@ -44,6 +56,7 @@ func add_project(_name : String) -> int:
 		}
 	projects[_new_p_id] = project_data
 	project_top_id += 1
+	Defaults.save_todo_resource(self)
 	return _new_p_id
 	
 	
@@ -79,3 +92,16 @@ func update_task_project_id(_new : int, _old : int) -> void:
 	for i in tasks:
 		if tasks[i].project == _old:
 			tasks[i].project = _new
+
+
+func clean_dangling_tasks() -> void:
+	var project_ids : Array = get_project_ids()
+	var removed : int = 0
+	for i in tasks:
+		if !project_ids.has(tasks[i].project):
+			print("surpriingly I found a dangling task! Erasing...")
+			tasks.erase(i)
+			print("Done")
+			removed += 1
+	if removed == 0:
+		print("Congrats, we found no tasks that didn't have a project!")

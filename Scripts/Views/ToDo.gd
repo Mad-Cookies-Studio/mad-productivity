@@ -44,6 +44,7 @@ func save() -> void:
 func load_projects() -> void:
 	for i in res.projects:
 		create_project_button(res.projects[i].name, i)
+	update_project_progress_bars()
 
 
 func load_tasks() -> void:
@@ -81,10 +82,17 @@ func create_project_button(_p_name : String = "", id: int = -1) -> void:
 	var new : Button = $VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons/ProjectButton.duplicate()
 	new.text = _p_name
 	new.id = id
-	new.set_percent_done(res.get_percent_done(id))
+#	new.set_percent_done(res.get_percent_done(id))
+	new.call_deferred("set_percent_done", res.get_percent_done(id))
 	new.connect("delete_project", self, "on_delete_project")
 	$VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons.add_child(new)
 	new.show()
+	
+	
+func update_project_progress_bars() -> void:
+	for i in $VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons.get_children():
+#		i.set_percent_done(res.get_percent_done(i.id))
+		pass
 	
 	
 func remove_task_visual() -> void:
@@ -93,7 +101,7 @@ func remove_task_visual() -> void:
 	
 func reset_tasks_view() -> void:
 	for i in $VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList.get_children():
-		if i.name != "TODOitem" and i.name != "NewTodoBtn" and i.name != "ProjectLineEdit":
+		if i.name != "TODOitem" and i.name != "ProjectLineEdit":
 			i.queue_free()
 	
 	
@@ -155,7 +163,7 @@ func on_new_top_bar_button(message : Dictionary = {}) -> void:
 func _on_ProjectButton_selected_project(_name, index, child_id) -> void:
 	# show the necessary nodes
 	$VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/ProjectLineEdit.show()
-	$VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/NewTodoBtn.show()
+	$VBoxContainer/HSplitContainer/PanelR/NewTodoBtn.show()
 	
 	$VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/ProjectLineEdit.text = _name
 	# cancel if we've clicked the same one
@@ -189,3 +197,7 @@ func on_delete_project(id : int) -> void:
 
 func on_theme_changed() -> void:
 	update_theme()
+
+
+func _on_Debug_pressed() -> void:
+	res.clean_dangling_tasks()
