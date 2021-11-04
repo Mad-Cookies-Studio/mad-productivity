@@ -36,7 +36,12 @@ content_margin_right = 10.0
 [sub_resource type="StyleBoxFlat" id=8]
 content_margin_left = 10.0
 content_margin_top = 10.0
-bg_color = Color( 0.0588235, 0.105882, 0.109804, 1 )
+bg_color = Color( 0.133333, 0.133333, 0.133333, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.364706, 0.364706, 0.364706, 1 )
 expand_margin_right = 10.0
 expand_margin_bottom = 10.0
 
@@ -87,7 +92,7 @@ LineEdit/styles/focus = SubResource( 11 )
 LineEdit/styles/normal = SubResource( 10 )
 LineEdit/styles/read_only = SubResource( 12 )
 ScrollContainer/styles/bg = SubResource( 7 )
-TooltipLabel/colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+TooltipLabel/colors/font_color = Color( 0.662745, 0.662745, 0.662745, 1 )
 TooltipLabel/colors/font_color_shadow = Color( 0, 0, 0, 0.1 )
 TooltipLabel/constants/shadow_offset_x = 1
 TooltipLabel/constants/shadow_offset_y = 1

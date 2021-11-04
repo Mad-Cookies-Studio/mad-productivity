@@ -1,47 +1,15 @@
-[gd_resource type="Theme" load_steps=15 format=2]
+[gd_resource type="Theme" load_steps=13 format=2]
 
 [ext_resource path="res://Assets/Buttons/CheckBoxOn.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Buttons/CheckBoxOff.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Fonts/Roboto12.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Assets/Themes/Dark/PanelDarkGreenBorderExpanded.tres" type="StyleBox" id=4]
 
 [sub_resource type="StyleBoxEmpty" id=11]
 
 [sub_resource type="StyleBoxEmpty" id=10]
 
-[sub_resource type="StyleBoxFlat" id=7]
-content_margin_left = 6.0
-bg_color = Color( 0.0588235, 0.105882, 0.109804, 1 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 0.8, 0.8, 0.8, 0.435294 )
-expand_margin_top = 5.0
-expand_margin_bottom = 5.0
-
 [sub_resource type="ImageTexture" id=2]
-
-[sub_resource type="StyleBoxFlat" id=1]
-content_margin_left = 6.0
-bg_color = Color( 0.0588235, 0.105882, 0.109804, 1 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 1, 1, 1, 0.376471 )
-expand_margin_top = 5.0
-expand_margin_bottom = 5.0
-
-[sub_resource type="StyleBoxFlat" id=3]
-content_margin_left = 6.0
-bg_color = Color( 0.0862745, 0.152941, 0.160784, 1 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 1, 1, 1, 0.376471 )
-expand_margin_top = 5.0
-expand_margin_bottom = 5.0
 
 [sub_resource type="ImageTexture" id=8]
 
@@ -95,10 +63,10 @@ LineEdit/colors/selection_color = Color( 0.854902, 0.423529, 0.384314, 1 )
 LineEdit/constants/minimum_spaces = 0
 LineEdit/fonts/font = null
 LineEdit/icons/clear = null
-LineEdit/styles/focus = SubResource( 7 )
-LineEdit/styles/normal = SubResource( 7 )
+LineEdit/styles/focus = ExtResource( 4 )
+LineEdit/styles/normal = ExtResource( 4 )
 LineEdit/styles/read_only = null
-OptionButton/colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+OptionButton/colors/font_color = Color( 0.831373, 0.831373, 0.831373, 1 )
 OptionButton/colors/font_color_disabled = Color( 0.576471, 0.627451, 0.631373, 0.435294 )
 OptionButton/colors/font_color_hover = Color( 0.854902, 0.423529, 0.384314, 1 )
 OptionButton/colors/font_color_pressed = Color( 0.854902, 0.423529, 0.384314, 1 )
@@ -107,11 +75,11 @@ OptionButton/constants/hseparation = 0
 OptionButton/fonts/font = null
 OptionButton/icons/arrow = SubResource( 2 )
 OptionButton/styles/disabled = null
-OptionButton/styles/focus = SubResource( 1 )
-OptionButton/styles/hover = SubResource( 3 )
-OptionButton/styles/normal = SubResource( 1 )
-OptionButton/styles/pressed = SubResource( 1 )
-PopupMenu/colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+OptionButton/styles/focus = ExtResource( 4 )
+OptionButton/styles/hover = ExtResource( 4 )
+OptionButton/styles/normal = ExtResource( 4 )
+OptionButton/styles/pressed = ExtResource( 4 )
+PopupMenu/colors/font_color = Color( 0.768627, 0.768627, 0.768627, 1 )
 PopupMenu/colors/font_color_accel = Color( 1, 1, 1, 1 )
 PopupMenu/colors/font_color_disabled = Color( 0, 0, 0, 1 )
 PopupMenu/colors/font_color_hover = Color( 0.854902, 0.423529, 0.384314, 1 )
