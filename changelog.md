@@ -20,17 +20,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Concepts (./.concepts/)
 - Design files (./.designs/)
 - Readme
+- "TBD" text to the game view
+- New type of button which charges by having the user click and hold LMB
+- Settings
 
 ### Changed
 - Data handling in TimeTracking
 - Default layout was made more responsive
 - StyleBoxes and used themes saved into resources
-- Extended the options screen for theming and pomodoro settings
 - Default theme
 - Custom app bar icons
 - Sending signals related to finished time track
 - License to MIT
 - .ico increase in dimension
+- View name position, color and size
 
 ### Removed
 - Reminders view
