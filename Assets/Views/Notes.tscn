@@ -126,11 +126,10 @@ __meta__ = {
 }
 
 [node name="DefaultButton" type="Button" parent="VBoxContainer/HSplitContainer/Panel/ScrollContainer/NoteButtons"]
-visible = false
 margin_right = 207.0
 margin_bottom = 25.0
-custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.352941 )
-custom_colors/font_color_pressed = Color( 0.576471, 0.627451, 0.631373, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 0.415686 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 custom_styles/focus = SubResource( 3 )
 toggle_mode = true
 group = SubResource( 4 )
