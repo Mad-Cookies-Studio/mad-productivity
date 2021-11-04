@@ -259,11 +259,11 @@ custom_styles/normal = SubResource( 27 )
 text = "Project_name"
 
 [node name="TODOitem" type="Panel" parent="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList"]
-visible = false
 margin_right = 687.0
 margin_bottom = 37.5
 rect_min_size = Vector2( 0, 37.5 )
 rect_pivot_offset = Vector2( -261.834, -35 )
+rect_clip_content = true
 custom_styles/panel = ExtResource( 1 )
 script = ExtResource( 5 )
 
@@ -284,6 +284,29 @@ enabled_focus_mode = 0
 texture_normal = ExtResource( 14 )
 texture_pressed = ExtResource( 15 )
 texture_hover = ExtResource( 16 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimeTrack" type="TextureButton" parent="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -58.7401
+margin_top = -18.75
+margin_right = -36.7401
+margin_bottom = 19.25
+rect_min_size = Vector2( 19, 0 )
+rect_pivot_offset = Vector2( 9.5, 9.5 )
+hint_tooltip = "Time track again"
+mouse_filter = 1
+size_flags_horizontal = 9
+texture_normal = ExtResource( 17 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 8 )
 expand = true
 stretch_mode = 5
 __meta__ = {
@@ -319,27 +342,9 @@ margin_bottom = -6.0
 mouse_filter = 1
 custom_styles/panel = ExtResource( 13 )
 
-[node name="TimeTrack" type="TextureButton" parent="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem/HBoxContainer"]
-margin_left = 48.0
-margin_right = 67.0
-margin_bottom = 38.0
-rect_min_size = Vector2( 19, 0 )
-rect_pivot_offset = Vector2( 9.5, 9.5 )
-hint_tooltip = "Time track again"
-mouse_filter = 1
-size_flags_horizontal = 9
-texture_normal = ExtResource( 17 )
-texture_pressed = ExtResource( 8 )
-texture_hover = ExtResource( 8 )
-expand = true
-stretch_mode = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Task" type="LineEdit" parent="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem/HBoxContainer"]
-margin_left = 77.0
-margin_right = 149.0
+margin_left = 48.0
+margin_right = 120.0
 margin_bottom = 38.0
 mouse_filter = 1
 custom_colors/font_color = Color( 0.631373, 0.631373, 0.631373, 1 )
@@ -350,9 +355,9 @@ text = "Task"
 expand_to_text_length = true
 
 [node name="Date" type="Label" parent="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem/HBoxContainer"]
-margin_left = 159.0
+margin_left = 130.0
 margin_top = 9.0
-margin_right = 310.0
+margin_right = 281.0
 margin_bottom = 28.0
 custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.439216 )
 text = "21/5/2021 8:45:32"
@@ -378,14 +383,12 @@ __meta__ = {
 
 [node name="NewTodoBtn" type="Button" parent="VBoxContainer/HSplitContainer/PanelR"]
 anchor_left = 1.0
-anchor_top = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -131.449
-margin_top = -60.4492
-margin_right = -22.4492
-margin_bottom = -22.4492
-rect_min_size = Vector2( 38, 38 )
+margin_left = -134.0
+margin_top = 15.0
+margin_right = -25.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 38, 30 )
 size_flags_horizontal = 0
 theme = ExtResource( 12 )
 text = "New task"
@@ -416,9 +419,9 @@ __meta__ = {
 [connection signal="mouse_entered" from="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem" to="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem" method="_on_TODOitem_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem" to="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem" method="_on_TODOitem_mouse_exited"]
 [connection signal="button_up" from="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem/DeleteBtn" to="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem" method="_on_DeleteBtn_button_up"]
+[connection signal="button_up" from="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem/TimeTrack" to="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem" method="_on_TimeTrack_button_up"]
 [connection signal="gui_input" from="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem/HBoxContainer/CheckBox" to="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem/HBoxContainer/CheckBox" method="_on_CheckBox_gui_input"]
 [connection signal="set_done" from="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem/HBoxContainer/CheckBox" to="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem" method="_on_CheckBox_set_done"]
-[connection signal="button_up" from="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem/HBoxContainer/TimeTrack" to="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem" method="_on_TimeTrack_button_up"]
 [connection signal="text_changed" from="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem/HBoxContainer/Task" to="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem" method="_on_Task_text_changed"]
 [connection signal="pressed" from="VBoxContainer/HSplitContainer/PanelR/NewTodoBtn" to="." method="_on_NewTodoBtn_pressed"]
 [connection signal="pressed" from="VBoxContainer/HSplitContainer/PanelR/Debug" to="." method="_on_Debug_pressed"]
