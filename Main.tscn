@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://Assets/Icons/MD_concept.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Icons/NoteTaking.png" type="Texture" id=2]
@@ -12,11 +12,9 @@
 [ext_resource path="res://Scripts/TopArea.gd" type="Script" id=10]
 [ext_resource path="res://Scripts/CustomTransparentButton.gd" type="Script" id=11]
 [ext_resource path="res://Assets/Views/Dashboard.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Assets/Views/Reminders.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Assets/Views/TimeTracking.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=15]
 [ext_resource path="res://Scripts/Views.gd" type="Script" id=16]
-[ext_resource path="res://Assets/Icons/Reminders.png" type="Texture" id=17]
 [ext_resource path="res://Assets/Icons/Profile.png" type="Texture" id=18]
 [ext_resource path="res://Assets/Views/Notes.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Assets/Fonts/Righteous50.tres" type="DynamicFont" id=20]
@@ -116,9 +114,9 @@ __meta__ = {
 [node name="HomeBtn" type="TextureButton" parent="MainWorkspace/HBX/Sidebar/Buttons"]
 modulate = Color( 0.521569, 0.521569, 0.521569, 1 )
 margin_left = 13.0
-margin_top = 113.0
+margin_top = 140.0
 margin_right = 36.0
-margin_bottom = 163.0
+margin_bottom = 190.0
 rect_min_size = Vector2( 23, 50 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -133,9 +131,9 @@ target = "Dashboard"
 [node name="NotesBtn" type="TextureButton" parent="MainWorkspace/HBX/Sidebar/Buttons"]
 modulate = Color( 0.521569, 0.521569, 0.521569, 1 )
 margin_left = 13.0
-margin_top = 167.0
+margin_top = 194.0
 margin_right = 36.0
-margin_bottom = 217.0
+margin_bottom = 244.0
 rect_min_size = Vector2( 23, 50 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -150,9 +148,9 @@ target = "Notes"
 [node name="TimeTrackingBtn" type="TextureButton" parent="MainWorkspace/HBX/Sidebar/Buttons"]
 modulate = Color( 0.521569, 0.521569, 0.521569, 1 )
 margin_left = 13.0
-margin_top = 221.0
+margin_top = 248.0
 margin_right = 36.0
-margin_bottom = 271.0
+margin_bottom = 298.0
 rect_min_size = Vector2( 23, 50 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -164,29 +162,12 @@ stretch_mode = 5
 script = ExtResource( 9 )
 target = "TimeTracking"
 
-[node name="RemindersBtn" type="TextureButton" parent="MainWorkspace/HBX/Sidebar/Buttons"]
-modulate = Color( 0.521569, 0.521569, 0.521569, 1 )
-margin_left = 13.0
-margin_top = 275.0
-margin_right = 36.0
-margin_bottom = 325.0
-rect_min_size = Vector2( 23, 50 )
-size_flags_horizontal = 4
-size_flags_vertical = 4
-toggle_mode = true
-group = SubResource( 3 )
-texture_normal = ExtResource( 17 )
-expand = true
-stretch_mode = 5
-script = ExtResource( 9 )
-target = "Reminders"
-
 [node name="TodosBtn" type="TextureButton" parent="MainWorkspace/HBX/Sidebar/Buttons"]
 modulate = Color( 0.521569, 0.521569, 0.521569, 1 )
 margin_left = 13.0
-margin_top = 329.0
+margin_top = 302.0
 margin_right = 36.0
-margin_bottom = 379.0
+margin_bottom = 352.0
 rect_min_size = Vector2( 23, 50 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -201,9 +182,9 @@ target = "ToDo"
 [node name="GameBtn" type="TextureButton" parent="MainWorkspace/HBX/Sidebar/Buttons"]
 modulate = Color( 0.521569, 0.521569, 0.521569, 1 )
 margin_left = 13.0
-margin_top = 383.0
+margin_top = 356.0
 margin_right = 36.0
-margin_bottom = 433.0
+margin_bottom = 406.0
 rect_min_size = Vector2( 23, 50 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -508,12 +489,6 @@ visible = false
 margin_right = 1050.0
 margin_bottom = 605.0
 title = "Time tracking"
-
-[node name="Reminders" parent="MainWorkspace/HBX/VBX/Views" instance=ExtResource( 13 )]
-visible = false
-margin_right = 1050.0
-margin_bottom = 605.0
-title = "Reminders"
 
 [node name="ToDo" parent="MainWorkspace/HBX/VBX/Views" instance=ExtResource( 22 )]
 visible = false
