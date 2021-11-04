@@ -200,26 +200,7 @@ func update_theme() -> void:
 
 
 func quit() -> void:
-	# trigger the save function in all the views
-	for i in views:
-		if i.has_method("save"):
-			i.save()
-	
-	# save the last window position
-	if settings_res.remember_window_settings:
-		settings_res.window_pos = OS.window_position
-		settings_res.window_size = OS.window_size
-		
-	if settings_res.remember_last_session_view:
-		settings_res.last_session_view = active_view
-	
-	if time_tracking_panel:
-		time_tracking_panel.quit()
-	
-	ui_theme.save_theme()
-	save_settings_resource()
-	
-	
+	user_save()
 	get_tree().quit()
 
 
@@ -303,6 +284,27 @@ func get_formatted_time_from_seconds(_secs : int) -> String:
 		return ("-" + "%02d" % hours) + ":" + str("%02d" % minutes) + ":" + ("%02d" % _secs)
 	else:
 		return ("%02d" % hours) + ":" + str("%02d" % minutes) + ":" + ("%02d" % _secs)
+
+
+func user_save() -> void:
+	# trigger the save function in all the views
+	for i in views:
+		if i.has_method("save"):
+			i.save()
+	
+	# save the last window position
+	if settings_res.remember_window_settings:
+		settings_res.window_pos = OS.window_position
+		settings_res.window_size = OS.window_size
+		
+	if settings_res.remember_last_session_view:
+		settings_res.last_session_view = active_view
+	
+	if time_tracking_panel:
+		time_tracking_panel.quit()
+	
+	ui_theme.save_theme()
+	save_settings_resource()
 
 
 func save_note_resource(note : NoteResource) -> int:

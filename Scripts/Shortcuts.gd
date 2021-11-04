@@ -16,3 +16,5 @@ func _input(event: InputEvent) -> void:
 		emit_signal("shortcut_focus")
 	if event.is_action_pressed("shortcut_timetrack_panel"):
 		emit_signal("shortcut_timetrack_panel")
+	if event.is_action_pressed("save"):
+		Defaults.user_save()
