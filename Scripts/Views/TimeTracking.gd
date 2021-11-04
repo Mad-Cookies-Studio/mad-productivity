@@ -9,6 +9,7 @@ var total_secs : int
 
 
 func _ready() -> void:
+	$LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem.hide()
 	Defaults.connect("theme_changed", self, "on_theme_changed")
 	if res == null:
 		load_res()
@@ -97,7 +98,7 @@ func update_time_track_item_text(_text : String, _id : int) -> void:
 
 
 func update_theme() -> void:
-	pass
+	$Gradient.modulate = Defaults.ui_theme.darker
 	
 	
 func on_theme_changed() -> void:

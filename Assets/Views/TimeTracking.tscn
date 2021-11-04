@@ -1,5 +1,6 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
+[ext_resource path="res://Assets/Textures/SimpleGradient.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Fonts/Righteous-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Assets/Themes/Roboto12Clean.tres" type="Theme" id=4]
 [ext_resource path="res://Assets/Buttons/cancelBtn_hover.png" type="Texture" id=5]
@@ -119,7 +120,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="TrackedItem" type="ColorRect" parent="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer"]
-visible = false
 margin_right = 950.0
 margin_bottom = 25.0
 rect_min_size = Vector2( 0, 25 )
@@ -144,9 +144,29 @@ rect_min_size = Vector2( 100, 0 )
 custom_colors/font_color = Color( 0.854902, 0.854902, 0.854902, 1 )
 text = "00:03:68"
 
-[node name="Delete" type="TextureButton" parent="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem/H"]
+[node name="ProjectName" type="LineEdit" parent="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem/H"]
 margin_left = 104.0
-margin_right = 123.0
+margin_right = 354.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 250, 0 )
+mouse_filter = 1
+text = "Project name"
+expand_to_text_length = true
+
+[node name="Date" type="Label" parent="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem/H"]
+margin_left = 358.0
+margin_top = 3.0
+margin_right = 894.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.631373, 0.631373, 0.631373, 1 )
+text = "21/04/2021"
+align = 2
+
+[node name="Delete" type="TextureButton" parent="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem/H"]
+margin_left = 898.0
+margin_right = 917.0
 margin_bottom = 25.0
 rect_min_size = Vector2( 19, 0 )
 rect_pivot_offset = Vector2( 9.5, 9.5 )
@@ -161,8 +181,8 @@ __meta__ = {
 }
 
 [node name="TimeTrack" type="TextureButton" parent="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem/H"]
-margin_left = 127.0
-margin_right = 146.0
+margin_left = 921.0
+margin_right = 940.0
 margin_bottom = 25.0
 rect_min_size = Vector2( 19, 0 )
 rect_pivot_offset = Vector2( 9.5, 9.5 )
@@ -175,25 +195,11 @@ texture_hover = ExtResource( 16 )
 expand = true
 stretch_mode = 5
 
-[node name="ProjectName" type="LineEdit" parent="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem/H"]
-margin_left = 150.0
-margin_right = 400.0
+[node name="Control" type="Control" parent="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem/H"]
+margin_left = 944.0
+margin_right = 945.666
 margin_bottom = 25.0
-rect_min_size = Vector2( 250, 0 )
-mouse_filter = 1
-text = "Project name"
-expand_to_text_length = true
-
-[node name="Date" type="Label" parent="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem/H"]
-margin_left = 404.0
-margin_top = 3.0
-margin_right = 945.0
-margin_bottom = 22.0
-rect_min_size = Vector2( 100, 0 )
-size_flags_horizontal = 3
-custom_colors/font_color = Color( 0.631373, 0.631373, 0.631373, 1 )
-text = "21/04/2021"
-align = 2
+rect_min_size = Vector2( 1.666, 0 )
 
 [node name="Tween" type="Tween" parent="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem"]
 
@@ -285,11 +291,26 @@ margin_bottom = 483.0
 theme = SubResource( 11 )
 text = "Finish"
 
+[node name="Gradient" type="TextureRect" parent="."]
+modulate = Color( 0.156863, 0.156863, 0.156863, 1 )
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -81.0
+margin_top = -158.0
+margin_right = 77.0
+mouse_filter = 2
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="mouse_entered" from="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem" to="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem" method="_on_TrackedItem_mouse_entered"]
 [connection signal="mouse_exited" from="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem" to="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem" method="_on_TrackedItem_mouse_exited"]
+[connection signal="text_changed" from="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem/H/ProjectName" to="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem" method="_on_ProjectName_text_changed"]
 [connection signal="button_up" from="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem/H/Delete" to="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem" method="_on_Delete_button_up"]
 [connection signal="button_up" from="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem/H/TimeTrack" to="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem" method="_on_TimeTrack_button_up"]
-[connection signal="text_changed" from="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem/H/ProjectName" to="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem" method="_on_ProjectName_text_changed"]
 [connection signal="timeout" from="SecondsTimer" to="." method="_on_SecondsTimer_timeout"]
 [connection signal="timeout" from="RestTimer" to="." method="_on_RestTimer_timeout"]
 [connection signal="pressed" from="PauseOverlay/VBX/ContinueBreakBtn" to="." method="_on_ContinueBreakBtn_pressed"]
