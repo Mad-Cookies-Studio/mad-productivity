@@ -23,9 +23,7 @@ func _ready() -> void:
 
 
 func update_theme() -> void:
-#	for i in $VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons.get_children():
-#		update_theme()
-	pass
+	$VBoxContainer/HSplitContainer/PanelR/Gradient.modulate = Defaults.ui_theme.darker
 
 func entering_view() -> void:
 	Defaults.active_view_pointer = self
