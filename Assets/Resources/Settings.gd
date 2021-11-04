@@ -3,6 +3,8 @@ extends Resource
 
 const THEME_SAVE_PATH : String = "user://theme.tres"
 
+export(int) var version : int = 0.1
+
 export(String) var name = "Name"
 export(String) var title = "User title"
 export(bool) var particles
