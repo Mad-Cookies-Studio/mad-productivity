@@ -151,6 +151,7 @@ func update_theme() -> void:
 	panel_super_dark.bg_color = ui_theme.super_dark
 	line_edit.bg_color = ui_theme.super_dark
 	line_edit.border_color = ui_theme.highlight_colour
+	line_edit.border_color.a = 0.3
 
 
 	## Cute button theme
