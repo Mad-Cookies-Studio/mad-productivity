@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Assets/Fonts/Righteous50.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/Fonts/Roboto12.tres" type="DynamicFont" id=2]
@@ -15,6 +15,8 @@
 [ext_resource path="res://Assets/Views/Settings/ThemeOptions.gd" type="Script" id=13]
 [ext_resource path="res://Assets/Views/Settings/ThemeColorPicker.gd" type="Script" id=14]
 [ext_resource path="res://Assets/Themes/Dark/PanelHighlight.tres" type="StyleBox" id=15]
+[ext_resource path="res://Assets/Themes/PopupTheme.tres" type="Theme" id=16]
+[ext_resource path="res://Assets/Fonts/NovaMono20.tres" type="DynamicFont" id=17]
 
 [sub_resource type="StyleBoxEmpty" id=19]
 
@@ -823,11 +825,14 @@ __meta__ = {
 
 [node name="ColorPicker" type="ColorPicker" parent="Panel"]
 anchor_left = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-margin_left = -129.5
-margin_top = 75.0
-margin_right = 178.5
-margin_bottom = 511.0
+anchor_bottom = 1.0
+margin_left = -152.112
+margin_top = -477.272
+margin_right = 155.888
+margin_bottom = -41.2725
+theme = ExtResource( 16 )
 presets_enabled = false
 presets_visible = false
 script = ExtResource( 14 )
@@ -836,10 +841,9 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="Panel"]
-margin_left = -16.459
-margin_top = 264.663
-margin_right = 20.541
-margin_bottom = 303.663
+margin_left = -35.7381
+margin_right = 1.2619
+margin_bottom = 39.0
 grow_vertical = 0
 theme = ExtResource( 5 )
 text = ">>"
@@ -852,6 +856,22 @@ modulate = Color( 1, 1, 1, 0.372549 )
 anchor_bottom = 1.0
 rect_min_size = Vector2( 2, 0 )
 custom_styles/panel = ExtResource( 15 )
+
+[node name="Theme" type="Label" parent="Panel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -160.5
+margin_top = 24.0
+margin_right = 159.5
+margin_bottom = 109.0
+rect_min_size = Vector2( 0, 50 )
+custom_colors/font_color = Color( 1, 1, 1, 0.862745 )
+custom_fonts/font = ExtResource( 17 )
+custom_styles/normal = SubResource( 22 )
+text = "Choose the colour
+you desire"
+align = 1
+valign = 1
 
 [connection signal="update_values" from="C/VBoxContainer/CatTheme" to="C/VBoxContainer/Primary/Option" method="_on_CatTheme_update_values"]
 [connection signal="update_values" from="C/VBoxContainer/CatTheme" to="C/VBoxContainer/Contrast" method="_on_CatTheme_update_values"]
