@@ -162,15 +162,6 @@ margin_right = 199.0
 margin_bottom = 542.0
 size_flags_vertical = 3
 
-[node name="ItemInput" type="LineEdit" parent="Content/VBoxContainer"]
-margin_top = 546.0
-margin_right = 199.0
-margin_bottom = 576.0
-rect_min_size = Vector2( 0, 30 )
-theme = ExtResource( 11 )
-custom_styles/normal = ExtResource( 10 )
-placeholder_text = "Item name"
-
 [node name="PomodoroButtons" type="VBoxContainer" parent="Content/VBoxContainer"]
 visible = false
 margin_top = 410.0
@@ -248,6 +239,15 @@ visible = false
 margin_top = 0.0
 margin_bottom = 30.0
 text = "Cancel"
+
+[node name="ItemInput" type="LineEdit" parent="Content/VBoxContainer"]
+margin_top = 546.0
+margin_right = 199.0
+margin_bottom = 576.0
+rect_min_size = Vector2( 0, 30 )
+theme = ExtResource( 11 )
+custom_styles/normal = ExtResource( 10 )
+placeholder_text = "Item name"
 
 [node name="StateButtons" type="HBoxContainer" parent="Content"]
 anchor_right = 1.0
