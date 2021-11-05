@@ -7,6 +7,7 @@ var ms_speed : Vector2
 
 func _ready() -> void:
 	set_process_input(false)
+	modulate = Defaults.btn_inactive_colour
 	
 
 func _input(event: InputEvent) -> void:
@@ -23,3 +24,11 @@ func _input(event: InputEvent) -> void:
 func _on_ResizeBtn_pressed() -> void:
 	set_process_input(true)
 	Input.set_mouse_mode(2)
+
+
+func _on_ResizeBtn_mouse_entered() -> void:
+	modulate = Defaults.btn_active_colour
+
+
+func _on_ResizeBtn_mouse_exited() -> void:
+	modulate = Defaults.btn_inactive_colour

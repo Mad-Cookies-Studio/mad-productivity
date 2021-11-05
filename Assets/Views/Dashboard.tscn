@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Assets/Themes/Dark/PanelHighlight.tres" type="StyleBox" id=1]
 [ext_resource path="res://Assets/Fonts/Righteous-Regular.ttf" type="DynamicFontData" id=2]
@@ -10,8 +10,7 @@
 [ext_resource path="res://Assets/Icons/Discord-Logo-Color.svg" type="Texture" id=8]
 [ext_resource path="res://Assets/Icons/Discord-Logo-White.svg" type="Texture" id=9]
 [ext_resource path="res://Assets/Buttons/right_arrow_active.png" type="Texture" id=10]
-[ext_resource path="res://Assets/Buttons/right_arrow_idle.png" type="Texture" id=11]
-[ext_resource path="res://Assets/Buttons/left_arrow_idle.png" type="Texture" id=12]
+[ext_resource path="res://Scripts/CustomTransparentButton.gd" type="Script" id=11]
 [ext_resource path="res://Assets/Buttons/left_arrow_active.png" type="Texture" id=13]
 
 [sub_resource type="DynamicFont" id=1]
@@ -97,7 +96,7 @@ resource = SubResource( 3 )
 [node name="Tween" type="Tween" parent="VBoxContainer/Panel/WelcomeMessage"]
 
 [node name="Next" type="TextureButton" parent="VBoxContainer/Panel"]
-modulate = Color( 0.854902, 0.423529, 0.384314, 1 )
+self_modulate = Color( 1, 1, 1, 0.364706 )
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -106,27 +105,23 @@ margin_left = 14.0
 margin_top = -18.0
 margin_right = 52.0
 margin_bottom = 19.0
-texture_normal = ExtResource( 11 )
-texture_pressed = ExtResource( 10 )
-texture_hover = ExtResource( 10 )
-texture_disabled = ExtResource( 10 )
+texture_normal = ExtResource( 10 )
 expand = true
 stretch_mode = 5
+script = ExtResource( 11 )
 
 [node name="Next2" type="TextureButton" parent="VBoxContainer/Panel"]
-modulate = Color( 0.854902, 0.423529, 0.384314, 1 )
+self_modulate = Color( 1, 1, 1, 0.364706 )
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_left = -57.2757
 margin_top = -18.5
 margin_right = -19.2757
 margin_bottom = 18.5
-texture_normal = ExtResource( 12 )
-texture_pressed = ExtResource( 13 )
-texture_hover = ExtResource( 13 )
-texture_disabled = ExtResource( 13 )
+texture_normal = ExtResource( 13 )
 expand = true
 stretch_mode = 5
+script = ExtResource( 11 )
 
 [node name="Control" type="Control" parent="VBoxContainer"]
 margin_top = 409.0

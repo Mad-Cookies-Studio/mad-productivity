@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://Assets/Icons/MD_concept.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Icons/NoteTaking.png" type="Texture" id=2]
@@ -16,16 +16,15 @@
 [ext_resource path="res://Assets/Views/TimeTracking.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=15]
 [ext_resource path="res://Scripts/Views.gd" type="Script" id=16]
+[ext_resource path="res://Assets/Buttons/Resize.png" type="Texture" id=17]
 [ext_resource path="res://Assets/Icons/Profile.png" type="Texture" id=18]
 [ext_resource path="res://Assets/Views/Notes.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Assets/Fonts/Righteous50.tres" type="DynamicFont" id=20]
 [ext_resource path="res://Assets/Themes/Roboto12Clean.tres" type="Theme" id=21]
 [ext_resource path="res://Assets/Views/ToDo.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Assets/Fonts/Righteous20.tres" type="DynamicFont" id=23]
-[ext_resource path="res://Assets/Buttons/ResizeActive.png" type="Texture" id=25]
-[ext_resource path="res://Assets/Buttons/ResizeHover.png" type="Texture" id=26]
+[ext_resource path="res://Assets/Themes/Dark/PanelSuperDarkGreen.tres" type="StyleBox" id=24]
 [ext_resource path="res://Scripts/Views/Profile.gd" type="Script" id=27]
-[ext_resource path="res://Assets/Buttons/ResizeIdle.png" type="Texture" id=31]
 [ext_resource path="res://Scripts/ResizeBtn.gd" type="Script" id=32]
 [ext_resource path="res://Assets/Buttons/AppBar/MinimizeBtn.png" type="Texture" id=33]
 [ext_resource path="res://Assets/Icons/Settings.png" type="Texture" id=34]
@@ -385,8 +384,29 @@ size_flags_vertical = 4
 custom_styles/normal = ExtResource( 38 )
 placeholder_text = "type text here"
 
-[node name="Control2" type="Control" parent="MainWorkspace/HBX/VBX/TopArea/Left"]
+[node name="Panel" type="Panel" parent="MainWorkspace/HBX/VBX/TopArea/Left"]
 margin_left = 296.0
+margin_right = 496.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 200, 35 )
+custom_styles/panel = ExtResource( 24 )
+
+[node name="Label" type="Label" parent="MainWorkspace/HBX/VBX/TopArea/Left/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -91.5
+margin_top = -9.5
+margin_right = 91.5
+margin_bottom = 9.5
+text = "Custom text : 10:00:32"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control2" type="Control" parent="MainWorkspace/HBX/VBX/TopArea/Left"]
+margin_left = 496.0
 margin_right = 1050.0
 margin_bottom = 45.0
 mouse_filter = 2
@@ -648,9 +668,7 @@ margin_top = -25.0397
 margin_right = -4.72461
 margin_bottom = -5.03967
 action_mode = 0
-texture_normal = ExtResource( 31 )
-texture_pressed = ExtResource( 25 )
-texture_hover = ExtResource( 26 )
+texture_normal = ExtResource( 17 )
 expand = true
 stretch_mode = 5
 script = ExtResource( 32 )
@@ -673,6 +691,8 @@ script = ExtResource( 37 )
 [connection signal="manual_view_toggle" from="MainWorkspace/HBX/VBX/Views" to="." method="_on_Views_manual_view_toggle"]
 [connection signal="text_changed" from="MainWorkspace/HBX/VBX/Views/Profile/VBoxContainer/UserName" to="MainWorkspace/HBX/VBX/Views/Profile" method="_on_UserName_text_changed"]
 [connection signal="text_changed" from="MainWorkspace/HBX/VBX/Views/Profile/VBoxContainer/UserTitle" to="MainWorkspace/HBX/VBX/Views/Profile" method="_on_UserTitle_text_changed"]
+[connection signal="mouse_entered" from="ResizeBtn" to="ResizeBtn" method="_on_ResizeBtn_mouse_entered"]
+[connection signal="mouse_exited" from="ResizeBtn" to="ResizeBtn" method="_on_ResizeBtn_mouse_exited"]
 [connection signal="pressed" from="ResizeBtn" to="ResizeBtn" method="_on_ResizeBtn_pressed"]
 [connection signal="shortcut_focus" from="Shortcuts" to="MainWorkspace/HBX/VBX/TopArea" method="_on_Shortcuts_shortcut_focus"]
 [connection signal="shortcut_timetrack_panel" from="Shortcuts" to="MainWorkspace/HBX/VBX/TopArea" method="_on_Shortcuts_shortcut_timetrack_panel"]
