@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Assets/Themes/Dark/PanelGreenNoBorder.tres" type="StyleBox" id=1]
 [ext_resource path="res://Assets/Themes/Roboto12Clean.tres" type="Theme" id=2]
@@ -6,19 +6,16 @@
 [ext_resource path="res://Scripts/Views/ToDo.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/Views/Todos/TODOitem.gd" type="Script" id=5]
 [ext_resource path="res://Scripts/Views/Todos/CustomCheckBox.gd" type="Script" id=6]
-[ext_resource path="res://Assets/Buttons/Cross.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Buttons/TimeTrackBtnWhite.png" type="Texture" id=8]
 [ext_resource path="res://Scripts/Views/Todos/ProjectButton.gd" type="Script" id=9]
 [ext_resource path="res://Assets/Fonts/Righteous20.tres" type="DynamicFont" id=10]
 [ext_resource path="res://Assets/Themes/LineEditCool.tres" type="Theme" id=11]
 [ext_resource path="res://Assets/Themes/CuteButtonTheme.tres" type="Theme" id=12]
 [ext_resource path="res://Assets/Themes/Dark/PanelHighlight.tres" type="StyleBox" id=13]
-[ext_resource path="res://Assets/Buttons/cancelBtn_idle.png" type="Texture" id=14]
-[ext_resource path="res://Assets/Buttons/cancelBtn_hover.png" type="Texture" id=15]
-[ext_resource path="res://Assets/Buttons/cancelBtn.png" type="Texture" id=16]
-[ext_resource path="res://Assets/Buttons/TimeTrackBtn.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Buttons/X_normal.png" type="Texture" id=15]
 [ext_resource path="res://Assets/Audio/notification2.wav" type="AudioStream" id=18]
 [ext_resource path="res://Assets/Textures/SimpleGradient.png" type="Texture" id=19]
+[ext_resource path="res://Scripts/CustomTransparentButton.gd" type="Script" id=20]
 
 [sub_resource type="StyleBoxEmpty" id=20]
 
@@ -166,14 +163,13 @@ margin_right = -18.9155
 margin_bottom = 17.2105
 rect_min_size = Vector2( 19, 0 )
 rect_pivot_offset = Vector2( 9.5, 9.5 )
-hint_tooltip = "Time track again"
+hint_tooltip = "Time track"
 mouse_filter = 1
 size_flags_horizontal = 9
-texture_normal = ExtResource( 17 )
-texture_pressed = ExtResource( 8 )
-texture_hover = ExtResource( 8 )
+texture_normal = ExtResource( 8 )
 expand = true
 stretch_mode = 5
+script = ExtResource( 20 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -192,11 +188,10 @@ rect_pivot_offset = Vector2( 10, 20 )
 focus_mode = 0
 mouse_filter = 1
 enabled_focus_mode = 0
-texture_normal = ExtResource( 14 )
-texture_pressed = ExtResource( 16 )
-texture_hover = ExtResource( 7 )
+texture_normal = ExtResource( 15 )
 expand = true
 stretch_mode = 5
+script = ExtResource( 20 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -281,11 +276,10 @@ rect_pivot_offset = Vector2( 10, 20 )
 focus_mode = 0
 mouse_filter = 1
 enabled_focus_mode = 0
-texture_normal = ExtResource( 14 )
-texture_pressed = ExtResource( 15 )
-texture_hover = ExtResource( 16 )
+texture_normal = ExtResource( 15 )
 expand = true
 stretch_mode = 5
+script = ExtResource( 20 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -301,14 +295,13 @@ margin_right = -36.7401
 margin_bottom = 19.25
 rect_min_size = Vector2( 19, 0 )
 rect_pivot_offset = Vector2( 9.5, 9.5 )
-hint_tooltip = "Time track again"
+hint_tooltip = "Time track"
 mouse_filter = 1
 size_flags_horizontal = 9
-texture_normal = ExtResource( 17 )
-texture_pressed = ExtResource( 8 )
-texture_hover = ExtResource( 8 )
+texture_normal = ExtResource( 8 )
 expand = true
 stretch_mode = 5
+script = ExtResource( 20 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -414,6 +407,7 @@ __meta__ = {
 
 [connection signal="gui_input" from="VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons/ProjectButton" to="VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons/ProjectButton" method="_on_ProjectButton_gui_input"]
 [connection signal="selected_project" from="VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons/ProjectButton" to="." method="_on_ProjectButton_selected_project"]
+[connection signal="pressed" from="VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons/ProjectButton/TimeTrack" to="VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons/ProjectButton" method="_on_TimeTrack_pressed"]
 [connection signal="pressed" from="VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons/ProjectButton/DeleteBtn" to="VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons/ProjectButton" method="_on_DeleteBtn_pressed"]
 [connection signal="text_changed" from="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/ProjectLineEdit" to="." method="_on_ProjectLineEdit_text_changed"]
 [connection signal="mouse_entered" from="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem" to="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem" method="_on_TODOitem_mouse_entered"]

@@ -28,6 +28,7 @@ var curr_track_item : TimeTrackItem
 var notified : bool = false
 
 func _ready() -> void:
+	Defaults.connect("track_item", self, "on_Defaults_track_item")
 	Defaults.time_tracking_panel = self
 	toggle_view(STATES.NORMAL)
 	hookup_signals()
@@ -405,3 +406,11 @@ func _on_ItemInput_text_changed(new_text: String) -> void:
 	$Content/VBoxContainer/Time/ItemLabel.text = new_text
 	if curr_track_item:
 		curr_track_item.name = new_text
+
+
+func on_Defaults_track_item(_name : String) -> void:
+	if time_tracking: return
+	
+	$Content/VBoxContainer/ItemInput.text = _name
+	$Content/VBoxContainer/Time/ItemLabel.text = _name
+	start_time_tracking()

@@ -51,3 +51,7 @@ func on_tween_done() -> void:
 	if finished:
 #		$CompleteSound.play()
 		pass
+
+
+func _on_TimeTrack_pressed() -> void:
+	Defaults.emit_signal("track_item", text)

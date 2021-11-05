@@ -1,13 +1,12 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Assets/Fonts/Roboto12.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/Fonts/Roboto40.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Assets/Themes/Dark/PanelSuperDarkGreen.tres" type="StyleBox" id=3]
 [ext_resource path="res://Assets/Themes/Roboto12Clean.tres" type="Theme" id=4]
-[ext_resource path="res://Assets/Buttons/Cross.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Buttons/cancelBtn_idle.png" type="Texture" id=6]
+[ext_resource path="res://Scripts/CustomTransparentButton.gd" type="Script" id=5]
+[ext_resource path="res://Assets/Buttons/X_normal.png" type="Texture" id=6]
 [ext_resource path="res://Scripts/Views/NoteButton.gd" type="Script" id=7]
-[ext_resource path="res://Assets/Buttons/TimeTrackBtn.png" type="Texture" id=8]
 [ext_resource path="res://Scripts/Views/Notes.gd" type="Script" id=10]
 [ext_resource path="res://Assets/Buttons/TimeTrackBtnWhite.png" type="Texture" id=11]
 
@@ -144,19 +143,19 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -41.3747
+margin_left = -49.6991
 margin_top = -16.1582
-margin_right = -21.3747
+margin_right = -29.6991
 margin_bottom = 17.8418
 rect_min_size = Vector2( 19, 0 )
 rect_pivot_offset = Vector2( 9.5, 9.5 )
 hint_tooltip = "Time track again"
 mouse_filter = 1
 size_flags_horizontal = 9
-texture_normal = ExtResource( 8 )
-texture_hover = ExtResource( 11 )
+texture_normal = ExtResource( 11 )
 expand = true
 stretch_mode = 5
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -166,18 +165,18 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -19.0
+margin_left = -27.3244
 margin_top = -19.5
-margin_right = 1.0
+margin_right = -7.32443
 margin_bottom = 20.5
 rect_min_size = Vector2( 20, 0 )
 rect_pivot_offset = Vector2( 10, 20 )
 focus_mode = 0
-mouse_filter = 2
+mouse_filter = 1
 texture_normal = ExtResource( 6 )
-texture_hover = ExtResource( 5 )
 expand = true
 stretch_mode = 5
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -247,7 +246,7 @@ margin_left = 453.0
 margin_top = 6.0
 margin_right = 495.0
 margin_bottom = 23.0
-custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.470588 )
+custom_colors/font_color = Color( 1, 1, 1, 0.470588 )
 text = "Created"
 
 [node name="Created" type="Label" parent="VBoxContainer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer"]
@@ -255,7 +254,6 @@ margin_left = 499.0
 margin_top = 6.0
 margin_right = 551.0
 margin_bottom = 23.0
-custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
 text = "00/00/00"
 
 [node name="Control" type="Control" parent="VBoxContainer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer"]
@@ -269,7 +267,7 @@ margin_left = 579.0
 margin_top = 6.0
 margin_right = 626.0
 margin_bottom = 23.0
-custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.470588 )
+custom_colors/font_color = Color( 1, 1, 1, 0.513726 )
 text = "Modified"
 
 [node name="Modified" type="Label" parent="VBoxContainer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer"]
@@ -277,9 +275,7 @@ margin_left = 630.0
 margin_top = 6.0
 margin_right = 682.0
 margin_bottom = 23.0
-custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 1 )
 text = "00/00/00"
 
-[connection signal="gui_input" from="VBoxContainer/HSplitContainer/Panel/ScrollContainer/NoteButtons/DefaultButton" to="VBoxContainer/HSplitContainer/Panel/ScrollContainer/NoteButtons/DefaultButton" method="_on_DefaultButton_gui_input"]
 [connection signal="text_changed" from="VBoxContainer/HSplitContainer/Panel2/VBoxContainer/Title" to="." method="_on_Title_text_changed"]
 [connection signal="text_changed" from="VBoxContainer/HSplitContainer/Panel2/VBoxContainer/Note" to="." method="_on_Note_text_changed"]

@@ -46,7 +46,7 @@ func _on_DeleteBtn_button_up() -> void:
 
 
 func _on_TimeTrack_button_up() -> void:
-	emit_signal("task_time_track", $HBoxContainer/Task.text)
+	Defaults.emit_signal("track_item", $HBoxContainer/Task.text)
 
 
 func _on_CheckBox_set_done(really) -> void:

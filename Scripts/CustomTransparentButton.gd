@@ -5,6 +5,7 @@ func _ready() -> void:
 	connect("mouse_entered", self, "mouse_entered")
 	connect("mouse_exited", self, "mouse_exited")
 	connect("toggled", self, "on_toggled")
+	update_colours()
 	
 	
 func update_colours() -> void:

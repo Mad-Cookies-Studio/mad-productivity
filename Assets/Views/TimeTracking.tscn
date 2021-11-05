@@ -1,82 +1,13 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/Textures/SimpleGradient.png" type="Texture" id=1]
-[ext_resource path="res://Assets/Fonts/Righteous-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Scripts/CustomTransparentButton.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Buttons/X_normal.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Themes/Roboto12Clean.tres" type="Theme" id=4]
-[ext_resource path="res://Assets/Buttons/cancelBtn_hover.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Buttons/cancelBtn.png" type="Texture" id=7]
-[ext_resource path="res://Assets/Buttons/cancelBtn_idle.png" type="Texture" id=10]
 [ext_resource path="res://Scripts/Views/TimeTracking.gd" type="Script" id=11]
 [ext_resource path="res://Scripts/Views/TimeTracking/TrackedItem.gd" type="Script" id=12]
 [ext_resource path="res://Assets/Buttons/TimeTrackBtnWhite.png" type="Texture" id=16]
 [ext_resource path="res://Assets/Audio/notification.wav" type="AudioStream" id=18]
-[ext_resource path="res://Assets/Textures/TomatoIcon.png" type="Texture" id=20]
-[ext_resource path="res://Assets/Buttons/TimeTrackBtn.png" type="Texture" id=21]
-[ext_resource path="res://Assets/Fonts/Righteous20.tres" type="DynamicFont" id=22]
-[ext_resource path="res://Assets/Fonts/NovaMono60.tres" type="DynamicFont" id=23]
-
-[sub_resource type="StyleBoxEmpty" id=8]
-
-[sub_resource type="StyleBoxFlat" id=15]
-content_margin_top = 10.0
-content_margin_bottom = 10.0
-bg_color = Color( 0.976471, 0.419608, 0.419608, 1 )
-
-[sub_resource type="StyleBoxFlat" id=5]
-content_margin_top = 10.0
-content_margin_bottom = 10.0
-bg_color = Color( 1, 0.121569, 0.121569, 0.729412 )
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color( 1, 0.121569, 0.121569, 1 )
-
-[sub_resource type="StyleBoxFlat" id=16]
-content_margin_top = 10.0
-content_margin_bottom = 10.0
-bg_color = Color( 0.541176, 0.0901961, 0.0901961, 1 )
-
-[sub_resource type="DynamicFont" id=4]
-size = 20
-use_mipmaps = true
-font_data = ExtResource( 3 )
-
-[sub_resource type="Theme" id=6]
-default_font = SubResource( 4 )
-Button/styles/focus = SubResource( 8 )
-Button/styles/hover = SubResource( 15 )
-Button/styles/normal = SubResource( 5 )
-Button/styles/pressed = SubResource( 16 )
-
-[sub_resource type="StyleBoxFlat" id=17]
-content_margin_top = 10.0
-content_margin_bottom = 10.0
-bg_color = Color( 0.956863, 0.231373, 0.231373, 0.145098 )
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color( 0.956863, 0.231373, 0.231373, 1 )
-
-[sub_resource type="StyleBoxFlat" id=10]
-content_margin_top = 10.0
-content_margin_bottom = 10.0
-bg_color = Color( 0.976471, 0.32549, 0.0705882, 1 )
-draw_center = false
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color( 0.956863, 0.231373, 0.231373, 1 )
-
-[sub_resource type="Theme" id=11]
-default_font = SubResource( 4 )
-Button/colors/font_color = Color( 0.956863, 0.231373, 0.231373, 1 )
-Button/styles/focus = SubResource( 17 )
-Button/styles/hover = SubResource( 17 )
-Button/styles/normal = SubResource( 10 )
-Button/styles/pressed = SubResource( 17 )
 
 [node name="TimeTracking" type="Control"]
 margin_right = 990.0
@@ -121,8 +52,8 @@ size_flags_vertical = 3
 
 [node name="TrackedItem" type="ColorRect" parent="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer"]
 margin_right = 950.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 0, 25 )
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
 color = Color( 0.0745098, 0.133333, 0.141176, 1 )
 script = ExtResource( 12 )
 
@@ -137,9 +68,9 @@ __meta__ = {
 }
 
 [node name="TrackedTime" type="Label" parent="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem/H"]
-margin_top = 3.0
+margin_top = 6.0
 margin_right = 100.0
-margin_bottom = 22.0
+margin_bottom = 25.0
 rect_min_size = Vector2( 100, 0 )
 custom_colors/font_color = Color( 0.854902, 0.854902, 0.854902, 1 )
 text = "00:03:68"
@@ -147,7 +78,7 @@ text = "00:03:68"
 [node name="ProjectName" type="LineEdit" parent="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem/H"]
 margin_left = 104.0
 margin_right = 354.0
-margin_bottom = 25.0
+margin_bottom = 32.0
 rect_min_size = Vector2( 250, 0 )
 mouse_filter = 1
 text = "Project name"
@@ -155,50 +86,47 @@ expand_to_text_length = true
 
 [node name="Date" type="Label" parent="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem/H"]
 margin_left = 358.0
-margin_top = 3.0
+margin_top = 6.0
 margin_right = 894.0
-margin_bottom = 22.0
+margin_bottom = 25.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.631373, 0.631373, 0.631373, 1 )
 text = "21/04/2021"
 align = 2
 
-[node name="Delete" type="TextureButton" parent="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem/H"]
+[node name="TimeTrack" type="TextureButton" parent="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem/H"]
 margin_left = 898.0
 margin_right = 917.0
-margin_bottom = 25.0
+margin_bottom = 32.0
 rect_min_size = Vector2( 19, 0 )
 rect_pivot_offset = Vector2( 9.5, 9.5 )
 mouse_filter = 1
-texture_normal = ExtResource( 10 )
-texture_pressed = ExtResource( 7 )
-texture_hover = ExtResource( 5 )
+size_flags_horizontal = 9
+texture_normal = ExtResource( 16 )
 expand = true
 stretch_mode = 5
+script = ExtResource( 2 )
+
+[node name="Delete" type="TextureButton" parent="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem/H"]
+margin_left = 921.0
+margin_right = 940.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 19, 0 )
+rect_pivot_offset = Vector2( 9.5, 9.5 )
+mouse_filter = 1
+texture_normal = ExtResource( 3 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TimeTrack" type="TextureButton" parent="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem/H"]
-margin_left = 921.0
-margin_right = 940.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 19, 0 )
-rect_pivot_offset = Vector2( 9.5, 9.5 )
-hint_tooltip = "Time track again"
-mouse_filter = 1
-size_flags_horizontal = 9
-texture_normal = ExtResource( 21 )
-texture_pressed = ExtResource( 16 )
-texture_hover = ExtResource( 16 )
-expand = true
-stretch_mode = 5
-
 [node name="Control" type="Control" parent="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem/H"]
 margin_left = 944.0
 margin_right = 945.666
-margin_bottom = 25.0
+margin_bottom = 32.0
 rect_min_size = Vector2( 1.666, 0 )
 
 [node name="Tween" type="Tween" parent="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem"]
@@ -211,85 +139,6 @@ rect_min_size = Vector2( 1.666, 0 )
 
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 18 )
-
-[node name="PauseOverlay" type="ColorRect" parent="."]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0, 0, 0, 0.670588 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBX" type="VBoxContainer" parent="PauseOverlay"]
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -71.0
-margin_right = 71.0
-grow_horizontal = 2
-rect_min_size = Vector2( 175, 0 )
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="PauseOverlay/VBX"]
-margin_top = 87.0
-margin_right = 175.0
-margin_bottom = 267.043
-rect_min_size = Vector2( 0, 180.043 )
-texture = ExtResource( 20 )
-expand = true
-stretch_mode = 6
-
-[node name="PauseLbl" type="Label" parent="PauseOverlay/VBX/TextureRect"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -77.0
-margin_top = -17.6947
-margin_right = 77.0
-margin_bottom = 75.3053
-custom_colors/font_color = Color( 0, 0.145098, 0.152941, 1 )
-custom_fonts/font = ExtResource( 22 )
-text = "PAUSE"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TimeLbl" type="Label" parent="PauseOverlay/VBX"]
-margin_top = 271.0
-margin_right = 175.0
-margin_bottom = 333.0
-custom_colors/font_color = Color( 1, 0.121569, 0.121569, 1 )
-custom_fonts/font = ExtResource( 23 )
-text = "00:00"
-align = 1
-valign = 1
-
-[node name="Control" type="Control" parent="PauseOverlay/VBX"]
-margin_top = 337.0
-margin_right = 175.0
-margin_bottom = 387.0
-rect_min_size = Vector2( 0, 50 )
-
-[node name="ContinueBreakBtn" type="Button" parent="PauseOverlay/VBX"]
-margin_top = 391.0
-margin_right = 175.0
-margin_bottom = 435.0
-theme = SubResource( 6 )
-text = "Continue"
-
-[node name="FinishBtn" type="Button" parent="PauseOverlay/VBX"]
-margin_top = 439.0
-margin_right = 175.0
-margin_bottom = 483.0
-theme = SubResource( 11 )
-text = "Finish"
 
 [node name="Gradient" type="TextureRect" parent="."]
 modulate = Color( 0.156863, 0.156863, 0.156863, 1 )
@@ -309,9 +158,7 @@ __meta__ = {
 [connection signal="mouse_entered" from="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem" to="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem" method="_on_TrackedItem_mouse_entered"]
 [connection signal="mouse_exited" from="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem" to="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem" method="_on_TrackedItem_mouse_exited"]
 [connection signal="text_changed" from="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem/H/ProjectName" to="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem" method="_on_ProjectName_text_changed"]
-[connection signal="button_up" from="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem/H/Delete" to="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem" method="_on_Delete_button_up"]
 [connection signal="button_up" from="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem/H/TimeTrack" to="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem" method="_on_TimeTrack_button_up"]
+[connection signal="button_up" from="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem/H/Delete" to="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem" method="_on_Delete_button_up"]
 [connection signal="timeout" from="SecondsTimer" to="." method="_on_SecondsTimer_timeout"]
 [connection signal="timeout" from="RestTimer" to="." method="_on_RestTimer_timeout"]
-[connection signal="pressed" from="PauseOverlay/VBX/ContinueBreakBtn" to="." method="_on_ContinueBreakBtn_pressed"]
-[connection signal="pressed" from="PauseOverlay/VBX/FinishBtn" to="." method="_on_FinishBtn_pressed"]

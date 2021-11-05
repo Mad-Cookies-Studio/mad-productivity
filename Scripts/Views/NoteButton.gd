@@ -38,10 +38,6 @@ func show_delete(duration : float = 0.5) -> void:
 func mouse_entered() -> void:
 #	show_delete()
 	$DeleteBtn.show()
-	if Defaults.time_tracking:
-		$TimeTrack.modulate.a = 0.5
-	else:
-		$TimeTrack.modulate.a = 1.0
 	$TimeTrack.show()
 	
 func mouse_exited() -> void:
@@ -51,19 +47,12 @@ func mouse_exited() -> void:
 	
 	
 func _on_delete_btn_pressed() -> void:
-	pass
-
-
-func _on_DefaultButton_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.pressed:
-		if get_local_mouse_position().x > 196:
-			emit_signal("note_delete_pressed", self, res)
-			delete_note(self, res)
+	emit_signal("note_delete_pressed", self, res)
+	delete_note(self, res)
 		
 		
 func _on_time_track_btn_pressed() -> void:
-	if Defaults.time_tracking: return
-	emit_signal("start_time_track", res.title)
+	Defaults.emit_signal("track_item", res.title)
 		
 		
 func delete_note(btn : Button, _res : NoteResource) -> void:

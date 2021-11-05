@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Assets/Fonts/Righteous50.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/Fonts/Roboto12.tres" type="DynamicFont" id=2]
@@ -7,8 +7,7 @@
 [ext_resource path="res://Assets/Themes/CuteButtonTheme.tres" type="Theme" id=5]
 [ext_resource path="res://Assets/Themes/CheckBox.tres" type="Theme" id=6]
 [ext_resource path="res://Scripts/Views/Settings.gd" type="Script" id=7]
-[ext_resource path="res://Assets/Buttons/X_idle.png" type="Texture" id=8]
-[ext_resource path="res://Assets/Buttons/X_hoer.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Buttons/X_normal.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Views/Settings/ThemeColorOption.gd" type="Script" id=10]
 [ext_resource path="res://Assets/Themes/Dark/PanelSuperDarkGreen.tres" type="StyleBox" id=11]
 [ext_resource path="res://Assets/Views/Settings/Contrast.gd" type="Script" id=12]
@@ -778,9 +777,9 @@ text = "new"
 
 [node name="QuoteBox" type="HBoxContainer" parent="C/VBoxContainer"]
 visible = false
-margin_top = 1145.0
-margin_right = 625.0
-margin_bottom = 1170.0
+margin_top = 1193.0
+margin_right = 603.0
+margin_bottom = 1218.0
 rect_min_size = Vector2( 0, 25 )
 custom_constants/separation = 20
 
@@ -797,14 +796,12 @@ margin_bottom = 25.0
 rect_min_size = Vector2( 15, 0 )
 theme = ExtResource( 6 )
 texture_normal = ExtResource( 8 )
-texture_pressed = ExtResource( 9 )
-texture_hover = ExtResource( 9 )
 expand = true
 stretch_mode = 5
 
 [node name="Text" type="LineEdit" parent="C/VBoxContainer/QuoteBox"]
 margin_left = 35.0
-margin_right = 625.0
+margin_right = 603.0
 margin_bottom = 25.0
 rect_min_size = Vector2( 350, 0 )
 size_flags_horizontal = 3

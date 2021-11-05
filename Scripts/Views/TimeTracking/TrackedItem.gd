@@ -2,7 +2,6 @@ extends ColorRect
 
 signal new_tracked_item_text(new_text, id)
 signal delete_pressed(idx)
-signal time_track_item(_name)
 
 var id : int
 
@@ -30,11 +29,6 @@ func show_up() -> void:
 
 func _on_TrackedItem_mouse_entered() -> void:
 	color = highlight_color
-	if Defaults.time_tracking:
-		$H/TimeTrack.modulate.a = 0.5
-	else:
-		$H/TimeTrack.modulate.a = 1.0
-		
 	$H/TimeTrack.show()
 	$H/Delete.show()
 
@@ -51,7 +45,7 @@ func _on_Delete_button_up() -> void:
 
 
 func _on_TimeTrack_button_up() -> void:
-	emit_signal("time_track_item", $H/ProjectName.text)
+	Defaults.emit_signal("track_item", $H/ProjectName.text)
 
 
 func _on_ProjectName_text_changed(new_text: String) -> void:
