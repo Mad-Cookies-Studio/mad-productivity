@@ -25,6 +25,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - "TBD" text to the game view
 - New type of button which charges by having the user click and hold LMB
 - Settings
+- Auto save every 10 seconds
 
 ### Changed
 - Data handling in TimeTracking
@@ -43,6 +44,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Colours hard set to the original theme
 - Calendar addon
 - Todo addon
+- Legacy icons used only in he previous version
 
 
 ## [0.0.1] - 2021-06-24
