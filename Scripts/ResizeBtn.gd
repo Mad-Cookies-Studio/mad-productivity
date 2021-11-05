@@ -1,6 +1,6 @@
 extends TextureButton
 
-var MIN_WIN_SIZE : Vector2 = Vector2(1100, 600)
+var MIN_WIN_SIZE : Vector2 = Vector2(1200, 640)
 
 var ms_speed : Vector2
 
