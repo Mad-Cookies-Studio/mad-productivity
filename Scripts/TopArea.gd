@@ -13,11 +13,9 @@ var minimized_pos : Vector2
 
 func _ready() -> void:
 	Defaults.connect("view_changed", self, "on_view_changed")
-	Defaults.connect("theme_changed", self, "on_theme_changed")
 
 	set_process_input(false)
-	var res = load(Defaults.TIMETRACKS_SAVE_PATH + Defaults.TIMETRACKS_SAVE_NAME)	# TODO: access this resource in some more elegant way
-#	$Right/Maximize.pressed = Defaults.settings_res.window_maximized
+	var res = load(Defaults.TIMETRACKS_SAVE_PATH + Defaults.TIMETRACKS_SAVE_NAME)	# TODO: access this resource 
 	
 
 func _input(event: InputEvent) -> void:
