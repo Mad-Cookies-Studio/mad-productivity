@@ -12,6 +12,7 @@
 [ext_resource path="res://Scripts/TopArea.gd" type="Script" id=10]
 [ext_resource path="res://Scripts/CustomTransparentButton.gd" type="Script" id=11]
 [ext_resource path="res://Assets/Views/Dashboard.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Assets/Views/Game.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Assets/Views/TimeTracking.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=15]
 [ext_resource path="res://Scripts/Views.gd" type="Script" id=16]
@@ -38,7 +39,6 @@
 [ext_resource path="res://Assets/Themes/Dark/PanelGreen.tres" type="StyleBox" id=44]
 [ext_resource path="res://Assets/Themes/Dark/PanelGreenNoBorder.tres" type="StyleBox" id=45]
 [ext_resource path="res://Assets/Icons/gamepad.png" type="Texture" id=46]
-[ext_resource path="res://Scripts/Views/Game.gd" type="Script" id=47]
 
 [sub_resource type="ButtonGroup" id=3]
 
@@ -495,14 +495,11 @@ margin_right = 1050.0
 margin_bottom = 605.0
 title = "TODO"
 
-[node name="Game" type="Control" parent="MainWorkspace/HBX/VBX/Views"]
+[node name="Game" parent="MainWorkspace/HBX/VBX/Views" instance=ExtResource( 13 )]
 visible = false
-margin_right = 1050.0
-margin_bottom = 605.0
-script = ExtResource( 47 )
-title = "Game"
 
 [node name="Profile" type="Control" parent="MainWorkspace/HBX/VBX/Views"]
+visible = false
 margin_right = 1050.0
 margin_bottom = 605.0
 script = ExtResource( 27 )
@@ -533,7 +530,6 @@ caret_blink = true
 margin_top = 323.0
 margin_right = 1050.0
 margin_bottom = 349.0
-custom_colors/font_color = Color( 0.576471, 0.627451, 0.631373, 0.615686 )
 custom_fonts/font = ExtResource( 23 )
 custom_styles/read_only = SubResource( 20 )
 custom_styles/focus = SubResource( 21 )
