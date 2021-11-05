@@ -26,7 +26,10 @@ func add_finished_track(item : TimeTrackItem) -> int:
 
 
 func get_track(_id : int) -> TimeTrackItem:
-	return tracks[_id]
+	if tracks.has(_id):
+		return tracks[_id]
+	else:
+		return TimeTrackItem.new()
 
 #func get_track_length(id : int) -> Dictionary:
 	#if id < 0:
