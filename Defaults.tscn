@@ -8,3 +8,9 @@ btn_active_colour = Color( 0.854902, 0.423529, 0.384314, 1 )
 btn_inactive_colour = Color( 0.137255, 0.301961, 0.305882, 1 )
 custom_check_box_active = Color( 0.109804, 0.784314, 0.419608, 1 )
 custom_check_box_inactive = Color( 0.0588235, 0.105882, 0.109804, 1 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

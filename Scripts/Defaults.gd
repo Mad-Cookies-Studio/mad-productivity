@@ -356,3 +356,7 @@ func get_time_zone_bias() -> int:
 		return windows_sdt_bias
 	else:
 		return OS.get_time_zone_info()['bias']
+
+
+func _on_Timer_timeout() -> void:
+	user_save()
