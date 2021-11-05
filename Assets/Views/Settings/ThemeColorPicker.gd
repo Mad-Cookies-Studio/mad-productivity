@@ -1,15 +1,16 @@
 extends ColorPicker
 
-
+signal show_colour_panel(really)
 
 func _ready() -> void:
-	get_parent().hide()
+	get_parent().show()
+	get_parent().rect_size.x = 0.0
 
 
 func _on_Option_setting_color(which, node) -> void:
 	color = node.color
-	get_parent().show()
+	emit_signal("show_colour_panel", true)
 
 
 func _on_Button_pressed() -> void:
-	get_parent().hide()
+	emit_signal("show_colour_panel", false)

@@ -16,7 +16,7 @@ func entering_view() -> void:
 	
 func leaving_view() -> void:
 	Defaults.save_settings_resource()
-	$Panel.hide()
+	toggle_colour_panel(false)
 	
 	
 func save() -> void:
@@ -30,48 +30,48 @@ func _ready() -> void:
 
 
 func set_up_btns() -> void:
-	$C/VBoxContainer/FontSize/Option.select(res.font_size)
-	$C/VBoxContainer/SecsDashboard/Option.pressed = res.show_secs_dash
-	$C/VBoxContainer/WindowPos/Option.pressed = res.remember_window_settings
-	$C/VBoxContainer/HidDPI/Option.pressed = res.hidpi
-	$C/VBoxContainer/LongPause/Option.value = res.pomo_long_pause_length
-	$C/VBoxContainer/LongPauseFreq/Option.value = res.pomo_long_pause_freq
-	$C/VBoxContainer/ShortPause/Option.value = res.pomo_short_pause_length
-	$C/VBoxContainer/WorkTimeLength/Option.value = res.pomo_work_time_length
-	$C/VBoxContainer/WindowPos2/Option.pressed = res.remember_last_session_view
-	$C/VBoxContainer/ShowDate/Option.pressed = res.show_date
-	$C/VBoxContainer/Borderless/Option.pressed = res.borderless
+	$HBX/C/VBoxContainer/FontSize/Option.select(res.font_size)
+	$HBX/C/VBoxContainer/SecsDashboard/Option.pressed = res.show_secs_dash
+	$HBX/C/VBoxContainer/WindowPos/Option.pressed = res.remember_window_settings
+	$HBX/C/VBoxContainer/HidDPI/Option.pressed = res.hidpi
+	$HBX/C/VBoxContainer/LongPause/Option.value = res.pomo_long_pause_length
+	$HBX/C/VBoxContainer/LongPauseFreq/Option.value = res.pomo_long_pause_freq
+	$HBX/C/VBoxContainer/ShortPause/Option.value = res.pomo_short_pause_length
+	$HBX/C/VBoxContainer/WorkTimeLength/Option.value = res.pomo_work_time_length
+	$HBX/C/VBoxContainer/WindowPos2/Option.pressed = res.remember_last_session_view
+	$HBX/C/VBoxContainer/ShowDate/Option.pressed = res.show_date
+	$HBX/C/VBoxContainer/Borderless/Option.pressed = res.borderless
 	# notes textedit
-	$C/VBoxContainer/LineNumbers/Option.pressed = res.line_numbers
-	$C/VBoxContainer/HighlightLine/Option.pressed = res.highlight_current_line
-	$C/VBoxContainer/Minimap/Option.pressed = res.minimap
-	$C/VBoxContainer/SyntaxHighlighting/Option.pressed = res.syntax_highlighting
-	$C/VBoxContainer/Tabs/Option.pressed = res.draw_tabs
-	$C/VBoxContainer/Spaces/Option.pressed = res.draw_spaces
+	$HBX/C/VBoxContainer/LineNumbers/Option.pressed = res.line_numbers
+	$HBX/C/VBoxContainer/HighlightLine/Option.pressed = res.highlight_current_line
+	$HBX/C/VBoxContainer/Minimap/Option.pressed = res.minimap
+	$HBX/C/VBoxContainer/SyntaxHighlighting/Option.pressed = res.syntax_highlighting
+	$HBX/C/VBoxContainer/Tabs/Option.pressed = res.draw_tabs
+	$HBX/C/VBoxContainer/Spaces/Option.pressed = res.draw_spaces
 
 
 func update_quotes() -> void:
 	for i in res.quote_list:
-		var new = $C/VBoxContainer/QuoteBox.duplicate()
+		var new = $HBX/C/VBoxContainer/QuoteBox.duplicate()
 		new.get_child(0).text = str(i)
 		new.get_child(2).text = res.quote_list[i]
 		new.get_child(1).connect("pressed", self, "on_quote_delete_pressed", [i])
 		new.name = "quote" + str(i)
 		new.show()
-		$C/VBoxContainer.add_child(new)
+		$HBX/C/VBoxContainer.add_child(new)
 		quote_nodes.append(new)
 
 
 func make_new_quote() -> void:
 	res.quote_id += 1
 	var idx : int = res.quote_id
-	var new = $C/VBoxContainer/QuoteBox.duplicate()
+	var new = $HBX/C/VBoxContainer/QuoteBox.duplicate()
 	new.get_child(0).text = str(idx)
 	new.get_child(1).text = "New Quote"
 	new.get_child(2).connect("pressed", self, "on_quote_delete_pressed", [idx])
 	new.name = "quote" + str(idx)
 	new.show()
-	$C/VBoxContainer.add_child(new)
+	$HBX/C/VBoxContainer.add_child(new)
 	quote_nodes.append(new)
 
 
@@ -93,11 +93,18 @@ func update_view_text() -> void:
 	Defaults.emit_signal("update_view_info", text)
 
 
+func toggle_colour_panel(really : bool) -> void:
+	$Tween.remove_all()
+	$Tween.interpolate_property($HBX/Panel, "rect_min_size:x", $HBX/Panel.rect_min_size.x, 400 * float(really), 0.75, Tween.TRANS_EXPO, Tween.EASE_OUT, 0.0)
+	$Tween.interpolate_property($HBX/Panel, "modulate:a", $HBX/Panel.modulate.a, 1.0 * float(really), 0.75, Tween.TRANS_EXPO, Tween.EASE_OUT, 0.0)
+	$Tween.start()
+
+
 # -- > SIGNALS <-- #
 
 func on_quote_delete_pressed(idx : int) -> void:
 	res.quote_list.erase(idx)
-	$C/VBoxContainer.get_node("quote" + str(idx)).queue_free()
+	$HBX/C/VBoxContainer.get_node("quote" + str(idx)).queue_free()
 
 
 func _on_Option_item_selected(index: int) -> void:
@@ -204,4 +211,8 @@ func _on_QuotesSaveButton_pressed() -> void:
 
 func _on_TheneResetButton_pressed() -> void:
 	Defaults.load_default_theme()
-	$C/VBoxContainer/CatTheme.update_values()
+	$HBX/C/VBoxContainer/CatTheme.update_values()
+
+
+func _on_ColorPicker_show_colour_panel(really) -> void:
+	toggle_colour_panel(really)

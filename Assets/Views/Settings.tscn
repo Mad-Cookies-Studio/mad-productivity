@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Assets/Fonts/Righteous50.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/Fonts/Roboto12.tres" type="DynamicFont" id=2]
@@ -8,14 +8,13 @@
 [ext_resource path="res://Assets/Themes/CheckBox.tres" type="Theme" id=6]
 [ext_resource path="res://Scripts/Views/Settings.gd" type="Script" id=7]
 [ext_resource path="res://Assets/Buttons/X_normal.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Themes/Dark/PanelBorderOnlyHighlight.tres" type="StyleBox" id=9]
 [ext_resource path="res://Assets/Views/Settings/ThemeColorOption.gd" type="Script" id=10]
 [ext_resource path="res://Assets/Themes/Dark/PanelSuperDarkGreen.tres" type="StyleBox" id=11]
 [ext_resource path="res://Assets/Views/Settings/Contrast.gd" type="Script" id=12]
 [ext_resource path="res://Assets/Views/Settings/ThemeOptions.gd" type="Script" id=13]
 [ext_resource path="res://Assets/Views/Settings/ThemeColorPicker.gd" type="Script" id=14]
-[ext_resource path="res://Assets/Themes/Dark/PanelHighlight.tres" type="StyleBox" id=15]
 [ext_resource path="res://Assets/Themes/PopupTheme.tres" type="Theme" id=16]
-[ext_resource path="res://Assets/Fonts/NovaMono20.tres" type="DynamicFont" id=17]
 
 [sub_resource type="StyleBoxEmpty" id=19]
 
@@ -32,23 +31,30 @@ __meta__ = {
 }
 title = "Settings"
 
-[node name="C" type="ScrollContainer" parent="."]
+[node name="HBX" type="HBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 37.0
-margin_top = 20.0
-margin_right = -400.0
-margin_bottom = -43.0
-rect_min_size = Vector2( 480, 0 )
+margin_left = 40.0
+margin_top = 40.0
+margin_right = -39.0
+margin_bottom = -39.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="C" type="ScrollContainer" parent="HBX"]
+margin_right = 567.0
+margin_bottom = 1276.0
+size_flags_horizontal = 3
 theme = ExtResource( 4 )
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="C"]
-margin_right = 603.0
-margin_bottom = 1292.0
+[node name="VBoxContainer" type="VBoxContainer" parent="HBX/C"]
+margin_right = 557.0
+margin_bottom = 1276.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 11
@@ -58,7 +64,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Title" type="Label" parent="C/VBoxContainer"]
+[node name="Title" type="Label" parent="HBX/C/VBoxContainer"]
 visible = false
 margin_right = 434.0
 margin_bottom = 63.0
@@ -68,8 +74,8 @@ custom_styles/normal = SubResource( 19 )
 text = "SETTINGS"
 align = 1
 
-[node name="CatTheme" type="HBoxContainer" parent="C/VBoxContainer"]
-margin_right = 603.0
+[node name="CatTheme" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
+margin_right = 557.0
 margin_bottom = 50.0
 custom_constants/separation = 20
 script = ExtResource( 13 )
@@ -77,7 +83,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Theme" type="Label" parent="C/VBoxContainer/CatTheme"]
+[node name="Theme" type="Label" parent="HBX/C/VBoxContainer/CatTheme"]
 margin_right = 63.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
@@ -88,7 +94,7 @@ text = "Theme"
 align = 1
 valign = 1
 
-[node name="TheneResetButton" type="Button" parent="C/VBoxContainer/CatTheme"]
+[node name="TheneResetButton" type="Button" parent="HBX/C/VBoxContainer/CatTheme"]
 margin_left = 83.0
 margin_top = 10.0
 margin_right = 143.0
@@ -98,12 +104,12 @@ size_flags_vertical = 4
 theme = ExtResource( 5 )
 text = "reset"
 
-[node name="Primary" type="HBoxContainer" parent="C/VBoxContainer"]
+[node name="Primary" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
 margin_top = 65.0
-margin_right = 603.0
+margin_right = 557.0
 margin_bottom = 82.0
 
-[node name="Text" type="Label" parent="C/VBoxContainer/Primary"]
+[node name="Text" type="Label" parent="HBX/C/VBoxContainer/Primary"]
 margin_right = 350.0
 margin_bottom = 17.0
 rect_min_size = Vector2( 350, 0 )
@@ -112,7 +118,7 @@ custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 22 )
 text = "Primary color"
 
-[node name="Option" type="ColorRect" parent="C/VBoxContainer/Primary"]
+[node name="Option" type="ColorRect" parent="HBX/C/VBoxContainer/Primary"]
 margin_left = 354.0
 margin_right = 371.0
 margin_bottom = 17.0
@@ -123,7 +129,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BG" type="ReferenceRect" parent="C/VBoxContainer/Primary/Option"]
+[node name="BG" type="ReferenceRect" parent="HBX/C/VBoxContainer/Primary/Option"]
 show_behind_parent = true
 anchor_left = 0.5
 anchor_top = 0.5
@@ -143,12 +149,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Highlight" type="HBoxContainer" parent="C/VBoxContainer"]
+[node name="Highlight" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
 margin_top = 97.0
-margin_right = 603.0
+margin_right = 557.0
 margin_bottom = 114.0
 
-[node name="Text" type="Label" parent="C/VBoxContainer/Highlight"]
+[node name="Text" type="Label" parent="HBX/C/VBoxContainer/Highlight"]
 margin_right = 350.0
 margin_bottom = 17.0
 rect_min_size = Vector2( 350, 0 )
@@ -157,7 +163,7 @@ custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 22 )
 text = "Highlight color"
 
-[node name="Option" type="ColorRect" parent="C/VBoxContainer/Highlight"]
+[node name="Option" type="ColorRect" parent="HBX/C/VBoxContainer/Highlight"]
 margin_left = 354.0
 margin_right = 371.0
 margin_bottom = 17.0
@@ -166,7 +172,7 @@ theme = ExtResource( 6 )
 script = ExtResource( 10 )
 set_name = 1
 
-[node name="BG" type="ReferenceRect" parent="C/VBoxContainer/Highlight/Option"]
+[node name="BG" type="ReferenceRect" parent="HBX/C/VBoxContainer/Highlight/Option"]
 show_behind_parent = true
 anchor_left = 0.5
 anchor_top = 0.5
@@ -186,13 +192,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Contrast" type="HBoxContainer" parent="C/VBoxContainer"]
+[node name="Contrast" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
 margin_top = 129.0
-margin_right = 603.0
+margin_right = 557.0
 margin_bottom = 156.0
 script = ExtResource( 12 )
 
-[node name="Text" type="Label" parent="C/VBoxContainer/Contrast"]
+[node name="Text" type="Label" parent="HBX/C/VBoxContainer/Contrast"]
 margin_top = 5.0
 margin_right = 350.0
 margin_bottom = 22.0
@@ -202,7 +208,7 @@ custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 22 )
 text = "Contrast"
 
-[node name="Option" type="SpinBox" parent="C/VBoxContainer/Contrast"]
+[node name="Option" type="SpinBox" parent="HBX/C/VBoxContainer/Contrast"]
 margin_left = 354.0
 margin_right = 417.425
 margin_bottom = 27.0
@@ -212,12 +218,12 @@ min_value = -5.0
 max_value = 5.0
 step = 0.01
 
-[node name="TextColour" type="HBoxContainer" parent="C/VBoxContainer"]
+[node name="TextColour" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
 margin_top = 171.0
-margin_right = 603.0
+margin_right = 557.0
 margin_bottom = 188.0
 
-[node name="Text" type="Label" parent="C/VBoxContainer/TextColour"]
+[node name="Text" type="Label" parent="HBX/C/VBoxContainer/TextColour"]
 margin_right = 350.0
 margin_bottom = 17.0
 rect_min_size = Vector2( 350, 0 )
@@ -226,7 +232,7 @@ custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 22 )
 text = "Text Color"
 
-[node name="Option" type="ColorRect" parent="C/VBoxContainer/TextColour"]
+[node name="Option" type="ColorRect" parent="HBX/C/VBoxContainer/TextColour"]
 margin_left = 354.0
 margin_right = 371.0
 margin_bottom = 17.0
@@ -235,7 +241,7 @@ theme = ExtResource( 6 )
 script = ExtResource( 10 )
 set_name = 2
 
-[node name="BG" type="ReferenceRect" parent="C/VBoxContainer/TextColour/Option"]
+[node name="BG" type="ReferenceRect" parent="HBX/C/VBoxContainer/TextColour/Option"]
 show_behind_parent = true
 anchor_left = 0.5
 anchor_top = 0.5
@@ -255,16 +261,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Category3" type="HBoxContainer" parent="C/VBoxContainer"]
+[node name="Category3" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
 margin_top = 203.0
-margin_right = 603.0
+margin_right = 557.0
 margin_bottom = 253.0
 custom_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="General" type="Label" parent="C/VBoxContainer/Category3"]
+[node name="General" type="Label" parent="HBX/C/VBoxContainer/Category3"]
 margin_right = 70.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
@@ -275,7 +281,7 @@ text = "General"
 align = 1
 valign = 1
 
-[node name="GeneralResetButton" type="Button" parent="C/VBoxContainer/Category3"]
+[node name="GeneralResetButton" type="Button" parent="HBX/C/VBoxContainer/Category3"]
 margin_left = 90.0
 margin_top = 10.0
 margin_right = 150.0
@@ -285,12 +291,12 @@ size_flags_vertical = 4
 theme = ExtResource( 5 )
 text = "reset"
 
-[node name="SecsDashboard" type="HBoxContainer" parent="C/VBoxContainer"]
+[node name="SecsDashboard" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
 margin_top = 268.0
-margin_right = 603.0
+margin_right = 557.0
 margin_bottom = 293.0
 
-[node name="Text" type="Label" parent="C/VBoxContainer/SecsDashboard"]
+[node name="Text" type="Label" parent="HBX/C/VBoxContainer/SecsDashboard"]
 margin_top = 4.0
 margin_right = 350.0
 margin_bottom = 21.0
@@ -300,18 +306,18 @@ custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 22 )
 text = "Show seconds in dashboard"
 
-[node name="Option" type="CheckBox" parent="C/VBoxContainer/SecsDashboard"]
+[node name="Option" type="CheckBox" parent="HBX/C/VBoxContainer/SecsDashboard"]
 margin_left = 354.0
 margin_right = 379.0
 margin_bottom = 25.0
 theme = ExtResource( 6 )
 
-[node name="FontSize" type="HBoxContainer" parent="C/VBoxContainer"]
+[node name="FontSize" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
 margin_top = 308.0
-margin_right = 603.0
+margin_right = 557.0
 margin_bottom = 335.0
 
-[node name="Text" type="Label" parent="C/VBoxContainer/FontSize"]
+[node name="Text" type="Label" parent="HBX/C/VBoxContainer/FontSize"]
 margin_top = 5.0
 margin_right = 350.0
 margin_bottom = 22.0
@@ -321,7 +327,7 @@ custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 22 )
 text = "Font size (notes)"
 
-[node name="Option" type="OptionButton" parent="C/VBoxContainer/FontSize"]
+[node name="Option" type="OptionButton" parent="HBX/C/VBoxContainer/FontSize"]
 margin_left = 354.0
 margin_right = 434.0
 margin_bottom = 27.0
@@ -331,12 +337,12 @@ text = "Small"
 items = [ "Small", null, false, 0, null, "Medium", null, false, 1, null, "Large", null, false, 2, null ]
 selected = 0
 
-[node name="WindowPos" type="HBoxContainer" parent="C/VBoxContainer"]
+[node name="WindowPos" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
 margin_top = 350.0
-margin_right = 603.0
+margin_right = 557.0
 margin_bottom = 375.0
 
-[node name="Text" type="Label" parent="C/VBoxContainer/WindowPos"]
+[node name="Text" type="Label" parent="HBX/C/VBoxContainer/WindowPos"]
 margin_top = 4.0
 margin_right = 350.0
 margin_bottom = 21.0
@@ -346,18 +352,18 @@ custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 22 )
 text = "Remember window size and position"
 
-[node name="Option" type="CheckBox" parent="C/VBoxContainer/WindowPos"]
+[node name="Option" type="CheckBox" parent="HBX/C/VBoxContainer/WindowPos"]
 margin_left = 354.0
 margin_right = 379.0
 margin_bottom = 25.0
 theme = ExtResource( 6 )
 
-[node name="WindowPos2" type="HBoxContainer" parent="C/VBoxContainer"]
+[node name="WindowPos2" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
 margin_top = 390.0
-margin_right = 603.0
+margin_right = 557.0
 margin_bottom = 415.0
 
-[node name="Text" type="Label" parent="C/VBoxContainer/WindowPos2"]
+[node name="Text" type="Label" parent="HBX/C/VBoxContainer/WindowPos2"]
 margin_top = 4.0
 margin_right = 350.0
 margin_bottom = 21.0
@@ -367,18 +373,18 @@ custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 22 )
 text = "Remember last session view"
 
-[node name="Option" type="CheckBox" parent="C/VBoxContainer/WindowPos2"]
+[node name="Option" type="CheckBox" parent="HBX/C/VBoxContainer/WindowPos2"]
 margin_left = 354.0
 margin_right = 379.0
 margin_bottom = 25.0
 theme = ExtResource( 6 )
 
-[node name="ShowDate" type="HBoxContainer" parent="C/VBoxContainer"]
+[node name="ShowDate" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
 margin_top = 430.0
-margin_right = 603.0
+margin_right = 557.0
 margin_bottom = 455.0
 
-[node name="Text" type="Label" parent="C/VBoxContainer/ShowDate"]
+[node name="Text" type="Label" parent="HBX/C/VBoxContainer/ShowDate"]
 margin_top = 4.0
 margin_right = 350.0
 margin_bottom = 21.0
@@ -388,18 +394,18 @@ custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 22 )
 text = "Show date in Dashboard"
 
-[node name="Option" type="CheckBox" parent="C/VBoxContainer/ShowDate"]
+[node name="Option" type="CheckBox" parent="HBX/C/VBoxContainer/ShowDate"]
 margin_left = 354.0
 margin_right = 379.0
 margin_bottom = 25.0
 theme = ExtResource( 6 )
 
-[node name="Borderless" type="HBoxContainer" parent="C/VBoxContainer"]
+[node name="Borderless" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
 margin_top = 470.0
-margin_right = 603.0
+margin_right = 557.0
 margin_bottom = 495.0
 
-[node name="Text" type="Label" parent="C/VBoxContainer/Borderless"]
+[node name="Text" type="Label" parent="HBX/C/VBoxContainer/Borderless"]
 margin_top = 4.0
 margin_right = 350.0
 margin_bottom = 21.0
@@ -409,18 +415,18 @@ custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 22 )
 text = "Borderless window"
 
-[node name="Option" type="CheckBox" parent="C/VBoxContainer/Borderless"]
+[node name="Option" type="CheckBox" parent="HBX/C/VBoxContainer/Borderless"]
 margin_left = 354.0
 margin_right = 379.0
 margin_bottom = 25.0
 theme = ExtResource( 6 )
 
-[node name="HidDPI" type="HBoxContainer" parent="C/VBoxContainer"]
+[node name="HidDPI" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
 margin_top = 510.0
-margin_right = 603.0
+margin_right = 557.0
 margin_bottom = 535.0
 
-[node name="Text" type="Label" parent="C/VBoxContainer/HidDPI"]
+[node name="Text" type="Label" parent="HBX/C/VBoxContainer/HidDPI"]
 margin_top = 4.0
 margin_right = 350.0
 margin_bottom = 21.0
@@ -430,22 +436,22 @@ custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 22 )
 text = "HiDPI"
 
-[node name="Option" type="CheckBox" parent="C/VBoxContainer/HidDPI"]
+[node name="Option" type="CheckBox" parent="HBX/C/VBoxContainer/HidDPI"]
 margin_left = 354.0
 margin_right = 379.0
 margin_bottom = 25.0
 theme = ExtResource( 6 )
 
-[node name="Category2" type="HBoxContainer" parent="C/VBoxContainer"]
+[node name="Category2" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
 margin_top = 550.0
-margin_right = 603.0
+margin_right = 557.0
 margin_bottom = 600.0
 custom_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Pomodoro" type="Label" parent="C/VBoxContainer/Category2"]
+[node name="Pomodoro" type="Label" parent="HBX/C/VBoxContainer/Category2"]
 margin_right = 93.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
@@ -456,7 +462,7 @@ text = "Pomodoro"
 align = 1
 valign = 1
 
-[node name="PomodoroResetButton" type="Button" parent="C/VBoxContainer/Category2"]
+[node name="PomodoroResetButton" type="Button" parent="HBX/C/VBoxContainer/Category2"]
 margin_left = 113.0
 margin_top = 10.0
 margin_right = 173.0
@@ -466,12 +472,12 @@ size_flags_vertical = 4
 theme = ExtResource( 5 )
 text = "reset"
 
-[node name="WorkTimeLength" type="HBoxContainer" parent="C/VBoxContainer"]
+[node name="WorkTimeLength" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
 margin_top = 615.0
-margin_right = 603.0
+margin_right = 557.0
 margin_bottom = 642.0
 
-[node name="Text" type="Label" parent="C/VBoxContainer/WorkTimeLength"]
+[node name="Text" type="Label" parent="HBX/C/VBoxContainer/WorkTimeLength"]
 margin_top = 5.0
 margin_right = 350.0
 margin_bottom = 22.0
@@ -481,7 +487,7 @@ custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 22 )
 text = "Work time length"
 
-[node name="Option" type="SpinBox" parent="C/VBoxContainer/WorkTimeLength"]
+[node name="Option" type="SpinBox" parent="HBX/C/VBoxContainer/WorkTimeLength"]
 margin_left = 354.0
 margin_right = 414.0
 margin_bottom = 27.0
@@ -489,12 +495,12 @@ rect_min_size = Vector2( 60, 0 )
 theme = ExtResource( 6 )
 suffix = "m"
 
-[node name="ShortPause" type="HBoxContainer" parent="C/VBoxContainer"]
+[node name="ShortPause" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
 margin_top = 657.0
-margin_right = 603.0
+margin_right = 557.0
 margin_bottom = 684.0
 
-[node name="Text" type="Label" parent="C/VBoxContainer/ShortPause"]
+[node name="Text" type="Label" parent="HBX/C/VBoxContainer/ShortPause"]
 margin_top = 5.0
 margin_right = 350.0
 margin_bottom = 22.0
@@ -504,7 +510,7 @@ custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 22 )
 text = "Short pause length"
 
-[node name="Option" type="SpinBox" parent="C/VBoxContainer/ShortPause"]
+[node name="Option" type="SpinBox" parent="HBX/C/VBoxContainer/ShortPause"]
 margin_left = 354.0
 margin_right = 414.0
 margin_bottom = 27.0
@@ -512,12 +518,12 @@ rect_min_size = Vector2( 60, 0 )
 theme = ExtResource( 6 )
 suffix = "m"
 
-[node name="LongPause" type="HBoxContainer" parent="C/VBoxContainer"]
+[node name="LongPause" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
 margin_top = 699.0
-margin_right = 603.0
+margin_right = 557.0
 margin_bottom = 726.0
 
-[node name="Text" type="Label" parent="C/VBoxContainer/LongPause"]
+[node name="Text" type="Label" parent="HBX/C/VBoxContainer/LongPause"]
 margin_top = 5.0
 margin_right = 350.0
 margin_bottom = 22.0
@@ -527,7 +533,7 @@ custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 22 )
 text = "Long pause length"
 
-[node name="Option" type="SpinBox" parent="C/VBoxContainer/LongPause"]
+[node name="Option" type="SpinBox" parent="HBX/C/VBoxContainer/LongPause"]
 margin_left = 354.0
 margin_right = 414.0
 margin_bottom = 27.0
@@ -535,12 +541,12 @@ rect_min_size = Vector2( 60, 0 )
 theme = ExtResource( 6 )
 suffix = "m"
 
-[node name="LongPauseFreq" type="HBoxContainer" parent="C/VBoxContainer"]
+[node name="LongPauseFreq" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
 margin_top = 741.0
-margin_right = 603.0
+margin_right = 557.0
 margin_bottom = 768.0
 
-[node name="Text" type="Label" parent="C/VBoxContainer/LongPauseFreq"]
+[node name="Text" type="Label" parent="HBX/C/VBoxContainer/LongPauseFreq"]
 margin_top = 5.0
 margin_right = 350.0
 margin_bottom = 22.0
@@ -550,7 +556,7 @@ custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 22 )
 text = "Long pause frequency (after how many short breaks)"
 
-[node name="Option" type="SpinBox" parent="C/VBoxContainer/LongPauseFreq"]
+[node name="Option" type="SpinBox" parent="HBX/C/VBoxContainer/LongPauseFreq"]
 margin_left = 354.0
 margin_right = 414.0
 margin_bottom = 27.0
@@ -558,16 +564,16 @@ rect_min_size = Vector2( 60, 0 )
 theme = ExtResource( 6 )
 suffix = "x"
 
-[node name="NotesCategory" type="HBoxContainer" parent="C/VBoxContainer"]
+[node name="NotesCategory" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
 margin_top = 783.0
-margin_right = 603.0
+margin_right = 557.0
 margin_bottom = 833.0
 custom_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Notes" type="Label" parent="C/VBoxContainer/NotesCategory"]
+[node name="Notes" type="Label" parent="HBX/C/VBoxContainer/NotesCategory"]
 margin_right = 53.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
@@ -578,7 +584,7 @@ text = "Notes"
 align = 1
 valign = 1
 
-[node name="NotesResetButton" type="Button" parent="C/VBoxContainer/NotesCategory"]
+[node name="NotesResetButton" type="Button" parent="HBX/C/VBoxContainer/NotesCategory"]
 margin_left = 73.0
 margin_top = 10.0
 margin_right = 133.0
@@ -588,12 +594,12 @@ size_flags_vertical = 4
 theme = ExtResource( 5 )
 text = "reset"
 
-[node name="LineNumbers" type="HBoxContainer" parent="C/VBoxContainer"]
+[node name="LineNumbers" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
 margin_top = 848.0
-margin_right = 603.0
+margin_right = 557.0
 margin_bottom = 873.0
 
-[node name="Text" type="Label" parent="C/VBoxContainer/LineNumbers"]
+[node name="Text" type="Label" parent="HBX/C/VBoxContainer/LineNumbers"]
 margin_top = 4.0
 margin_right = 350.0
 margin_bottom = 21.0
@@ -603,18 +609,18 @@ custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 22 )
 text = "Show line numbers"
 
-[node name="Option" type="CheckBox" parent="C/VBoxContainer/LineNumbers"]
+[node name="Option" type="CheckBox" parent="HBX/C/VBoxContainer/LineNumbers"]
 margin_left = 354.0
 margin_right = 379.0
 margin_bottom = 25.0
 theme = ExtResource( 6 )
 
-[node name="HighlightLine" type="HBoxContainer" parent="C/VBoxContainer"]
+[node name="HighlightLine" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
 margin_top = 888.0
-margin_right = 603.0
+margin_right = 557.0
 margin_bottom = 913.0
 
-[node name="Text" type="Label" parent="C/VBoxContainer/HighlightLine"]
+[node name="Text" type="Label" parent="HBX/C/VBoxContainer/HighlightLine"]
 margin_top = 4.0
 margin_right = 350.0
 margin_bottom = 21.0
@@ -624,18 +630,18 @@ custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 22 )
 text = "Highlight current line"
 
-[node name="Option" type="CheckBox" parent="C/VBoxContainer/HighlightLine"]
+[node name="Option" type="CheckBox" parent="HBX/C/VBoxContainer/HighlightLine"]
 margin_left = 354.0
 margin_right = 379.0
 margin_bottom = 25.0
 theme = ExtResource( 6 )
 
-[node name="Minimap" type="HBoxContainer" parent="C/VBoxContainer"]
+[node name="Minimap" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
 margin_top = 928.0
-margin_right = 603.0
+margin_right = 557.0
 margin_bottom = 953.0
 
-[node name="Text" type="Label" parent="C/VBoxContainer/Minimap"]
+[node name="Text" type="Label" parent="HBX/C/VBoxContainer/Minimap"]
 margin_top = 4.0
 margin_right = 350.0
 margin_bottom = 21.0
@@ -645,18 +651,18 @@ custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 22 )
 text = "Show minimap"
 
-[node name="Option" type="CheckBox" parent="C/VBoxContainer/Minimap"]
+[node name="Option" type="CheckBox" parent="HBX/C/VBoxContainer/Minimap"]
 margin_left = 354.0
 margin_right = 379.0
 margin_bottom = 25.0
 theme = ExtResource( 6 )
 
-[node name="SyntaxHighlighting" type="HBoxContainer" parent="C/VBoxContainer"]
+[node name="SyntaxHighlighting" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
 margin_top = 968.0
-margin_right = 603.0
+margin_right = 557.0
 margin_bottom = 993.0
 
-[node name="Text" type="Label" parent="C/VBoxContainer/SyntaxHighlighting"]
+[node name="Text" type="Label" parent="HBX/C/VBoxContainer/SyntaxHighlighting"]
 margin_top = 4.0
 margin_right = 350.0
 margin_bottom = 21.0
@@ -666,18 +672,18 @@ custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 22 )
 text = "Syntax highlighting"
 
-[node name="Option" type="CheckBox" parent="C/VBoxContainer/SyntaxHighlighting"]
+[node name="Option" type="CheckBox" parent="HBX/C/VBoxContainer/SyntaxHighlighting"]
 margin_left = 354.0
 margin_right = 379.0
 margin_bottom = 25.0
 theme = ExtResource( 6 )
 
-[node name="Tabs" type="HBoxContainer" parent="C/VBoxContainer"]
+[node name="Tabs" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
 margin_top = 1008.0
-margin_right = 603.0
+margin_right = 557.0
 margin_bottom = 1033.0
 
-[node name="Text" type="Label" parent="C/VBoxContainer/Tabs"]
+[node name="Text" type="Label" parent="HBX/C/VBoxContainer/Tabs"]
 margin_top = 4.0
 margin_right = 350.0
 margin_bottom = 21.0
@@ -687,18 +693,18 @@ custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 22 )
 text = "Draw tabs"
 
-[node name="Option" type="CheckBox" parent="C/VBoxContainer/Tabs"]
+[node name="Option" type="CheckBox" parent="HBX/C/VBoxContainer/Tabs"]
 margin_left = 354.0
 margin_right = 379.0
 margin_bottom = 25.0
 theme = ExtResource( 6 )
 
-[node name="Spaces" type="HBoxContainer" parent="C/VBoxContainer"]
+[node name="Spaces" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
 margin_top = 1048.0
-margin_right = 603.0
+margin_right = 557.0
 margin_bottom = 1073.0
 
-[node name="Text" type="Label" parent="C/VBoxContainer/Spaces"]
+[node name="Text" type="Label" parent="HBX/C/VBoxContainer/Spaces"]
 margin_top = 4.0
 margin_right = 350.0
 margin_bottom = 21.0
@@ -708,18 +714,18 @@ custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 22 )
 text = "Draw spaces"
 
-[node name="Option" type="CheckBox" parent="C/VBoxContainer/Spaces"]
+[node name="Option" type="CheckBox" parent="HBX/C/VBoxContainer/Spaces"]
 margin_left = 354.0
 margin_right = 379.0
 margin_bottom = 25.0
 theme = ExtResource( 6 )
 
-[node name="Occurances" type="HBoxContainer" parent="C/VBoxContainer"]
+[node name="Occurances" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
 margin_top = 1088.0
-margin_right = 603.0
+margin_right = 557.0
 margin_bottom = 1113.0
 
-[node name="Text" type="Label" parent="C/VBoxContainer/Occurances"]
+[node name="Text" type="Label" parent="HBX/C/VBoxContainer/Occurances"]
 margin_top = 4.0
 margin_right = 350.0
 margin_bottom = 21.0
@@ -729,22 +735,22 @@ custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 22 )
 text = "Highlight all occurances"
 
-[node name="Option" type="CheckBox" parent="C/VBoxContainer/Occurances"]
+[node name="Option" type="CheckBox" parent="HBX/C/VBoxContainer/Occurances"]
 margin_left = 354.0
 margin_right = 379.0
 margin_bottom = 25.0
 theme = ExtResource( 6 )
 
-[node name="QuotesCategory" type="HBoxContainer" parent="C/VBoxContainer"]
+[node name="QuotesCategory" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
 margin_top = 1128.0
-margin_right = 603.0
+margin_right = 557.0
 margin_bottom = 1178.0
 custom_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Notes" type="Label" parent="C/VBoxContainer/QuotesCategory"]
+[node name="Notes" type="Label" parent="HBX/C/VBoxContainer/QuotesCategory"]
 margin_right = 64.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
@@ -755,7 +761,7 @@ text = "Quotes"
 align = 1
 valign = 1
 
-[node name="QuotesSaveButton" type="Button" parent="C/VBoxContainer/QuotesCategory"]
+[node name="QuotesSaveButton" type="Button" parent="HBX/C/VBoxContainer/QuotesCategory"]
 margin_left = 84.0
 margin_top = 10.0
 margin_right = 144.0
@@ -765,7 +771,7 @@ size_flags_vertical = 4
 theme = ExtResource( 5 )
 text = "save"
 
-[node name="NewQuote" type="Button" parent="C/VBoxContainer/QuotesCategory"]
+[node name="NewQuote" type="Button" parent="HBX/C/VBoxContainer/QuotesCategory"]
 margin_left = 164.0
 margin_top = 10.0
 margin_right = 224.0
@@ -775,21 +781,21 @@ size_flags_vertical = 4
 theme = ExtResource( 5 )
 text = "new"
 
-[node name="QuoteBox" type="HBoxContainer" parent="C/VBoxContainer"]
+[node name="QuoteBox" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
 margin_top = 1193.0
-margin_right = 603.0
+margin_right = 557.0
 margin_bottom = 1218.0
 rect_min_size = Vector2( 0, 25 )
 custom_constants/separation = 20
 
-[node name="Label" type="Label" parent="C/VBoxContainer/QuoteBox"]
+[node name="Label" type="Label" parent="HBX/C/VBoxContainer/QuoteBox"]
 visible = false
 margin_top = 3.0
 margin_right = 9.0
 margin_bottom = 22.0
 text = "1"
 
-[node name="Delete" type="TextureButton" parent="C/VBoxContainer/QuoteBox"]
+[node name="Delete" type="TextureButton" parent="HBX/C/VBoxContainer/QuoteBox"]
 modulate = Color( 1, 1, 1, 0.576471 )
 margin_right = 15.0
 margin_bottom = 25.0
@@ -799,9 +805,9 @@ texture_normal = ExtResource( 8 )
 expand = true
 stretch_mode = 5
 
-[node name="Text" type="LineEdit" parent="C/VBoxContainer/QuoteBox"]
+[node name="Text" type="LineEdit" parent="HBX/C/VBoxContainer/QuoteBox"]
 margin_left = 35.0
-margin_right = 603.0
+margin_right = 557.0
 margin_bottom = 25.0
 rect_min_size = Vector2( 350, 0 )
 size_flags_horizontal = 3
@@ -810,25 +816,26 @@ custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 23 )
 text = "This is a quote"
 
-[node name="Panel" type="Panel" parent="."]
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -381.0
+[node name="Panel" type="Panel" parent="HBX"]
+margin_left = 571.0
+margin_right = 971.0
+margin_bottom = 1276.0
+rect_min_size = Vector2( 400, 0 )
+rect_clip_content = true
 custom_styles/panel = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorPicker" type="ColorPicker" parent="Panel"]
+[node name="ColorPicker" type="ColorPicker" parent="HBX/Panel"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -148.112
-margin_top = -473.272
-margin_right = 159.888
-margin_bottom = -37.2725
+margin_left = -148.0
+margin_top = -473.0
+margin_right = 160.0
+margin_bottom = -20.0
 theme = ExtResource( 16 )
 presets_enabled = false
 presets_visible = false
@@ -837,10 +844,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="Panel"]
-margin_left = -35.7381
-margin_right = 1.2619
-margin_bottom = 39.0
+[node name="Button" type="Button" parent="HBX/Panel"]
+margin_left = 7.00714
+margin_top = 6.92957
+margin_right = 44.0071
+margin_bottom = 45.9296
 grow_vertical = 0
 theme = ExtResource( 5 )
 text = ">>"
@@ -848,60 +856,52 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="Panel"]
+[node name="Panel" type="Panel" parent="HBX/Panel"]
 modulate = Color( 1, 1, 1, 0.372549 )
+anchor_right = 1.0
 anchor_bottom = 1.0
-rect_min_size = Vector2( 2, 0 )
-custom_styles/panel = ExtResource( 15 )
+grow_horizontal = 0
+mouse_filter = 2
+custom_styles/panel = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Theme" type="Label" parent="Panel"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -160.5
-margin_top = 24.0
-margin_right = 159.5
-margin_bottom = 109.0
-rect_min_size = Vector2( 0, 50 )
-custom_colors/font_color = Color( 1, 1, 1, 0.862745 )
-custom_fonts/font = ExtResource( 17 )
-custom_styles/normal = SubResource( 22 )
-text = "Choose the colour
-you desire"
-align = 1
-valign = 1
+[node name="Tween" type="Tween" parent="."]
 
-[connection signal="update_values" from="C/VBoxContainer/CatTheme" to="C/VBoxContainer/Primary/Option" method="_on_CatTheme_update_values"]
-[connection signal="update_values" from="C/VBoxContainer/CatTheme" to="C/VBoxContainer/Contrast" method="_on_CatTheme_update_values"]
-[connection signal="pressed" from="C/VBoxContainer/CatTheme/TheneResetButton" to="." method="_on_TheneResetButton_pressed"]
-[connection signal="setting_color" from="C/VBoxContainer/Primary/Option" to="C/VBoxContainer/CatTheme" method="_on_Option_setting_color"]
-[connection signal="setting_color" from="C/VBoxContainer/Primary/Option" to="Panel/ColorPicker" method="_on_Option_setting_color"]
-[connection signal="setting_color" from="C/VBoxContainer/Highlight/Option" to="C/VBoxContainer/CatTheme" method="_on_Option_setting_color"]
-[connection signal="setting_color" from="C/VBoxContainer/Highlight/Option" to="Panel/ColorPicker" method="_on_Option_setting_color"]
-[connection signal="value_changed" from="C/VBoxContainer/Contrast/Option" to="C/VBoxContainer/CatTheme" method="_on_Option_value_changed"]
-[connection signal="setting_color" from="C/VBoxContainer/TextColour/Option" to="C/VBoxContainer/CatTheme" method="_on_Option_setting_color"]
-[connection signal="setting_color" from="C/VBoxContainer/TextColour/Option" to="Panel/ColorPicker" method="_on_Option_setting_color"]
-[connection signal="pressed" from="C/VBoxContainer/Category3/GeneralResetButton" to="." method="_on_GeneralResetButton_pressed"]
-[connection signal="toggled" from="C/VBoxContainer/SecsDashboard/Option" to="." method="_on_secsDashboard_toggled"]
-[connection signal="item_selected" from="C/VBoxContainer/FontSize/Option" to="." method="_on_Option_item_selected"]
-[connection signal="toggled" from="C/VBoxContainer/WindowPos/Option" to="." method="_on_windowPos_toggled"]
-[connection signal="toggled" from="C/VBoxContainer/WindowPos2/Option" to="." method="_on_lastSessionView_toggled"]
-[connection signal="toggled" from="C/VBoxContainer/ShowDate/Option" to="." method="_on_ShowDateOption_toggled"]
-[connection signal="toggled" from="C/VBoxContainer/Borderless/Option" to="." method="_on_BorderlessOption_toggled"]
-[connection signal="toggled" from="C/VBoxContainer/HidDPI/Option" to="." method="_on_HiDPI_Option_toggled"]
-[connection signal="pressed" from="C/VBoxContainer/Category2/PomodoroResetButton" to="." method="_on_PomodoroResetButton_pressed"]
-[connection signal="value_changed" from="C/VBoxContainer/WorkTimeLength/Option" to="." method="_on_workTimeLength_value_changed"]
-[connection signal="value_changed" from="C/VBoxContainer/ShortPause/Option" to="." method="_on_ShortPauseLength_value_changed"]
-[connection signal="value_changed" from="C/VBoxContainer/LongPause/Option" to="." method="_on_LongPauseLength_value_changed"]
-[connection signal="value_changed" from="C/VBoxContainer/LongPauseFreq/Option" to="." method="_on_LongPauseFreq_value_changed"]
-[connection signal="pressed" from="C/VBoxContainer/NotesCategory/NotesResetButton" to="." method="_on_NotesResetButton_pressed"]
-[connection signal="toggled" from="C/VBoxContainer/LineNumbers/Option" to="." method="_on_lineNumbersOption_toggled"]
-[connection signal="toggled" from="C/VBoxContainer/HighlightLine/Option" to="." method="_on_HighlightLineOption_toggled"]
-[connection signal="toggled" from="C/VBoxContainer/Minimap/Option" to="." method="_on_MinimapOption_toggled"]
-[connection signal="toggled" from="C/VBoxContainer/SyntaxHighlighting/Option" to="." method="_on_SyntaxHighlightingOption_toggled"]
-[connection signal="toggled" from="C/VBoxContainer/Tabs/Option" to="." method="_on_TabsOption_toggled"]
-[connection signal="toggled" from="C/VBoxContainer/Spaces/Option" to="." method="_on_SpacesOption_toggled"]
-[connection signal="toggled" from="C/VBoxContainer/Occurances/Option" to="." method="_on_HighlightOccurancesOption_toggled"]
-[connection signal="pressed" from="C/VBoxContainer/QuotesCategory/QuotesSaveButton" to="." method="_on_QuotesSaveButton_pressed"]
-[connection signal="pressed" from="C/VBoxContainer/QuotesCategory/NewQuote" to="." method="_on_NewQuote_pressed"]
-[connection signal="color_changed" from="Panel/ColorPicker" to="C/VBoxContainer/CatTheme" method="_on_ColorPicker_color_changed"]
-[connection signal="pressed" from="Panel/Button" to="Panel/ColorPicker" method="_on_Button_pressed"]
+[connection signal="update_values" from="HBX/C/VBoxContainer/CatTheme" to="HBX/C/VBoxContainer/Primary/Option" method="_on_CatTheme_update_values"]
+[connection signal="update_values" from="HBX/C/VBoxContainer/CatTheme" to="HBX/C/VBoxContainer/Contrast" method="_on_CatTheme_update_values"]
+[connection signal="pressed" from="HBX/C/VBoxContainer/CatTheme/TheneResetButton" to="." method="_on_TheneResetButton_pressed"]
+[connection signal="setting_color" from="HBX/C/VBoxContainer/Primary/Option" to="HBX/C/VBoxContainer/CatTheme" method="_on_Option_setting_color"]
+[connection signal="setting_color" from="HBX/C/VBoxContainer/Primary/Option" to="HBX/Panel/ColorPicker" method="_on_Option_setting_color"]
+[connection signal="setting_color" from="HBX/C/VBoxContainer/Highlight/Option" to="HBX/C/VBoxContainer/CatTheme" method="_on_Option_setting_color"]
+[connection signal="setting_color" from="HBX/C/VBoxContainer/Highlight/Option" to="HBX/Panel/ColorPicker" method="_on_Option_setting_color"]
+[connection signal="value_changed" from="HBX/C/VBoxContainer/Contrast/Option" to="HBX/C/VBoxContainer/CatTheme" method="_on_Option_value_changed"]
+[connection signal="setting_color" from="HBX/C/VBoxContainer/TextColour/Option" to="HBX/C/VBoxContainer/CatTheme" method="_on_Option_setting_color"]
+[connection signal="setting_color" from="HBX/C/VBoxContainer/TextColour/Option" to="HBX/Panel/ColorPicker" method="_on_Option_setting_color"]
+[connection signal="pressed" from="HBX/C/VBoxContainer/Category3/GeneralResetButton" to="." method="_on_GeneralResetButton_pressed"]
+[connection signal="toggled" from="HBX/C/VBoxContainer/SecsDashboard/Option" to="." method="_on_secsDashboard_toggled"]
+[connection signal="item_selected" from="HBX/C/VBoxContainer/FontSize/Option" to="." method="_on_Option_item_selected"]
+[connection signal="toggled" from="HBX/C/VBoxContainer/WindowPos/Option" to="." method="_on_windowPos_toggled"]
+[connection signal="toggled" from="HBX/C/VBoxContainer/WindowPos2/Option" to="." method="_on_lastSessionView_toggled"]
+[connection signal="toggled" from="HBX/C/VBoxContainer/ShowDate/Option" to="." method="_on_ShowDateOption_toggled"]
+[connection signal="toggled" from="HBX/C/VBoxContainer/Borderless/Option" to="." method="_on_BorderlessOption_toggled"]
+[connection signal="toggled" from="HBX/C/VBoxContainer/HidDPI/Option" to="." method="_on_HiDPI_Option_toggled"]
+[connection signal="pressed" from="HBX/C/VBoxContainer/Category2/PomodoroResetButton" to="." method="_on_PomodoroResetButton_pressed"]
+[connection signal="value_changed" from="HBX/C/VBoxContainer/WorkTimeLength/Option" to="." method="_on_workTimeLength_value_changed"]
+[connection signal="value_changed" from="HBX/C/VBoxContainer/ShortPause/Option" to="." method="_on_ShortPauseLength_value_changed"]
+[connection signal="value_changed" from="HBX/C/VBoxContainer/LongPause/Option" to="." method="_on_LongPauseLength_value_changed"]
+[connection signal="value_changed" from="HBX/C/VBoxContainer/LongPauseFreq/Option" to="." method="_on_LongPauseFreq_value_changed"]
+[connection signal="pressed" from="HBX/C/VBoxContainer/NotesCategory/NotesResetButton" to="." method="_on_NotesResetButton_pressed"]
+[connection signal="toggled" from="HBX/C/VBoxContainer/LineNumbers/Option" to="." method="_on_lineNumbersOption_toggled"]
+[connection signal="toggled" from="HBX/C/VBoxContainer/HighlightLine/Option" to="." method="_on_HighlightLineOption_toggled"]
+[connection signal="toggled" from="HBX/C/VBoxContainer/Minimap/Option" to="." method="_on_MinimapOption_toggled"]
+[connection signal="toggled" from="HBX/C/VBoxContainer/SyntaxHighlighting/Option" to="." method="_on_SyntaxHighlightingOption_toggled"]
+[connection signal="toggled" from="HBX/C/VBoxContainer/Tabs/Option" to="." method="_on_TabsOption_toggled"]
+[connection signal="toggled" from="HBX/C/VBoxContainer/Spaces/Option" to="." method="_on_SpacesOption_toggled"]
+[connection signal="toggled" from="HBX/C/VBoxContainer/Occurances/Option" to="." method="_on_HighlightOccurancesOption_toggled"]
+[connection signal="pressed" from="HBX/C/VBoxContainer/QuotesCategory/QuotesSaveButton" to="." method="_on_QuotesSaveButton_pressed"]
+[connection signal="pressed" from="HBX/C/VBoxContainer/QuotesCategory/NewQuote" to="." method="_on_NewQuote_pressed"]
+[connection signal="color_changed" from="HBX/Panel/ColorPicker" to="HBX/C/VBoxContainer/CatTheme" method="_on_ColorPicker_color_changed"]
+[connection signal="show_colour_panel" from="HBX/Panel/ColorPicker" to="." method="_on_ColorPicker_show_colour_panel"]
+[connection signal="pressed" from="HBX/Panel/Button" to="HBX/Panel/ColorPicker" method="_on_Button_pressed"]
