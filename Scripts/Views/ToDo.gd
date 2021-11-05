@@ -30,6 +30,7 @@ func entering_view() -> void:
 	Defaults.emit_signal("view_changed", title, true, true)
 	active = true
 	set_process_input(true)
+	update_view_text()
 	
 	
 func leaving_view() -> void:
@@ -86,6 +87,7 @@ func create_project_button(_p_name : String = "", id: int = -1) -> void:
 	new.connect("delete_project", self, "on_delete_project")
 	$VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons.add_child(new)
 	new.show()
+	update_view_text()
 	
 	
 func remove_task_visual() -> void:
@@ -97,6 +99,8 @@ func reset_tasks_view() -> void:
 	for i in $VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList.get_children():
 		if i.name != "TODOitem" and i.name != "ProjectLineEdit":
 			i.queue_free()
+	yield(get_tree(), "idle_frame")
+	update_view_text()
 	
 	
 func update_percent_done(p_id : int, child_p_id : int) -> void:
@@ -124,6 +128,16 @@ func update_task_done(idx : int, done : bool) -> void:
 	
 func remove_task_from_resource(idx : int) -> void:
 	res.tasks.erase(idx)
+
+
+func update_view_text() -> void:
+	var text : String = ""
+	var no : int = $VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons.get_child_count() - 1
+	text = "Active projects: " + str(no)
+	Defaults.emit_signal("update_view_info", text)
+
+
+## SIGNALS
 
 
 func _on_NewTask_pressed() -> void:
@@ -188,6 +202,7 @@ func on_delete_project(id : int) -> void:
 	current_project_id = -1
 	res.delete_project(id)
 	reset_tasks_view()
+	
 	
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://Assets/Icons/MD_concept.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Icons/NoteTaking.png" type="Texture" id=2]
@@ -23,6 +23,8 @@
 [ext_resource path="res://Assets/Themes/Roboto12Clean.tres" type="Theme" id=21]
 [ext_resource path="res://Assets/Views/ToDo.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Assets/Fonts/Righteous20.tres" type="DynamicFont" id=23]
+[ext_resource path="res://Assets/Themes/Dark/PanelGreenLight.tres" type="StyleBox" id=24]
+[ext_resource path="res://Assets/Fonts/Roboto12.tres" type="DynamicFont" id=25]
 [ext_resource path="res://Scripts/Views/Profile.gd" type="Script" id=27]
 [ext_resource path="res://Scripts/ResizeBtn.gd" type="Script" id=32]
 [ext_resource path="res://Assets/Buttons/AppBar/MinimizeBtn.png" type="Texture" id=33]
@@ -410,7 +412,7 @@ size_flags_horizontal = 3
 [node name="Right" type="HBoxContainer" parent="MainWorkspace/HBX/VBX/TopArea"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 728.0
+margin_left = 612.0
 margin_top = 7.0
 margin_right = -15.0
 margin_bottom = -6.0
@@ -422,10 +424,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ViewInfoPanel" type="Panel" parent="MainWorkspace/HBX/VBX/TopArea/Right"]
+margin_left = 144.0
+margin_right = 344.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 200, 0 )
+custom_styles/panel = ExtResource( 24 )
+
+[node name="ViewInfoLabel" type="Label" parent="MainWorkspace/HBX/VBX/TopArea/Right/ViewInfoPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 1, 1, 1, 0.443137 )
+custom_fonts/font = ExtResource( 25 )
+text = "view info"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Minimuze" type="TextureButton" parent="MainWorkspace/HBX/VBX/TopArea/Right"]
 modulate = Color( 1, 1, 1, 0.490196 )
-margin_left = 242.0
-margin_right = 254.0
+margin_left = 358.0
+margin_right = 370.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 12, 0 )
 texture_normal = ExtResource( 33 )
@@ -435,8 +456,8 @@ script = ExtResource( 11 )
 
 [node name="Maximize" type="TextureButton" parent="MainWorkspace/HBX/VBX/TopArea/Right"]
 modulate = Color( 1, 1, 1, 0.490196 )
-margin_left = 268.0
-margin_right = 280.0
+margin_left = 384.0
+margin_right = 396.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 12, 0 )
 toggle_mode = true
@@ -447,8 +468,8 @@ script = ExtResource( 11 )
 
 [node name="Exit" type="TextureButton" parent="MainWorkspace/HBX/VBX/TopArea/Right"]
 modulate = Color( 1, 1, 1, 0.490196 )
-margin_left = 294.0
-margin_right = 307.0
+margin_left = 410.0
+margin_right = 423.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 13, 0 )
 texture_normal = ExtResource( 8 )

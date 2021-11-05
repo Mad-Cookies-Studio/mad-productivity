@@ -9,6 +9,7 @@ var res : SettingsResource
 func entering_view() -> void:
 	Defaults.active_view_pointer = self
 	Defaults.emit_signal("view_changed", title, false, false)
+	update_view_text()
 	
 	
 func leaving_view() -> void:
@@ -27,6 +28,17 @@ func _ready() -> void:
 	Defaults.connect("theme_changed", self, "on_theme_changed")
 
 
+func update_theme() -> void:
+	$VBoxContainer/UserName.add_color_override("font_color", Defaults.ui_theme.highlight_colour)
+
+
+func update_view_text() -> void:
+	var text : String = ""
+	Defaults.emit_signal("update_view_info", text)
+	
+
+## SIGNALS
+
 func _on_UserName_text_changed(new_text: String) -> void:
 	res.name = new_text
 
@@ -34,9 +46,6 @@ func _on_UserName_text_changed(new_text: String) -> void:
 func _on_UserTitle_text_changed(new_text: String) -> void:
 	res.title = new_text
 
-
-func update_theme() -> void:
-	$VBoxContainer/UserName.add_color_override("font_color", Defaults.ui_theme.highlight_colour)
 
 func on_theme_changed() -> void:
 	update_theme()

@@ -18,6 +18,7 @@ signal view_changed(_name, _button, _input_field)
 signal theme_changed
 signal track_item(_name)
 signal toggle_time_tracking_panel(really)
+signal update_view_info(text)
 
 export(Color) var btn_active_colour : Color
 export(Color) var btn_inactive_colour : Color

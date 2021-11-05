@@ -13,6 +13,7 @@ var minimized_pos : Vector2
 
 func _ready() -> void:
 	Defaults.connect("view_changed", self, "on_view_changed")
+	Defaults.connect("update_view_info", self, "on_update_view_info")
 
 	set_process_input(false)
 	var res = load(Defaults.TIMETRACKS_SAVE_PATH + Defaults.TIMETRACKS_SAVE_NAME)	# TODO: access this resource 
@@ -113,3 +114,11 @@ func _on_Shortcuts_shortcut_use() -> void:
 func _on_Shortcuts_shortcut_focus() -> void:
 	if $Left/LineEdit.visible:
 		$Left/LineEdit.grab_focus()
+
+
+func on_update_view_info(text : String) -> void:
+	if text:
+		$Right/ViewInfoPanel.show()
+		$Right/ViewInfoPanel/ViewInfoLabel.text = text
+	else:
+		$Right/ViewInfoPanel.hide()

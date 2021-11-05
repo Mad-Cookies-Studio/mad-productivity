@@ -24,6 +24,7 @@ func load_res() -> void:
 func entering_view() -> void:
 	Defaults.active_view_pointer = self
 	Defaults.emit_signal("view_changed", title, true, false)
+	update_view_text()
 	
 	
 func leaving_view() -> void:
@@ -75,7 +76,6 @@ func get_hours_minutes_seconds(_time : int) -> Array:
 	
 	
 func save() -> void:
-	print("saving time tracking resource")
 	Defaults.save_timetrack_resource(res)
 
 
@@ -100,6 +100,20 @@ func update_theme() -> void:
 	$Gradient.modulate = Defaults.ui_theme.darker
 	
 	
+func update_view_text() -> void:
+	var text : String = ""
+	var secs : int = 0
+	
+	for i in $LinearTimeTrackingContainer/ScrollContainer/VBoxContainer.get_children():
+		secs += res.get_track(i.id).get_duration()
+	
+	text = "Total tracked: " + Defaults.get_formatted_time_from_seconds(secs)
+	
+	Defaults.emit_signal("update_view_info", text)
+	
+	
+## SIGNALS
+	
 func on_theme_changed() -> void:
 	update_theme()
 
@@ -119,3 +133,4 @@ func _on_new_time_track_item_text(_text : String, _idx : int) -> void:
 func _on_TimeTrackingPanel_register_time_track_item(item : TimeTrackItem) -> void:
 	var id : int = res.add_finished_track(item)
 	create_track_visual(item.name, item.get_start_unix_time(), item.get_duration(), id)
+	update_view_text()

@@ -6,10 +6,14 @@ var active_btn : Button
 
 var resource_file_paths : Array
 
+var notes_no : int = 0
+
+
 func _ready() -> void:
 	$VBoxContainer/HSplitContainer/Panel/ScrollContainer/NoteButtons/DefaultButton.hide()
 	reset_state()
 	load_notes()
+	
 	
 func load_notes() -> void:
 	var dir : Directory = Directory.new()
@@ -27,6 +31,7 @@ func load_notes() -> void:
 	resource_file_paths.sort()
 	for i in resource_file_paths:
 		add_button_from_resource(load(Defaults.NOTES_SAVE_PATH + i))
+		notes_no += 1
 	
 #	if resource_file_paths.size() > 0:
 #		select_note(1)
@@ -43,14 +48,15 @@ func entering_view() -> void:
 	Defaults.active_view_pointer = self
 	Defaults.emit_signal("view_changed", title, true, false)
 	update_text_edit()
+	update_view_text()
 	
 	
 func leaving_view() -> void:
 	save()
 	
+	
 func save() -> void:
 	Defaults.save_note_resource(active_note)
-	
 	
 	
 func add_button() -> void:
@@ -68,9 +74,12 @@ func add_button() -> void:
 	
 	new_btn.connect("button_down", self, "_on_note_btn_clicked", [res, new_btn])
 	new_btn.connect("start_time_track", self, "_on_start_time_track")
-#	new_btn.connect("note_delete_pressed", self, "_on_note_btn_delete_clicked")
+	new_btn.connect("note_delete_pressed", self, "_on_note_btn_delete_clicked")
 	$VBoxContainer/HSplitContainer/Panel/ScrollContainer/NoteButtons.add_child(new_btn)
 	new_btn.grab_click_focus()
+	
+	notes_no += 1
+	update_view_text()
 
 
 func reset_state() -> void:
@@ -102,9 +111,18 @@ func add_button_from_resource(res : NoteResource) -> void:
 	
 	new_btn.connect("button_down", self, "_on_note_btn_clicked", [res, new_btn])
 	new_btn.connect("start_time_track", self, "_on_start_time_track")
-#	new_btn.connect("note_delete_pressed", self, "_on_note_btn_delete_clicked")
+	new_btn.connect("note_delete_pressed", self, "_on_note_btn_delete_clicked")
 	$VBoxContainer/HSplitContainer/Panel/ScrollContainer/NoteButtons.add_child(new_btn)
 	new_btn.grab_click_focus()
+
+
+func update_view_text() -> void:
+	var text : String = ""
+	text = "Notes: " + str(notes_no)
+	Defaults.emit_signal("update_view_info", text)
+
+
+## SIGNALS
 
 
 func _on_Title_text_changed() -> void:
@@ -142,6 +160,7 @@ func _on_note_btn_clicked(_note : NoteResource, _btn : Button) -> void:
 	$VBoxContainer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer/Created.text = Defaults.get_date_with_time_string(_note.date_created)
 	$VBoxContainer/HSplitContainer/Panel2/VBoxContainer/HBoxContainer/Modified.text = Defaults.get_date_with_time_string(_note.date_modified)
 
+
 func _on_start_time_track(_name) -> void:
 	print("carrying on")
 	get_parent().start_custom_time_track(_name)
@@ -149,3 +168,8 @@ func _on_start_time_track(_name) -> void:
 
 func on_new_top_bar_button(message : Dictionary = {}) -> void:
 	add_button()
+
+
+func _on_note_btn_delete_clicked(btn : Button, res : NoteResource) -> void:
+	notes_no -= 1
+	update_view_text()

@@ -11,6 +11,7 @@ func entering_view() -> void:
 	Defaults.active_view_pointer = self
 	Defaults.emit_signal("view_changed", title, false, false)
 	set_up_btns()
+	update_view_text()
 	
 	
 func leaving_view() -> void:
@@ -85,6 +86,11 @@ func save_quotes() -> void:
 
 func update_settings() -> void:
 	Defaults.change_body_font_size(res.font_size)
+
+
+func update_view_text() -> void:
+	var text : String = ""
+	Defaults.emit_signal("update_view_info", text)
 
 
 # -- > SIGNALS <-- #

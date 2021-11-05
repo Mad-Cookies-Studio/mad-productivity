@@ -14,6 +14,7 @@ func entering_view() -> void:
 	Defaults.active_view_pointer = self
 	Defaults.emit_signal("view_changed", title, false, false)
 	$VBoxContainer/Date.visible = Defaults.settings_res.show_date
+	update_view_text()
 	
 	
 func leaving_view() -> void:
@@ -42,6 +43,13 @@ func update_theme() -> void:
 	$VBoxContainer/Panel/Next.modulate = Defaults.ui_theme.highlight_colour
 	$VBoxContainer/Panel/Next2.modulate = Defaults.ui_theme.highlight_colour
 
+
+func update_view_text() -> void:
+	var text : String = ""
+	Defaults.emit_signal("update_view_info", text)
+
+
+## SIGNALS
 
 func _on_Timer_timeout() -> void:
 	update_time()
