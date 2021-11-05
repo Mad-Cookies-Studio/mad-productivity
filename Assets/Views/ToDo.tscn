@@ -340,6 +340,7 @@ __meta__ = {
 }
 
 [node name="CheckBox2" type="Panel" parent="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem/HBoxContainer/CheckBox"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 9.0

@@ -27,6 +27,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - New type of button which charges by having the user click and hold LMB
 - Settings
 - Auto save every 10 seconds
+- Animation to checkboxes of tasks
 
 ### Changed
 - Data handling in TimeTracking
