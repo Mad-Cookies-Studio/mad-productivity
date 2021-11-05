@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=15 format=2]
+[gd_resource type="Theme" load_steps=17 format=2]
 
 [ext_resource path="res://Assets/Fonts/Roboto16.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/Buttons/CheckBoxOff.png" type="Texture" id=2]
@@ -9,12 +9,15 @@
 [sub_resource type="StyleBoxEmpty" id=2]
 
 [sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0.576471, 0.627451, 0.631373, 0.411765 )
+content_margin_left = 7.0
+bg_color = Color( 0.627451, 0.627451, 0.627451, 0.411765 )
+expand_margin_left = 5.0
 
 [sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0.576471, 0.627451, 0.631373, 1 )
+bg_color = Color( 0.635294, 0.635294, 0.635294, 1 )
 
 [sub_resource type="StyleBoxEmpty" id=5]
+content_margin_left = 7.0
 content_margin_top = 7.0
 
 [sub_resource type="StyleBoxEmpty" id=6]
@@ -44,6 +47,12 @@ border_width_bottom = 1
 border_color = Color( 0.364706, 0.364706, 0.364706, 1 )
 expand_margin_right = 10.0
 expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0.658824, 0.658824, 0.658824, 0.411765 )
+
+[sub_resource type="StyleBoxEmpty" id=14]
+content_margin_left = 5.0
 
 [resource]
 default_font = ExtResource( 1 )
@@ -102,8 +111,8 @@ VScrollBar/icons/decrement = null
 VScrollBar/icons/decrement_highlight = null
 VScrollBar/icons/increment = null
 VScrollBar/icons/increment_highlight = null
-VScrollBar/styles/grabber = SubResource( 3 )
+VScrollBar/styles/grabber = SubResource( 13 )
 VScrollBar/styles/grabber_highlight = SubResource( 4 )
 VScrollBar/styles/grabber_pressed = SubResource( 4 )
-VScrollBar/styles/scroll = SubResource( 5 )
+VScrollBar/styles/scroll = SubResource( 14 )
 VScrollBar/styles/scroll_focus = SubResource( 6 )
