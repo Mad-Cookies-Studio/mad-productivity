@@ -325,15 +325,35 @@ mouse_filter = 1
 custom_styles/panel = ExtResource( 3 )
 script = ExtResource( 6 )
 
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem/HBoxContainer/CheckBox"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+rect_pivot_offset = Vector2( 15, 15 )
+mouse_filter = 2
+color = Color( 1, 1, 1, 0.0588235 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="CheckBox2" type="Panel" parent="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem/HBoxContainer/CheckBox"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 7.0
-margin_top = 7.0
-margin_right = -6.0
-margin_bottom = -6.0
+margin_left = 9.0
+margin_top = 9.0
+margin_right = -8.0
+margin_bottom = -8.0
+rect_pivot_offset = Vector2( 10, 10 )
 mouse_filter = 1
 custom_styles/panel = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem/HBoxContainer/CheckBox"]
 
 [node name="Task" type="LineEdit" parent="VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem/HBoxContainer"]
 margin_left = 48.0
