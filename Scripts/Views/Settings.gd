@@ -77,7 +77,7 @@ func make_new_quote() -> void:
 func save_quotes() -> void:
 	for i in quote_nodes:
 		print(i.name)
-		var text : String = i.get_child(1).text
+		var text : String = i.get_child(2).text
 		res.quote_list[int(i.name.trim_prefix("quote"))] = text
 		
 	Defaults.save_settings_resource()
