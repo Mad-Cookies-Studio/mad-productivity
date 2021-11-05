@@ -35,7 +35,7 @@ func update_theme_values() -> void:
 	normal = primary_col
 	darker = primary_col.linear_interpolate(Color.black, contrast)
 	super_dark = primary_col.linear_interpolate(Color.black, contrast * 2.0)
-	lighter = primary_col.linear_interpolate(Color.white, contrast)
+	lighter = primary_col.linear_interpolate(Color.white, contrast * 0.5)
 	
 	highlight_lighter = highlight_colour.linear_interpolate(Color.white, contrast)
 	highlight_darker = highlight_colour.linear_interpolate(Color.black, contrast)
