@@ -7,6 +7,7 @@ var res : TimeTrackResource
 
 var total_secs : int
 
+var active : bool = false
 
 func _ready() -> void:
 	$LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem.hide()
@@ -22,12 +23,14 @@ func load_res() -> void:
 
 
 func entering_view() -> void:
+	active = true
 	Defaults.active_view_pointer = self
 	Defaults.emit_signal("view_changed", title, true, false)
 	update_view_text()
 	
 	
 func leaving_view() -> void:
+	active = false
 	save()
 	
 	
@@ -101,6 +104,7 @@ func update_theme() -> void:
 	
 	
 func update_view_text() -> void:
+	if !active : return
 	var text : String = ""
 	var secs : int = 0
 	
