@@ -133,6 +133,7 @@ func update_theme() -> void:
 	var panel_normal : StyleBoxFlat = load("res://Assets/Themes/Dark/PanelGreen.tres")
 	var panel_normal_lighter : StyleBoxFlat = load("res://Assets/Themes/Dark/PanelGreenLight.tres")
 	var panel_normal_no_border : StyleBoxFlat = load("res://Assets/Themes/Dark/PanelGreenNoBorder.tres")
+	var panel_border_only_highlight : StyleBoxFlat = load("res://Assets/Themes/Dark/PanelBorderOnlyHighlight.tres")
 	var panel_highlight : StyleBoxFlat = load("res://Assets/Themes/Dark/PanelHighlight.tres")
 	var panel_super_dark : StyleBoxFlat = load("res://Assets/Themes/Dark/PanelSuperDarkGreen.tres")
 	var line_edit : StyleBoxFlat = load("res://Assets/Themes/Dark/LineEditTop.tres")
@@ -150,6 +151,7 @@ func update_theme() -> void:
 	line_edit.bg_color = ui_theme.super_dark
 	line_edit.border_color = ui_theme.highlight_colour
 	line_edit.border_color.a = 0.3
+	panel_border_only_highlight.border_color = ui_theme.highlight_colour
 
 
 	## Cute button theme
