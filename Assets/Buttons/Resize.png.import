@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ResizeIdle.png-a9ccc1b2c923dc82fe9d297f8ec8ab16.stex"
+path="res://.import/Resize.png-b4e5a564a1733e8e8635d664a6496f3c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Buttons/ResizeIdle.png"
-dest_files=[ "res://.import/ResizeIdle.png-a9ccc1b2c923dc82fe9d297f8ec8ab16.stex" ]
+source_file="res://Assets/Buttons/Resize.png"
+dest_files=[ "res://.import/Resize.png-b4e5a564a1733e8e8635d664a6496f3c.stex" ]
 
 [params]
 
