@@ -100,6 +100,7 @@ split_offset = 243
 self_modulate = Color( 1, 1, 1, 0.686275 )
 margin_right = 243.0
 margin_bottom = 571.0
+rect_clip_content = true
 custom_styles/panel = ExtResource( 3 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HSplitContainer/Panel"]
