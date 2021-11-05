@@ -130,6 +130,7 @@ func update_theme() -> void:
 	var panel_dark_border : StyleBoxFlat = load("res://Assets/Themes/Dark/PanelDarkGreenBorder.tres")
 	var panel_dark_border_expanded : StyleBoxFlat = load("res://Assets/Themes/Dark/PanelDarkGreenBorderExpanded.tres")
 	var panel_normal : StyleBoxFlat = load("res://Assets/Themes/Dark/PanelGreen.tres")
+	var panel_normal_lighter : StyleBoxFlat = load("res://Assets/Themes/Dark/PanelGreenLight.tres")
 	var panel_normal_no_border : StyleBoxFlat = load("res://Assets/Themes/Dark/PanelGreenNoBorder.tres")
 	var panel_highlight : StyleBoxFlat = load("res://Assets/Themes/Dark/PanelHighlight.tres")
 	var panel_super_dark : StyleBoxFlat = load("res://Assets/Themes/Dark/PanelSuperDarkGreen.tres")
@@ -142,6 +143,7 @@ func update_theme() -> void:
 	panel_dark_border_expanded.bg_color = ui_theme.darker
 	panel_normal.bg_color = ui_theme.normal
 	panel_normal_no_border.bg_color = ui_theme.normal
+	panel_normal_lighter.bg_color = ui_theme.lighter
 	panel_highlight.bg_color = ui_theme.highlight_colour
 	panel_super_dark.bg_color = ui_theme.super_dark
 	line_edit.bg_color = ui_theme.super_dark
