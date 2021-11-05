@@ -24,8 +24,12 @@ var highlight_darker : Color
 
 func update_theme_values() -> void:
 	# btn defaults
-	btn_inactive_col = Color("6fffffff")
+	btn_inactive_col = Color(1, 1, 1, 0.396078)
 	btn_active_col = highlight_colour
+	
+	#update the defaults
+	Defaults.btn_active_colour = btn_active_col
+	Defaults.btn_inactive_colour = btn_inactive_col
 	
 	# maths!
 	normal = primary_col
