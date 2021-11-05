@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://Assets/Icons/MD_concept.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Icons/NoteTaking.png" type="Texture" id=2]
@@ -23,7 +23,6 @@
 [ext_resource path="res://Assets/Themes/Roboto12Clean.tres" type="Theme" id=21]
 [ext_resource path="res://Assets/Views/ToDo.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Assets/Fonts/Righteous20.tres" type="DynamicFont" id=23]
-[ext_resource path="res://Assets/Themes/Dark/PanelSuperDarkGreen.tres" type="StyleBox" id=24]
 [ext_resource path="res://Scripts/Views/Profile.gd" type="Script" id=27]
 [ext_resource path="res://Scripts/ResizeBtn.gd" type="Script" id=32]
 [ext_resource path="res://Assets/Buttons/AppBar/MinimizeBtn.png" type="Texture" id=33]
@@ -103,18 +102,35 @@ __meta__ = {
 [node name="Buttons" type="VBoxContainer" parent="MainWorkspace/HBX/Sidebar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_bottom = -104.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TimeTrackPanel" type="TextureButton" parent="MainWorkspace/HBX/Sidebar/Buttons"]
+margin_left = 13.0
+margin_right = 36.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 23, 50 )
+size_flags_horizontal = 4
+toggle_mode = true
+texture_normal = ExtResource( 3 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 11 )
+
+[node name="Control2" type="Control" parent="MainWorkspace/HBX/Sidebar/Buttons"]
+margin_top = 54.0
+margin_right = 50.0
+margin_bottom = 161.0
+size_flags_vertical = 3
+
 [node name="HomeBtn" type="TextureButton" parent="MainWorkspace/HBX/Sidebar/Buttons"]
 modulate = Color( 0.521569, 0.521569, 0.521569, 1 )
 margin_left = 13.0
-margin_top = 140.0
+margin_top = 165.0
 margin_right = 36.0
-margin_bottom = 190.0
+margin_bottom = 215.0
 rect_min_size = Vector2( 23, 50 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -129,9 +145,9 @@ target = "Dashboard"
 [node name="NotesBtn" type="TextureButton" parent="MainWorkspace/HBX/Sidebar/Buttons"]
 modulate = Color( 0.521569, 0.521569, 0.521569, 1 )
 margin_left = 13.0
-margin_top = 194.0
+margin_top = 219.0
 margin_right = 36.0
-margin_bottom = 244.0
+margin_bottom = 269.0
 rect_min_size = Vector2( 23, 50 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -146,9 +162,9 @@ target = "Notes"
 [node name="TimeTrackingBtn" type="TextureButton" parent="MainWorkspace/HBX/Sidebar/Buttons"]
 modulate = Color( 0.521569, 0.521569, 0.521569, 1 )
 margin_left = 13.0
-margin_top = 248.0
+margin_top = 273.0
 margin_right = 36.0
-margin_bottom = 298.0
+margin_bottom = 323.0
 rect_min_size = Vector2( 23, 50 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -163,9 +179,9 @@ target = "TimeTracking"
 [node name="TodosBtn" type="TextureButton" parent="MainWorkspace/HBX/Sidebar/Buttons"]
 modulate = Color( 0.521569, 0.521569, 0.521569, 1 )
 margin_left = 13.0
-margin_top = 302.0
+margin_top = 327.0
 margin_right = 36.0
-margin_bottom = 352.0
+margin_bottom = 377.0
 rect_min_size = Vector2( 23, 50 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -180,9 +196,9 @@ target = "ToDo"
 [node name="GameBtn" type="TextureButton" parent="MainWorkspace/HBX/Sidebar/Buttons"]
 modulate = Color( 0.521569, 0.521569, 0.521569, 1 )
 margin_left = 13.0
-margin_top = 356.0
+margin_top = 381.0
 margin_right = 36.0
-margin_bottom = 406.0
+margin_bottom = 431.0
 rect_min_size = Vector2( 23, 50 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -194,21 +210,18 @@ stretch_mode = 5
 script = ExtResource( 9 )
 target = "Game"
 
-[node name="BotButtons" type="VBoxContainer" parent="MainWorkspace/HBX/Sidebar"]
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -114.0
-grow_vertical = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Control" type="Control" parent="MainWorkspace/HBX/Sidebar/Buttons"]
+margin_top = 435.0
+margin_right = 50.0
+margin_bottom = 542.0
+size_flags_vertical = 3
 
-[node name="ProfileBtn" type="TextureButton" parent="MainWorkspace/HBX/Sidebar/BotButtons"]
+[node name="ProfileBtn" type="TextureButton" parent="MainWorkspace/HBX/Sidebar/Buttons"]
 modulate = Color( 0.521569, 0.521569, 0.521569, 1 )
 margin_left = 13.0
+margin_top = 546.0
 margin_right = 36.0
-margin_bottom = 50.0
+margin_bottom = 596.0
 rect_min_size = Vector2( 23, 50 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -221,12 +234,12 @@ script = ExtResource( 9 )
 target = "Profile"
 bottom = true
 
-[node name="SettingsBtn" type="TextureButton" parent="MainWorkspace/HBX/Sidebar/BotButtons"]
+[node name="SettingsBtn" type="TextureButton" parent="MainWorkspace/HBX/Sidebar/Buttons"]
 modulate = Color( 0.521569, 0.521569, 0.521569, 1 )
 margin_left = 13.0
-margin_top = 54.0
+margin_top = 600.0
 margin_right = 36.0
-margin_bottom = 104.0
+margin_bottom = 650.0
 rect_min_size = Vector2( 23, 50 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -331,20 +344,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TimeTrackPanel" type="TextureButton" parent="MainWorkspace/HBX/VBX/TopArea/Left"]
+[node name="ViewLabel" type="Label" parent="MainWorkspace/HBX/VBX/TopArea/Left"]
 margin_left = 14.0
-margin_right = 33.101
-margin_bottom = 45.0
-rect_min_size = Vector2( 19.101, 0 )
-toggle_mode = true
-texture_normal = ExtResource( 3 )
-expand = true
-stretch_mode = 5
-script = ExtResource( 11 )
+margin_top = 9.0
+margin_right = 71.0
+margin_bottom = 35.0
+custom_colors/font_color = Color( 1, 1, 1, 0.478431 )
+custom_fonts/font = SubResource( 25 )
+text = "Notes"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Control3" type="Control" parent="MainWorkspace/HBX/VBX/TopArea/Left"]
-margin_left = 33.0
-margin_right = 46.0
+margin_left = 71.0
+margin_right = 84.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 13, 0 )
 
@@ -363,9 +379,9 @@ __meta__ = {
 }
 
 [node name="NewBtn" type="Button" parent="MainWorkspace/HBX/VBX/TopArea/Left"]
-margin_left = 46.0
+margin_left = 84.0
 margin_top = 8.0
-margin_right = 96.0
+margin_right = 134.0
 margin_bottom = 35.024
 rect_min_size = Vector2( 50, 27.024 )
 focus_mode = 0
@@ -374,9 +390,9 @@ theme = ExtResource( 7 )
 text = "NEW"
 
 [node name="LineEdit" type="LineEdit" parent="MainWorkspace/HBX/VBX/TopArea/Left"]
-margin_left = 96.0
+margin_left = 134.0
 margin_top = 8.0
-margin_right = 296.0
+margin_right = 334.0
 margin_bottom = 35.1
 rect_min_size = Vector2( 200, 27.1 )
 focus_mode = 1
@@ -384,29 +400,8 @@ size_flags_vertical = 4
 custom_styles/normal = ExtResource( 38 )
 placeholder_text = "type text here"
 
-[node name="Panel" type="Panel" parent="MainWorkspace/HBX/VBX/TopArea/Left"]
-margin_left = 296.0
-margin_right = 496.0
-margin_bottom = 45.0
-rect_min_size = Vector2( 200, 35 )
-custom_styles/panel = ExtResource( 24 )
-
-[node name="Label" type="Label" parent="MainWorkspace/HBX/VBX/TopArea/Left/Panel"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -91.5
-margin_top = -9.5
-margin_right = 91.5
-margin_bottom = 9.5
-text = "Custom text : 10:00:32"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Control2" type="Control" parent="MainWorkspace/HBX/VBX/TopArea/Left"]
-margin_left = 496.0
+margin_left = 334.0
 margin_right = 1050.0
 margin_bottom = 45.0
 mouse_filter = 2
@@ -463,24 +458,6 @@ script = ExtResource( 11 )
 
 [node name="Tween" type="Tween" parent="MainWorkspace/HBX/VBX/TopArea"]
 
-[node name="ViewLabel" type="Label" parent="MainWorkspace/HBX/VBX/TopArea"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -69.0
-margin_top = -31.5
-margin_right = 69.0
-margin_bottom = 31.5
-custom_colors/font_color = Color( 0, 0, 0, 0.25098 )
-custom_fonts/font = SubResource( 25 )
-text = "Notes"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Views" type="MarginContainer" parent="MainWorkspace/HBX/VBX"]
 margin_top = 45.0
 margin_right = 1050.0
@@ -513,7 +490,7 @@ title = "Time tracking"
 visible = false
 margin_right = 1050.0
 margin_bottom = 605.0
-title = "TODO"
+title = "Todo"
 
 [node name="Game" parent="MainWorkspace/HBX/VBX/Views" instance=ExtResource( 13 )]
 visible = false
@@ -680,10 +657,9 @@ __meta__ = {
 script = ExtResource( 37 )
 
 [connection signal="view_changed" from="MainWorkspace/HBX/Sidebar" to="." method="_on_Sidebar_view_changed"]
+[connection signal="toggled" from="MainWorkspace/HBX/Sidebar/Buttons/TimeTrackPanel" to="MainWorkspace/HBX/Sidebar" method="_on_TimeTrackPanel_toggled"]
 [connection signal="register_time_track_item" from="MainWorkspace/HBX/TimeTrackingPanel" to="MainWorkspace/HBX/VBX/Views/TimeTracking" method="_on_TimeTrackingPanel_register_time_track_item"]
 [connection signal="gui_input" from="MainWorkspace/HBX/VBX/TopArea" to="MainWorkspace/HBX/VBX/TopArea" method="_on_TopArea_gui_input"]
-[connection signal="toggle_time_tracking_bar" from="MainWorkspace/HBX/VBX/TopArea" to="MainWorkspace/HBX/TimeTrackingPanel" method="_on_TopArea_toggle_time_tracking_bar"]
-[connection signal="toggled" from="MainWorkspace/HBX/VBX/TopArea/Left/TimeTrackPanel" to="MainWorkspace/HBX/VBX/TopArea" method="_on_TimeTrackPanel_toggled"]
 [connection signal="pressed" from="MainWorkspace/HBX/VBX/TopArea/Left/NewBtn" to="MainWorkspace/HBX/VBX/TopArea" method="_on_Button_pressed"]
 [connection signal="pressed" from="MainWorkspace/HBX/VBX/TopArea/Right/Minimuze" to="MainWorkspace/HBX/VBX/TopArea" method="_on_Minimuze_pressed"]
 [connection signal="toggled" from="MainWorkspace/HBX/VBX/TopArea/Right/Maximize" to="MainWorkspace/HBX/VBX/TopArea" method="_on_Maximize_toggled"]
@@ -695,5 +671,6 @@ script = ExtResource( 37 )
 [connection signal="mouse_exited" from="ResizeBtn" to="ResizeBtn" method="_on_ResizeBtn_mouse_exited"]
 [connection signal="pressed" from="ResizeBtn" to="ResizeBtn" method="_on_ResizeBtn_pressed"]
 [connection signal="shortcut_focus" from="Shortcuts" to="MainWorkspace/HBX/VBX/TopArea" method="_on_Shortcuts_shortcut_focus"]
+[connection signal="shortcut_timetrack_panel" from="Shortcuts" to="MainWorkspace/HBX/Sidebar" method="_on_Shortcuts_shortcut_timetrack_panel"]
 [connection signal="shortcut_timetrack_panel" from="Shortcuts" to="MainWorkspace/HBX/VBX/TopArea" method="_on_Shortcuts_shortcut_timetrack_panel"]
 [connection signal="shortcut_use" from="Shortcuts" to="MainWorkspace/HBX/VBX/TopArea" method="_on_Shortcuts_shortcut_use"]

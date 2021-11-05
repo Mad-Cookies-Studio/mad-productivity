@@ -1,7 +1,5 @@
 extends Control
 
-signal toggle_time_tracking_bar(really)
-
 var dragging : = false
 var mouse_drag_beg : Vector2
 var orig_position : Vector2
@@ -16,13 +14,9 @@ var minimized_pos : Vector2
 func _ready() -> void:
 	Defaults.connect("view_changed", self, "on_view_changed")
 	Defaults.connect("theme_changed", self, "on_theme_changed")
-	Defaults.connect("track_item", self, "on_track_item")
 
-	on_theme_changed()
 	set_process_input(false)
 	var res = load(Defaults.TIMETRACKS_SAVE_PATH + Defaults.TIMETRACKS_SAVE_NAME)	# TODO: access this resource in some more elegant way
-	if Defaults.settings_res.unsaved_time_track:
-		$Left/TimeTrackPanel.pressed = true
 #	$Right/Maximize.pressed = Defaults.settings_res.window_maximized
 	
 
@@ -85,7 +79,7 @@ func _on_Maximize_toggled(button_pressed: bool) -> void:
 		
 
 func change_window_title(_name : String) -> void:
-	$ViewLabel.text = _name
+	$Left/ViewLabel.text = _name
 #	$Tween.stop_all()
 #	$Tween.interpolate_property($Right/ViewLabel, "percent_visible", $Right/ViewLabel.percent_visible, 0.0, 0.5, Tween.TRANS_LINEAR, Tween.EASE_OUT, 0.0)
 #	$Tween.interpolate_property($Right/ViewLabel, "percent_visible", 0.0, 1.0, 0.5, Tween.TRANS_LINEAR, Tween.EASE_OUT, 0.5)
@@ -121,20 +115,3 @@ func _on_Shortcuts_shortcut_use() -> void:
 func _on_Shortcuts_shortcut_focus() -> void:
 	if $Left/LineEdit.visible:
 		$Left/LineEdit.grab_focus()
-
-
-func on_theme_changed() -> void:
-	$Left/TimeTrackPanel.update_colours()
-
-
-func _on_TimeTrackPanel_toggled(button_pressed: bool) -> void:
-	emit_signal("toggle_time_tracking_bar", button_pressed)
-
-
-func _on_Shortcuts_shortcut_timetrack_panel() -> void:
-	$Left/TimeTrackPanel.pressed = !$Left/TimeTrackPanel.pressed
-
-
-func on_track_item(_name : String) -> void:
-	if !$Left/TimeTrackPanel.pressed:
-		$Left/TimeTrackPanel.pressed = true

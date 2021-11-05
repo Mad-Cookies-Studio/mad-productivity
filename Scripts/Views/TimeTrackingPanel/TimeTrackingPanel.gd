@@ -29,6 +29,7 @@ var notified : bool = false
 
 func _ready() -> void:
 	Defaults.connect("track_item", self, "on_Defaults_track_item")
+	Defaults.connect("toggle_time_tracking_panel", self, "on_toggle_time_tracking_panel")
 	Defaults.time_tracking_panel = self
 	toggle_view(STATES.NORMAL)
 	hookup_signals()
@@ -338,10 +339,6 @@ func show_pomodoro_continue_buttons() -> void:
 
 ## Signals
 # -----------------------
-func _on_TopArea_toggle_time_tracking_bar(really : bool) -> void:
-	toggle_self(really)
-
-
 func _on_Normal_pressed() -> void:
 	toggle_view(STATES.NORMAL)
 
@@ -414,3 +411,7 @@ func on_Defaults_track_item(_name : String) -> void:
 	$Content/VBoxContainer/ItemInput.text = _name
 	$Content/VBoxContainer/Time/ItemLabel.text = _name
 	start_time_tracking()
+
+
+func on_toggle_time_tracking_panel(really : bool) -> void:
+	 toggle_self(really)

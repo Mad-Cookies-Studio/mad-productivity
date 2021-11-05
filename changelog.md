@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Added
 - Start using KeepAChangelog
 - Time tracking panel
+- Time tracking panel button to the top of the main menu
 - Pomodoro time tracking
 - Pomodoro settings
 - Todo's project section
