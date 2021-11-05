@@ -10,6 +10,8 @@ var active_btn : TextureButton
 var previous_random_view : int = -1
 var previous_view : int
 
+var number_of_views : int = 0
+
 func _ready() -> void:
 	update_theme()
 	get_viewport().connect("size_changed", self, "on_window_size_changed")
@@ -23,6 +25,7 @@ func _ready() -> void:
 			buttons.append(i)
 			i.connect("toggled_menu_btn", self, "on_toggled_menu_btn", [i, idx, i.target])
 			idx += 1
+	number_of_views = idx
 
 
 func time_track_panel_ready() -> void:
@@ -33,7 +36,7 @@ func time_track_panel_ready() -> void:
 
 
 func manual_view_toggle(which : int = 0) -> void:
-	which = wrapi(which, 0, 7)
+	which = wrapi(which, 0, number_of_views)
 	buttons[which].pressed = true
 
 
