@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/Views/Game.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Fonts/Righteous50.tres" type="DynamicFont" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[node name="Game" type="Control"]
+margin_right = 1050.0
+margin_bottom = 605.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+title = "Game"
+
+[node name="UserName" type="Label" parent="."]
+margin_top = 256.0
+margin_right = 1050.0
+margin_bottom = 319.0
+custom_colors/font_color = Color( 1, 1, 1, 0.113725 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 3 )
+text = "TBD"
+align = 1
