@@ -49,7 +49,6 @@ func create_track_visual(_name : String, _date : int, _time : int, _id : int) ->
 	
 	var time = get_hours_minutes_seconds(_time)
 	new.connect("delete_pressed", self, "_on_delete_pressed")
-	new.connect("time_track_item", self, "_time_track_item_pressed")
 	new.connect("new_tracked_item_text", self, "_on_new_time_track_item_text")
 	
 	new.fill_details(Defaults.get_datetime_from_unix_time(_date), (time[2] + ":" + time[1] + ":" + time[0]), _name)
