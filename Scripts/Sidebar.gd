@@ -31,17 +31,10 @@ func time_track_panel_ready() -> void:
 		$Buttons/TimeTrackPanel.pressed = true
 
 
-# IMPORTANT: Last button of the buttons must be the randomiser.
+
 func manual_view_toggle(which : int = 0) -> void:
-#	which = clamp(which, 0, $Buttons.get_child_count() + $BotButtons.get_child_count() - 1)
-	# IMPORTANT: If the randomiser changes in any way
-	# This part needs a little rework. AKA, remove the -1
+	which = wrapi(which, 0, 7)
 	buttons[which].pressed = true
-#	if which < $Buttons.get_child_count():
-#		$Buttons.get_child(which).pressed = true
-#	else:
-#		$BotButtons.get_child(which - $Buttons.get_child_count()).pressed = true
-		
 
 
 # which passes the specific node
