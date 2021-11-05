@@ -16,6 +16,7 @@ var minimized_pos : Vector2
 func _ready() -> void:
 	Defaults.connect("view_changed", self, "on_view_changed")
 	Defaults.connect("theme_changed", self, "on_theme_changed")
+	Defaults.connect("track_item", self, "on_track_item")
 
 	on_theme_changed()
 	set_process_input(false)
@@ -132,3 +133,8 @@ func _on_TimeTrackPanel_toggled(button_pressed: bool) -> void:
 
 func _on_Shortcuts_shortcut_timetrack_panel() -> void:
 	$Left/TimeTrackPanel.pressed = !$Left/TimeTrackPanel.pressed
+
+
+func on_track_item(_name : String) -> void:
+	if !$Left/TimeTrackPanel.pressed:
+		$Left/TimeTrackPanel.pressed = true
