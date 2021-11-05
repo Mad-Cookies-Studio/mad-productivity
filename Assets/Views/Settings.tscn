@@ -776,7 +776,6 @@ theme = ExtResource( 5 )
 text = "new"
 
 [node name="QuoteBox" type="HBoxContainer" parent="C/VBoxContainer"]
-visible = false
 margin_top = 1193.0
 margin_right = 603.0
 margin_bottom = 1218.0
@@ -785,8 +784,9 @@ custom_constants/separation = 20
 
 [node name="Label" type="Label" parent="C/VBoxContainer/QuoteBox"]
 visible = false
+margin_top = 3.0
 margin_right = 9.0
-margin_bottom = 19.0
+margin_bottom = 22.0
 text = "1"
 
 [node name="Delete" type="TextureButton" parent="C/VBoxContainer/QuoteBox"]
@@ -825,10 +825,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -152.112
-margin_top = -477.272
-margin_right = 155.888
-margin_bottom = -41.2725
+margin_left = -148.112
+margin_top = -473.272
+margin_right = 159.888
+margin_bottom = -37.2725
 theme = ExtResource( 16 )
 presets_enabled = false
 presets_visible = false
