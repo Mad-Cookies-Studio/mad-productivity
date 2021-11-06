@@ -53,7 +53,3 @@ func update_view_text() -> void:
 
 func _on_Timer_timeout() -> void:
 	update_time()
-
-
-func _on_Discord_pressed() -> void:
-	OS.shell_open("https://discord.gg/bWxcZjn")
