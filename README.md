@@ -28,6 +28,6 @@ Contributors: [Krystof Klestil](https://lentsius-bark.itch.io/), [Vajk Pomichal]
 
 ## Support us
 
-Buy the app on itch.io to show your support [Mad Productivity itch.io](https://lentsius-bark.itch.io/mad-productivity)
+Buy the app on itch.io [Mad Productivity itch.io](https://lentsius-bark.itch.io/mad-productivity)
 
 [MIT License](https://github.com/Mad-Cookies-Prototypes/mad-productivity/blob/dev/LICENSE.txt)
