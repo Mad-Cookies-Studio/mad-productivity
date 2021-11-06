@@ -818,10 +818,12 @@ text = "This is a quote"
 
 [node name="Panel" type="Panel" parent="HBX"]
 margin_left = 571.0
+margin_top = 388.0
 margin_right = 971.0
-margin_bottom = 1276.0
-rect_min_size = Vector2( 400, 0 )
+margin_bottom = 988.0
+rect_min_size = Vector2( 400, 600 )
 rect_clip_content = true
+size_flags_vertical = 4
 custom_styles/panel = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -829,13 +831,13 @@ __meta__ = {
 
 [node name="ColorPicker" type="ColorPicker" parent="HBX/Panel"]
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -148.0
-margin_top = -473.0
-margin_right = 160.0
-margin_bottom = -20.0
+anchor_bottom = 0.5
+margin_left = -154.0
+margin_top = -241.883
+margin_right = 154.0
+margin_bottom = 211.117
 theme = ExtResource( 16 )
 presets_enabled = false
 presets_visible = false
@@ -845,13 +847,17 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="HBX/Panel"]
-margin_left = 7.00714
-margin_top = 6.92957
-margin_right = 44.0071
-margin_bottom = 45.9296
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -101.683
+margin_top = -53.6832
+margin_right = -14.6832
+margin_bottom = -14.6832
 grow_vertical = 0
 theme = ExtResource( 5 )
-text = ">>"
+text = "Close"
 __meta__ = {
 "_edit_use_anchors_": false
 }
