@@ -1,10 +1,11 @@
+![splash](https://github.com/Mad-Cookies-Prototypes/mad-productivity/blob/dev/repoMain.png)
 
 Write notes, time track your tasks, keep track of tasks!
 
 [Changelog]()
 
 
-# Version 0.0.2 - 2021 - 11 - 11
+# Version 0.0.2 - 2021/11/11
 
 ## Getting started
 
