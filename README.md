@@ -2,7 +2,7 @@
 
 Write notes, time track your tasks, keep track of tasks!
 
-[Changelog]()
+[Changelog](https://github.com/Mad-Cookies-Prototypes/mad-productivity/blob/dev/changelog.md)
 
 
 # Version 0.0.2 - 2021/11/11
