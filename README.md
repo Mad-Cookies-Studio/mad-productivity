@@ -1,6 +1,7 @@
 ![splash](https://github.com/Mad-Cookies-Prototypes/mad-productivity/blob/dev/repoMain.png)
 
 Write notes, time track your tasks, keep track of tasks!
+Mad Productivity is a dead simple productivity app made in the [Godot Engine](https://godotengine.org/). It lets the user take notes, time track item, use the pomodoro timer and organize their tasks under projects.
 
 [Changelog](https://github.com/Mad-Cookies-Prototypes/mad-productivity/blob/dev/changelog.md)
 
