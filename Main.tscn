@@ -692,5 +692,4 @@ script = ExtResource( 37 )
 [connection signal="pressed" from="ResizeBtn" to="ResizeBtn" method="_on_ResizeBtn_pressed"]
 [connection signal="shortcut_focus" from="Shortcuts" to="MainWorkspace/HBX/VBX/TopArea" method="_on_Shortcuts_shortcut_focus"]
 [connection signal="shortcut_timetrack_panel" from="Shortcuts" to="MainWorkspace/HBX/Sidebar" method="_on_Shortcuts_shortcut_timetrack_panel"]
-[connection signal="shortcut_timetrack_panel" from="Shortcuts" to="MainWorkspace/HBX/VBX/TopArea" method="_on_Shortcuts_shortcut_timetrack_panel"]
 [connection signal="shortcut_use" from="Shortcuts" to="MainWorkspace/HBX/VBX/TopArea" method="_on_Shortcuts_shortcut_use"]
