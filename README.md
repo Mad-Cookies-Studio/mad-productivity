@@ -16,10 +16,10 @@ Pull this repo to a folder and open the project in Godot. Afterwards you can sta
 ## 📃 Credits
 Made by [Mad Cookies Studio](https://madcookies.games).
 
-Contributors: [Krystof Klestil](https://github.com/Jowan-Spooner), [Vajk Poomichal](https://github.com/arnaudvergnet)
+Contributors: [Krystof Klestil](https://lentsius-bark.itch.io/), [Vajk Poomichal](https://madcookies.games)
 
 ## Support us
 
 Buy the app on itch.io to show your support [Mad Productivity itch.io](https://lentsius-bark.itch.io/mad-productivity)
 
-[MIT License](https://github.com/coppolaemilio/dialogic/blob/main/LICENSE)
+[MIT License](https://github.com/Mad-Cookies-Prototypes/mad-productivity/blob/dev/LICENSE.txt)
