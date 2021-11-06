@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Assets/Themes/Dark/PanelHighlight.tres" type="StyleBox" id=1]
 [ext_resource path="res://Assets/Fonts/Righteous-Regular.ttf" type="DynamicFontData" id=2]
@@ -7,10 +7,11 @@
 [ext_resource path="res://Scripts/WelcomeMessage.gd" type="Script" id=5]
 [ext_resource path="res://Assets/Resources/WelcomeMessages.gd" type="Script" id=6]
 [ext_resource path="res://Assets/Fonts/NovaMono100.tres" type="DynamicFont" id=7]
-[ext_resource path="res://Assets/Icons/Discord-Logo-Color.svg" type="Texture" id=8]
+[ext_resource path="res://Assets/Icons/GitHub-Mark-Light-120px-plus.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Icons/Discord-Logo-White.svg" type="Texture" id=9]
 [ext_resource path="res://Assets/Buttons/right_arrow_active.png" type="Texture" id=10]
 [ext_resource path="res://Scripts/CustomTransparentButton.gd" type="Script" id=11]
+[ext_resource path="res://Assets/Scripts/TextureLinkBtn.gd" type="Script" id=12]
 [ext_resource path="res://Assets/Buttons/left_arrow_active.png" type="Texture" id=13]
 
 [sub_resource type="DynamicFont" id=1]
@@ -144,27 +145,49 @@ __meta__ = {
 }
 
 [node name="Discord" type="TextureButton" parent="Control"]
-modulate = Color( 1, 1, 1, 0.447059 )
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -55.3507
-margin_top = -55.3506
-margin_right = -15.3507
-margin_bottom = -15.3506
+margin_left = -64.1801
+margin_top = -65.4414
+margin_right = -24.1801
+margin_bottom = -25.4414
 rect_min_size = Vector2( 0, 40 )
 focus_mode = 0
 enabled_focus_mode = 0
 texture_normal = ExtResource( 9 )
-texture_hover = ExtResource( 8 )
 expand = true
 stretch_mode = 5
+script = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+target_link = "https://discord.gg/bWxcZjn"
+theme_highlight = true
+
+[node name="Github" type="TextureButton" parent="Control"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -121.361
+margin_top = -65.4414
+margin_right = -81.3611
+margin_bottom = -25.4414
+rect_min_size = Vector2( 0, 40 )
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 8 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+target_link = "https://github.com/Mad-Cookies-Prototypes/mad-productivity"
+theme_highlight = true
 
 [connection signal="pressed" from="VBoxContainer/Panel/Next" to="VBoxContainer/Panel/WelcomeMessage" method="_on_Next_pressed"]
 [connection signal="pressed" from="VBoxContainer/Panel/Next2" to="VBoxContainer/Panel/WelcomeMessage" method="_on_Next_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-[connection signal="pressed" from="Control/Discord" to="." method="_on_Discord_pressed"]
