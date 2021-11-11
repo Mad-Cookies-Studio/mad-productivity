@@ -23,6 +23,7 @@ export var minimized_window_size : Vector2 = Vector2(1100, 650)
 
 # settings
 export var show_secs_dash : bool = true
+export var set_24h_time: bool = true
 # font size is 0 - small, 1 - medium, 2 - large
 export var font_size : int = 0
 export var remember_last_session_view : bool = false
