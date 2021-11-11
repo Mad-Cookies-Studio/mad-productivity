@@ -115,6 +115,10 @@ func _on_Option_item_selected(index: int) -> void:
 
 func _on_secsDashboard_toggled(button_pressed: bool) -> void:
 	res.show_secs_dash = button_pressed
+	
+	
+func _on_timeFormat_toggled(button_pressed: bool) -> void:
+	res.set_24h_time = button_pressed
 
 
 func _on_windowPos_toggled(button_pressed: bool) -> void:
