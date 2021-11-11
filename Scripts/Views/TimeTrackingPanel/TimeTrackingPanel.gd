@@ -248,9 +248,9 @@ func update_time() -> void:
 			formatted_time = Defaults.get_formatted_time_from_seconds((Defaults.settings_res.pomo_work_time_length * 60) - tracked_seconds)
 		STATES.POMODORO_BREAK:
 			if get_pomodoro_phase_simple() != Defaults.settings_res.pomo_long_pause_freq:
-				formatted_time = Defaults.get_formatted_time_from_seconds(Defaults.settings_res.pomo_short_pause_length - tracked_seconds)
+				formatted_time = Defaults.get_formatted_time_from_seconds((Defaults.settings_res.pomo_short_pause_length * 60) - tracked_seconds)
 			else:
-				formatted_time = Defaults.get_formatted_time_from_seconds(Defaults.settings_res.pomo_long_pause_length - tracked_seconds)
+				formatted_time = Defaults.get_formatted_time_from_seconds((Defaults.settings_res.pomo_long_pause_length * 60) - tracked_seconds)
 		
 	if formatted_time.begins_with("00:"):
 		formatted_time = formatted_time.trim_prefix("00:")
@@ -281,9 +281,9 @@ func set_up_pomo_progress_bar() -> void:
 			$Content/VBoxContainer/Time/PomodoroProgress.max_value = Defaults.settings_res.pomo_work_time_length * 60
 		STATES.POMODORO_BREAK:
 			if get_pomodoro_phase_simple() == Defaults.settings_res.pomo_long_pause_freq:
-				$Content/VBoxContainer/Time/PomodoroProgress.max_value = Defaults.settings_res.pomo_long_pause_length
+				$Content/VBoxContainer/Time/PomodoroProgress.max_value = Defaults.settings_res.pomo_long_pause_length * 60
 			else:
-				$Content/VBoxContainer/Time/PomodoroProgress.max_value = Defaults.settings_res.pomo_short_pause_length
+				$Content/VBoxContainer/Time/PomodoroProgress.max_value = Defaults.settings_res.pomo_short_pause_length * 60
 				
 	$Content/VBoxContainer/Time/PomodoroProgress.value = $Content/VBoxContainer/Time/PomodoroProgress.max_value
 	
@@ -392,9 +392,9 @@ func _on_SecondsTimer_timeout() -> void:
 		play_notification(false)
 	
 	if state == STATES.POMODORO_BREAK:
-		if get_pomodoro_phase_simple() == Defaults.settings_res.pomo_long_pause_freq and tracked_seconds >= Defaults.settings_res.pomo_long_pause_length:
+		if get_pomodoro_phase_simple() == Defaults.settings_res.pomo_long_pause_freq and tracked_seconds >= Defaults.settings_res.pomo_long_pause_length * 60:
 			play_notification(true)
-		if get_pomodoro_phase_simple() != Defaults.settings_res.pomo_long_pause_freq and tracked_seconds >= Defaults.settings_res.pomo_short_pause_length:
+		if get_pomodoro_phase_simple() != Defaults.settings_res.pomo_long_pause_freq and tracked_seconds >= Defaults.settings_res.pomo_short_pause_length * 60:
 			play_notification(true)
 	
 
