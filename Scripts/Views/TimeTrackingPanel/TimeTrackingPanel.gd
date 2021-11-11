@@ -174,11 +174,11 @@ func stop_time_tracking(cancel : bool ) -> void:
 		curr_track_item.end_tracking(OS.get_unix_time())
 		curr_track_item.type = state
 		emit_signal("register_time_track_item", curr_track_item)
-		print(tracked_seconds)
-		print(curr_track_item.get_duration())
+#		print(tracked_seconds)
+#		print(curr_track_item.get_duration())
 		curr_track_item = null
-		print("sending a signal of a completed time track to be added to the database - TODO")
-		print("name, seconds tracked, state")
+#		print("sending a signal of a completed time track to be added to the database - TODO")
+#		print("name, seconds tracked, state")
 		print($Content/VBoxContainer/ItemInput.text,", " , tracked_seconds, ", ", state)
 		if state == STATES.POMODORO_BREAK:
 			update_pomo_number(!cancel)
@@ -245,7 +245,7 @@ func update_time() -> void:
 		STATES.NORMAL:
 			formatted_time = Defaults.get_formatted_time_from_seconds(tracked_seconds)
 		STATES.POMODORO:
-			formatted_time = Defaults.get_formatted_time_from_seconds(Defaults.settings_res.pomo_work_time_length - tracked_seconds)
+			formatted_time = Defaults.get_formatted_time_from_seconds((Defaults.settings_res.pomo_work_time_length * 60) - tracked_seconds)
 		STATES.POMODORO_BREAK:
 			if get_pomodoro_phase_simple() != Defaults.settings_res.pomo_long_pause_freq:
 				formatted_time = Defaults.get_formatted_time_from_seconds(Defaults.settings_res.pomo_short_pause_length - tracked_seconds)
@@ -278,7 +278,7 @@ func set_up_pomo_progress_bar() -> void:
 	
 	match state:
 		STATES.POMODORO:
-			$Content/VBoxContainer/Time/PomodoroProgress.max_value = Defaults.settings_res.pomo_work_time_length
+			$Content/VBoxContainer/Time/PomodoroProgress.max_value = Defaults.settings_res.pomo_work_time_length * 60
 		STATES.POMODORO_BREAK:
 			if get_pomodoro_phase_simple() == Defaults.settings_res.pomo_long_pause_freq:
 				$Content/VBoxContainer/Time/PomodoroProgress.max_value = Defaults.settings_res.pomo_long_pause_length
@@ -387,7 +387,7 @@ func _on_SecondsTimer_timeout() -> void:
 #	$Content/VBoxContainer/Time/PomodoroProgress.value = $Content/VBoxContainer/Time/PomodoroProgress.max_value - tracked_seconds
 	
 	
-	if state == STATES.POMODORO and tracked_seconds >= Defaults.settings_res.pomo_work_time_length:
+	if state == STATES.POMODORO and tracked_seconds >= Defaults.settings_res.pomo_work_time_length * 60:
 		#stop_time_tracking(false)
 		play_notification(false)
 	
