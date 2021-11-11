@@ -198,8 +198,9 @@ func _on_NotesResetButton_pressed() -> void:
 
 func _on_HiDPI_Option_toggled(button_pressed: bool) -> void:
 	res.hidpi = button_pressed
+	ProjectSettings.set_setting("display/window/allow_hidpi", button_pressed)
 	ProjectSettings.set_setting("gui/theme/hidpi", button_pressed)
-
+	
 
 func _on_NewQuote_pressed() -> void:
 	make_new_quote()

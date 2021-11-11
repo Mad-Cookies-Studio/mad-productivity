@@ -28,6 +28,7 @@ export var font_size : int = 0
 export var remember_last_session_view : bool = false
 export var last_session_view : int = -1
 export var show_date : bool = true
+export var twelve_hour_clock : bool = false
 export var borderless : bool = true
 export var hidpi : bool = false
 

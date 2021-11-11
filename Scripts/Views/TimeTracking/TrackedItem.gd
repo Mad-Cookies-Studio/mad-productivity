@@ -10,7 +10,7 @@ var idle_color : Color
 
 func _ready() -> void:
 	idle_color = Color(1, 1, 1, 0)
-	highlight_color = Defaults.ui_theme.normal
+	highlight_color = Defaults.ui_theme.super_dark
 	color = idle_color
 
 

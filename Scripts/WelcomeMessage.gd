@@ -12,8 +12,9 @@ func load_new_text() -> void:
 	random_texts.shuffle()
 	
 	text = "\"" + random_texts[0] +  "\""
-	$Tween.interpolate_property(self, "modulate:a", 0.0, 1.0, 5.0, Tween.TRANS_CUBIC, Tween.EASE_OUT, 0.0)
-	$Tween.interpolate_property(self, "percent_visible", 0.0, 1.0, 6.0, Tween.TRANS_CUBIC, Tween.EASE_OUT, 0.0)
+	$Tween.remove_all()
+	$Tween.interpolate_property(self, "modulate:a", 0.0, 1.0, 3.0, Tween.TRANS_EXPO, Tween.EASE_OUT, 0.0)
+	$Tween.interpolate_property(self, "percent_visible", 0.0, 1.0, 2.0, Tween.TRANS_EXPO, Tween.EASE_OUT, 0.0)
 	$Tween.start()
 
 

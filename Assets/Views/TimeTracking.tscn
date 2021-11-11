@@ -21,8 +21,7 @@ __meta__ = {
 [node name="LinearTimeTrackingContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 15.0
-margin_right = -15.0
+margin_right = -19.0
 margin_bottom = -15.0
 custom_constants/separation = 0
 __meta__ = {
@@ -30,7 +29,7 @@ __meta__ = {
 }
 
 [node name="Control" type="Control" parent="LinearTimeTrackingContainer"]
-margin_right = 960.0
+margin_right = 971.0
 margin_bottom = 11.073
 rect_min_size = Vector2( 0, 11.073 )
 __meta__ = {
@@ -39,28 +38,29 @@ __meta__ = {
 
 [node name="ScrollContainer" type="ScrollContainer" parent="LinearTimeTrackingContainer"]
 margin_top = 11.0
-margin_right = 960.0
+margin_right = 971.0
 margin_bottom = 556.0
 size_flags_vertical = 3
 theme = ExtResource( 4 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="LinearTimeTrackingContainer/ScrollContainer"]
-margin_right = 950.0
+margin_right = 961.0
 margin_bottom = 545.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="TrackedItem" type="ColorRect" parent="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer"]
-margin_right = 950.0
+margin_right = 961.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 0, 32 )
-color = Color( 0.0745098, 0.133333, 0.141176, 1 )
+color = Color( 0.133333, 0.133333, 0.133333, 1 )
 script = ExtResource( 12 )
 
 [node name="H" type="HBoxContainer" parent="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
+margin_left = 21.0
+margin_right = -16.0
 rect_min_size = Vector2( 0, 25 )
 mouse_filter = 2
 __meta__ = {
@@ -87,7 +87,7 @@ expand_to_text_length = true
 [node name="Date" type="Label" parent="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem/H"]
 margin_left = 358.0
 margin_top = 6.0
-margin_right = 894.0
+margin_right = 873.0
 margin_bottom = 25.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 3
@@ -96,8 +96,8 @@ text = "21/04/2021"
 align = 2
 
 [node name="TimeTrack" type="TextureButton" parent="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem/H"]
-margin_left = 898.0
-margin_right = 917.0
+margin_left = 877.0
+margin_right = 896.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 19, 0 )
 rect_pivot_offset = Vector2( 9.5, 9.5 )
@@ -109,8 +109,8 @@ stretch_mode = 5
 script = ExtResource( 2 )
 
 [node name="Delete" type="TextureButton" parent="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem/H"]
-margin_left = 921.0
-margin_right = 940.0
+margin_left = 900.0
+margin_right = 919.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 19, 0 )
 rect_pivot_offset = Vector2( 9.5, 9.5 )
@@ -124,8 +124,8 @@ __meta__ = {
 }
 
 [node name="Control" type="Control" parent="LinearTimeTrackingContainer/ScrollContainer/VBoxContainer/TrackedItem/H"]
-margin_left = 944.0
-margin_right = 945.666
+margin_left = 923.0
+margin_right = 924.666
 margin_bottom = 32.0
 rect_min_size = Vector2( 1.666, 0 )
 
