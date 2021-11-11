@@ -12,6 +12,7 @@ func entering_view() -> void:
 	Defaults.emit_signal("view_changed", title, false, false)
 	set_up_btns()
 	update_view_text()
+	toggle_colour_panel(false)
 	
 	
 func leaving_view() -> void:
