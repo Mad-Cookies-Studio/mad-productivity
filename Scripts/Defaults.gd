@@ -237,6 +237,27 @@ func get_date_and_time_with_underscores(_custom : Dictionary) -> String:
 
 
 func get_time_with_semicoloumns(_custom : Dictionary, _show_seconds: bool, _use_24h: bool) -> String:
+	if(_use_24h):
+		return get_24h_time(_custom,_show_seconds)
+	else: 
+		return get_12h_time(_custom,_show_seconds)
+	
+func get_12h_time(_custom : Dictionary,_use_seconds: bool) -> String:
+	var date : Dictionary = OS.get_time()
+	if _custom.size() > 0:
+		date = _custom
+	var meridian
+	if date.hour - 12 < 0:
+		meridian = "am"
+	else:
+		meridian = "pm"
+	if(_use_seconds):
+		return str("%02d" % [abs(date.hour - 12)]) + ":" + str("%02d" % [date.minute] + ":" + str("%02d" % [date.second])  + "" + meridian) 
+	else:
+		return str("%02d" % [abs(date.hour - 12)]) + ":" + str("%02d" % [date.minute]+ "" + meridian)
+
+
+func get_24h_time(_custom: Dictionary,_show_seconds: bool) -> String:
 	var date : Dictionary = OS.get_time()
 	if _custom.size() > 0:
 		date = _custom
@@ -249,22 +270,10 @@ func get_time_with_semicoloumns(_custom : Dictionary, _show_seconds: bool, _use_
 		minute = "0" + minute
 	if second.length() == 1:
 		second = "0" + second
-	var meridian
-	if date.hour - 12 < 0:
-		meridian = "am"
-	else:
-		meridian = "pm"
 	if(_show_seconds):
-		if(_use_24h):
-			return hour + ":" + minute + ":" + second
-		else:
-			return str("%02d" % [abs(date.hour - 12)]) + ":" + str("%02d" % [date.minute] + ":" + str("%02d" % [date.second])  + "" + meridian) 
+		return hour + ":" + minute + ":" + second
 	else:
-		if(_use_24h):
-			return hour + ":" + minute
-		else:
-			return str("%02d" % [abs(date.hour - 12)]) + ":" + str("%02d" % [date.minute]+ "" + meridian)
-
+		return hour + ":" + minute
 
 func get_date_with_time_string(_dic : Dictionary) -> String:
 	return get_date_as_numbers(_dic) + " " + get_time_with_semicoloumns(_dic,Defaults.settings_res.show_secs_dash,Defaults.settings_res.set_24h_time)
