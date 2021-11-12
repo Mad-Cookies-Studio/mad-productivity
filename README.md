@@ -24,7 +24,7 @@ Pull this repo to a folder and open the project in Godot. Afterwards you can sta
 ## 📃 Credits
 Made by [Mad Cookies Studio](https://madcookies.games).
 
-Contributors: [Krystof Klestil](https://lentsius-bark.itch.io/), [Vajk Pomichal](https://madcookies.games)
+Contributors: [Krystof Klestil](https://lentsius-bark.itch.io/), [Vajk Pomichal](https://madcookies.games), [Martin Piliar](https://twitter.com/MartinPiliar)
 
 ## Support us
 
