@@ -7,6 +7,6 @@
 *.x86
 
 # Directories to ignore.
-.import/
-logs/
-.exports/
+.import
+.logs
+.exports
