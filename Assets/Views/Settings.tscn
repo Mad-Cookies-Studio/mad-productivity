@@ -325,7 +325,7 @@ rect_min_size = Vector2( 350, 0 )
 custom_colors/font_color = Color( 1, 1, 1, 0.611765 )
 custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 22 )
-text = "Set 24h time format"
+text = "24 hour time format"
 
 [node name="Option" type="CheckBox" parent="HBX/C/VBoxContainer/TimeFormatDashboard"]
 margin_left = 354.0
@@ -855,10 +855,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -142.0
-margin_top = -229.883
-margin_right = 166.0
-margin_bottom = 223.117
+margin_left = -138.0
+margin_top = -225.883
+margin_right = 170.0
+margin_bottom = 227.117
 theme = ExtResource( 16 )
 presets_enabled = false
 presets_visible = false
