@@ -1,1 +1,12 @@
-﻿.exports
+﻿# Files to ignore
+*.bak
+*.exe
+*.pck
+*.tmp
+*.x86_64
+*.x86
+
+# Directories to ignore.
+.import/
+logs/
+.exports/
