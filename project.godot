@@ -143,5 +143,4 @@ quality/shadows/filter_mode=0
 quality/reflections/texture_array_reflections=false
 quality/reflections/high_quality_ggx=false
 environment/default_clear_color=Color( 0.345098, 0.345098, 0.345098, 1 )
-quality/filters/use_debanding=true
 environment/default_environment="res://default_env.tres"
