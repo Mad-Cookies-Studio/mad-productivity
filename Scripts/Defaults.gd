@@ -247,14 +247,17 @@ func get_12h_time(_custom : Dictionary,_use_seconds: bool) -> String:
 	if _custom.size() > 0:
 		date = _custom
 	var meridian
-	if date.hour - 12 < 0:
-		meridian = "am"
-	else:
+	if date.hour >= 12:
 		meridian = "pm"
-	if(_use_seconds):
-		return str("%02d" % [abs(date.hour - 12)]) + ":" + str("%02d" % [date.minute] + ":" + str("%02d" % [date.second])  + "" + meridian) 
 	else:
-		return str("%02d" % [abs(date.hour - 12)]) + ":" + str("%02d" % [date.minute]+ "" + meridian)
+		meridian = "am"
+	var hours = date.hour
+	hours = hours % 12
+	hours = hours if hours else 12
+	if(_use_seconds):
+		return str("%02d" % [hours]) + ":" + str("%02d" % [date.minute] + ":" + str("%02d" % [date.second])  + "" + meridian) 
+	else:
+		return str("%02d" % [hours]) + ":" + str("%02d" % [date.minute]+ "" + meridian)
 
 
 func get_24h_time(_custom: Dictionary,_show_seconds: bool) -> String:
