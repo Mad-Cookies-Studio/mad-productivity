@@ -33,6 +33,7 @@ func _ready() -> void:
 func set_up_btns() -> void:
 	$HBX/C/VBoxContainer/FontSize/Option.select(res.font_size)
 	$HBX/C/VBoxContainer/SecsDashboard/Option.pressed = res.show_secs_dash
+	$HBX/C/VBoxContainer/TimeFormatDashboard/Option.pressed = res.use_24h_time
 	$HBX/C/VBoxContainer/WindowPos/Option.pressed = res.remember_window_settings
 	$HBX/C/VBoxContainer/HidDPI/Option.pressed = res.hidpi
 	$HBX/C/VBoxContainer/LongPause/Option.value = res.pomo_long_pause_length
@@ -118,7 +119,7 @@ func _on_secsDashboard_toggled(button_pressed: bool) -> void:
 	
 	
 func _on_timeFormat_toggled(button_pressed: bool) -> void:
-	res.set_24h_time = button_pressed
+	res.use_24h_time = button_pressed
 
 
 func _on_windowPos_toggled(button_pressed: bool) -> void:

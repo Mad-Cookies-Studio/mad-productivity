@@ -279,7 +279,7 @@ func get_24h_time(_custom: Dictionary,_show_seconds: bool) -> String:
 		return hour + ":" + minute
 
 func get_date_with_time_string(_dic : Dictionary) -> String:
-	return get_date_as_numbers(_dic) + " " + get_time_with_semicoloumns(_dic,Defaults.settings_res.show_secs_dash,Defaults.settings_res.set_24h_time)
+	return get_date_as_numbers(_dic) + " " + get_time_with_semicoloumns(_dic,Defaults.settings_res.show_secs_dash,Defaults.settings_res.use_24h_time)
 
 func get_datetime_from_unix_time(_unixTime : int) -> String:
 	# timezone and dst
