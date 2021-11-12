@@ -236,7 +236,31 @@ func get_date_and_time_with_underscores(_custom : Dictionary) -> String:
 	return text
 
 
-func get_time_with_semicoloumns(_custom : Dictionary) -> String:
+func get_time_with_semicoloumns(_custom : Dictionary, _show_seconds: bool, _use_24h: bool) -> String:
+	if(_use_24h):
+		return get_24h_time(_custom,_show_seconds)
+	else: 
+		return get_12h_time(_custom,_show_seconds)
+	
+func get_12h_time(_custom : Dictionary,_use_seconds: bool) -> String:
+	var date : Dictionary = OS.get_time()
+	if _custom.size() > 0:
+		date = _custom
+	var meridian
+	if date.hour >= 12:
+		meridian = "pm"
+	else:
+		meridian = "am"
+	var hours = date.hour
+	hours = hours % 12
+	hours = hours if hours else 12
+	if(_use_seconds):
+		return str("%02d" % [hours]) + ":" + str("%02d" % [date.minute] + ":" + str("%02d" % [date.second])  + "" + meridian) 
+	else:
+		return str("%02d" % [hours]) + ":" + str("%02d" % [date.minute]+ "" + meridian)
+
+
+func get_24h_time(_custom: Dictionary,_show_seconds: bool) -> String:
 	var date : Dictionary = OS.get_time()
 	if _custom.size() > 0:
 		date = _custom
@@ -249,26 +273,13 @@ func get_time_with_semicoloumns(_custom : Dictionary) -> String:
 		minute = "0" + minute
 	if second.length() == 1:
 		second = "0" + second
-		
-	return hour + ":" + minute + ":" + second
-
-
-func get_time_with_semicoloumns_no_secs(_custom : Dictionary) -> String:
-	var date : Dictionary = OS.get_time()
-	if _custom.size() > 0:
-		date = _custom
-	var hour : String = str(date.hour)
-	var minute : String = str(date.minute)
-	if hour.length() == 1:
-		hour = "0" + hour
-	if minute.length() == 1:
-		minute = "0" + minute
-		
-	return hour + ":" + minute
-
+	if(_show_seconds):
+		return hour + ":" + minute + ":" + second
+	else:
+		return hour + ":" + minute
 
 func get_date_with_time_string(_dic : Dictionary) -> String:
-	return get_date_as_numbers(_dic) + " " + get_time_with_semicoloumns(_dic)
+	return get_date_as_numbers(_dic) + " " + get_time_with_semicoloumns(_dic,Defaults.settings_res.show_secs_dash,Defaults.settings_res.use_24h_time)
 
 func get_datetime_from_unix_time(_unixTime : int) -> String:
 	# timezone and dst
