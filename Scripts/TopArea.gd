@@ -32,14 +32,14 @@ func _on_mouse_exited() -> void:
 
 func _input(event: InputEvent) -> void:
     if event is InputEventMouseButton:
+        initial_mouse_pos = get_global_mouse_position()
         if event.pressed:
             offset = get_global_mouse_position()
         else:
             offset = Vector2()
     if event is InputEventMouseMotion and offset != Vector2():
-        if OS.get_window_size() > Defaults.settings_res.minimized_window_size or OS.window_maximized:
-            OS.window_maximized = false
-            OS.window_size = Defaults.settings_res.window_size
+        if OS.window_maximized:
+            offset *=  Defaults.settings_res.minimized_window_size.x / OS.get_window_size().x
             $Right/Maximize.pressed = false
         OS.set_window_position(OS.get_window_position() + event.get_global_position() - offset)
 
