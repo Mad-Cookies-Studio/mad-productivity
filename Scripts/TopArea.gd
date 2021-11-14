@@ -13,16 +13,7 @@ var minimized_pos : Vector2
 
 var offset : Vector2 
 
-onready var screen_size: Vector2 = OS.get_screen_size()
-
-var min_screen_pos: Vector2
-var max_screen_size: Vector2
-
 func _ready() -> void:
-    for i in range(0, OS.get_screen_count()):
-        min_screen_pos.x = min(min_screen_pos.x, OS.get_screen_position(i).x)
-        max_screen_size.x = max(max_screen_size.x, (OS.get_screen_position(i)+OS.get_screen_size(i)).x)
-        max_screen_size.y = max(max_screen_size.y, (OS.get_screen_position(i)+OS.get_screen_size(i)).y)
     # ....
     connect("mouse_entered", self, "_on_mouse_entered")
     connect("mouse_exited", self, "_on_mouse_exited")
@@ -50,12 +41,7 @@ func _input(event: InputEvent) -> void:
         if OS.window_maximized:
             offset *=  Defaults.settings_res.minimized_window_size.x / OS.get_window_size().x
             $Right/Maximize.pressed = false
-        drag_amount = OS.get_window_position() + event.get_global_position() - offset
-        OS.set_window_position(
-            Vector2(
-                clamp(drag_amount.x, min_screen_pos.x, max_screen_size.x - OS.get_window_size().x),
-                clamp(drag_amount.y, min_screen_pos.y, max_screen_size.y - OS.get_window_size().y)
-                ))
+        OS.set_window_position(OS.get_window_position() + event.get_global_position() - offset)
 
 
 func _on_Minimuze_pressed() -> void:
