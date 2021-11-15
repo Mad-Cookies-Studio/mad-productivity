@@ -56,9 +56,8 @@ func _on_time_track_btn_pressed() -> void:
 		
 		
 func delete_note(btn : Button, _res : NoteResource) -> void:
-	print("deleting a note: ", _res.title)
 	deleting = true
 	var dir : Directory = Directory.new()
-	queue_free()
 	var err = dir.remove(Defaults.NOTES_SAVE_PATH + _res.save_name + ".tres")
+	queue_free()
 	

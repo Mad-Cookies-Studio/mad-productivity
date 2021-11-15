@@ -173,3 +173,4 @@ func on_new_top_bar_button(message : Dictionary = {}) -> void:
 func _on_note_btn_delete_clicked(btn : Button, res : NoteResource) -> void:
 	notes_no -= 1
 	update_view_text()
+	reset_state()
