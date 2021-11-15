@@ -16,7 +16,6 @@ func _ready() -> void:
 		load_res()
 	load_time_tracks()
 	update_total_time()
-	check_tracks_count()
 
 
 func load_res() -> void:
@@ -85,7 +84,7 @@ func save() -> void:
 
 
 func update_total_time() -> void:
-	pass
+	check_tracks_count()
 #	var _time : Array = get_hours_minutes_seconds(total_secs)
 #	$CommandPanel/Total.text = "total " + _time[2] + ":" + _time[1] + ":" + _time[0]
 
@@ -94,7 +93,6 @@ func remove_time_track(idx : int) -> void:
 	#total_secs -= res.tracks[idx].length
 	res.tracks.erase(idx)
 	update_total_time()
-	check_tracks_count()
 
 
 func update_time_track_item_text(_text : String, _id : int) -> void:
