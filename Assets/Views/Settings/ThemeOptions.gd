@@ -15,8 +15,9 @@ func update_values() -> void:
 	
 
 func _on_ColorPicker_color_changed(color: Color) -> void:
-	Defaults.ui_theme.set_color(color_int, color)
-	color_node.color = color
+	if color_node:
+		Defaults.ui_theme.set_color(color_int, color)
+		color_node.color = color
 
 
 func _on_Option_setting_color(which : int, node : ColorRect) -> void:
