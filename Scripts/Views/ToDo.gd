@@ -15,6 +15,8 @@ var current_project_child_id : int
 func _ready() -> void:
 	$VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons/ProjectButton.hide()
 	$VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/TODOitem.hide()
+	$VBoxContainer/HSplitContainer/PanelR/NewTodoBtn.hide()
+	$VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/ProjectLineEdit.hide()
 	Defaults.connect("theme_changed", self, "on_theme_changed")
 	update_theme()
 	res = load(Defaults.TODOS_SAVE_PATH + Defaults.TODOS_SAVE_NAME)
@@ -95,6 +97,9 @@ func remove_task_visual() -> void:
 	
 	
 func reset_tasks_view() -> void:
+	print("hiding the todo button")
+	$VBoxContainer/HSplitContainer/PanelR/NewTodoBtn.hide()
+	$VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/ProjectLineEdit.hide()
 #	$VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/ProjectLineEdit.clear()
 	for i in $VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList.get_children():
 		if i.name != "TODOitem" and i.name != "ProjectLineEdit":
@@ -105,12 +110,6 @@ func reset_tasks_view() -> void:
 	
 func update_percent_done(p_id : int, child_p_id : int) -> void:
 	$VBoxContainer/HSplitContainer/PanelL/ScrollContainer/ProjectButtons.get_child(child_p_id).set_percent_done(res.get_percent_done(p_id))
-	
-	
-# TODO: Implement method for removing a project.
-# Should remove all tasks with it by default as well
-func remove_project() -> void:
-	pass
 	
 	
 func update_task_text(idx : int, text : String) -> void:
@@ -169,20 +168,23 @@ func on_new_top_bar_button(message : Dictionary = {}) -> void:
 
 
 func _on_ProjectButton_selected_project(_name, index, child_id) -> void:
-	# show the necessary nodes
-	$VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/ProjectLineEdit.show()
-	$VBoxContainer/HSplitContainer/PanelR/NewTodoBtn.show()
-	
-	$VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/ProjectLineEdit.text = _name
 	# cancel if we've clicked the same one
 	if _name == current_project: return
+	
 	current_project = _name
 	current_project_id = index
 	current_project_child_id = child_id
+	
 	reset_tasks_view()
+	
 	for i in res.get_tasks_in_project(current_project_id):
 		var task = res.tasks[i]
 		add_new_task_visual(task)
+	
+	# show the necessary nodes
+	$VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/ProjectLineEdit.show()
+	$VBoxContainer/HSplitContainer/PanelR/TaskScroll/TaskList/ProjectLineEdit.text = _name
+	$VBoxContainer/HSplitContainer/PanelR/NewTodoBtn.show()
 
 
 func _on_NewTodoBtn_pressed() -> void:
@@ -204,8 +206,6 @@ func on_delete_project(id : int) -> void:
 	reset_tasks_view()
 	
 	
-
-
 func on_theme_changed() -> void:
 	update_theme()
 
