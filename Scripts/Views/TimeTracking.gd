@@ -103,6 +103,7 @@ func update_time_track_item_text(_text : String, _id : int) -> void:
 
 func update_theme() -> void:
 	$Gradient.modulate = Defaults.ui_theme.darker
+	$NoDataText.add_color_override("font_color", Defaults.ui_theme.highlight_colour)
 	
 	
 func update_view_text() -> void:
