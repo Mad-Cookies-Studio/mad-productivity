@@ -84,7 +84,7 @@ func save() -> void:
 
 
 func update_total_time() -> void:
-	pass
+	check_tracks_count()
 #	var _time : Array = get_hours_minutes_seconds(total_secs)
 #	$CommandPanel/Total.text = "total " + _time[2] + ":" + _time[1] + ":" + _time[0]
 
@@ -101,6 +101,7 @@ func update_time_track_item_text(_text : String, _id : int) -> void:
 
 func update_theme() -> void:
 	$Gradient.modulate = Defaults.ui_theme.darker
+	$NoDataText.add_color_override("font_color", Defaults.ui_theme.highlight_colour)
 	
 	
 func update_view_text() -> void:
@@ -138,3 +139,7 @@ func _on_TimeTrackingPanel_register_time_track_item(item : TimeTrackItem) -> voi
 	var id : int = res.add_finished_track(item)
 	create_track_visual(item.name, item.get_start_unix_time(), item.get_duration(), id)
 	update_view_text()
+	check_tracks_count()
+
+func check_tracks_count() -> void:
+	$NoDataText.visible = res.tracks.size() == 0
