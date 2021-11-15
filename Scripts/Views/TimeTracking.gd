@@ -16,6 +16,7 @@ func _ready() -> void:
 		load_res()
 	load_time_tracks()
 	update_total_time()
+	check_tracks_count()
 
 
 func load_res() -> void:
@@ -93,6 +94,7 @@ func remove_time_track(idx : int) -> void:
 	#total_secs -= res.tracks[idx].length
 	res.tracks.erase(idx)
 	update_total_time()
+	check_tracks_count()
 
 
 func update_time_track_item_text(_text : String, _id : int) -> void:
@@ -138,3 +140,7 @@ func _on_TimeTrackingPanel_register_time_track_item(item : TimeTrackItem) -> voi
 	var id : int = res.add_finished_track(item)
 	create_track_visual(item.name, item.get_start_unix_time(), item.get_duration(), id)
 	update_view_text()
+	check_tracks_count()
+
+func check_tracks_count() -> void:
+	$NoDataText.visible = res.tracks.size() == 0
