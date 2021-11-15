@@ -803,6 +803,7 @@ theme = ExtResource( 5 )
 text = "new"
 
 [node name="QuoteBox" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
+visible = false
 margin_top = 1233.0
 margin_right = 557.0
 margin_bottom = 1258.0
@@ -855,10 +856,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -138.0
-margin_top = -225.883
-margin_right = 170.0
-margin_bottom = 227.117
+margin_left = -134.0
+margin_top = -221.883
+margin_right = 174.0
+margin_bottom = 231.117
 theme = ExtResource( 16 )
 presets_enabled = false
 presets_visible = false

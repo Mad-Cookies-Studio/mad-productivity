@@ -47,18 +47,18 @@ __meta__ = {
 
 [node name="Date" type="Label" parent="VBoxContainer"]
 modulate = Color( 1, 1, 1, 0.611765 )
-margin_top = 92.0
+margin_top = 72.0
 margin_right = 930.0
-margin_bottom = 118.0
+margin_bottom = 98.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Date"
 align = 1
 
 [node name="Time" type="Label" parent="VBoxContainer"]
-margin_top = 128.0
+margin_top = 108.0
 margin_right = 930.0
-margin_bottom = 269.0
+margin_bottom = 249.0
 custom_colors/font_color = Color( 0.854902, 0.423529, 0.384314, 1 )
 custom_fonts/font = ExtResource( 7 )
 text = "00:00:00"
@@ -66,9 +66,9 @@ align = 1
 
 [node name="Panel" type="Panel" parent="VBoxContainer"]
 margin_left = 250.0
-margin_top = 279.0
+margin_top = 259.0
 margin_right = 680.0
-margin_bottom = 439.0
+margin_bottom = 419.0
 rect_min_size = Vector2( 430, 160 )
 size_flags_horizontal = 4
 custom_styles/panel = ExtResource( 1 )
@@ -125,9 +125,9 @@ stretch_mode = 5
 script = ExtResource( 11 )
 
 [node name="Control" type="Control" parent="VBoxContainer"]
-margin_top = 409.0
+margin_top = 429.0
 margin_right = 930.0
-margin_bottom = 449.0
+margin_bottom = 469.0
 rect_min_size = Vector2( 0, 40 )
 
 [node name="Timer" type="Timer" parent="."]
@@ -189,5 +189,5 @@ target_link = "https://github.com/Mad-Cookies-Prototypes/mad-productivity"
 theme_highlight = true
 
 [connection signal="pressed" from="VBoxContainer/Panel/Next" to="VBoxContainer/Panel/WelcomeMessage" method="_on_Next_pressed"]
-[connection signal="pressed" from="VBoxContainer/Panel/Next2" to="VBoxContainer/Panel/WelcomeMessage" method="_on_Next_pressed"]
+[connection signal="pressed" from="VBoxContainer/Panel/Next2" to="VBoxContainer/Panel/WelcomeMessage" method="_on_Previous_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
