@@ -16,6 +16,7 @@ const SETTINGS_SAVE_NAME : String = "Settings.tres"
 
 signal view_changed(_name, _button, _input_field)
 signal theme_changed
+signal settings_changed
 signal track_item(_name)
 signal toggle_time_tracking_panel(really)
 signal update_view_info(text)

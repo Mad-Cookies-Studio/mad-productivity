@@ -28,6 +28,8 @@ func _ready() -> void:
 	res = Defaults.settings_res
 	update_settings()
 	update_quotes()
+	# hide the default button for quotes
+	$HBX/C/VBoxContainer/QuoteBox.hide()
 
 
 func set_up_btns() -> void:
@@ -43,6 +45,7 @@ func set_up_btns() -> void:
 	$HBX/C/VBoxContainer/WindowPos2/Option.pressed = res.remember_last_session_view
 	$HBX/C/VBoxContainer/ShowDate/Option.pressed = res.show_date
 	$HBX/C/VBoxContainer/Borderless/Option.pressed = res.borderless
+	$HBX/C/VBoxContainer/ParticleEffect/Option.pressed = res.particle_effect
 	# notes textedit
 	$HBX/C/VBoxContainer/LineNumbers/Option.pressed = res.line_numbers
 	$HBX/C/VBoxContainer/HighlightLine/Option.pressed = res.highlight_current_line
@@ -223,3 +226,8 @@ func _on_TheneResetButton_pressed() -> void:
 
 func _on_ColorPicker_show_colour_panel(really) -> void:
 	toggle_colour_panel(really)
+
+
+func _on_ParticleEffect_toggled(button_pressed: bool) -> void:
+	res.particle_effect = button_pressed
+	Defaults.emit_signal("settings_changed")

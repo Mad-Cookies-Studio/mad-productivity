@@ -32,6 +32,7 @@ export var show_date : bool = true
 export var twelve_hour_clock : bool = false
 export var borderless : bool = true
 export var hidpi : bool = false
+export var particle_effect : bool = true
 
 #pomodoro settings
 export var pomo_work_time_length : int = 254

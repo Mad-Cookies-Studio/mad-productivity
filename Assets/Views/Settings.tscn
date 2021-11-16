@@ -358,10 +358,31 @@ text = "Small"
 items = [ "Small", null, false, 0, null, "Medium", null, false, 1, null, "Large", null, false, 2, null ]
 selected = 0
 
-[node name="WindowPos" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
+[node name="ParticleEffect" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
 margin_top = 390.0
 margin_right = 557.0
 margin_bottom = 415.0
+
+[node name="Text" type="Label" parent="HBX/C/VBoxContainer/ParticleEffect"]
+margin_top = 4.0
+margin_right = 350.0
+margin_bottom = 21.0
+rect_min_size = Vector2( 350, 0 )
+custom_colors/font_color = Color( 1, 1, 1, 0.611765 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 22 )
+text = "Particle effect"
+
+[node name="Option" type="CheckBox" parent="HBX/C/VBoxContainer/ParticleEffect"]
+margin_left = 354.0
+margin_right = 379.0
+margin_bottom = 25.0
+theme = ExtResource( 6 )
+
+[node name="WindowPos" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
+margin_top = 430.0
+margin_right = 557.0
+margin_bottom = 455.0
 
 [node name="Text" type="Label" parent="HBX/C/VBoxContainer/WindowPos"]
 margin_top = 4.0
@@ -380,9 +401,9 @@ margin_bottom = 25.0
 theme = ExtResource( 6 )
 
 [node name="WindowPos2" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
-margin_top = 430.0
+margin_top = 470.0
 margin_right = 557.0
-margin_bottom = 455.0
+margin_bottom = 495.0
 
 [node name="Text" type="Label" parent="HBX/C/VBoxContainer/WindowPos2"]
 margin_top = 4.0
@@ -401,9 +422,9 @@ margin_bottom = 25.0
 theme = ExtResource( 6 )
 
 [node name="ShowDate" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
-margin_top = 470.0
+margin_top = 510.0
 margin_right = 557.0
-margin_bottom = 495.0
+margin_bottom = 535.0
 
 [node name="Text" type="Label" parent="HBX/C/VBoxContainer/ShowDate"]
 margin_top = 4.0
@@ -422,9 +443,9 @@ margin_bottom = 25.0
 theme = ExtResource( 6 )
 
 [node name="Borderless" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
-margin_top = 510.0
+margin_top = 550.0
 margin_right = 557.0
-margin_bottom = 535.0
+margin_bottom = 575.0
 
 [node name="Text" type="Label" parent="HBX/C/VBoxContainer/Borderless"]
 margin_top = 4.0
@@ -443,9 +464,9 @@ margin_bottom = 25.0
 theme = ExtResource( 6 )
 
 [node name="HidDPI" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
-margin_top = 550.0
+margin_top = 590.0
 margin_right = 557.0
-margin_bottom = 575.0
+margin_bottom = 615.0
 
 [node name="Text" type="Label" parent="HBX/C/VBoxContainer/HidDPI"]
 margin_top = 4.0
@@ -464,9 +485,9 @@ margin_bottom = 25.0
 theme = ExtResource( 6 )
 
 [node name="Category2" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
-margin_top = 590.0
+margin_top = 630.0
 margin_right = 557.0
-margin_bottom = 640.0
+margin_bottom = 680.0
 custom_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false
@@ -494,9 +515,9 @@ theme = ExtResource( 5 )
 text = "reset"
 
 [node name="WorkTimeLength" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
-margin_top = 655.0
+margin_top = 695.0
 margin_right = 557.0
-margin_bottom = 682.0
+margin_bottom = 722.0
 
 [node name="Text" type="Label" parent="HBX/C/VBoxContainer/WorkTimeLength"]
 margin_top = 5.0
@@ -517,9 +538,9 @@ theme = ExtResource( 6 )
 suffix = "m"
 
 [node name="ShortPause" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
-margin_top = 697.0
+margin_top = 737.0
 margin_right = 557.0
-margin_bottom = 724.0
+margin_bottom = 764.0
 
 [node name="Text" type="Label" parent="HBX/C/VBoxContainer/ShortPause"]
 margin_top = 5.0
@@ -540,9 +561,9 @@ theme = ExtResource( 6 )
 suffix = "m"
 
 [node name="LongPause" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
-margin_top = 739.0
+margin_top = 779.0
 margin_right = 557.0
-margin_bottom = 766.0
+margin_bottom = 806.0
 
 [node name="Text" type="Label" parent="HBX/C/VBoxContainer/LongPause"]
 margin_top = 5.0
@@ -563,9 +584,9 @@ theme = ExtResource( 6 )
 suffix = "m"
 
 [node name="LongPauseFreq" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
-margin_top = 781.0
+margin_top = 821.0
 margin_right = 557.0
-margin_bottom = 808.0
+margin_bottom = 848.0
 
 [node name="Text" type="Label" parent="HBX/C/VBoxContainer/LongPauseFreq"]
 margin_top = 5.0
@@ -586,9 +607,9 @@ theme = ExtResource( 6 )
 suffix = "x"
 
 [node name="NotesCategory" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
-margin_top = 823.0
+margin_top = 863.0
 margin_right = 557.0
-margin_bottom = 873.0
+margin_bottom = 913.0
 custom_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false
@@ -616,9 +637,9 @@ theme = ExtResource( 5 )
 text = "reset"
 
 [node name="LineNumbers" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
-margin_top = 888.0
+margin_top = 928.0
 margin_right = 557.0
-margin_bottom = 913.0
+margin_bottom = 953.0
 
 [node name="Text" type="Label" parent="HBX/C/VBoxContainer/LineNumbers"]
 margin_top = 4.0
@@ -637,9 +658,9 @@ margin_bottom = 25.0
 theme = ExtResource( 6 )
 
 [node name="HighlightLine" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
-margin_top = 928.0
+margin_top = 968.0
 margin_right = 557.0
-margin_bottom = 953.0
+margin_bottom = 993.0
 
 [node name="Text" type="Label" parent="HBX/C/VBoxContainer/HighlightLine"]
 margin_top = 4.0
@@ -658,9 +679,9 @@ margin_bottom = 25.0
 theme = ExtResource( 6 )
 
 [node name="Minimap" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
-margin_top = 968.0
+margin_top = 1008.0
 margin_right = 557.0
-margin_bottom = 993.0
+margin_bottom = 1033.0
 
 [node name="Text" type="Label" parent="HBX/C/VBoxContainer/Minimap"]
 margin_top = 4.0
@@ -679,9 +700,9 @@ margin_bottom = 25.0
 theme = ExtResource( 6 )
 
 [node name="SyntaxHighlighting" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
-margin_top = 1008.0
+margin_top = 1048.0
 margin_right = 557.0
-margin_bottom = 1033.0
+margin_bottom = 1073.0
 
 [node name="Text" type="Label" parent="HBX/C/VBoxContainer/SyntaxHighlighting"]
 margin_top = 4.0
@@ -700,9 +721,9 @@ margin_bottom = 25.0
 theme = ExtResource( 6 )
 
 [node name="Tabs" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
-margin_top = 1048.0
+margin_top = 1088.0
 margin_right = 557.0
-margin_bottom = 1073.0
+margin_bottom = 1113.0
 
 [node name="Text" type="Label" parent="HBX/C/VBoxContainer/Tabs"]
 margin_top = 4.0
@@ -721,9 +742,9 @@ margin_bottom = 25.0
 theme = ExtResource( 6 )
 
 [node name="Spaces" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
-margin_top = 1088.0
+margin_top = 1128.0
 margin_right = 557.0
-margin_bottom = 1113.0
+margin_bottom = 1153.0
 
 [node name="Text" type="Label" parent="HBX/C/VBoxContainer/Spaces"]
 margin_top = 4.0
@@ -742,9 +763,9 @@ margin_bottom = 25.0
 theme = ExtResource( 6 )
 
 [node name="Occurances" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
-margin_top = 1128.0
+margin_top = 1168.0
 margin_right = 557.0
-margin_bottom = 1153.0
+margin_bottom = 1193.0
 
 [node name="Text" type="Label" parent="HBX/C/VBoxContainer/Occurances"]
 margin_top = 4.0
@@ -763,9 +784,9 @@ margin_bottom = 25.0
 theme = ExtResource( 6 )
 
 [node name="QuotesCategory" type="HBoxContainer" parent="HBX/C/VBoxContainer"]
-margin_top = 1168.0
+margin_top = 1208.0
 margin_right = 557.0
-margin_bottom = 1218.0
+margin_bottom = 1258.0
 custom_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false
@@ -856,10 +877,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -134.0
-margin_top = -221.883
-margin_right = 174.0
-margin_bottom = 231.117
+margin_left = -126.0
+margin_top = -213.883
+margin_right = 182.0
+margin_bottom = 239.117
 theme = ExtResource( 16 )
 presets_enabled = false
 presets_visible = false
@@ -911,6 +932,7 @@ __meta__ = {
 [connection signal="toggled" from="HBX/C/VBoxContainer/SecsDashboard/Option" to="." method="_on_secsDashboard_toggled"]
 [connection signal="toggled" from="HBX/C/VBoxContainer/TimeFormatDashboard/Option" to="." method="_on_timeFormat_toggled"]
 [connection signal="item_selected" from="HBX/C/VBoxContainer/FontSize/Option" to="." method="_on_Option_item_selected"]
+[connection signal="toggled" from="HBX/C/VBoxContainer/ParticleEffect/Option" to="." method="_on_ParticleEffect_toggled"]
 [connection signal="toggled" from="HBX/C/VBoxContainer/WindowPos/Option" to="." method="_on_windowPos_toggled"]
 [connection signal="toggled" from="HBX/C/VBoxContainer/WindowPos2/Option" to="." method="_on_lastSessionView_toggled"]
 [connection signal="toggled" from="HBX/C/VBoxContainer/ShowDate/Option" to="." method="_on_ShowDateOption_toggled"]

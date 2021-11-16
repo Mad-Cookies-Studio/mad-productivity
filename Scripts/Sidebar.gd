@@ -14,9 +14,8 @@ var number_of_views : int = 0
 
 func _ready() -> void:
 	update_theme()
-	get_viewport().connect("size_changed", self, "on_window_size_changed")
-	Defaults.connect("theme_changed", self, "on_theme_changed")
-	Defaults.connect("track_item", self, "on_track_item")
+	update_particles()
+	connect_signals()
 	time_track_panel_ready()
 	var idx : int = 0
 	
@@ -26,6 +25,20 @@ func _ready() -> void:
 			i.connect("toggled_menu_btn", self, "on_toggled_menu_btn", [i, idx, i.target])
 			idx += 1
 	number_of_views = idx
+
+
+
+func update_particles() -> void:
+	$SelectionBox/Particles.emitting = Defaults.settings_res.particle_effect
+	$SelectionBox/Particles.visible = Defaults.settings_res.particle_effect
+	
+	
+func connect_signals() -> void:
+	get_viewport().connect("size_changed", self, "on_window_size_changed")
+	Defaults.connect("theme_changed", self, "on_theme_changed")
+	Defaults.connect("track_item", self, "on_track_item")
+	Defaults.connect("settings_changed", self, "on_settings_changed")
+	
 
 
 func time_track_panel_ready() -> void:
@@ -71,6 +84,8 @@ func update_theme() -> void:
 		active_btn.modulate = Defaults.btn_active_colour
 
 
+### SIGNALS --------------
+
 func _on_TimeTrackPanel_toggled(button_pressed: bool) -> void:
 	Defaults.emit_signal("toggle_time_tracking_panel", button_pressed)
 
@@ -86,3 +101,7 @@ func on_theme_changed() -> void:
 func on_track_item(_name : String) -> void:
 	if !$Buttons/TimeTrackPanel.pressed:
 		$Buttons/TimeTrackPanel.pressed = true
+
+
+func on_settings_changed() -> void:
+	update_particles()
