@@ -57,7 +57,7 @@ _global_script_class_icons={
 [application]
 
 config/name="MadProductivity"
-run/main_scene="res://Main.tscn"
+run/main_scene="res://StartDialog.tscn"
 run/low_processor_mode=true
 boot_splash/image="res://Splash.png"
 boot_splash/fullsize=false
@@ -75,7 +75,6 @@ Defaults="*res://Defaults.tscn"
 
 window/size/width=1100
 window/size/height=650
-window/size/borderless=true
 window/dpi/allow_hidpi=true
 window/per_pixel_transparency/allowed=true
 window/per_pixel_transparency/enabled=true

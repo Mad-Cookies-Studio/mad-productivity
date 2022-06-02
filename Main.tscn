@@ -71,9 +71,6 @@ bg_color = Color( 0.0862745, 0.152941, 0.160784, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 15 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="MainWorkspace" type="Panel" parent="."]
 anchor_right = 1.0
@@ -87,9 +84,6 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_constants/separation = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Sidebar" type="Panel" parent="MainWorkspace/HBX" groups=["UI_THEME"]]
 margin_right = 50.0
@@ -105,9 +99,6 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TimeTrackPanel" type="TextureButton" parent="MainWorkspace/HBX/Sidebar/Buttons"]
 margin_left = 13.0

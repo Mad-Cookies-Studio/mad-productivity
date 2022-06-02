@@ -14,6 +14,11 @@ var minimized_pos : Vector2
 var offset : Vector2 
 
 func _ready() -> void:
+	if ProjectSettings.get_setting("display/window/size/borderless") == false:
+		$Right/Maximize.hide()
+		$Right/Minimuze.hide()
+		$Right/Exit.hide()
+	
 	connect_signals()
 	var res = load(Defaults.TIMETRACKS_SAVE_PATH + Defaults.TIMETRACKS_SAVE_NAME)	# TODO: access this resource 
 		
@@ -32,7 +37,7 @@ func _on_mouse_exited() -> void:
 	set_process_input(false)
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton and ProjectSettings.get_setting("display/window/size/borderless") == true:
 		initial_mouse_pos = get_global_mouse_position()
 		if event.pressed:
 			offset = get_global_mouse_position()
