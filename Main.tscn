@@ -325,9 +325,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 custom_constants/separation = 0
 alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Control" type="Control" parent="MainWorkspace/HBX/VBX/TopArea/Left"]
 margin_right = 14.0
