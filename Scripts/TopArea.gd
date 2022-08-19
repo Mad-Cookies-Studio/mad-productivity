@@ -11,7 +11,9 @@ var maximized : bool = false
 var minimized_size : Vector2
 var minimized_pos : Vector2
 
-var offset : Vector2 
+var offset : Vector2
+
+var _moving_window: bool = false
 
 func _ready() -> void:
 	if OS.get_borderless_window() == false:
@@ -45,11 +47,13 @@ func _input(event: InputEvent) -> void:
 			offset = get_global_mouse_position()
 		else:
 			offset = Vector2()
-	if event is InputEventMouseMotion and offset != Vector2():
+	if event is InputEventMouseMotion and offset != Vector2() and _moving_window == false:
+		_moving_window = true
 		if OS.window_maximized:
 			offset *=  Defaults.settings_res.minimized_window_size.x / OS.get_window_size().x
 			$Right/Maximize.pressed = false
 		OS.set_window_position(OS.get_window_position() + event.get_global_position() - offset)
+		_moving_window = false
 
 
 func _on_Minimuze_pressed() -> void:
