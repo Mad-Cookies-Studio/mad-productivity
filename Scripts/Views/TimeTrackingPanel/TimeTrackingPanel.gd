@@ -39,18 +39,18 @@ func _ready() -> void:
 	
 func hookup_signals() -> void:
 	# Pomodoro
-	$Content/VBoxContainer/PomodoroButtons/PomodoroStart.connect("charged",self, "on_pom_charged", [BUTTONS.START])
-	$Content/VBoxContainer/PomodoroButtons/PomodoroContinue.connect("charged",self, "on_pom_charged", [BUTTONS.CONTINUE])
-	$Content/VBoxContainer/PomodoroButtons/PomodoroFinish.connect("charged",self, "on_pom_charged", [BUTTONS.FINISH])
-	$Content/VBoxContainer/PomodoroButtons/PomodoroBreak.connect("charged",self, "on_pom_charged", [BUTTONS.BREAK])
-	$Content/VBoxContainer/PomodoroButtons/PomodoroCancel.connect("charged",self, "on_pom_charged", [BUTTONS.CANCEL])
-	$Content/VBoxContainer/PomodoroButtons/PomodoroReset.connect("charged",self, "on_pom_charged", [BUTTONS.RESET])
+	$Content/VBoxContainer/PomodoroButtons/PomodoroStart.connect("pressed",self, "on_pom_pressed", [BUTTONS.START])
+	$Content/VBoxContainer/PomodoroButtons/PomodoroContinue.connect("pressed",self, "on_pom_pressed", [BUTTONS.CONTINUE])
+	$Content/VBoxContainer/PomodoroButtons/PomodoroFinish.connect("pressed",self, "on_pom_pressed", [BUTTONS.FINISH])
+	$Content/VBoxContainer/PomodoroButtons/PomodoroBreak.connect("pressed",self, "on_pom_pressed", [BUTTONS.BREAK])
+	$Content/VBoxContainer/PomodoroButtons/PomodoroCancel.connect("pressed",self, "on_pom_pressed", [BUTTONS.CANCEL])
+	$Content/VBoxContainer/PomodoroButtons/PomodoroReset.connect("pressed",self, "on_pom_pressed", [BUTTONS.RESET])
 	# Normal
-	$Content/VBoxContainer/NormalButtons/NormalStart.connect("charged",self, "on_normal_charged", [BUTTONS.START])
-	$Content/VBoxContainer/NormalButtons/NormalPause.connect("charged",self, "on_normal_charged", [BUTTONS.PAUSE])
-	$Content/VBoxContainer/NormalButtons/NormalContinue.connect("charged",self, "on_normal_charged", [BUTTONS.CONTINUE])
-	$Content/VBoxContainer/NormalButtons/NormalFinish.connect("charged",self, "on_normal_charged", [BUTTONS.FINISH])
-	$Content/VBoxContainer/NormalButtons/NormalCancel.connect("charged",self, "on_normal_charged", [BUTTONS.CANCEL])
+	$Content/VBoxContainer/NormalButtons/NormalStart.connect("pressed",self, "on_normal_pressed", [BUTTONS.START])
+	$Content/VBoxContainer/NormalButtons/NormalPause.connect("pressed",self, "on_normal_pressed", [BUTTONS.PAUSE])
+	$Content/VBoxContainer/NormalButtons/NormalContinue.connect("pressed",self, "on_normal_pressed", [BUTTONS.CONTINUE])
+	$Content/VBoxContainer/NormalButtons/NormalFinish.connect("pressed",self, "on_normal_pressed", [BUTTONS.FINISH])
+	$Content/VBoxContainer/NormalButtons/NormalCancel.connect("pressed",self, "on_normal_pressed", [BUTTONS.CANCEL])
 	# others perhaps?
 
 
@@ -118,6 +118,7 @@ func start_time_tracking() -> void:
 	notified = false
 	$Content/StateButtons/Normal.disabled = true
 	$Content/StateButtons/Pomodoro.disabled = true
+	$SecondsTimer.paused = false
 	$SecondsTimer.start()
 	
 	curr_track_item = TimeTrackItem.new()
@@ -347,7 +348,7 @@ func _on_Pomodoro_pressed() -> void:
 	toggle_view(STATES.POMODORO)
 
 
-func on_pom_charged(which : int) -> void:
+func on_pom_pressed(which : int) -> void:
 	match which:
 		BUTTONS.BREAK:
 			start_pomodoro_break()
@@ -363,7 +364,7 @@ func on_pom_charged(which : int) -> void:
 			pomodoro_phase = 0
 			
 
-func on_normal_charged(which : int) -> void:
+func on_normal_pressed(which : int) -> void:
 	match which:
 		BUTTONS.PAUSE:
 			pause_time_tracking()
