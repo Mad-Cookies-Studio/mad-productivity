@@ -118,6 +118,7 @@ func start_time_tracking() -> void:
 	notified = false
 	$Content/StateButtons/Normal.disabled = true
 	$Content/StateButtons/Pomodoro.disabled = true
+	$SecondsTimer.paused = false
 	$SecondsTimer.start()
 	
 	curr_track_item = TimeTrackItem.new()
